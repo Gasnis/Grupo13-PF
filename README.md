@@ -1,4 +1,7 @@
+Sergio 2
+
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
+
 
 # Final Project - Henry Grupo 13
 
@@ -18,7 +21,18 @@
 
 El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
 
+<<<<<<< HEAD
 |
+=======
+## Comenzando
+
+ 1. Forkear el repositorio para tener una copia del mismo en sus cuentas
+ 2. Clonar el repositorio en sus computadoras para comenzar a trabajar
+ Hola soy Sol
+
+Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
+
+>>>>>>> main
 __IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
 
 Actualmente las versiónes necesarias son:
