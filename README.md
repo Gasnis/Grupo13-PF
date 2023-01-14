@@ -22,6 +22,7 @@ El proyecto tendrá una duración máxima de tres semanas. En el caso de que com
 
  1. Forkear el repositorio para tener una copia del mismo en sus cuentas
  2. Clonar el repositorio en sus computadoras para comenzar a trabajar
+ Hola soy Sol
 
 Tendrán un `boilerplate` con la estructura general tanto del servidor como de cliente.
 
