@@ -14,5 +14,8 @@ module.exports = (sequelize) => {
     categorie: {
       type: DataTypes.STRING,
     },
+    tables: {
+      type: DataTypes.STRING,
+    },
   });
 };
