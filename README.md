@@ -6,7 +6,6 @@ Sergio 2
 # Final Project - Henry Grupo 13
 
 <p align="left">
-  <img height="200" src="" />
 </p>
 
 ## Objetivos del Proyecto
