@@ -15,5 +15,9 @@ module.exports = (sequelize) => {
     flag: {
       type: DataTypes.STRING,
     },
+    population: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
   });
 };
