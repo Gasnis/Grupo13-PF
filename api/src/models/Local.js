@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     event: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
     }
   });
 };
