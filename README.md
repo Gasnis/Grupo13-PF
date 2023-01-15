@@ -1,7 +1,8 @@
+Sergio
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 
-# Final Project - Henry Grupo 13
+# Final Project - Henry Grupo 31
 
 <p align="left">
 <img src="https://style.shockvisual.net/wp-content/uploads/2019/10/beer-background-ZC2QTEK.jpg" alt=""/>
