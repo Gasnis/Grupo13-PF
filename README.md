@@ -45,6 +45,8 @@ User:{
     image,
     birthday,
     city,
+    owner:id del bar?
+    admin:?
 }
 
 RUTAS BACK
@@ -115,19 +117,26 @@ __Ruta de registro de usuario Cliente (Form#2):
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
   -nombre
   -mail
-  -contrasena
+  -contraseña
   -numero de telefono
   -imagen
-  -fecha de cumpleanos
+  -fecha de cumpleaños
   -ciudad
 
-__Ruta de registro de usuario Dueno bar (Form#3):
-  -podriamos hacer el registro de dueno de bar y creacion de bares, en un solo form
-__Ruta de creación de bares (Form#4):
+__Ruta de creación de bares (Form#3):
+  - un formulario que pida todos los datos del bar y al usuario le cambia la propiedad owner
+
+__Ruta about
+__Ruta favoritos
+__Ruta inicio de sesion
 
 PANEL DE ADMIN BARES
 -Posibilidad de actualizar datos del bar
 
-PANEL DE ADMIN DE LA APP
--Posibilidad de borrar bares
+PANEL DE ADMIN DE LA APP?
+-Posibilidad de borrar bares?
 
+PREGUNTAS PARA HACER
+-Se puede linkear un boton para dos rutas distintas dependiendo del tipo de usuario que seas?
+-como hacer una experiencia individual para cada usuario? como cada usuario va a alterar el estado "rating"
+-hacer manejo de reserva por calendario renderizando las actividades de todo el mes? como hacer con el estado general?
