@@ -98,89 +98,36 @@ __Ruta principal__: debe contener
   - Edades
 - [ ] Botones/Opciones para filtrar por categoria 
 - [ ] Botones/Opciones para ordenar por edades y ubicacion
-- [ ] Paginado para ir buscando y mostrando los siguientes videojuegos, 15 juegos por pagina, mostrando los primeros 15 en la primer pagina.
+- [ ] Paginado para ir buscando y mostrando los siguientes bares, 15 bares por pagina, mostrando los primeros 15 en la primer pagina. (Otra opcion es que haya un boton 
+      "+" para ir agregando mas bares, en lugar del paginado tradicional)
 
-__IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
+__Rute de detalle__: debe contener
+- [ ] nombre,categorias,imagen,locacion,menu, eventos (si los hay), capacidad, promos, pet-friendly, horarios, rango etario?, telefono, precio de reserva.
 
-__Ruta de detalle de videojuego__: debe contener
-
-- [ ] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
-- [ ] Descripción
-- [ ] Fecha de lanzamiento
-- [ ] Rating
-- [ ] Plataformas
-
-__Ruta de creación de videojuegos__: debe contener
-
+__Ruta de creación de reservas (Form#1): debe contener
 - [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
-  - Nombre
-  - Descripción
-  - Fecha de lanzamiento
-  - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
-- [ ] Botón/Opción para crear un nuevo videojuegob
+  -nombre de quien reserva,
+  -fecha
+  -cantidad de personas
+  -codigo de promocion
 
+__Ruta de registro de usuario Cliente (Form#2):
+- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
+  -nombre
+  -mail
+  -contrasena
+  -numero de telefono
+  -imagen
+  -fecha de cumpleanos
+  -ciudad
 
+__Ruta de registro de usuario Dueno bar (Form#3):
+  -podriamos hacer el registro de dueno de bar y creacion de bares, en un solo form
+__Ruta de creación de bares (Form#4):
 
-## Objetivos del Proyecto
+PANEL DE ADMIN BARES
+-Posibilidad de actualizar datos del bar
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
-
-## BoilerPlate
-
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
-
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
-
-```env
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
-
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
-
-Adicionalmente será necesario que creen desde psql una base de datos llamada ``
-
-El contenido de `client` fue creado usando: Create React App.
-
-
-
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
-
-Actualmente las versiónes necesarias son:
-
-- __Node__: 12.18.3 o mayor
-- __NPM__: 6.14.16 o mayor
-
-Para verificar que versión tienen instalada:
-
-```bash
-node -v
-npm -v
-```
-
-__ACLARACIÓN:__ Las dependencias actuales se encuentran en las versiones que venimos trabajando durante el bootcamp.
-
-Versiones:
-
-- __react__: 17.0.1
-- __react-dom__: 17.0.1
-- __react-router-dom__: 5.2.0
-- __redux__: 4.0.5
-- __react-redux__: 7.2.3
-
-Está permitido, __bajo su responsabilidad__, actualizar las dependencias a versiones más actuales.
-
-> __IMPORTANTE:__ Versiones mas actuales podrían presentar configuraciones diferentes respecto a las versiones en las que venimos trabajando durante el bootcamp.
-
+PANEL DE ADMIN DE LA APP
+-Posibilidad de borrar bares
 
