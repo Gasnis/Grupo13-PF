@@ -1,3 +1,4 @@
+
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 
@@ -34,9 +35,11 @@ Place:{
 
 Book:{
     name,
-    date,
-    person-quantity, (max 10 o +10)
-    code-prom,
+    reservedDate, (para cuándo es la reserva)
+    createdAt,
+    updatedAt,
+    personQuantity,
+    codeProm,
 }
 
 User:{
@@ -47,6 +50,7 @@ User:{
     image,
     birthday,
     city,
+<!--     propietario, ? renderizar form de creación de place : no renderizar nada-->
     owner:id del bar?
     admin:?
 }
