@@ -1,10 +1,4 @@
 
-
-sergio 4
-
-
-gasstonsss
-
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 
@@ -14,63 +8,148 @@ gasstonsss
 <img src="https://style.shockvisual.net/wp-content/uploads/2019/10/beer-background-ZC2QTEK.jpg" alt=""/>
 </p>
 
-## Objetivos del Proyecto
+# Grupo13-PF Intrucciones para no terminar matandonos.
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
+MODELOS
 
-## Horarios y Fechas
+Place:{
+    id, (mail)
+    name,
+    category, (disco, bar, pub)
+    <!-- category2, (proximo sprint) -->
+    image,
+    location,
+    menu,
+    event, ( boolean? enum),
+    capacity,
+    pet-friendly,
+    schedule,
+    age-range?,
+    phone,
+    promo,
+    book-price,(15%)
+    available, ( boolean )
+    <!-- rating?(proximo sprint) -->
+}
 
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
+Book:{
+    name,
+    reservedDate, (para cuándo es la reserva)
+    createdAt,
+    updatedAt,
+    personQuantity,
+    codeProm,
+}
 
-|
-__IMPORTANTE:__ Es necesario contar minimamente con la última versión estable de Node y NPM. Asegurarse de contar con ella para poder instalar correctamente las dependecias necesarias para correr el proyecto.
+User:{
+    id, (mail),
+    name,
+    password,
+    phone,
+    image,
+    birthday,
+    city,
+<!--     propietario, ? renderizar form de creación de place : no renderizar nada-->
+    owner:id del bar?
+    admin:?
+}
 
-Actualmente las versiónes necesarias son:
+RUTAS BACK
 
-- __Node__: 12.18.3 o mayor
-- __NPM__: 6.14.16 o mayor
+- [ ] __GET /places__:
+  - Obtener un listado de los bares/discotecas
+  - Debe devolver solo los datos necesarios para la ruta principal
 
-Para verificar que versión tienen instalada:
+- [ ] __GET /places?name="..."__:
+  - Obtener un listado de las primeros 15 bar/discoteca que contengan la palabra ingresada como query parameter
+  - Si no existe ninguno mostrar un mensaje adecuado
 
-```bash
-node -v
-npm -v
-```
+- [ ] __GET /place/{idPlace}__:
+  - Obtener el detalle del bar/discoteca en particular
+  - Debe traer solo los datos pedidos en la ruta de detalle del bar/discoteca
+  - Incluir las reservas disponibles(admin scheduled)
 
-__ACLARACIÓN:__ Las dependencias actuales se encuentran en las versiones que venimos trabajando durante el bootcamp.
+- [ ] __GET /place/{idBook}__:
+- Obtener el detalle de la reserva
 
-Versiones:
+- [ ] __POST /create-user__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación del usuario por body
+  - Crea un usuario en la base de datos, relacionado a su reserva.
 
-- __react__: 17.0.1
-- __react-dom__: 17.0.1
-- __react-router-dom__: 5.2.0
-- __redux__: 4.0.5
-- __react-redux__: 7.2.3
+  - [ ] __POST /create-place__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de bar/discoteca por body
+  - Crea un bar/discoteca en la base de datos, relacionado a sus géneros.
 
-Está permitido, __bajo su responsabilidad__, actualizar las dependencias a versiones más actuales.
+- [ ] __POST /create-book__:
+  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de reserva por body
+  - Crea una reserva en la base de datos, relacionado a sus géneros.
 
-> __IMPORTANTE:__ Versiones mas actuales podrían presentar configuraciones diferentes respecto a las versiones en las que venimos trabajando durante el bootcamp.
+- [ ] __PUT /place/{idPlace}__:
+  - modificar los datos adoptados en el detalle del bar/discoteca
+  - implementar borrado logico en caso de clausura, cierre de temporada, reforma, fuera de horario
 
-## BoilerPlate
+<!-- - [ ] __PUT /place/{idBook}__:
+  - Elimina de la base de datos el bar/discoteca
 
-El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
+- [ ] __DE /place/{idBook}__:
+  - Elimina de la base de datos el bar/discoteca -->
 
-En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
+- [ ] __PUT /places__:
+  - Elimina de la base de datos el bar/discoteca
 
-```env
-DB_USER=usuariodepostgres
-DB_PASSWORD=passwordDePostgres
-DB_HOST=localhost
-```
 
-Reemplazar `usuariodepostgres` y `passwordDePostgres` con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
+RUTAS FRONT
 
-Adicionalmente será necesario que creen desde psql una base de datos llamada ``
+__Ruta principal__: debe contener
 
-El contenido de `client` fue creado usando: Create React App.
+- [ ] Input de búsqueda para encontrar bar/discoteca por nombre
+- [ ] Área donde se verá el listado de bar/discoteca. Deberá mostrar su:
+  - Imagen
+  - Nombre
+  - Categoria
+  - Ubicacion
+  - Edades
+  <!-- - Puntuacion (proximo sprint) --> 
+- [ ] Botones/Opciones para filtrar por categoria y pet-friendly
+- [ ] Botones/Opciones para ordenar por edades y ubicacion
+- [ ] Paginado para ir buscando y mostrando los siguientes bares, 15 bares por pagina, mostrando los primeros 15 en la primer pagina. (Otra opcion es que haya un boton 
+      "+" para ir agregando mas bares, en lugar del paginado tradicional)
 
-# Grupo13-PF
+__Rute de detalle__: debe contener
+- [ ] nombre,categorias,imagen,locacion,menu, eventos (si los hay), capacidad, promos, pet-friendly, horarios, rango etario?, telefono, precio de reserva.
+
+__Ruta de creación de reservas (Form#1): debe contener
+- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
+  -nombre de quien reserva,
+  -fecha
+  -cantidad de personas
+  -precio de reserva
+  -codigo de promocion
+
+__Ruta de registro de usuario Cliente (Form#2):
+- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
+  -nombre
+  -mail
+  -contraseña
+  -numero de telefono
+  -imagen
+  -fecha de cumpleaños
+  -ciudad
+
+__Ruta de creación de bares (Form#3):
+  - un formulario que pida todos los datos del bar y al usuario le cambia la propiedad owner
+
+__Ruta about
+__Ruta favoritos
+__Ruta inicio de sesion
+
+PANEL DE ADMIN BARES
+-Posibilidad de actualizar datos del bar
+
+PANEL DE ADMIN DE LA APP?
+-Posibilidad de borrar bares?
+
+PREGUNTAS PARA HACER
+-Se puede linkear un boton para dos rutas distintas dependiendo del tipo de usuario que seas?
+-como hacer una experiencia individual para cada usuario? como cada usuario va a alterar el estado "rating"
+-hacer manejo de reserva por calendario renderizando las actividades de todo el mes? como hacer con el estado general?
