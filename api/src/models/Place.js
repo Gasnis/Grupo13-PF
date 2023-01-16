@@ -16,12 +16,12 @@ module.exports = (sequelize) => {
     //   allowNull:false,
     // },
     name: {
-      type: DataTypes.SRING,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     category: {
       type: DataTypes.ENUM,
-      values: [disco, pub, bar],
+      values: ["disco", "pub", "bar"],
       allowNull: false,
     },
     image: {
@@ -49,7 +49,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     ageRange: {
-        type: DataTypes.ARRAY(DataTypes.NUMBER), // Para colocar "18+" "18  - 40" "18++"
+        type: DataTypes.ARRAY(DataTypes.INTEGER), // Para colocar "18+" "18  - 40" "18++"
       allowNull: true,
     },
     phone: {
@@ -69,8 +69,7 @@ module.exports = (sequelize) => {
       defaultValue: true,
     },
     rating: {
-        type: DataTypes.FLOAT, // ** || integer
-        defaultValue: false,
+        type: DataTypes.INTEGER, // ** || integer
       },
   });
 };
