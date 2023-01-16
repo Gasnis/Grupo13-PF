@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-Este es una practica de un pull request
+
 
 sergio 4
 
 
 gasstonsss
 
-=======
->>>>>>> main
 ![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
 
