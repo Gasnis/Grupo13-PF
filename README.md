@@ -14,26 +14,27 @@ MODELOS
 Place:{
     id, (mail)
     name,
-    category,
+    category, (disco, bar, pub)
+    <!-- category2, (proximo sprint) -->
     image,
     location,
     menu,
     event, ( boolean? enum),
     capacity,
-    promo,
     pet-friendly,
     schedule,
     age-range?,
     phone,
+    promo,
     book-price,(15%)
     available, ( boolean )
+    <!-- rating?(proximo sprint) -->
 }
 
 Book:{
     name,
     date,
-    person-quantity,
-    price-quantity,
+    person-quantity, (max 10 o +10)
     code-prom,
 }
 
@@ -83,7 +84,13 @@ RUTAS BACK
   - modificar los datos adoptados en el detalle del bar/discoteca
   - implementar borrado logico en caso de clausura, cierre de temporada, reforma, fuera de horario
 
-  - [ ] __DELETE /places__:
+<!-- - [ ] __PUT /place/{idBook}__:
+  - Elimina de la base de datos el bar/discoteca
+
+- [ ] __DE /place/{idBook}__:
+  - Elimina de la base de datos el bar/discoteca -->
+
+- [ ] __PUT /places__:
   - Elimina de la base de datos el bar/discoteca
 
 
@@ -98,7 +105,8 @@ __Ruta principal__: debe contener
   - Categoria
   - Ubicacion
   - Edades
-- [ ] Botones/Opciones para filtrar por categoria 
+  <!-- - Puntuacion (proximo sprint) --> 
+- [ ] Botones/Opciones para filtrar por categoria y pet-friendly
 - [ ] Botones/Opciones para ordenar por edades y ubicacion
 - [ ] Paginado para ir buscando y mostrando los siguientes bares, 15 bares por pagina, mostrando los primeros 15 en la primer pagina. (Otra opcion es que haya un boton 
       "+" para ir agregando mas bares, en lugar del paginado tradicional)
@@ -111,6 +119,7 @@ __Ruta de creación de reservas (Form#1): debe contener
   -nombre de quien reserva,
   -fecha
   -cantidad de personas
+  -precio de reserva
   -codigo de promocion
 
 __Ruta de registro de usuario Cliente (Form#2):
