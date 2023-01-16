@@ -28,7 +28,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     personQuantity: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     codeProm: {
