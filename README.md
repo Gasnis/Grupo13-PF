@@ -12,7 +12,8 @@
 MODELOS
 
 Place:{
-    id, (mail)
+    id, (UUIDV4)
+    <!-- password, Lo quitamos -->
     name,
     category, (disco, bar, pub)
     <!-- category2, (proximo sprint) -->
@@ -21,12 +22,12 @@ Place:{
     menu,
     event, ( boolean? enum),
     capacity,
-    pet-friendly,
-    schedule,
-    age-range?,
+    petFriendly,
+    <!-- schedule, // próximo sprint -->
+    ageRange,
     phone,
     promo,
-    book-price,(15%)
+    bookPrice,(15%)
     available, ( boolean )
     <!-- rating?(proximo sprint) -->
 }
