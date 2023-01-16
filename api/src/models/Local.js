@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Bar', {
+  sequelize.define('local', {
     id:{
       type: DataTypes.NUMBER,
     },
@@ -14,5 +14,11 @@ module.exports = (sequelize) => {
     categorie: {
       type: DataTypes.STRING,
     },
+    tables: {
+      type: DataTypes.STRING,
+    },
+    event: {
+      type: DataTypes.BOOLEAN,
+    }
   });
 };
