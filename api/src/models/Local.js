@@ -5,10 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('local', {
     id:{
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
+      primaryKey: true
     },
     name: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     categorie: {
