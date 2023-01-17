@@ -1,20 +1,21 @@
-const {Local} = require("../../db")
+const {Local,User} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
-
+    const {userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
     const searchLocal = await Local.findOne({
-        where:{id: id}
+        where:{name: name}
     })
 
     if(!searchLocal){
-        const local = await Local.create({id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
-        return local
+        if(userId && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
+            const local = await Local.create({name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
+            const searchUserById = await User.findByPk(userId) 
+            await local.setUser(searchUserById);
+            return local
+        }throw new Error(`missing date`)
     }else{
         throw new Error(`The user ${name} was already create`)
     } 
-
-
 
 }
 
