@@ -18,6 +18,7 @@ const postUserData = async (userData) => {
     }else{
         throw new Error("Missing data")
     }
+     
 }
 
 const getAllUsers = async () => {
