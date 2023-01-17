@@ -31,7 +31,7 @@ const getLocalDetail = async (id) => {
 const getLocalName = async (name) => {
   const localInfo = Local.findAll();
   if (name) {
-    const byName = localInfo.filter((local) =>
+    const byName = localInfo?.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
     if (byName.length === 0) {
