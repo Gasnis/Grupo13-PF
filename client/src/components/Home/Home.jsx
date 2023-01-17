@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    getPlaces
+    // getPlaces
 } from "../../redux/actions"
 
 export default function Home () {
@@ -17,23 +17,28 @@ export default function Home () {
         // dispatch(getPlaces())
     },[dispatch])
 
-    const currentPlaces = allPlaces.slice(0, 10)
+    const [currentPlaces, setCurrentPlaces] = useState(10)
+    
 
-   
+   function handlePlace(e){
+    e.preventDefault()
+    setCurrentPlaces(currentPlaces + 10)
+   }
+
+   let renderPlaces = allPlaces.slice(0, currentPlaces)
 
     return (
         <div>
             <Navbar home={true}/>
             <div>
                 {
-                    currentPlaces.length?
-                    currentPlaces === "404"? 
+                    renderPlaces.length?
+                    renderPlaces === "404"? 
                         (
                             <h1>Not Found</h1>
                         ):
-                        currentPlaces.map((place) =>{
+                        renderPlaces.map((place) =>{
                             return <Card key={place.id} place={place}>
-
                             </Card>
                         
                     })
@@ -45,7 +50,7 @@ export default function Home () {
                 }
             </div>
             <div>
-                <button>+</button>
+                <button onChange={handlePlace}>+</button>
             </div>
 
         </div>

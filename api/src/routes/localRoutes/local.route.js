@@ -12,11 +12,11 @@ router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
     if (name) {
-      const localName = getLocalName(name);
+      const localName = await getLocalName(name);
       res.status(200).json(localName);
+    }else{
+      res.status(200).json(await getLocalName());
     }
-
-    res.status(200).json(getLocalName());
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
         return res.status(200).send(localById);
       }
     } catch (error) {
-      return res.status(400).send("Local could not load properly");
+      return res.status(400).send(error.message);
     }
   });
 
