@@ -9,7 +9,7 @@ import {
 
 export default function Home () {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(id);
     
     let allPlaces = useSelector((state) => state.places)
 
