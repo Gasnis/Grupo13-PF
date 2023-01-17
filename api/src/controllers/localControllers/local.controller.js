@@ -12,9 +12,9 @@ const postLocalData = async (localData) => {
             const searchUserById = await User.findByPk(userId) 
             await local.setUser(searchUserById);
             return local
-        }throw new Error(`missing date`)
+        }throw new Error(`missing data`)
     }else{
-        throw new Error(`The user ${name} was already create`)
+        throw new Error(`The local ${name} was already created`)
     } 
 
 }
