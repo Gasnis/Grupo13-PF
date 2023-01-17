@@ -1,6 +1,6 @@
 const {Router} = require("express")
-const postUserData = require("../../controllers/userControllers/user.controller")
-const getUserDetail = require("../../controllers/userControllers/user.controller")
+const {postUserData, getUserDetail} = require("../../controllers/userControllers/user.controller")
+
 
 const router = Router()
 
