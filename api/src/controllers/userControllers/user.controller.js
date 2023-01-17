@@ -1,4 +1,4 @@
-const {User} = require("../db")
+const {User} = require("../../db")
 
 const postUserData = async (userData) => {
     const {id,name,password,phone,image,birthday,city }  = userData
