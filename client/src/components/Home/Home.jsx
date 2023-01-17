@@ -14,12 +14,15 @@ export default function Home () {
     let allPlaces = useSelector((state) => state.places)
 
     useEffect(()=>{
-        // dispatch(getPlaces())
+        dispatch(getPlaces())
     },[dispatch])
 
-    const currentPlaces = allPlaces.slice(0, 10)
+    let currentPlaces = allPlaces.slice(0, 10)
 
-   
+   function handlePlace(e){
+    e.preventDefault()
+    currentPlaces = currentPlaces + allPlaces(11, 21)
+   }
 
     return (
         <div>
@@ -33,7 +36,6 @@ export default function Home () {
                         ):
                         currentPlaces.map((place) =>{
                             return <Card key={place.id} place={place}>
-
                             </Card>
                         
                     })
@@ -45,7 +47,7 @@ export default function Home () {
                 }
             </div>
             <div>
-                <button>+</button>
+                <button onChange={handlePlace}>+</button>
             </div>
 
         </div>
