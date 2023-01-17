@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../Navbar/Navbar";
+import {Navbar, home} from "../Navbar/Navbar";
 import "./home.module.css";
 import Card from ".././Card/Card"
 import {
@@ -9,7 +9,7 @@ import {
 
 export default function Home () {
 
-    const dispatch = useDispatch(id);
+    const dispatch = useDispatch();
     
     let allPlaces = useSelector((state) => state.places)
 
