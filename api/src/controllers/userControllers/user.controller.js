@@ -1,7 +1,6 @@
 const {User} = require("../../db")
 
-const postUserData = async (userData) => {
-    const {id,name,password,phone,image,birthday,city }  = userData
+const postUserData = async (id,name,password,phone,image,birthday,city) => {
 
     const searchUser = await User.findOne({
         where:{id: id}
@@ -19,6 +18,10 @@ const postUserData = async (userData) => {
 
 }
 
+const getAllUsers = async () => {
+    return User.findAll();
+}
+
 const getUserDetail = async (id) => {
     
     if (id) {
@@ -32,7 +35,33 @@ const getUserDetail = async (id) => {
     }
 }
 
+const deleteUser = async (id) => {
+    const user = await User.findByPk(id);
+    user.destroy();
+    return user
+}
+
+const updateUser = async (id,name,password,phone,image,birthday,city) =>{
+    let user = await User.findByPk(id);
+    await user.update( 
+    {
+        name,
+        password,
+        phone,
+        image,
+        birthday,
+        city,
+    }
+    );
+}
+
+
+
+
 module.exports = {
     postUserData,
     getUserDetail,
+    getAllUsers,
+    deleteUser,
+    updateUser
 }
