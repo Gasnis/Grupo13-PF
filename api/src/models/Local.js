@@ -5,12 +5,13 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('local', {
     id: {
-      type: DataTypes.UUID, // email
+      type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       unique: true,
       primaryKey: true,
       allowNull: false,
     },
+
     // password: {
     //   type: Datatypes.STRING,
     //   allowNull:false,
@@ -19,6 +20,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],

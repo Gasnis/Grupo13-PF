@@ -19,4 +19,20 @@ const postUserData = async (userData) => {
 
 }
 
-module.exports = postUserData;
+const getUserDetail = async (id) => {
+    
+    if (id) {
+        const userDetail = await User.findOne({
+            where: {id: id}
+        })
+        if (!userDetail) {
+            throw new Error("you can't access the detail of an nonexistent user")
+        }
+        return userDetail
+    }
+}
+
+module.exports = {
+    postUserData,
+    getUserDetail,
+}

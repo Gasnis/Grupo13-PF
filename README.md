@@ -50,8 +50,7 @@ User:{
     birthday,
     city,
 <!--     propietario, ? renderizar form de creación de place : no renderizar nada-->
-    owner:id del bar?
-    admin:?
+<!--     admin:? -->
 }
 
 RUTAS BACK
@@ -71,6 +70,24 @@ RUTAS BACK
 
 - [ ] __GET /place/{idBook}__:
 - Obtener el detalle de la reserva
+
+
+
+
+- [ ] __GET /user{idUser}__:
+  - Obtener el detalle de un usuario (cuando ingresa a su perfil)
+  - Debe devolver solo los datos necesarios para la ruta principal
+
+- [ ] __PUT /users__:
+  - Debe actualizar los datos de un usuario (modificar los datos de su propio perfil)
+  - Debe actualizar solo los datos necesarios para la ruta principal
+  
+- [ ] __DELETE /users{idUser}__:
+  - Debe eliminar el usuario en cuestión
+  - Debe devolver solo los datos necesarios para la ruta principal
+
+
+
 
 - [ ] __POST /create-user__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación del usuario por body

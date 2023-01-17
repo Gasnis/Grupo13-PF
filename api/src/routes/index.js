@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const userRouter = require("./userRoutes/user.route")
-const localRouter = require("./userRoutes/local.route")
+const localRouter = require("./localRoutes/local.route")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
