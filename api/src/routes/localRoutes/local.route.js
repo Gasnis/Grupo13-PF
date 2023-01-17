@@ -1,28 +1,27 @@
 const {Router} = require("express")
 const { Local, User, Book } = require("../../db");
-const {postLocalData,getLocalDetail} = require("../../controllers/localControllers/local.controller")
+
+const {postLocalData, getLocalName, getLocalDetail} = require("../../controllers/localControllers/local.controller")
+
 
 
 const router = Router()
 
 
+router.get("/", async (req, res) => {
+  try {
+    const { name } = req.query;
+    if (name) {
+      const localName = getLocalName(name);
+      res.status(200).json(localName);
+    }
 
-router.get("/", async (req, res)=>{
-  
-  const {name} = req.query;
-  const localInfo = Local.findAll({
-    include: [Local],
-})
-  if(name){
-    const byName = localInfo.filter(local => local.name.toLowerCase().includes(name.toLowerCase()));
-
-    byName.length?
-    res.status(200).json(byName): 
-    res.status(404).json({msg: "Local not found :/"})
-  }else{
-    res.status(200).json(localInfo)
+    res.status(200).json(getLocalName());
+  } catch (error) {
+    res.status(404).send(error.message);
   }
-})
+});
+
 
 router.post("/", async(req, res)=>{
     try {
