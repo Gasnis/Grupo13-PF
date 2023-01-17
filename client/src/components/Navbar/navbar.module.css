@@ -16,15 +16,25 @@ h1{
 
 input {
     width: 300px;
-    height: 30px;
+    height: 35px;
     border-radius: 20px;
 }
 
 button{
+    height: 35px;
     background-color: transparent;
     border: none;
     font-size: 17px;
     color: white;
+}
+
+button:hover{
+    cursor: pointer;
+    color: black;
+}
+
+button:hover>img{
+    height: 35px;
 }
 
 .Logo{
