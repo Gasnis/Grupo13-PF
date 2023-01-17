@@ -30,6 +30,7 @@ export default function Home () {
     return (
         <div>
             <Navbar home={true}/>
+            <img src="https://thumbs.dreamstime.com/b/parte-superior-de-la-mesa-negra-con-fondo-banner-bar-y-fiesta-luz-pub-ciudad-199775374.jpg" alt="" height="297px" width="100%" />
             <div>
                 {
                     renderPlaces.length?
