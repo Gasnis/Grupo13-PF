@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {Navbar, home} from "../Navbar/Navbar";
+import { useDispatch, useSergio } from "react-redux";
+import {home} from "../Navbar/home";
 import "./home.module.css";
 import Card from ".././Card/Card"
 import {
