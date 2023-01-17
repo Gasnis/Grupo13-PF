@@ -1,0 +1,58 @@
+import React, {useState} from "react";
+import {useDispatch} from "react-redux"
+import style from "./navbar.module.css"
+import search from "../../utils/search.png"
+import beer from "../../utils/beer.png"
+import location from "../../utils/location.png"
+import roulette from "../../utils/roulette.png"
+import toggleOff from "../../utils/toggle.png"
+import { searchPlace } from "../../redux/actions";
+
+export default function Navbar (props) {
+    const isHome = props.home;
+    const [input, setInput] = useState("");
+    const dispatch = useDispatch();
+    const handleSearch = (e) => {
+        e.preventDefault();
+        dispatch(searchPlace(input));
+    }
+
+    const handleChange = (e) => {
+        setInput(e.target.value)
+    }
+
+    return (
+        <div className={isHome ? style.Container : style.ContainerNoHome}>
+            <div>
+                <img className={style.Logo} src={beer} alt="logo" />
+                <h1 className={isHome ? null : style.h1NoHome}>wwWhere</h1>
+            </div>
+            {isHome ? 
+                <div>
+                    <input value={input} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más"/>
+                    <button onClick={handleSearch} className={style.Button}>
+                        <img className={style.Img} src={search} alt="" />
+                    </button>
+                    <button className={style.Button}>
+                        <img className={style.Img} src={location} alt="" />
+                    </button>
+                    <button className={style.Button}>
+                        <img className={style.Img} src={roulette} alt="" />
+                    </button>
+                </div>
+                : null}
+            <div>
+                { isHome ? 
+                    <div>
+                        <button>Ordenar</button>
+                        <button>Filtrar</button>
+                        <button>Ingresar</button>
+                    </div>
+                : null}
+                <button className={style.Button}>
+                    <img className={style.Img} src={toggleOff} alt="" />
+                </button>
+            </div>
+        </div>
+    )
+}

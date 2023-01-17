@@ -19,4 +19,31 @@ const postLocalData = async (localData) => {
 
 }
 
-module.exports = postLocalData;
+const getLocalDetail = async (id) => {
+    const local = await Local.findByPk(id);
+    if (!local) {
+        throw new Error("Local not found");
+    }
+    return local
+}
+
+
+const getLocalName = async (name) => {
+  const localInfo = Local.findAll();
+  if (name) {
+    const byName = localInfo.filter((local) =>
+      local.name.toLowerCase().includes(name.toLowerCase())
+    );
+    if (byName.length === 0) {
+      throw new Error(`${name} not found :/`);
+    }
+
+    return byName;
+  }
+  return localInfo;
+};
+
+
+
+module.exports = {postLocalData, getLocalName, getLocalDetail};
+
