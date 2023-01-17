@@ -19,7 +19,7 @@ const postLocalData = async (localData) => {
 const getLocalDetail = async (id) => {
     const local = await Local.findByPk(id);
     if (!local) {
-        return res.status(404).send("Local not found");
+        throw new Error("Local not found");
     }
     return local
 }
