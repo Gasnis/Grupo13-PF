@@ -50,9 +50,9 @@ router.delete("/", async (req, res) => {
   
 router.put("/", async (req, res) => {
     try {
-      const {id,name,password,phone,image,birthday,city } = req.body
-      if (name && password && phone && image && birthday && city && id) {
-         const updated = await updateUser(id,name,password,phone,image,birthday,city)
+      const {userId,id,name,password,phone,image,birthday,city} = req.body
+      if (userId && name && password && phone && image && birthday && city && id) {
+         const updated = await updateUser(userId,id,name,password,phone,image,birthday,city)
          res.status(200).send(updated);
     } else {
       res.status(404).send("Not all parameters arrived successfully");
