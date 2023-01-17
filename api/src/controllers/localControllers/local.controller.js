@@ -18,4 +18,21 @@ const postLocalData = async (localData) => {
 
 }
 
-module.exports = postLocalData;
+const getLocalName = async (name) => {
+  const localInfo = Local.findAll();
+  if (name) {
+    const byName = localInfo.filter((local) =>
+      local.name.toLowerCase().includes(name.toLowerCase())
+    );
+    if (byName.length === 0) {
+      throw new Error(`${name} not found :/`);
+    }
+
+    return byName;
+  }
+  return localInfo;
+};
+
+
+
+module.exports = {postLocalData, getLocalName};
