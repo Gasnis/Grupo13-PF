@@ -44,7 +44,7 @@ router.get("/:id", async (req, res) => {
         return res.status(200).send(localById);
       }
     } catch (error) {
-      return res.status(400).send("Local could not load properly");
+      return res.status(400).send(error.message);
     }
   });
 
