@@ -14,8 +14,14 @@ const postLocalData = async (localData) => {
         throw new Error(`The user ${name} was already create`)
     } 
 
-
-
 }
 
-module.exports = postLocalData;
+const getLocalDetail = async (id) => {
+    const local = await Local.findByPk(id);
+    if (!local) {
+        throw new Error("Local not found");
+    }
+    return local
+}
+
+module.exports = {postLocalData,getLocalDetail};
