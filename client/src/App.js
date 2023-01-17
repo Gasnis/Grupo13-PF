@@ -5,6 +5,7 @@ import Detail from './components/Details/Details.jsx'
 import Form from './components/FormBook/FormBook.jsx';
 // import axios from "axios";
 // axios.defaults.baseURL = 
+axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
 
         <Route path="/newplace"> <Form/> </Route>
         
-        
+        <Route path="/detail"> <Detail/> </Route>
+
       </div>
     
   );

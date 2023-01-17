@@ -23,7 +23,7 @@ export default function Home () {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar home={true}/>
             <div>
                 {
                     currentPlaces.length?
@@ -47,7 +47,7 @@ export default function Home () {
             <div>
                 <button>+</button>
             </div>
-            
+
         </div>
     )
 }
