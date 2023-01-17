@@ -2,12 +2,13 @@ import axios from "axios";
 
 export const SEARCH_PLACE = "SEARCH_PLACE";
 export const GET_PLACE_DETAIL = "GET_PLACE_DETAIL";
+export const GET_PLACES = "GET_PLACES";
 
 
 
 export const getPlaceDetail = (id) => {
     return async (dispatch) => {
-        const response = await axios(`/place/${parseInt(id)}`)
+        const response = await axios(`/place/${id}`)
         const placeDetail = response.data;
         dispatch({
             type: GET_PLACE_DETAIL,
