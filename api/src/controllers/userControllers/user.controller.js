@@ -26,7 +26,7 @@ const getUserDetail = async (id) => {
             where: {id: id}
         })
         if (!userDetail) {
-            throw new Error("No se puede acceder al detalle de un usuario que no existe.")
+            throw new Error("you can't access the detail of an nonexistent user")
         }
         return userDetail
     }
