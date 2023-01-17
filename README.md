@@ -55,6 +55,8 @@ User:{
 
 RUTAS BACK
 
+
+
 - [ ] __GET /places__:
   - Obtener un listado de los bares/discotecas
   - Debe devolver solo los datos necesarios para la ruta principal
@@ -70,8 +72,6 @@ RUTAS BACK
 
 - [ ] __GET /place/{idBook}__:
 - Obtener el detalle de la reserva
-
-
 
 
 - [ ] __GET /user{idUser}__:
@@ -105,11 +105,11 @@ RUTAS BACK
   - modificar los datos adoptados en el detalle del bar/discoteca
   - implementar borrado logico en caso de clausura, cierre de temporada, reforma, fuera de horario
 
-<!-- - [ ] __PUT /place/{idBook}__:
+- [ ] __PUT /place/{idBook}__:
   - Elimina de la base de datos el bar/discoteca
 
 - [ ] __DE /place/{idBook}__:
-  - Elimina de la base de datos el bar/discoteca -->
+  - Elimina de la base de datos el bar/discoteca
 
 - [ ] __PUT /places__:
   - Elimina de la base de datos el bar/discoteca
