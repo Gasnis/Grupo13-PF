@@ -1,0 +1,52 @@
+h1{
+    color: white;
+}
+
+.Container {
+    background-color:#660BAD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Container > div {
+    display: flex;
+    margin: 0 20px 0 20px;
+}
+
+input {
+    width: 300px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+button{
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    color: white;
+}
+
+button:hover{
+    cursor: pointer;
+    color: black;
+}
+
+button:hover>img{
+    height: 35px;
+}
+
+.Logo{
+    border-style: solid;
+    border-width: 6px;
+    border-radius: 50%;
+    height: 70px;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: #FFB800;
+}
+
+.Img{
+    height: 27px;
+}
