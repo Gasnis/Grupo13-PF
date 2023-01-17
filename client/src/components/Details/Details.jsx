@@ -71,7 +71,7 @@ export default function Detail (props) {
                     :
                         <h3>Vuelve mas tarde para ver promociones</h3>
                     }
-                    <a href="/reservation">RESERVAR</a>
+                    <a className={style.link} href="/reservation">RESERVAR</a>
                 </div>
                 <div className={style.sideDiv}>
                     <img src={location2} alt="" />
