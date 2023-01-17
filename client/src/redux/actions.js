@@ -77,7 +77,7 @@ export const updateUser = (user) => {
 
 export const deleteUser = (idUser) => {
     return async () => {
-        const { data } = await axios.delete(`/users${idUser}`, user);
+        const { data } = await axios.delete(`/users${idUser}`, idUser);
         return data;
     }
 }
