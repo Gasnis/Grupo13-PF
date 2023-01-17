@@ -7,7 +7,6 @@ const postUserData = async (id,name,password,phone,image,birthday,city) => {
     })
 
     if(!searchUser){
-        console.log(searchUser)
         const user = await User.create({id,name,password,phone,image,birthday,city})
         return user
     }else{

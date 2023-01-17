@@ -29,16 +29,20 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-  const localInfo = Local.findAll();
+    console.log(name)
+  const localInfo = await Local.findAll();
+  console.log("***",localInfo)
   if (name) {
-    const byName = localInfo.filter((local) =>
+    const byName = localInfo?.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
-    if (byName.length === 0) {
-      throw new Error(`${name} not found :/`);
+    if (byName.length) {
+      return byName
+    }else{
+        throw new Error(`${name} not found :/`);
     }
 
-    return byName;
+   
   }
   return localInfo;
 };

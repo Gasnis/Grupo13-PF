@@ -1,5 +1,7 @@
 const {Router} = require("express")
 const {postUserData,getUserDetail,getAllUsers,updateUser} = require("../../controllers/userControllers/user.controller")
+
+
 const router = Router()
 router.post("/", async(req, res)=>{
     try {
