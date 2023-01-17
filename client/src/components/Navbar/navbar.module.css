@@ -2,11 +2,27 @@ h1{
     color: white;
 }
 
+.h1NoHome {
+    color: black
+}
+
 .Container {
     background-color:#660BAD;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.ContainerNoHome {
+    background-color:white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ContainerNoHome > div {
+    display: flex;
+    margin: 0 20px 0 20px;
 }
 
 .Container > div {

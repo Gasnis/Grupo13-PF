@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 export default function Home (props) {
     return (
         <div>
-            <Navbar/>
+            <Navbar home={true}/>
         </div>
     )
 }
