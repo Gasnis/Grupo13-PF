@@ -42,18 +42,23 @@ const deleteUser = async (id) => {
     user.destroy();
 }
 
-const updateUser = async (id,name,password,phone,image,birthday,city) =>{
+const updateUser = async (userId,id,name,password,phone,image,birthday,city) =>{
     let user = await User.findByPk(id);
-    await user.update( 
-    {
-        name,
-        password,
-        phone,
-        image,
-        birthday,
-        city,
+    if (user.id === userId) {
+        const updated = await user.update( 
+                {
+                id,
+                name,
+                password,
+                phone,
+                image,
+                birthday,
+                city,
+            });
+        return updated
+    }else{
+        throw new Error("You must write your own email")
     }
-    );
 }
 
 
