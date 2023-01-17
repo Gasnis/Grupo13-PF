@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       allowNull: false,
     },
+
     // password: {
     //   type: Datatypes.STRING,
     //   allowNull:false,
@@ -19,6 +20,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],
