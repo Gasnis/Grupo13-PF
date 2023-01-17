@@ -5,6 +5,25 @@ const postLocalData = require("../../controllers/localControllers/local.controll
 
 const router = Router()
 
+
+
+router.get("/", async (req, res)=>{
+  
+  const {name} = req.query;
+  const localInfo = Local.findAll({
+    include: [Local],
+})
+  if(name){
+    const byName = localInfo.filter(local => local.name.toLowerCase().includes(name.toLowerCase()));
+
+    byName.length?
+    res.status(200).json(byName): 
+    res.status(404).json({msg: "Local not found :/"})
+  }else{
+    res.status(200).json(localInfo)
+  }
+})
+
 router.post("/", async(req, res)=>{
     try {
         const localData = req.body;
@@ -15,16 +34,15 @@ router.post("/", async(req, res)=>{
     }
 })
 
-module.exports = router;
 
 router.get("/:id", async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
   
-    try {
-      if (id) {
-        const local = await Local.findAll({
-          attributes: {
-            exclude: ["createdAt", "updatedAt"],
+  try {
+    if (id) {
+      const local = await Local.findAll({
+        attributes: {
+          exclude: ["createdAt", "updatedAt"],
           }
         });
         const localById = local.filter((l) =>
@@ -41,3 +59,8 @@ router.get("/:id", async (req, res) => {
       return res.status(400).send("Local could not load properly");
     }
   });
+
+
+
+
+  module.exports = router;
