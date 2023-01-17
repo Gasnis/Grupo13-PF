@@ -11,20 +11,16 @@ module.exports = (sequelize) => {
       primaryKey: true,
       allowNull: false,
     },
-<<<<<<< HEAD
-    flag: {
-=======
+
     // password: {
     //   type: Datatypes.STRING,
     //   allowNull:false,
     // },
     name: {
->>>>>>> main
       type: DataTypes.STRING,
       allowNull: false,
     },
-<<<<<<< HEAD
-=======
+
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],
@@ -77,6 +73,5 @@ module.exports = (sequelize) => {
     rating: {
         type: DataTypes.INTEGER, //  || integer
       },
->>>>>>> main
   });
 };
