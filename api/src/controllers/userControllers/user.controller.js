@@ -1,21 +1,28 @@
 const {User} = require("../../db")
 
 const postUserData = async (userData) => {
-    const {id,name,password,phone,image,birthday,city }  = userData
+    const {id,name,password,phone,image,birthday,city } = userData
 
-    const searchUser = await User.findOne({
-        where:{id: id}
-    })
+    if(id && name && password && phone &&image && birthday &&city ){
+        const searchUser = await User.findOne({
+            where:{id: id}
+        })
+        if(!searchUser){
+            const user = await User.create({id,name,password,phone,image,birthday,city})
+            return user
+    
+        }else{
+            throw new Error(`The user ${id} was already create`)
+        } 
 
-    if(!searchUser){
-        const user = await User.create({id,name,password,phone,image,birthday,city})
-        return user
     }else{
-        throw new Error(`The user ${id} was already create`)
-    } 
+        throw new Error("Missing data")
+    }
+     
+}
 
-
-
+const getAllUsers = async () => {
+    return User.findAll();
 }
 
 const getUserDetail = async (id) => {
@@ -31,7 +38,37 @@ const getUserDetail = async (id) => {
     }
 }
 
+const deleteUser = async (id) => {
+    const user = await User.findByPk(id);
+    user.destroy();
+}
+
+const updateUser = async (userId,id,name,password,phone,image,birthday,city) =>{
+    let user = await User.findByPk(id);
+    if (user.id === userId) {
+        const updated = await user.update( 
+                {
+                id,
+                name,
+                password,
+                phone,
+                image,
+                birthday,
+                city,
+            });
+        return updated
+    }else{
+        throw new Error("You must write your own email")
+    }
+}
+
+
+
+
 module.exports = {
     postUserData,
     getUserDetail,
+    getAllUsers,
+    deleteUser,
+    updateUser
 }
