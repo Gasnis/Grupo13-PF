@@ -51,12 +51,8 @@ router.delete("/", async (req, res) => {
 router.put("/", async (req, res) => {
     try {
       const newUserData = req.body
-      console.log(newUserData)
       const updated = await updateUser(newUserData)
       res.status(200).send(updated);
-  
-    //   res.status(404).send("Not all parameters arrived successfully");
-    // }
   } catch (error) {
     res.status(400).send(error.message);
   }
