@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
+import Navbar from '../Navbar/Navbar';
 import styles from './formbook.css';
 
 export default function SignUp() {
@@ -29,6 +30,7 @@ export default function SignUp() {
 
     return (
         <div className={styles.containerGeneral}>
+            <Navbar/>
             <div className={styles.signUpContainer}>
                 <h1 className={styles.title}>Hace tu reserva</h1>
                 <form onSubmit={handleSubmit}>
