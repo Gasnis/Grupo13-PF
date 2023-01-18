@@ -7,6 +7,15 @@ export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 
 
+export const getPlaces = () => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`/local`);
+        return dispatch({
+            type: GET_PLACES,
+            payload: data
+        })
+    }
+}
 
 export const getPlaceDetail = (id) => {
     return async (dispatch) => {
@@ -37,15 +46,6 @@ export const searchPlace = (input) => {
     }
 }
 
-export const getPlaces = () => {
-    return async (dispatch) => {
-        const { data } = await axios.get(`/local`);
-        dispatch({
-            type: GET_PLACES,
-            payload: data
-        })
-    }
-}
 
 
 export const bookDetail = (idBook) => {
