@@ -7,7 +7,7 @@ const postLocalData = async (localData) => {
     })
 
     if(!searchLocal){
-        if(userId && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
+        if(userId && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && bookPrice ){
             const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
             const searchUserById = await User.findByPk(userId) 
             if(searchUserById){
