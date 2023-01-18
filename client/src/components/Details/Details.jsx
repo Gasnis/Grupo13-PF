@@ -13,24 +13,23 @@ import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
 
 
-export default function Detail (props) {
+export default function Detail () {
     const {id} = useParams();
+    console.log(id);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(getPlaceDetail(id));
     },[])
 
-    // const placeDetail = useSelector(state=>state.placeDetail)
-    let placeDetail = {
-        image:"https://emprendeconhuevos.com/wp-content/uploads/2020/11/las-discotecas-ecologicas-negocios-de-moda_BQ6J7H.jpg",
-        name: "Barto Boliche",
-        category: "Discoteca",
-        location: "calle x # 20-50",
-        rating: 4,
-        ageRange:"+18",
-        petFriendly: false,
-        
+    const placeDetail = useSelector(state=>state.placeDetail)
+
+    if (!placeDetail){
+        return(
+        <div>
+            <h3>loading...</h3>
+        </div>
+        )
     }
     return (
         <div>
@@ -60,9 +59,8 @@ export default function Detail (props) {
                     }
                 </div>
                 <div className={style.centerDiv}>
-                    <h2>Horarios:</h2>
+                    <h2>Horarios</h2>
                     <h3>{placeDetail.schedule}</h3>
-                    
                     <a href={placeDetail.menu}><h2>Menú</h2></a>
                     {placeDetail.promo 
                     ?
@@ -73,11 +71,11 @@ export default function Detail (props) {
                     :
                         <h3>Vuelve mas tarde para ver promociones</h3>
                     }
-                    <a className={style.link} href="/reservation">RESERVAR</a>
+                    <a className={style.link} href="/bookings">RESERVAR</a>
                 </div>
                 <div className={style.sideDiv}>
                     <img src={location2} alt="" />
-                    <h1>{placeDetail.ageRange}</h1>
+                    <h1>{placeDetail.ageRange.map(age=>age).join("-")}</h1>
                     <div>
                         <img src={footprint} alt="" />
                         {placeDetail.petFriendly 
