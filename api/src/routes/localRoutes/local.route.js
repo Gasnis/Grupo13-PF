@@ -65,9 +65,10 @@ router.get("/:id", async (req, res) => {
 
   router.put("/", async (req, res) => {
     try {
-      const {id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating} = req.body
-      if (id && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating ) {
-         const updated = await updateLocal(id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating)
+      const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating} = req.body
+      if (id && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating ) {
+         const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating)
+
          res.status(200).send(updated);
     } else {
       res.status(404).send("Not all parameters arrived successfully");
