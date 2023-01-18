@@ -42,3 +42,9 @@
 .text h4{
     margin: 3px;
 }
+
+.place:hover {
+    transform: scale(1.09) rotate(1deg);
+    cursor: pointer;
+  }
+  
