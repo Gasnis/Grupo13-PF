@@ -43,23 +43,32 @@ const deleteUser = async (id) => {
     user.destroy();
 }
 
-const updateUser = async (userId,id,name,password,phone,image,birthday,city) =>{
-    let user = await User.findByPk(id);
-    if (user.id === userId) {
-        const updated = await user.update( 
-                {
-                id,
-                name,
-                password,
-                phone,
-                image,
-                birthday,
-                city,
-            });
-        return updated
-    }else{
-        throw new Error("You must write your own email")
-    }
+const updateUser = async (newUserData) =>{
+    
+  const {userId,id,name,password,phone,image,birthday,city} = newUserData
+
+  if (userId && name && password && phone && image && birthday && city && id) {
+      let user = await User.findByPk(id);
+      if (user.id === userId) {
+          const updated = await user.update( 
+                  {
+                  id,
+                  name,
+                  password,
+                  phone,
+                  image,
+                  birthday,
+                  city,
+              });
+          return updated
+      }else{
+          throw new Error("You must write your own email")
+      }
+
+  }else{
+    throw new Error("Not all parameters arrived successfully")
+  }
+  
 }
 
 
