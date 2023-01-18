@@ -10,7 +10,7 @@ const postLocalData = async (localData) => {
         if(userId && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
             const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
             const searchUserById = await User.findByPk(userId) 
-            if(searchLocal){
+            if(searchUserById){
                 await local.setUser(searchUserById);
                 return local
             }else{
@@ -33,9 +33,7 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-    console.log(name)
   const localInfo = await Local.findAll();
-  console.log("***",localInfo)
   if (name) {
     const byName = localInfo?.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
