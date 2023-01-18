@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const { Local, User, Book } = require("../../db");
 
-const {postLocalData, getLocalName, getLocalDetail, deleteLocal} = require("../../controllers/localControllers/local.controller")
+const {postLocalData, getLocalName, getLocalDetail, deleteLocal, updateLocal} = require("../../controllers/localControllers/local.controller")
 
 
 
@@ -62,6 +62,20 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+
+  router.put("/", async (req, res) => {
+    try {
+      const {userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating} = req.body
+      if (userId && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating ) {
+         const updated = await updateLocal(userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating)
+         res.status(200).send(updated);
+    } else {
+      res.status(404).send("Not all parameters arrived successfully");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 
 

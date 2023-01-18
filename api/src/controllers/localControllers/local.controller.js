@@ -53,6 +53,30 @@ const deleteLocal = async (id) => {
     local.destroy();
 }
 
+const updateLocal = async (userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+    let local = await Local.findByPk(id);
+    const updated = await local.update( 
+            {
+                userId,
+                name,
+                category,
+                image,
+                location,
+                menu,
+                event,
+                capacity,
+                petFriendly,
+                ageRange,
+                phone,
+                promo,
+                bookPrice,
+                available,
+                rating
+            });
+    return updated
+    }
 
-module.exports = {postLocalData, getLocalName, getLocalDetail,deleteLocal};
+
+
+module.exports = {postLocalData, getLocalName, getLocalDetail,deleteLocal,updateLocal};
 
