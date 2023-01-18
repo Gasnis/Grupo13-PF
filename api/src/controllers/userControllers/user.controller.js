@@ -1,4 +1,4 @@
-const {User} = require("../../db")
+const {User, Local} = require("../../db")
 
 const postUserData = async (userData) => {
     const {id,name,password,phone,image,birthday,city } = userData
@@ -39,6 +39,16 @@ const getUserDetail = async (id) => {
 }
 
 const deleteUser = async (id) => {
+    const searchAllLocalsByUser = await Local.findAll({
+        where: {userId: id}
+    })
+    if(searchAllLocalsByUser.length){
+        for(const local of searchAllLocalsByUser){
+            const locals = await Local.findByPk(local.id);
+            locals.destroy(); 
+        }
+    }
+
     const user = await User.findByPk(id);
     user.destroy();
 }
