@@ -48,6 +48,11 @@ const getLocalName = async (name) => {
 };
 
 
+const deleteLocal = async (id) => {
+    const local = await Local.findByPk(id);
+    local.destroy();
+}
 
-module.exports = {postLocalData, getLocalName, getLocalDetail};
+
+module.exports = {postLocalData, getLocalName, getLocalDetail,deleteLocal};
 
