@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    // getPlaces
+    getPlaces
 } from "../../redux/actions"
 
 export default function Home () {
@@ -14,7 +14,7 @@ export default function Home () {
     let allPlaces = useSelector((state) => state.places)
 
     useEffect(()=>{
-        // dispatch(getPlaces())
+        dispatch(getPlaces())
     },[dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(10)
@@ -30,7 +30,6 @@ export default function Home () {
     return (
         <div>
             <Navbar home={true}/>
-            <img src="https://thumbs.dreamstime.com/b/parte-superior-de-la-mesa-negra-con-fondo-banner-bar-y-fiesta-luz-pub-ciudad-199775374.jpg" alt="" height="297px" width="100%" />
             <div>
                 {
                     renderPlaces.length?

@@ -59,20 +59,20 @@ RUTAS BACK
 
 
 
-- [ ] __GET /Local__:
+- [ ] __GET /local__:
   - Obtener un listado de los bares/discotecas
   - Debe devolver solo los datos necesarios para la ruta principal
 
-- [ ] __GET /Local__?name="..."__:
+- [ ] __GET /local__?name="..."__:
   - Obtener un listado de las primeros 15 bar/discoteca que contengan la palabra ingresada como query parameter
   - Si no existe ninguno mostrar un mensaje adecuado
 
-- [ ] __GET /Local/{idLocal}__:
+- [ ] __GET /local/{idLocal}__:
   - Obtener el detalle del bar/discoteca en particular
   - Debe traer solo los datos pedidos en la ruta de detalle del bar/discoteca
   - Incluir las reservas disponibles(admin scheduled)
 
-- [ ] __GET /Local/{idBook}__:
+- [ ] __GET /local/{idBook}__:
 - Obtener el detalle de la reserva
 
 
@@ -80,11 +80,11 @@ RUTAS BACK
   - Obtener el detalle de un usuario (cuando ingresa a su perfil)
   - Debe devolver solo los datos necesarios para la ruta principal
 
-- [ ] __PUT /users__:
+- [ ] __PUT /user__:
   - Debe actualizar los datos de un usuario (modificar los datos de su propio perfil)
   - Debe actualizar solo los datos necesarios para la ruta principal
   
-- [ ] __DELETE /users{idUser}__:
+- [ ] __DELETE /user{idUser}__:
   - Debe eliminar el usuario en cuestión
   - Debe devolver solo los datos necesarios para la ruta principal
 
@@ -95,7 +95,7 @@ RUTAS BACK
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación del usuario por body
   - Crea un usuario en la base de datos, relacionado a su reserva.
 
-  - [ ] __POST /create-place__:
+  - [ ] __POST /local__:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de bar/discoteca por body
   - Crea un bar/discoteca en la base de datos, relacionado a sus géneros.
 
