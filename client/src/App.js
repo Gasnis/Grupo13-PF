@@ -6,6 +6,7 @@ import FormBook from './components/FormBook/FormBook.jsx';
 import FormBar from './components/FormBar/FormBar.jsx';
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp';
+import Profile from './components/Profile/Profile.jsx';
 import axios from "axios";
 
 
@@ -26,6 +27,8 @@ function App() {
         <Route path="/bookings"> <FormBook/> </Route>
 
         <Route path="/sign-up"> <SignUp/> </Route>
+
+        <Route path="/profile/:idUser"> <Profile/> </Route>
 
       </div>
     
