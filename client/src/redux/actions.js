@@ -7,11 +7,20 @@ export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 
 
+export const getPlaces = () => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`/local`);
+        return dispatch({
+            type: GET_PLACES,
+            payload: data
+        })
+    }
+}
 
 export const getPlaceDetail = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/place/${id}`);
+            const { data } = await axios.get(`/local/${id}`);
             dispatch({
                 type: GET_PLACE_DETAIL,
                 payload: data
@@ -26,7 +35,7 @@ export const getPlaceDetail = (id) => {
 export const searchPlace = (input) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/places?name=${input}`);
+            const { data } = await axios.get(`/local?name=${input}`);
             dispatch({
                 type: SEARCH_PLACE,
                 payload: data
@@ -37,20 +46,11 @@ export const searchPlace = (input) => {
     }
 }
 
-export const getPlaces = () => {
-    return async (dispatch) => {
-        const { data } = await axios.get(`/places`);
-        dispatch({
-            type: GET_PLACES,
-            payload: data
-        })
-    }
-}
 
 
 export const bookDetail = (idBook) => {
     return async (dispatch) => {
-        const { data } = await axios.get(`/place/${idBook}`);
+        const { data } = await axios.get(`/local/${idBook}`);
         return dispatch({
             type: BOOK_DETAIL,
             payload: data
@@ -60,7 +60,7 @@ export const bookDetail = (idBook) => {
 
 export const getUser = (idUser) => {
     return async (dispatch) => {
-        const { data } = await axios.get(`/place/${idUser}`);
+        const { data } = await axios.get(`/user/${idUser}`);
         return dispatch({
             type: GET_USER,
             payload: data
@@ -70,35 +70,35 @@ export const getUser = (idUser) => {
 
 export const updateUser = (user) => {
     return async () => {
-        const { data } = await axios.put(`/users`, user);
+        const { data } = await axios.put(`/user`, user);
         return data;
     }
 }
 
 export const deleteUser = (idUser) => {
     return async () => {
-        const { data } = await axios.delete(`/users${idUser}`, idUser);
+        const { data } = await axios.delete(`/user/${idUser}`, idUser);
         return data;
     }
 }
 
 export const createUser = (user) => {
     return async () => {
-        const { data } = await axios.post(`/create-user`, user);
+        const { data } = await axios.post(`/user`, user);
         return data;
     }
 }
 
 export const createPlace = (place) => {
     return async () => {
-        const { data } = await axios.post(`/create-place`, place);
+        const { data } = await axios.post(`/local`, place);
         return data;
     }
 }
 
 export const createBook = (book) => {
     return async () => {
-        const { data } = await axios.post(`/create-book`, book);
+        const { data } = await axios.post(`/book`, book);
         return data;
     }
 }
@@ -106,28 +106,28 @@ export const createBook = (book) => {
 
 export const updatePlace = (idPlace, update) => {
     return async () => {
-        const { data } = await axios.put(`/place/${idPlace}`, update);
+        const { data } = await axios.put(`/local/${idPlace}`, update);
         return data;
     }
 }
 
 export const updateBook = (idBook, update) => {
     return async () => {
-        const { data } = await axios.put(`/place/${idBook}`, update);
+        const { data } = await axios.put(`/local/${idBook}`, update);
         return data;
     }
 }
 
 export const deleteBook = (idBook, update) => {
     return async () => {
-        const { data } = await axios.delete(`/place/${idBook}`, update);
+        const { data } = await axios.delete(`/local/${idBook}`, update);
         return data;
     }
 }
 
 export const disablePlace = (idPlace, status) => {
     return async () => {
-        const { data } = await axios.put(`/place/${idPlace}`, status);
+        const { data } = await axios.put(`/local/${idPlace}`, status);
         return data;
     }
 }
