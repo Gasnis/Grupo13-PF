@@ -78,7 +78,7 @@ export default function Detail () {
                 </div>
                 <div className={style.sideDiv}>
                     <a href={placeDetail.location}><img src={location2} alt="" /></a>
-                    <h1>{placeDetail.ageRange.map(age=>age).join("-")}</h1>
+                    <h1>{placeDetail.ageRange.join("-")}</h1>
                     <div>
                         <img src={footprint} alt="" />
                         {placeDetail.petFriendly 
