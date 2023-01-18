@@ -20,15 +20,14 @@ function App() {
 
         <Route path="/place/:id"> <Detail/> </Route>
 
-
-        <Route path="/newplace"> <Form/> </Route>
-
         <Route path="/newplace"> <FormBar/> </Route>
-        
+
         <Route path="/detail"> <Detail/> </Route>
 
         <Route path="/login"> <Login/> </Route>
+
         <Route path="/bookings"> <FormBook/> </Route>
+        
         <Route path="/sign-up"> <SignUp/> </Route>
 
       </div>
