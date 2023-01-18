@@ -6,6 +6,7 @@ import beer from "../../utils/beer.png"
 import location from "../../utils/location.png"
 import roulette from "../../utils/roulette.png"
 import toggleOff from "../../utils/toggle.png"
+import arrow from "../../utils/Arrow 1.png"
 import { searchPlace } from "../../redux/actions";
 
 export default function Navbar (props) {
@@ -24,8 +25,9 @@ export default function Navbar (props) {
     return (
         <div className={isHome ? style.Container : style.ContainerNoHome}>
             <div>
+                {isHome ? null : <a className={style.link} href="/home"><img src={arrow}/></a>}
                 <img className={style.Logo} src={beer} alt="logo" />
-                <h1 className={isHome ? null : style.h1NoHome}>wwWhere</h1>
+                <h1 className={isHome ? style.h1 : style.h1NoHome}>wwWhere</h1>
             </div>
             {isHome ? 
                 <div>
