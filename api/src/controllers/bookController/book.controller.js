@@ -28,10 +28,27 @@ const getBookDetail = async (id) => {
     return book
 }
 
+const updateBook = async (id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm) =>{
+
+    let book = await Book.findByPk(id);
+    const updated = await book.update( 
+            {
+                name,
+                reservedDate,
+                createdAt,
+                updatedAt,
+                personQuantity,
+                codeProm
+            });
+    return updated
+    }
+
+
 const deleteBook = async (id) => {
         const book = await Book.findByPk(id);
         if(book){
             book.destroy();  
         }
 }
-module.exports = {postBookData,getBookDetail,deleteBook}
+module.exports = {postBookData,getBookDetail,deleteBook,updateBook}
+

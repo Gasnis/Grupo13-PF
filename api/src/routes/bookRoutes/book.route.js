@@ -31,6 +31,20 @@ router.post("/", async (req, res) => {
       }
     });
 
+    router.put("/", async (req, res) => {
+      try {
+        const {id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm} = req.body
+        if (id && name && reservedDate && createdAt && updatedAt && personQuantity && codeProm){
+           const updated = await updateBook(id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm)
+  
+           res.status(200).send(updated);
+      } else {
+        res.status(404).send("Not all parameters arrived successfully");
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
     router.delete("/", async (req, res) => {
         try {
             const { id } = req.body;
