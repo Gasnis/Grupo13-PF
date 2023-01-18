@@ -18,7 +18,14 @@ const postBookData = async (bookData) => {
     }else{
         throw new Error("missing Data")
     }
-
 }
 
-module.exports = {postBookData}
+const getBookDetail = async (id) => {
+    const local = await Local.findByPk(id);
+    if (!local) {
+        throw new Error("Local not found");
+    }
+    return local
+}
+
+module.exports = {postBookData,getBookDetail}
