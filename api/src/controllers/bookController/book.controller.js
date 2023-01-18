@@ -28,4 +28,19 @@ const getBookDetail = async (id) => {
     return local
 }
 
-module.exports = {postBookData,getBookDetail}
+const updateBook = async (id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm) =>{
+
+    let book = await Book.findByPk(id);
+    const updated = await book.update( 
+            {
+                name,
+                reservedDate,
+                createdAt,
+                updatedAt,
+                personQuantity,
+                codeProm
+            });
+    return updated
+    }
+
+module.exports = {postBookData,getBookDetail,updateBook}
