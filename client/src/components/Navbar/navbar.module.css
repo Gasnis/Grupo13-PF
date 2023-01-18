@@ -55,9 +55,9 @@ button:hover>img{
 
 .Logo{
     border-style: solid;
-    border-width: 6px;
-    border-radius: 50%;
-    height: 70px;
+    border-width: 5px;
+    border-color: rgb(43, 20, 10);
+    border-radius: 20px;
     padding: 5px;
     margin-right: 5px;
     background-color: #FFB800;
