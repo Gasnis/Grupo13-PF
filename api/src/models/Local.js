@@ -20,7 +20,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],
@@ -31,6 +30,10 @@ module.exports = (sequelize) => {
       allowNull: true, 
     },
     location: {
+      type: DataTypes.STRING,
+      allowNull: true, // **
+    },
+    schedule: {
       type: DataTypes.STRING,
       allowNull: true, // **
     },

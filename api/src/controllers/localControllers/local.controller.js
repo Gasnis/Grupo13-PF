@@ -1,14 +1,14 @@
 const {Local,User} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
+    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
 
     if(!searchLocal){
-        if(userId && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
-            const local = await Local.create({name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
+        if(userId && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
+            const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
             const searchUserById = await User.findByPk(userId) 
             await local.setUser(searchUserById);
             return local
@@ -53,7 +53,9 @@ const deleteLocal = async (id) => {
     local.destroy();
 }
 
-const updateLocal = async (id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+
+const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+
     let local = await Local.findByPk(id);
     const updated = await local.update( 
             {
@@ -61,6 +63,7 @@ const updateLocal = async (id,name,category,image,location,menu,event,capacity,p
                 category,
                 image,
                 location,
+                schedule,
                 menu,
                 event,
                 capacity,
