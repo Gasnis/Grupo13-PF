@@ -15,7 +15,6 @@ import style from "./details.module.css";
 
 export default function Detail () {
     const {id} = useParams();
-    console.log(id);
     const dispatch = useDispatch();
 
     useEffect(()=>{
