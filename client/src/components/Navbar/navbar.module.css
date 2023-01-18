@@ -58,6 +58,21 @@
     height: 35px;
 }
 
+.ButtonLogin{
+    color: rgb(255, 255, 255);
+    font-size: large;
+    background-color: #522ba7;
+    border-radius: 15px;
+    height: 30px;
+   
+}
+
+.ButtonLogin:hover{
+    cursor: pointer;
+    color: #522ba7;
+    background-color: white;
+}
+
 .Logo{
     border-style: solid;
     border-width: 5px;

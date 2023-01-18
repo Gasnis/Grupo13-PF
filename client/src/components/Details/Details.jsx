@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-
+import { Link } from "react-router-dom";
 import { getPlaceDetail } from "../../redux/actions";
 import star from "../../utils/Star 4.png";
 import vector from "../../utils/Vector.png";
@@ -15,7 +15,6 @@ import style from "./details.module.css";
 
 export default function Detail () {
     const {id} = useParams();
-    console.log(id);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -38,7 +37,7 @@ export default function Detail () {
                     <div>
                         <h1 className={style.titles}>{placeDetail.name}</h1>
                         <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <h3 className={style.titles}>{placeDetail.location}</h3>
+                        <a href={placeDetail.location}><h3 className={style.titles}>{placeDetail.location}</h3></a>
                     </div>
                     <div>
                         <h2>{placeDetail.rating}</h2>
@@ -50,7 +49,11 @@ export default function Detail () {
                     <h1>SHOW</h1>
                     {placeDetail.event 
                     ? 
-                        null
+                    (
+                        <div>
+                            <h1>hay evento :=</h1>
+                        </div>
+                    )
                     :   
                         <div>
                             <img src={vector} alt="" />
@@ -74,7 +77,7 @@ export default function Detail () {
                     <a className={style.link} href="/bookings">RESERVAR</a>
                 </div>
                 <div className={style.sideDiv}>
-                    <img src={location2} alt="" />
+                    <a href={placeDetail.location}><img src={location2} alt="" /></a>
                     <h1>{placeDetail.ageRange.map(age=>age).join("-")}</h1>
                     <div>
                         <img src={footprint} alt="" />
