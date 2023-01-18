@@ -8,6 +8,7 @@ import roulette from "../../utils/roulette.png"
 import toggleOff from "../../utils/toggle.png"
 import arrow from "../../utils/Arrow 1.png"
 import { searchPlace } from "../../redux/actions";
+import { Link } from "react-router-dom"
 
 export default function Navbar (props) {
     const isHome = props.home;
@@ -48,9 +49,9 @@ export default function Navbar (props) {
                     <div>
                         <button className={style.Button}>Ordenar</button>
                         <button className={style.Button}>Filtrar</button>
-                        <button className={style.Button}>Ingresar</button>
                     </div>
                 : null}
+                <Link to="/login"><button className={style.ButtonLogin}>Ingresar</button></Link>
                 <label className={style.switch}>
                     <input type="checkbox"/>
                     <span className={style.slider}></span>
