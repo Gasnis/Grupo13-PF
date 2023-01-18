@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+
 import { getPlaceDetail } from "../../redux/actions";
 import star from "../../utils/Star 4.png";
 import vector from "../../utils/Vector.png";
@@ -10,6 +11,7 @@ import location2 from "../../utils/location2.png";
 import footprint from "../../utils/huella.png"
 import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
+
 
 export default function Detail (props) {
     const {id} = useParams();

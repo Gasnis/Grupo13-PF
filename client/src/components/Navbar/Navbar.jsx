@@ -31,7 +31,7 @@ export default function Navbar (props) {
             </div>
             {isHome ? 
                 <div>
-                    <input value={input} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más"/>
+                    <input className={style.input} value={input} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más"/>
                     <button onClick={handleSearch} className={style.Button}>
                         <img className={style.Img} src={search} alt="" />
                     </button>
@@ -46,14 +46,15 @@ export default function Navbar (props) {
             <div>
                 { isHome ? 
                     <div>
-                        <button>Ordenar</button>
-                        <button>Filtrar</button>
-                        <button>Ingresar</button>
+                        <button className={style.Button}>Ordenar</button>
+                        <button className={style.Button}>Filtrar</button>
+                        <button className={style.Button}>Ingresar</button>
                     </div>
                 : null}
-                <button className={style.Button}>
-                    <img className={style.Img} src={toggleOff} alt="" />
-                </button>
+                <label className={style.switch}>
+                    <input type="checkbox"/>
+                    <span className={style.slider}></span>
+                </label>
             </div>
         </div>
     )

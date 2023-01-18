@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const { Local, User, Book } = require("../../db");
 
-const {postLocalData, getLocalName, getLocalDetail} = require("../../controllers/localControllers/local.controller")
+const {postLocalData, getLocalName, getLocalDetail, deleteLocal, updateLocal} = require("../../controllers/localControllers/local.controller")
 
 
 
@@ -12,11 +12,11 @@ router.get("/", async (req, res) => {
   try {
     const { name } = req.query;
     if (name) {
-      const localName = getLocalName(name);
+      const localName = await getLocalName(name);
       res.status(200).json(localName);
+    }else{
+      res.status(200).json(await getLocalName());
     }
-
-    res.status(200).json(getLocalName());
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -44,10 +44,38 @@ router.get("/:id", async (req, res) => {
         return res.status(200).send(localById);
       }
     } catch (error) {
-      return res.status(400).send("Local could not load properly");
+      return res.status(400).send(error.message);
     }
   });
 
+  router.delete("/", async (req, res) => {
+    try {
+    const { id } = req.body;
+      if (id) {
+        deleteLocal(id)
+        res.status(200).send(`${id} was deleted succesfully`);
+      } else {
+        res.status(404).send("ID not found");
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
+
+  router.put("/", async (req, res) => {
+    try {
+      const {id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating} = req.body
+      if (id && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating ) {
+         const updated = await updateLocal(id,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating)
+         res.status(200).send(updated);
+    } else {
+      res.status(404).send("Not all parameters arrived successfully");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
 
 
 
