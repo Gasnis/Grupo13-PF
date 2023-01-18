@@ -84,8 +84,12 @@ export const deleteUser = (idUser) => {
 
 export const createUser = (user) => {
     return async () => {
-        const { data } = await axios.post(`/user`, user);
-        return data;
+        try{
+            const { data } = await axios.post(`/user`, user);
+            return data;
+        } catch(error) {
+            return error
+        }
     }
 }
 
