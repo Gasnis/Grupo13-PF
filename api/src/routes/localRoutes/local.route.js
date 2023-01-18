@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const { Local, User, Book } = require("../../db");
 
-const {postLocalData, getLocalName, getLocalDetail} = require("../../controllers/localControllers/local.controller")
+const {postLocalData, getLocalName, getLocalDetail, deleteLocal} = require("../../controllers/localControllers/local.controller")
 
 
 
@@ -45,6 +45,20 @@ router.get("/:id", async (req, res) => {
       }
     } catch (error) {
       return res.status(400).send(error.message);
+    }
+  });
+
+  router.delete("/", async (req, res) => {
+    try {
+    const { id } = req.body;
+      if (id) {
+        deleteLocal(id)
+        res.status(200).send(`${id} was deleted succesfully`);
+      } else {
+        res.status(404).send("ID not found");
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
     }
   });
 
