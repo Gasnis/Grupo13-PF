@@ -37,7 +37,7 @@ export default function Detail () {
                     <div>
                         <h1 className={style.titles}>{placeDetail.name}</h1>
                         <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <a href={placeDetail.location}><h3 className={style.titles}>{placeDetail.location}</h3></a>
+                        <a href={placeDetail.location}><h3 className={style.titles}>Location</h3></a>
                     </div>
                     <div>
                         <h2>{placeDetail.rating}</h2>
