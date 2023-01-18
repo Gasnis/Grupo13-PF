@@ -8,22 +8,23 @@ import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp';
 import axios from "axios";
 
+
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
 
       <div className="App">
-        <Route path="/home"> <Home/> </Route>
+        <Route exact path="/"> <Home/> </Route>
 
-        <Route path="/place/:id"> <Detail/> </Route>
+        <Route path="/detail/:id"> <Detail/> </Route>
 
         <Route path="/newplace"> <FormBar/> </Route>
-        
-        <Route path="/detail"> <Detail/> </Route>
 
         <Route path="/login"> <Login/> </Route>
+
         <Route path="/bookings"> <FormBook/> </Route>
+
         <Route path="/sign-up"> <SignUp/> </Route>
 
       </div>

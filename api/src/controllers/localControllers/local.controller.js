@@ -53,7 +53,9 @@ const deleteLocal = async (id) => {
     local.destroy();
 }
 
+
 const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+
     let local = await Local.findByPk(id);
     const updated = await local.update( 
             {

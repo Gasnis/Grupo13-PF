@@ -1,4 +1,4 @@
-h1{
+.h1{
     color: white;
 }
 
@@ -23,6 +23,11 @@ h1{
 .ContainerNoHome > div {
     display: flex;
     margin: 0 20px 0 20px;
+    align-items: center;
+}
+
+.link{
+    margin-right: 10px;
 }
 
 .Container > div {

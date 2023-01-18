@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     margin:5px;
     padding: 25px;
+    text-decoration: none;
 }
 
 .place {
@@ -36,11 +37,8 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+    text-decoration: none;
     
-}
-
-.text h4{
-    margin: 3px;
 }
 
 .place:hover {

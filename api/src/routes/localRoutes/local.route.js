@@ -68,6 +68,7 @@ router.get("/:id", async (req, res) => {
       const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating} = req.body
       if (id && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating ) {
          const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating)
+
          res.status(200).send(updated);
     } else {
       res.status(404).send("Not all parameters arrived successfully");

@@ -7,6 +7,7 @@ export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 
 
+
 export const getPlaces = () => {
     return async (dispatch) => {
         const { data } = await axios.get(`/local`);
@@ -19,8 +20,10 @@ export const getPlaces = () => {
 
 export const getPlaceDetail = (id) => {
     return async (dispatch) => {
+
         try {
             const { data } = await axios.get(`/local/${id}`);
+            console.log(data);
             dispatch({
                 type: GET_PLACE_DETAIL,
                 payload: data

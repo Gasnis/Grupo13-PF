@@ -33,29 +33,25 @@ export default function Home () {
             <div className={style.info}>
                 <div>
                     {
-                        // allPlaces.length?
-                        // renderPlaces === "404"? 
-                        //     (
-                        //         <h1>Not Found</h1>
-                        //     )
-                        //     :
-                        //     renderPlaces.map((place) =>{
-                        //         return <Card key={place.id} place={place}>
-                        //         </Card>
+                        allPlaces.length?
+                        renderPlaces === "404"? 
+                            (
+                                <h1>Not Found</h1>
+                            )
+                            :
+                            renderPlaces.map((place) =>{
+                                return <Card key={place.id} place={place}>
+                                </Card>
                             
-                        // })
-                        // :
-                        //     <div>
-                        //         <h1 className={style.loading}>loading...</h1>
-                        //     </div>
-
-                        
-                            
+                        })
+                        :
+                            <div>
+                                <h1 className={style.loading}>loading...</h1>
+                            </div>
+    
                     }
                 </div>
-                <div>
-                    <Card></Card>
-                </div>
+                
                 <div>
                     <button className={style.botonpaginado} onChange={handlePlace}>+</button>
                 </div>
