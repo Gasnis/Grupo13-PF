@@ -10,7 +10,7 @@ import {
 const initialState = {
     places:[],
     allPlaces: [],
-    placeDetail: {}
+    placeDetail: null,
 }
 
 export default function reducer (state = initialState, action) {

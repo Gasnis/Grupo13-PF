@@ -51,7 +51,7 @@ export default function Login() {
                     />
                     </div>
 
-                    <button type="submit" id="loginButton" className={styles.submitButton}>Ingresar</button>
+                    <Link to="/home"><button type="submit" id="loginButton" className={styles.submitButton}>Ingresar</button></Link>
                     <Link to="/sign-up" >Todavia no tenes una cuenta?</Link>
                 </form>
             </div>
