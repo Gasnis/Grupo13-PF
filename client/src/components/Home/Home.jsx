@@ -1,10 +1,10 @@
 import React, { useEffect , useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import "./home.module.css";
+import style from "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    // getPlaces
+    getPlaces
 } from "../../redux/actions"
 
 export default function Home () {
@@ -14,7 +14,7 @@ export default function Home () {
     let allPlaces = useSelector((state) => state.places)
 
     useEffect(()=>{
-        // dispatch(getPlaces())
+        dispatch(getPlaces())
     },[dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(10)
@@ -30,27 +30,36 @@ export default function Home () {
     return (
         <div>
             <Navbar home={true}/>
-            <div>
-                {
-                    renderPlaces.length?
-                    renderPlaces === "404"? 
-                        (
-                            <h1>Not Found</h1>
-                        ):
-                        renderPlaces.map((place) =>{
-                            return <Card key={place.id} place={place}>
-                            </Card>
+            <div className={style.info}>
+                <div>
+                    {
+                        // allPlaces.length?
+                        // renderPlaces === "404"? 
+                        //     (
+                        //         <h1>Not Found</h1>
+                        //     )
+                        //     :
+                        //     renderPlaces.map((place) =>{
+                        //         return <Card key={place.id} place={place}>
+                        //         </Card>
+                            
+                        // })
+                        // :
+                        //     <div>
+                        //         <h1 className={style.loading}>loading...</h1>
+                        //     </div>
+
                         
-                    })
-                    :
-                        <div>
-                            <h1>loading...</h1>
-                        </div>
-                        
-                }
-            </div>
-            <div>
-                <button onChange={handlePlace}>+</button>
+                            
+                    }
+                </div>
+                <div>
+                    <Card></Card>
+                </div>
+                <div>
+                    <button className={style.botonpaginado} onChange={handlePlace}>+</button>
+                </div>
+
             </div>
 
         </div>
