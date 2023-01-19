@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUser } from "../../redux/actions";
+import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 
 
@@ -12,7 +12,7 @@ export default function Detail () {
     const {id} = useParams()
 
     useEffect(()=>{
-        dispatch(getUser(id));
+        dispatch(getUserByid(id));
     },[])
 
     const profile = useSelector(state=>state.profile)
