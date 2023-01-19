@@ -7,7 +7,7 @@ const postLocalData = async (localData) => {
     })
 
     if(!searchLocal){
-        if(userId && name && category && image && location && schedule && menu && event && capacity && petFriendly && ageRange && phone && bookPrice ){
+        
             const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
             const searchUserById = await User.findByPk(userId) 
             if(searchUserById){
@@ -16,7 +16,6 @@ const postLocalData = async (localData) => {
             }else{
                 throw new Error(`You must create a user`)
             }
-        }throw new Error(`missing data`)
     }else{
         throw new Error(`The local ${name} was already created`)
     } 

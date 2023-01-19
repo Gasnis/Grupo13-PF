@@ -33,7 +33,7 @@ export default function Navbar(props) {
     return (
         <div className={isHome ? style.Container : style.ContainerNoHome}>
             <div>
-                {isHome ? null : <a className={style.link} href="/"><img src={arrow} /></a>}
+                {isHome ? null : <Link to="/" className={style.link} href="/"><img src={arrow} /></Link>}
                 <img className={style.Logo} src={beer} alt="logo" />
                 <h1 className={isHome ? style.h1 : style.h1NoHome}>wwWhere</h1>
             </div>

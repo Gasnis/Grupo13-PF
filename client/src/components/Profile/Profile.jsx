@@ -9,10 +9,10 @@ import style from "./profile.module.css";
 
 export default function Detail () {
     const dispatch = useDispatch();
-    const {idUser} = useParams()
+    const {id} = useParams()
 
     useEffect(()=>{
-        dispatch(getUser(idUser));
+        dispatch(getUser(id));
     },[])
 
     const profile = useSelector(state=>state.profile)
@@ -31,16 +31,13 @@ export default function Detail () {
                 <hr/>
                 
                 <div >
-                    <a href="https://i.postimg.cc/HsycywFq/Screenshot-2023-01-19-11-39-17-985-edit-com-miui-gallery.jpg"  >
-                    <img src="https://i.postimg.cc/HsycywFq/Screenshot-2023-01-19-11-39-17-985-edit-com-miui-gallery.jpg" alt="perfil photo" className={style.profilePict}/>
-                    </a>
+                    <img src={profile.image} alt="perfil photo" className={style.profilePict}/>
                 </div>
                     <div>
                         <h1>{profile.name}</h1>
                         <p>{profile.phone}</p>
                         <p>{profile.birthday}</p>
                         <p>{profile.city}</p>
-                        
                         
                     </div>
             </div>

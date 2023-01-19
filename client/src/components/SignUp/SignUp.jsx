@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../../redux/actions';
+import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../SignUp/SignUp.module.css';
 
@@ -9,6 +9,7 @@ export default function SignUp() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
 
     const [signUp, setSignUp] = useState({
         name: "",
@@ -41,7 +42,8 @@ export default function SignUp() {
                 city: "",
                 image: ""
             })
-            history.push('/home')
+            history.push(`/profile/${newUser.id}`)
+            dispatch(getUser(newUser.id))
         } else {
             alert(newUser.response.data)
         }
@@ -123,9 +125,14 @@ export default function SignUp() {
                 />
                 </div>
 
-                <h3>Sos dueño de un bar?</h3>
-                <button type="submit" id="signUpButton" className={styles.submitButton}>Registrarse</button>
-                <h4>Ingresar con Google</h4>
+                {/* <h3>Sos dueño de un bar?</h3> */}
+                <button 
+                    type="submit" 
+                    id="signUpButton"
+                    disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday}
+                    className={styles.submitButton}
+                >Registrarse</button>
+                {/* <h4>Ingresar con Google</h4> */}
                 <Link to="/login" >Ya tenes una cuenta?</Link>
                 </form>
             </div>

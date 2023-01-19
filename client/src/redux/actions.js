@@ -5,6 +5,7 @@ export const GET_PLACE_DETAIL = "GET_PLACE_DETAIL";
 export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
 
 
 
@@ -61,9 +62,19 @@ export const bookDetail = (idBook) => {
     }
 }
 
-export const getUser = (idUser) => {
+export const getUser = () => {
     return async (dispatch) => {
-        const { data } = await axios.get(`/user/${idUser}`);
+        const { data } = await axios.get(`/user`);
+        return dispatch({
+            type: GET_USER,
+            payload: data
+        })
+    }
+}
+
+export const getUserByid = (id) => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`/user/${id}`);
         return dispatch({
             type: GET_USER,
             payload: data
@@ -78,9 +89,9 @@ export const updateUser = (user) => {
     }
 }
 
-export const deleteUser = (idUser) => {
+export const deleteUser = (id) => {
     return async () => {
-        const { data } = await axios.delete(`/user/${idUser}`, idUser);
+        const { data } = await axios.delete(`/user/${id}`, id);
         return data;
     }
 }
