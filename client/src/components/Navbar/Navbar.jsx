@@ -8,6 +8,7 @@ import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
 import { searchPlace } from "../../redux/actions";
 import { Link } from "react-router-dom"
+import { logout } from "../../redux/actions";
 
 export default function Navbar(props) {
     const isHome = props.home;
@@ -28,6 +29,11 @@ export default function Navbar(props) {
     const handleOpen = () => {
         setOpen(!open);
     };
+
+    const handleLogOut = () => {
+        dispatch(logout());
+        alert("Sesión finalizada")
+    }
 
 
     return (
@@ -75,6 +81,9 @@ export default function Navbar(props) {
                             </div>
                             <div>
                                 <Link to="/newplace">Create a Bar</Link>
+                            </div>
+                            <div>
+                                <button onClick={handleLogOut}>Logout</button>
                             </div>
                         </div>
                     ) : null}
