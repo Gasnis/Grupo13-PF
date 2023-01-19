@@ -21,8 +21,9 @@ export default function Login() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        //que es lo que tengo que hacer aca? porque no hace un post 
-        //cambia una propiedad de algun estado?
+        //hacer el get user x id, si encuentra uno verificar q coincidan las contrasenas
+        //si se comprueba q el usuario existe y la contra esta bien. Pasar a true algo q me permita acceder a ciertas funciones
+        //redigir al home o al perfil
     }
 
     return (
