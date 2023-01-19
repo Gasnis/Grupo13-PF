@@ -1,4 +1,5 @@
-const {User, Local} = require("../../db")
+const {User, Local, Book} = require("../../db")
+
 
 const postUserData = async (userData) => {
     const {id,name,password,phone,image,birthday,city } = userData
@@ -29,7 +30,13 @@ const getUserDetail = async (id) => {
     
     if (id) {
         const userDetail = await User.findOne({
-            where: {id: id}
+            where: {id: id},
+            include:[{
+                model: Local,
+              },
+              {
+                model: Book
+              }]
         })
         if (!userDetail) {
             throw new Error("you can't access the detail of an nonexistent user")
