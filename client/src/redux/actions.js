@@ -6,6 +6,8 @@ export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 export const FILTER_PLACES = "FILTER_PLACES";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const LOGOUT = "LOGOUT";
 
 
 export const getPlaces = () => {
@@ -20,6 +22,7 @@ export const getPlaces = () => {
 
 export const getPlaceDetail = (id) => {
     return async (dispatch) => {
+
         try {
             const { data } = await axios.get(`/local/${id}`);
             dispatch({
@@ -59,11 +62,21 @@ export const bookDetail = (idBook) => {
     }
 }
 
-export const getUser = (idUser) => {
+export const getUser = () => {
     return async (dispatch) => {
-        const { data } = await axios.get(`/user/${idUser}`);
+        const { data } = await axios.get(`/user`);
         return dispatch({
             type: GET_USER,
+            payload: data
+        })
+    }
+}
+
+export const getUserByid = (id) => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`/user/${id}`);
+        return dispatch({
+            type: GET_USER_BY_ID,
             payload: data
         })
     }
@@ -76,17 +89,21 @@ export const updateUser = (user) => {
     }
 }
 
-export const deleteUser = (idUser) => {
+export const deleteUser = (id) => {
     return async () => {
-        const { data } = await axios.delete(`/user/${idUser}`, idUser);
+        const { data } = await axios.delete(`/user/${id}`, id);
         return data;
     }
 }
 
 export const createUser = (user) => {
     return async () => {
-        const { data } = await axios.post(`/user`, user);
-        return data;
+        try{
+            const { data } = await axios.post(`/user`, user);
+            return data;
+        } catch(error) {
+            return error
+        }
     }
 }
 
@@ -133,6 +150,7 @@ export const disablePlace = (idPlace, status) => {
     }
 }
 
+
 export const filterPlaces = (data) => {
     return async (dispatch) => {
         return dispatch({
@@ -141,3 +159,11 @@ export const filterPlaces = (data) => {
         })
     }
 }
+
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}
+
+

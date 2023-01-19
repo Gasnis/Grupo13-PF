@@ -1,4 +1,4 @@
-h1{
+.h1{
     color: white;
 }
 
@@ -10,6 +10,8 @@ h1{
     background-color:#660BAD;
     display: flex;
     justify-content: space-between;
+    padding-top: 5px;
+    height: 70px;
     align-items: center;
 }
 
@@ -18,11 +20,17 @@ h1{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: fit-content;
 }
 
 .ContainerNoHome > div {
     display: flex;
     margin: 0 20px 0 20px;
+    align-items: center;
+}
+
+.link{
+    margin-right: 10px;
 }
 
 .Container > div {
@@ -53,6 +61,21 @@ h1{
     height: 35px;
 }
 
+.ButtonLogin{
+    color: rgb(255, 255, 255);
+    font-size: large;
+    background-color: #522ba7;
+    border-radius: 15px;
+    height: 30px;
+   
+}
+
+.ButtonLogin:hover{
+    cursor: pointer;
+    color: #522ba7;
+    background-color: white;
+}
+
 .Logo{
     border-style: solid;
     border-width: 5px;
@@ -60,7 +83,10 @@ h1{
     border-radius: 20px;
     padding: 5px;
     margin-right: 5px;
+    margin-top: 9px;
     background-color: #FFB800;
+    height: 40px;
+
 }
 
 .Img{
@@ -118,3 +144,28 @@ h1{
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #fff000;
   }
+
+.dropdown{
+    position: absolute;
+    background-color: rgb(247, 247, 247);
+    justify-content: center;
+    left: 1240px;
+    top: 65px;
+    border-radius: 15px 0px 15px 15px;
+    padding:10px;
+    box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
+    color:black;
+    text-shadow: 2px 2px 2px #0c0c0c33;
+}
+
+
+.imagenprofile{
+    height: 40px;
+    width: 40px;
+    margin-inline: 15px;
+    border-radius: 100px;
+}
+
+.imagenprofile:hover{
+    cursor: pointer;
+}

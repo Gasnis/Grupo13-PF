@@ -1,33 +1,52 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../SignUp/SignUp.module.css';
 
 export default function SignUp() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
 
     const [signUp, setSignUp] = useState({
         name: "",
-        mail: "",
+        id: "",
         password: "",
-        phoneNumber: "",
+        phone: "",
         birthday: "",
+        city: "",
+        image: ""
     })
 
     function handleChange(event) {
         setSignUp({
             ...signUp,
-            [event.target.name]: [event.target.value]
+            [event.target.name]: event.target.value
         })
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        //despachar action q postee el user
-        //limpiar form
-        //redirigir al home
+        const newUser = await dispatch(createUser(signUp)) 
+        if (newUser.id) {
+            alert('¡Usuario creado con éxito!')
+            setSignUp({
+                name: "",
+                id: "",
+                password: "",
+                phone: "",
+                birthday: "",
+                city: "",
+                image: ""
+            })
+            history.push(`/profile/${newUser.id}`)
+            dispatch(getUser(newUser.id))
+        } else {
+            alert(newUser.response.data)
+        }
     }
 
     return (
@@ -50,15 +69,15 @@ export default function SignUp() {
                 <input
                     type='text' 
                     placeholder='Mail'
-                    value={signUp.mail}
-                    name="mail"
+                    value={signUp.id}
+                    name="id"
                     onChange={handleChange}
                 />
                 </div>
 
                 <div className={styles.input}>
                 <input
-                    type='text' 
+                    type='password' 
                     placeholder='Contraseña'
                     value={signUp.password}
                     name="password"
@@ -70,8 +89,8 @@ export default function SignUp() {
                 <input
                     type='text' 
                     placeholder='Teléfono'
-                    value={signUp.phoneNumber}
-                    name="phoneNumber"
+                    value={signUp.phone}
+                    name="phone"
                     onChange={handleChange}
                 />
                 </div>
@@ -85,10 +104,35 @@ export default function SignUp() {
                     onChange={handleChange}
                 />
                 </div>
+                
+                <div className={styles.input}>
+                <input
+                    type='text' 
+                    placeholder='Ciudad'
+                    value={signUp.city}
+                    name="city"
+                    onChange={handleChange}
+                />
+                </div>
 
-                <h3>Sos dueño de un bar?</h3>
-                <button type="submit" id="signUpButton" className={styles.submitButton}>Registrarse</button>
-                <h4>Ingresar con Google</h4>
+                <div className={styles.input}>
+                <input
+                    type='text' 
+                    placeholder='Foto de perfil'
+                    value={signUp.image}
+                    name="image"
+                    onChange={handleChange}
+                />
+                </div>
+
+                {/* <h3>Sos dueño de un bar?</h3> */}
+                <button 
+                    type="submit" 
+                    id="signUpButton"
+                    disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday}
+                    className={styles.submitButton}
+                >Registrarse</button>
+                {/* <h4>Ingresar con Google</h4> */}
                 <Link to="/login" >Ya tenes una cuenta?</Link>
                 </form>
             </div>

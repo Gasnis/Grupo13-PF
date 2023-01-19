@@ -1,8 +1,12 @@
 import {
     
     SEARCH_PLACE,
+    GET_PLACE_DETAIL,
     GET_PLACES,
     FILTER_PLACES,
+    GET_USER,
+    GET_USER_BY_ID,
+    LOGOUT
    
 } from "./actions"
 
@@ -10,6 +14,9 @@ import {
 const initialState = {
     places:[],
     allPlaces: [],
+    placeDetail: {},
+    profile: {},
+    allUsers: [],
 }
 
 export default function reducer (state = initialState, action) {
@@ -30,6 +37,29 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 places: action.payload,
+            }
+
+        case GET_PLACE_DETAIL:
+            return {
+                ...state,
+                placeDetail: action.payload
+            }
+        case GET_USER:
+            return {
+                ...state,
+                allUsers: action.payload
+            }
+        
+        case GET_USER_BY_ID:
+            return {
+                ...state,
+                profile: action.payload
+            }
+
+        case LOGOUT:
+            return {
+                ...state,
+                profile: {}
             }
         
         default:

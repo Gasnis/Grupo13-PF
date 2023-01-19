@@ -18,22 +18,14 @@ module.exports = (sequelize) => {
         type: DataTypes.DATE,
         allowNull: false,
     },
-    createdAt: {
-        type: DataTypes.DATE,
-        detaultValue: DataTypes.NOW,
-        allowNull: false,
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
     personQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
     codeProm: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     }
   });
+
 };

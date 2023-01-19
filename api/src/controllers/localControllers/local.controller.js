@@ -1,18 +1,21 @@
-const {Local,User} = require("../../db")
+const {Local,User, Book} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
+    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
 
     if(!searchLocal){
-        if(userId && name && category && image && location && menu && event && capacity && petFriendly && ageRange && phone && promo && bookPrice && available && rating){
-            const local = await Local.create({name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
+        
+            const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
             const searchUserById = await User.findByPk(userId) 
-            await local.setUser(searchUserById);
-            return local
-        }throw new Error(`missing data`)
+            if(searchUserById){
+                await local.setUser(searchUserById);
+                return local
+            }else{
+                throw new Error(`You must create a user`)
+            }
     }else{
         throw new Error(`The local ${name} was already created`)
     } 
@@ -20,7 +23,12 @@ const postLocalData = async (localData) => {
 }
 
 const getLocalDetail = async (id) => {
-    const local = await Local.findByPk(id);
+    const local = await Local.findByPk(id,{
+        where: {id: id},
+        include:{
+            model: Book,
+          }
+    });
     if (!local) {
         throw new Error("Local not found");
     }
@@ -29,9 +37,7 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-    console.log(name)
   const localInfo = await Local.findAll();
-  console.log("***",localInfo)
   if (name) {
     const byName = localInfo?.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
@@ -53,15 +59,17 @@ const deleteLocal = async (id) => {
     local.destroy();
 }
 
-const updateLocal = async (userId,name,category,image,location,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+
+const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
+
     let local = await Local.findByPk(id);
     const updated = await local.update( 
             {
-                userId,
                 name,
                 category,
                 image,
                 location,
+                schedule,
                 menu,
                 event,
                 capacity,
