@@ -7,6 +7,7 @@ import location from "../../utils/location.png"
 import roulette from "../../utils/roulette.png"
 import toggleOff from "../../utils/toggle.png"
 import { searchPlace } from "../../redux/actions";
+import Filtros from "../Filtros/filtros"
 
 export default function Navbar (props) {
     const isHome = props.home;
@@ -45,7 +46,9 @@ export default function Navbar (props) {
                 { isHome ? 
                     <div>
                         <button className={style.Button}>Ordenar</button>
-                        <button className={style.Button}>Filtrar</button>
+                        <button className={style.Button}>
+                            <Filtros></Filtros>
+                        </button>
                         <button className={style.Button}>Ingresar</button>
                     </div>
                 : null}

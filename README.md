@@ -131,6 +131,9 @@ __Ruta principal__: debe contener
   <!-- - Puntuacion (proximo sprint) --> 
 - [ ] Botones/Opciones para filtrar por categoria y pet-friendly
 - [ ] Botones/Opciones para ordenar por edades y ubicacion
+- [ ] Botones/Opciones para ordenar por rating
+- [ ] Botones/Opciones para ordenar por nombre.
+
 - [ ] Paginado para ir buscando y mostrando los siguientes bares, 15 bares por pagina, mostrando los primeros 15 en la primer pagina. (Otra opcion es que haya un boton 
       "+" para ir agregando mas bares, en lugar del paginado tradicional)
 

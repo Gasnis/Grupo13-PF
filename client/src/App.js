@@ -15,7 +15,6 @@ function App() {
 
       <div className="App">
         <Route path="/home"> <Home/> </Route>
-
         <Route path="/place/:id"> <Detail/> </Route>
 
         <Route path="/newplace"> <FormBar/> </Route>

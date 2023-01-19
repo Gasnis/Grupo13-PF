@@ -2,6 +2,7 @@ import {
     
     SEARCH_PLACE,
     GET_PLACES,
+    FILTER_PLACES,
    
 } from "./actions"
 
@@ -23,9 +24,13 @@ export default function reducer (state = initialState, action) {
         case SEARCH_PLACE:
             return {
                 ...state,
-                places: action.payload
+                places: action.payload,
             }
-        
+        case FILTER_PLACES:
+            return {
+                ...state,
+                places: action.payload,
+            }
         
         default:
             return state;
