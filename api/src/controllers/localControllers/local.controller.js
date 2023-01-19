@@ -24,7 +24,12 @@ const postLocalData = async (localData) => {
 }
 
 const getLocalDetail = async (id) => {
-    const local = await Local.findByPk(id);
+    const local = await Local.findByPk(id,{
+        where: {id: id},
+        include:{
+            model: Local,
+          }
+    });
     if (!local) {
         throw new Error("Local not found");
     }
