@@ -1,4 +1,4 @@
-const {Local,User} = require("../../db")
+const {Local,User, Book} = require("../../db")
 
 const postLocalData = async (localData) => {
     const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
@@ -26,7 +26,7 @@ const getLocalDetail = async (id) => {
     const local = await Local.findByPk(id,{
         where: {id: id},
         include:{
-            model: Local,
+            model: Book,
           }
     });
     if (!local) {
