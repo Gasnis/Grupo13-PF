@@ -32,11 +32,6 @@ module.exports = (sequelize) => {
     city: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-    userStatus: {
-        type: DataTypes.ENUM,
-        values: ["logged", "notLogged", "bar"],
-        allowNull: false,
-      },
+      }
   });
 };
