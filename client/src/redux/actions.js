@@ -23,7 +23,6 @@ export const getPlaceDetail = (id) => {
 
         try {
             const { data } = await axios.get(`/local/${id}`);
-            console.log(data);
             dispatch({
                 type: GET_PLACE_DETAIL,
                 payload: data

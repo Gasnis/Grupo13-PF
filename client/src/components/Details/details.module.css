@@ -66,3 +66,8 @@
 .link:hover{
     background: #712dc9;
 }
+
+.goBack {
+    margin: 30px;
+    background: #D1ADFF;
+}

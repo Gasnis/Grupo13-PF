@@ -2,7 +2,6 @@ import './App.css';
 import { Route } from "react-router-dom";
 import Home from './components/Home/Home.jsx'
 import Detail from './components/Details/Details.jsx'
-import FormBook from './components/FormBook/FormBook.jsx';
 import FormBar from './components/FormBar/FormBar.jsx';
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp';
@@ -23,8 +22,6 @@ function App() {
         <Route path="/newplace"> <FormBar/> </Route>
 
         <Route path="/login"> <Login/> </Route>
-
-        <Route path="/bookings"> <FormBook/> </Route>
 
         <Route path="/sign-up"> <SignUp/> </Route>
 
