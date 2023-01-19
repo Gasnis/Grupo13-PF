@@ -43,6 +43,7 @@ export default function SignUp() {
                 image: ""
             })
             history.push(`/profile/${newUser.id}`)
+            dispatch(getUser(newUser.id))
         } else {
             alert(newUser.response.data)
         }

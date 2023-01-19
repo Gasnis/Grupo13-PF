@@ -28,7 +28,7 @@ function App() {
 
         <Route path="/sign-up"> <SignUp/> </Route>
 
-        <Route path="/profile/:idUser"> <Profile/> </Route>
+        <Route path="/profile/:id"> <Profile/> </Route>
 
       </div>
     

@@ -13,6 +13,7 @@ const initialState = {
     allPlaces: [],
     placeDetail: {},
     profile: {},
+    allUsers: [],
 }
 
 export default function reducer (state = initialState, action) {
@@ -35,6 +36,12 @@ export default function reducer (state = initialState, action) {
                 placeDetail: action.payload
             }
         case GET_USER:
+            return {
+                ...state,
+                allUsers: action.payload
+            }
+        
+        case GET_USER_BY_ID:
             return {
                 ...state,
                 profile: action.payload
