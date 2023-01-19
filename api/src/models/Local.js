@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       allowNull: true, // **
     },
     schedule: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, // **
     },
     menu: {
@@ -66,7 +66,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     bookPrice: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     available: {
@@ -75,6 +75,7 @@ module.exports = (sequelize) => {
     },
     rating: {
         type: DataTypes.INTEGER, //  || integer
+        defaultValue: "5"
       },
   });
 };
