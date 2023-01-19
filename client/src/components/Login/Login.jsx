@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUser } from "../../redux/actions"
 import Navbar from '../Navbar/Navbar';
 import styles from './login.module.css';
+import { getUserByid } from '../../redux/actions';
 
 export default function Login() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [login, setLogin] = useState({
         id: "",
         password: ""
     })
-
-    useEffect(() => {
-        dispatch(getUser())
-    }, [dispatch])
-
-    const users = useSelector((state) => state.allUsers)
 
     function handleChange(event) {
         setLogin({
@@ -26,14 +22,24 @@ export default function Login() {
         })
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-       
-            
 
-    //hacer el get user x id, si encuentra uno verificar q coincidan las contrasenas
-    //si se comprueba q el usuario existe y la contra esta bien. Pasar a true algo q me permita acceder a ciertas funciones
-    //redigir al home o al perfil
+const handleSubmit = async (event) => {
+    event.preventDefault();
+        const usuarios = await dispatch(getUser()) 
+
+    const currentUser = usuarios.payload.filter((user) => user.id === login.id[0])
+    if (currentUser.length) {
+        if(currentUser.password === login.password[2]) {
+            dispatch(getUserByid(login.id))
+            history.push("/")
+            setLogin({
+                id: "",
+                password: ""
+            })
+        } else {alert('Contraseña incorrecta!')}
+    } else {
+        alert('El usuario no existe!')
+    }
 }
 
 return (
@@ -62,7 +68,8 @@ return (
                     />
                 </div>
 
-                <Link to="/home"><button type="submit" id="loginButton" className={styles.submitButton}>Ingresar</button></Link>
+                <button type="submit" id="loginButton" className={styles.submitButton}>Ingresar</button>
+
                 <Link to="/sign-up" >Todavia no tenes una cuenta?</Link>
             </form>
         </div>
