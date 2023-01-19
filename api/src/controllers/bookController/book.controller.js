@@ -28,6 +28,11 @@ const getBookDetail = async (id) => {
     return book
 }
 
+const getAllBooks = async () => {
+    return Book.findAll();
+}
+
+
 const updateBook = async (id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm) =>{
 
     let book = await Book.findByPk(id);
@@ -50,5 +55,5 @@ const deleteBook = async (id) => {
             book.destroy();  
         }
 }
-module.exports = {postBookData,getBookDetail,deleteBook,updateBook}
+module.exports = {postBookData,getBookDetail,deleteBook,updateBook,getAllBooks}
 
