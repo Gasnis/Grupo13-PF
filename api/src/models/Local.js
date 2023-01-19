@@ -18,12 +18,12 @@ module.exports = (sequelize) => {
     // },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],
-      allowNull: false,
+      allowNull: true,
     },
     image: {
       type: DataTypes.TEXT,// string 255 / text unlimited
@@ -47,7 +47,7 @@ module.exports = (sequelize) => {
     },
     capacity: {
       type: DataTypes.INTEGER,/* A data type. */
-      allowNull: false,
+      allowNull: true,
     },
     petFriendly: {
       type: DataTypes.BOOLEAN,

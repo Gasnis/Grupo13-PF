@@ -29,7 +29,10 @@ const getUserDetail = async (id) => {
     
     if (id) {
         const userDetail = await User.findOne({
-            where: {id: id}
+            where: {id: id},
+            include:{
+                model: Local,
+              }
         })
         if (!userDetail) {
             throw new Error("you can't access the detail of an nonexistent user")
