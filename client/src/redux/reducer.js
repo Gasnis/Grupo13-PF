@@ -3,7 +3,8 @@ import {
     SEARCH_PLACE,
     GET_PLACE_DETAIL,
     GET_PLACES,
-    GET_USER
+    GET_USER,
+    GET_USER_BY_ID
    
 } from "./actions"
 

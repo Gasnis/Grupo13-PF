@@ -76,7 +76,7 @@ export const getUserByid = (id) => {
     return async (dispatch) => {
         const { data } = await axios.get(`/user/${id}`);
         return dispatch({
-            type: GET_USER,
+            type: GET_USER_BY_ID,
             payload: data
         })
     }
