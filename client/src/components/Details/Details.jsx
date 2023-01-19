@@ -68,7 +68,8 @@ export default function Detail () {
                         </div>
                         <div className={style.centerDiv}>
                             <h2>Horarios</h2>
-                            <h3>{placeDetail.schedule?.map(s=>s).join("-")}</h3>
+                            <h3>{placeDetail.schedule?.slice(0,placeDetail.schedule.length-2).join("-")}</h3>
+                            <h3>{placeDetail.schedule?.slice(placeDetail.schedule.length-2).join("-")}</h3>
                             <a href={placeDetail.menu}><h2>Menú</h2></a>
                             {placeDetail.promo 
                             ?

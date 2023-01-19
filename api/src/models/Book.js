@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
     },
     codeProm: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     }
   });
 

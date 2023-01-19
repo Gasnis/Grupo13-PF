@@ -27,9 +27,9 @@ function getNum (date, string) {
 function validate (input) {
     let errors = {}
     if (!input.name.length) errors.name = "Debes escribir un nombre";
-    if (!input.people.length) errors.people = "Debes escribir la cantidad de personas";
-    if (parseInt(input.people)>10) errors.people = "Máximo 10 personas";
-    if (parseInt(input.people)<1) errors.people = "Debes ingresar un número mayor a 1";
+    if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
+    if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
+    if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
     return errors;
 }
 
@@ -41,17 +41,17 @@ export default function SignUp(props) {
     const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
     const [booking, setBooking] = useState({
         name: "",
-        date: "",
-        people: "",
+        reservedDate: "",
+        personQuantity: "",
         discountCode: "",
     })
     const [errors, setErrors] = useState({
         name:"",
-        people:"",
+        personQuantity:"",
     })
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
-    const disabled = errors.name||errors.people||!booking.date 
+    const disabled = errors.name||errors.personQuantity||!booking.reservedDate 
 
     function handleChange(event) {
         setErrors(validate({
@@ -73,8 +73,8 @@ export default function SignUp(props) {
         // limpiar form
         setBooking({
             name: "",
-            date: "",
-            people: "",
+            reservedDate: "",
+            personQuantity: "",
             discountCode: "",
         })
         //setea reserved en true para mostrar un mensaje
@@ -108,8 +108,8 @@ export default function SignUp(props) {
                     min={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`}
                     max={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`} //mientras implementamos reservas posteriores
                     placeholder='Mail'
-                    value={booking.date}
-                    name="date"
+                    value={booking.reservedDate}
+                    name="reservedDate"
                     onChange={handleChange}
                 />
                 </div>
@@ -120,11 +120,11 @@ export default function SignUp(props) {
                     min="1"
                     max="10"
                     placeholder='Cantidad de personas'
-                    value={booking.people}
-                    name="people"
+                    value={booking.personQuantity}
+                    name="personQuantity"
                     onChange={handleChange}
                 />
-                {errors.people ? <span>{errors.people}</span> : null}
+                {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                 </div>
 
                 <div className={styles.input}>
