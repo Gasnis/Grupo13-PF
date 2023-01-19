@@ -1,29 +1,30 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { createPlace } from '../../redux/actions';
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
     const history = useHistory();
+    const profile = useSelector(state => state.profile)
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00' ]
 
     const [local, setLocal] = useState({
-        userId: "gomezestevezsol@gmail.com",
-        name: "Prueba",
-        image: "https://image.shutterstock.com/image-photo/image-260nw-1487653901.jpg",
-        location: "https://goo.gl/maps/tarbcKnWECQeqGei6",
-        menu: "https://img.restaurantguru.com/r914-menu-Le-Barto-Annemasse-2021-09.jpg",
-        phone: "3017777777",
-        capacity: "200",
-        schedule: ['viernes', 'sabado', 'domingo', '18:00', '3:00'],
-        ageRange: ["Sin restricciones"],
-        category: ['bar'], 
-        event: true, 
-        petFriendly: true, 
-        bookPrice: "350",
+        userId: profile.userId,
+        name: "",
+        image: "",
+        location: "",
+        menu: "",
+        phone: "",
+        capacity: "",
+        schedule: [],
+        ageRange: [],
+        category: '', 
+        event: false, 
+        petFriendly: false, 
+        bookPrice: "",
     })
 
     const handleChange = (event) => {
@@ -52,7 +53,7 @@ export default function CreateLocal() {
    const handleCategories = (event) => {
         setLocal({
             ...local,
-            category: [event.target.value]
+            category: event.target.value
         })
    }
 
@@ -84,21 +85,21 @@ export default function CreateLocal() {
     const handleSubmit = (event) => {
     event.preventDefault();
     dispatch((createPlace(local)))
-    setLocal({
-        id: "",
-        name: "",
-        image: "",
-        location: "",
-        menu: "",
-        phone: "",
-        capacity: "",
-        schedule: [],
-        ageRange: [],
-        category: [], 
-        event: false, 
-        petFriendly: false, 
-        bookPrice: "",
-    })
+    // setLocal({
+    //     id: "",
+    //     name: "",
+    //     image: "",
+    //     location: "",
+    //     menu: "",
+    //     phone: "",
+    //     capacity: "",
+    //     schedule: [],
+    //     ageRange: [],
+    //     category: "", 
+    //     event: false, 
+    //     petFriendly: false, 
+    //     bookPrice: "",
+    // })
     //despachar action que postee el local
     //si lo creo, alerta q te avise y q te redirija al detail del local y limpiar el form
     //si no lo creo, mostrar errores
@@ -120,17 +121,6 @@ export default function CreateLocal() {
                     onChange={handleChange}
                 /> 
                 </div>
-
-                <div >
-                <input
-                    type='text' 
-                    placeholder='Mail de tu local'
-                    value={local.userId}
-                    name="userId"
-                    onChange={handleChange}
-                />
-                </div>
-
                 
                 <div >
                 <input
