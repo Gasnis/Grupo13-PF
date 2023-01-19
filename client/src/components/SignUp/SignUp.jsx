@@ -41,7 +41,7 @@ export default function SignUp() {
                 city: "",
                 image: ""
             })
-            history.push('/home')
+            history.push(`/profile/${newUser.id}`)
         } else {
             alert(newUser.response.data)
         }
