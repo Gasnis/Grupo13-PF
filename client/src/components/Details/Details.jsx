@@ -37,7 +37,7 @@ export default function Detail () {
                     <div>
                         <h1 className={style.titles}>{placeDetail.name}</h1>
                         <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <a href={placeDetail.location}><h3 className={style.titles}>{placeDetail.location}</h3></a>
+                        <a href={placeDetail.location}><h3 className={style.titles}>Location</h3></a>
                     </div>
                     <div>
                         <h2>{placeDetail.rating}</h2>
@@ -78,7 +78,11 @@ export default function Detail () {
                 </div>
                 <div className={style.sideDiv}>
                     <a href={placeDetail.location}><img src={location2} alt="" /></a>
+                    {placeDetail.ageRange 
+                    ?
                     <h1>{placeDetail.ageRange.join("-")}</h1>
+                    :
+                    null}
                     <div>
                         <img src={footprint} alt="" />
                         {placeDetail.petFriendly 
