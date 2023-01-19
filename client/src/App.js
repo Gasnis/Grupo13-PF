@@ -15,6 +15,7 @@ function App() {
   return (
 
       <div className="App">
+
         <Route exact path="/"> <Home/> </Route>
 
         <Route path="/detail/:id"> <Detail/> </Route>
