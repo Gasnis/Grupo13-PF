@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../../redux/actions';
+import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../SignUp/SignUp.module.css';
 
@@ -9,6 +9,7 @@ export default function SignUp() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
 
     const [signUp, setSignUp] = useState({
         name: "",
@@ -42,6 +43,7 @@ export default function SignUp() {
                 image: ""
             })
             history.push(`/profile/${newUser.id}`)
+            dispatch(getUser(newUser.id))
         } else {
             alert(newUser.response.data)
         }
