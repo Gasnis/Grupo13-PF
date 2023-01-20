@@ -120,8 +120,12 @@ export const createUser = (user) => {
 
 export const createPlace = (place) => {
     return async () => {
-        const { data } = await axios.post(`/local`, place);
-        return data;
+        try {
+            const { data } = await axios.post(`/local`, place);
+            return data;
+        } catch(error) {
+            return error;
+        }
     }
 }
 
