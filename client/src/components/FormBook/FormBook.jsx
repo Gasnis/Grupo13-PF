@@ -3,7 +3,7 @@ import { useDispatch} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { createBook } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
-import {style} from "../SignUp/SignUp"
+import styles from '../FormsStyles/forms.module.css';
 
 function getNum (date, string) {
     switch(string){
@@ -86,13 +86,13 @@ export default function SignUp(props) {
     }
 
     return (
-        <div className={style.containerGeneral}>
+        <div className={styles.container}>
             <Navbar/>
-            <div className={style.signUpContainer}>
-                <h1 className={style.title}>Hace tu reserva</h1>
+            <div className={styles.formContainer}>
+                <h1 className={styles.title}>Hace tu reserva</h1>
                 <form onSubmit={handleSubmit}>
-                <div className={style.input}>
-                <input 
+                <div>
+                <input  className={styles.input}
                     type='text' 
                     placeholder='Nombre'
                     value={booking.name}
@@ -102,8 +102,8 @@ export default function SignUp(props) {
                 {errors.name ? <span>{errors.name}</span> : null}
                 </div>
 
-                <div className={style.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='date' 
                     min={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`}
                     max={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`} //mientras implementamos reservas posteriores
@@ -114,8 +114,8 @@ export default function SignUp(props) {
                 />
                 </div>
 
-                <div className={style.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='number'
                     min="1"
                     max="10"
@@ -127,8 +127,8 @@ export default function SignUp(props) {
                 {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                 </div>
 
-                <div className={style.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='text' 
                     placeholder='discountCode'
                     value={booking.discountCode}
@@ -137,9 +137,9 @@ export default function SignUp(props) {
                 />
                 </div>
 
-                <button disabled={disabled} type="submit" id="signUpButton" className={style.submitButton}>Reservar</button>
+                <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
                 </form>
-                {reserved ? <h3 className={style.title}>Successful booking</h3> : null}
+                {reserved ? <h3 className={styles.title}>Successful booking</h3> : null}
             </div>
         </div>
     )
