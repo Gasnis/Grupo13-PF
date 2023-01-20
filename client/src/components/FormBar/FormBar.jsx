@@ -124,7 +124,7 @@ export default function CreateLocal() {
                 
                 <div >
                 <input
-                    type='text' 
+                    type='url' 
                     placeholder='Imagen/logo'
                     value={local.image}
                     name="image"

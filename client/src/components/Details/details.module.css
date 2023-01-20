@@ -30,7 +30,6 @@
 .cardsContainer{
     display: flex;
     justify-content: space-between;
-   
 }
 
 .cardsContainer>div{
@@ -65,9 +64,16 @@
 
 .link:hover{
     background: #712dc9;
+    cursor: pointer;
 }
 
 .goBack {
-    margin: 30px;
-    background: #D1ADFF;
+    background: #660BAD;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.goBack:hover{
+    color: white;
+    cursor: pointer;
 }
