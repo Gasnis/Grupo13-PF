@@ -9,7 +9,6 @@ export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 
-
 export const getPlaces = () => {
     return async (dispatch) => {
         const { data } = await axios.get(`/local`);
@@ -159,6 +158,7 @@ export const filterCategory = (payload) => {
     }
 
 }
+
 
 export const logout = () => {
     return {

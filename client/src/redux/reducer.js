@@ -6,7 +6,7 @@ import {
     FILTER_CATEGORY,
     GET_USER,
     GET_USER_BY_ID,
-    LOGOUT
+    LOGOUT,
    
 } from "./actions"
 
@@ -36,6 +36,7 @@ export default function reducer (state = initialState, action) {
 
         case FILTER_CATEGORY:
             // let filterCategory = []
+            console.log(action.payload)
             let lugaresfiltrados = state.allPlaces.filter(lugar => action.payload.includes(lugar.category))
 
             // action.paylodoad.map(category => category === state.allPlaces.category)
@@ -56,6 +57,7 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 places: lugaresfiltrados 
             }
+
 
         case GET_PLACE_DETAIL:
             return {
