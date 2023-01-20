@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -46,16 +47,28 @@
     font-size: 16px;
 }
 
-.submitButton:disabled {
+.submitButton:disabled, .registrarButton:disabled {
     background: #E7E7E7;
     color:#660BAD;
 }
 
-.submitButton:hover:enabled {
+.submitButton:hover:enabled, .registrarButton:hover:enabled {
     cursor: pointer;
     background: #660BAD;
     color:rgba(255, 255, 255, 0.86)
 }
+
+.registrarButton {
+    background: rgba(102, 11, 173, 0.86);
+    border-radius: 5px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    padding:5px;
+    width: 200px;
+    color: #E7E7E7;
+    font-size: 16px;
+}
+
 
 .title {
     font-size: 45px;
@@ -63,4 +76,46 @@
     font-family: 'Inter';
     font-style: normal;
     color: #660BAD;
+}
+
+.subtitles {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #660BAD;
+}
+
+.scheduleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    background: #E7E7E7;
+    border-radius: 10px;
+    width: 90%;
+}
+
+.weekdaysContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 25px;
+}
+
+.hoursContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 20px;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 5px;
+    background: #E7E7E7;
+    border-radius: 10px;
+    width: 90%;
 }
