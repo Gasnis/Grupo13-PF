@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUser } from "../../redux/actions"
 import Navbar from '../Navbar/Navbar';
-import styles from './login.module.css';
+import styles from '../FormsStyles/forms.module.css';
 import { getUserByid } from '../../redux/actions';
 
 export default function Login() {
@@ -44,11 +44,12 @@ const handleSubmit = async (event) => {
 return (
     <div>
         <Navbar />
-        <div className={styles.loginContainer}>
+    <div className={styles.container}>
+        <div className={styles.formContainer}>
             <h1 className={styles.title}>Ingresa</h1>
             <form onSubmit={handleSubmit}>
-                <div className={styles.input}>
-                    <input
+                <div >
+                    <input className={styles.input}
                         type='text'
                         placeholder='Mail'
                         value={login.id}
@@ -57,8 +58,8 @@ return (
                     />
                 </div>
 
-                <div className={styles.input}>
-                    <input
+                <div >
+                    <input className={styles.input}
                         type='password'
                         placeholder='Contraseña'
                         value={login.password}
@@ -67,11 +68,21 @@ return (
                     />
                 </div>
 
-                <button type="submit" id="loginButton" className={styles.submitButton}>Ingresar</button>
+                <div className={styles.linksContainer}>
+                    <button 
+                        type="submit" 
+                        id="loginButton" 
+                        className={styles.submitButton}
+                        disabled={!login.id || !login.password}
+                    >Ingresar</button>
 
-                <Link to="/sign-up" >Todavia no tenes una cuenta?</Link>
+                    <Link to="/sign-up" >Todavia no tenes una cuenta?</Link>
+                </div>
+
             </form>
         </div>
+    </div>
+
     </div>
 )
 }

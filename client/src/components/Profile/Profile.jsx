@@ -16,7 +16,8 @@ export default function Detail () {
     },[])
 
     const profile = useSelector(state=>state.profile)
-
+    
+//profile.locals
     if (!profile){
         return(
         <div>
@@ -27,18 +28,29 @@ export default function Detail () {
     return (
         <div>
             <Navbar/>
+            <hr/>
             <div> 
-                <hr/>
-                
-                <div >
+
+                <div className={style.divContainer} >
                     <img src={profile.image} alt="perfil photo" className={style.profilePict}/>
+                    <h1 className={style.name}>{profile.name}</h1>
                 </div>
-                    <div>
-                        <h1>{profile.name}</h1>
-                        <p>{profile.phone}</p>
-                        <p>{profile.birthday}</p>
-                        <p>{profile.city}</p>
+
+                    <div className={style.divProfile}>
+                        <span>Detalles del usuario:</span>
+                        <p>Teléfono: {profile.phone}</p>
+                        <p>Fecha de nacimiento: {profile.birthday}</p>
+                        <p>Ciudad: {profile.city}</p>
                         
+                    </div>
+
+                    <div className={style.localsInformation}>
+                    
+                        <div>
+                            {profile.locals?.length === 0 ? <div>No tienes locales asociados.</div>:<div><h1>Tus bares:</h1>{profile.locals?.map(l => l.name).join(" ")}</div>}
+                            
+                        </div>
+
                     </div>
             </div>
         </div>
