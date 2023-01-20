@@ -4,17 +4,23 @@ import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    getPlaces
+    getPlaces, setInput
 } from "../../redux/actions"
 
 export default function Home () {
 
     const dispatch = useDispatch();
     
+    const searchInput = useSelector(state=>state.searchInput)
+
     let allPlaces = useSelector((state) => state.places)
 
     useEffect(()=>{
         dispatch(getPlaces())
+
+        return ()=>{
+            dispatch(setInput(""))
+        }
     },[dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(10)
@@ -45,6 +51,12 @@ export default function Home () {
                             
                         })
                         :
+                            searchInput
+                            ?
+                            <div>
+                                <h1>No hay resultados para esta búsqueda</h1>
+                            </div>
+                            :
                             <div>
                                 <h1 className={style.loading}>loading...</h1>
                             </div>
