@@ -9,9 +9,9 @@ export default function Detail(props) {
     // const { id } = useParams();
     const dispatch = useDispatch();
     const [stateDropdown, setDropdown] = useState(false);
-    const [Boliche, setBoliche] = useState(false);
-    const [Bar, setBar] = useState(false);
-    const [Restaurante, setRestaurante] = useState(false);
+    const [disco, setDisco] = useState(false);
+    const [bar, setBar] = useState(false);
+    const [pub, setPub] = useState(false);
     // useEffect(() => {
     //     dispatch(getPlaceDetail(id));
     // }, [])
@@ -27,17 +27,19 @@ export default function Detail(props) {
     }
 
     const handlerCategory = (filter) => {
-        if (filter === "Boliche") setBoliche(!Boliche);
-        if (filter === "Bar") setBar(!Bar);
-        if (filter === "Restaurante") setRestaurante(!Restaurante);
+        if (filter === "disco") setDisco(!disco);
+        if (filter === "bar") setBar(!bar);
+        if (filter === "pub") setPub(!pub);
+        console.log(filter)
         const filtered = [];
-        if (Boliche) {
-            filtered.push(allPlaces.filter(ele => ele.category === "Boliche"))
-        } else if (Bar) {
-            filtered.push(allPlaces.filter(ele => ele.category === "Bar"))
-        } else if (Restaurante) {
-            filtered.push(allPlaces.filter(ele => ele.category === "Bar"))
+        if (disco) {
+            filtered.push(allPlaces.filter(ele => ele.category === "disco"))
+        } else if (bar) {
+            filtered.push(allPlaces.filter(ele => ele.category === "bar"))
+        } else if (pub) {
+            filtered.push(allPlaces.filter(ele => ele.category === "pub"))
         }
+        
         dispatch(filterPlaces(filtered))
     }
     return (
@@ -49,12 +51,12 @@ export default function Detail(props) {
                 <div id="menu" className={style.menu}>
                     <div id="menuinner" className={style.menuinner}>
                         <div className={style.containerCheck}>
-                            <input type="checkbox" onClick={() => handlerCategory("Boliche")} id="Boliche" />
-                            <label for="Boliche">Boliche</label>
-                            <input type="checkbox" onClick={() => handlerCategory("Bar")} id="Bar" />
-                            <label for="Bar">Bar</label>
-                            <input type="checkbox" onClick={() => handlerCategory("Restaurante")} id="Restaurante" />
-                            <label for="Restaurante">Restaurante</label>
+                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("disco")} id="disco" />
+                            <label htmlFor="disco">Discoteca</label>
+                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("bar")} id="bar" />
+                            <label htmlFor="bar">Bar</label>
+                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("pub")} id="pub" />
+                            <label htmlFor="pub">Pub</label>
                         </div>
                         {/* <div className={style.mainmenu}>
                             <button

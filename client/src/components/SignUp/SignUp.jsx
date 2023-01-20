@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../SignUp/SignUp.module.css';
+export const style = styles;
 
 export default function SignUp() {
 

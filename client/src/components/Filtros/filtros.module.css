@@ -90,14 +90,14 @@ background: rgba (0, 0, 0, 0.175);
 }
 
 
-[type="checkbox"]:not(:checked),
-	[type="checkbox"]:checked {
+.check[type="checkbox"]:not(:checked),
+.check[type="checkbox"]:checked {
 		position: absolute;
 		left: 0;
 		opacity: 0.01;
 	}
-	[type="checkbox"]:not(:checked) + label,
-	[type="checkbox"]:checked + label {
+.check[type="checkbox"]:not(:checked) + label,
+.check[type="checkbox"]:checked + label {
 		position: relative;
 		padding-left: 2.3em;
 		font-size: 1.05em;
@@ -106,8 +106,8 @@ background: rgba (0, 0, 0, 0.175);
 	}
 
 	/* checkbox aspect */
-	[type="checkbox"]:not(:checked) + label:before,
-	[type="checkbox"]:checked + label:before {
+.check[type="checkbox"]:not(:checked) + label:before,
+.check[type="checkbox"]:checked + label:before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -123,8 +123,8 @@ background: rgba (0, 0, 0, 0.175);
 	}
 
 	/* checked mark aspect */
-	[type="checkbox"]:not(:checked) + label:after,
-	[type="checkbox"]:checked + label:after {
+.check[type="checkbox"]:not(:checked) + label:after,
+.check[type="checkbox"]:checked + label:after {
 		content: url("../../utils/beer.png");
 		position: absolute;
 		align-content: flex-start;
@@ -138,13 +138,13 @@ background: rgba (0, 0, 0, 0.175);
 	}
 
 	/* checked mark aspect changes */
-	[type="checkbox"]:not(:checked) + label:after {
+	.check[type="checkbox"]:not(:checked) + label:after {
 		opacity: 0;
 		-webkit-transform: scale(0) rotate(45deg);
 				transform: scale(0) rotate(45deg);
 	}
 
-	[type="checkbox"]:checked + label:after {
+	.check[type="checkbox"]:checked + label:after {
 		opacity: 1;
 		-webkit-transform: scale(1) rotate(0);
 				transform: scale(1) rotate(0);
