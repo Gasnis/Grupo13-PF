@@ -82,9 +82,11 @@ export default function CreateLocal() {
     })
    }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch((createPlace(local)))
+    const newLocal = await dispatch((createPlace(local)))
+    console.log(newLocal)
+
     setLocal({
         id: "",
         name: "",
@@ -100,7 +102,7 @@ export default function CreateLocal() {
         petFriendly: false, 
         bookPrice: "",
     })
-    history.push('/')
+    history.push(`/detail/${newLocal.id}`)
     }
 
 

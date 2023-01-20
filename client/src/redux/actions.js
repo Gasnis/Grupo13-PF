@@ -6,6 +6,7 @@ export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const LOGOUT = "LOGOUT";
 
 
 
@@ -146,6 +147,12 @@ export const disablePlace = (idPlace, status) => {
     return async () => {
         const { data } = await axios.put(`/local/${idPlace}`, status);
         return data;
+    }
+}
+
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
     }
 }
 

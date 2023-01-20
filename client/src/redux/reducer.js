@@ -4,7 +4,8 @@ import {
     GET_PLACE_DETAIL,
     GET_PLACES,
     GET_USER,
-    GET_USER_BY_ID
+    GET_USER_BY_ID,
+    LOGOUT
    
 } from "./actions"
 
@@ -46,6 +47,12 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 profile: action.payload
+            }
+
+        case LOGOUT:
+            return {
+                ...state,
+                profile: {}
             }
         
         default:
