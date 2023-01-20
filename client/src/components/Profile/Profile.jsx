@@ -35,23 +35,37 @@ export default function Detail () {
                     <img src={profile.image} alt="perfil photo" className={style.profilePict}/>
                     <h1 className={style.name}>{profile.name}</h1>
                 </div>
+                <div className={style.infoBarsAndInfoUser}>
 
                     <div className={style.divProfile}>
-                        <span>Detalles del usuario:</span>
-                        <p>Teléfono: {profile.phone}</p>
-                        <p>Fecha de nacimiento: {profile.birthday}</p>
-                        <p>Ciudad: {profile.city}</p>
+                        <span>Detalles del usuario: </span>
+                        <p> <span>Teléfono: </span> {profile.phone}</p>
+                        <p> <span>Fecha de nacimiento: </span> {profile.birthday}</p>
+                        <p> <span>Ciudad:</span> {profile.city}</p>
                         
                     </div>
 
                     <div className={style.localsInformation}>
                     
                         <div>
-                            {profile.locals?.length === 0 ? <div>No tienes locales asociados.</div>:<div><h1>Tus bares:</h1>{profile.locals?.map(l => l.name).join(" ")}</div>}
-                            
+                            {profile.locals?.length === 0 ? <div>Tus Books</div>:
+                                <div>
+                                    <h1>Tus bares:</h1>
+                                    <div className={style.divYourBars}>
+                                        {profile.locals?.map(l =>{
+                                            return(
+                                            <div className={style.infoBar}>
+                                                <h1>{l.name}</h1>
+                                                <img className={style.imgBar} src={l.image} alt="" />
+                                            </div>)
+                                        })}
+                                    </div>
+                                </div>
+                            }                          
                         </div>
-
                     </div>
+                </div>
+
             </div>
         </div>
     )
