@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
+import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 
@@ -16,6 +17,8 @@ export default function Detail () {
     },[])
 
     const profile = useSelector(state=>state.profile)
+    console.log(profile.locals)
+    console.log(profile.books)
     
 //profile.locals
     if (!profile){
@@ -34,6 +37,7 @@ export default function Detail () {
                 <div className={style.divContainer} >
                     <img src={profile.image} alt="perfil photo" className={style.profilePict}/>
                     <h1 className={style.name}>{profile.name}</h1>
+                    <img className={style.Logo} src={beer} alt="logo" />
                 </div>
                 <div className={style.infoBarsAndInfoUser}>
 
@@ -61,9 +65,37 @@ export default function Detail () {
                                         })}
                                     </div>
                                 </div>
+
+                               
                             }                          
                         </div>
+                        
                     </div>
+                    
+
+                   {/* con la siguiete linea de codigo, pretendo que si un dueño de bar quiere reservar en una bar que no sea de su propiedad le aparezcan sus reservas */}
+                            {profile.locals?.length > 0 && profile.books?.length > 0 ? <div  className={style.booksInformation}>
+                                    <h1>Tus reservas:</h1>
+                                    <div className={style.divYourBars}>
+                                        {profile.books?.map(l =>{
+                                            console.log(l)
+                                            return(
+                                            <div className={style.infoBar}>
+                                                {/* desde el back falta que envien la informacion del local */}
+                                                <h1>nombre del local</h1>  
+                                                <h4>dia de la reserva {l.reservedDate}</h4>
+                                            </div>)
+                                        })}
+                                    </div>
+                                </div> :null
+                               
+
+                               
+                            }                          
+                        
+
+
+
                 </div>
 
             </div>
