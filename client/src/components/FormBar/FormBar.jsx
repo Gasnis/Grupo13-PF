@@ -12,7 +12,7 @@ export default function CreateLocal() {
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00' ]
 
     const [local, setLocal] = useState({
-        userId: profile.userId,
+        userId: profile.id,
         name: "",
         image: "",
         location: "",
@@ -25,6 +25,7 @@ export default function CreateLocal() {
         event: false, 
         petFriendly: false, 
         bookPrice: "",
+        available: true,
     })
 
     const handleChange = (event) => {
@@ -84,26 +85,9 @@ export default function CreateLocal() {
 
     const handleSubmit = async (event) => {
     event.preventDefault();
-    const newLocal =  await dispatch((createPlace(local)));
-    console.log(newLocal)
-
-    setLocal({
-        id: "",
-        name: "",
-        image: "",
-        location: "",
-        menu: "",
-        phone: "",
-        capacity: "",
-        schedule: [],
-        ageRange: [],
-        category: "", 
-        event: false, 
-        petFriendly: false, 
-        bookPrice: "",
-    })
-    history.push(`/detail/${newLocal.id}`)
+    const newLocal = await dispatch((createPlace(local)));
     dispatch(getPlaceDetail(newLocal.id))
+    history.push(`/detail/${newLocal.id}`)
     }
 
 

@@ -41,7 +41,6 @@ export default function SignUp() {
                 phone: "",
                 birthday: "",
                 city: "",
-                image: ""
             })
             history.push(`/profile/${newUser.id}`)
             dispatch(getUser(newUser.id))
@@ -135,6 +134,7 @@ export default function SignUp() {
                     {/* <h4>Ingresar con Google</h4> */}
                     <Link to="/login" >Ya tenes una cuenta?</Link>
                 </div>
+
                 </form>
             </div>
         </div>
