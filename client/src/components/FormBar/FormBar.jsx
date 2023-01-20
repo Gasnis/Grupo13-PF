@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import { createPlace } from '../../redux/actions';
+import { createPlace, getPlaceDetail } from '../../redux/actions';
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
@@ -84,7 +84,7 @@ export default function CreateLocal() {
 
     const handleSubmit = async (event) => {
     event.preventDefault();
-    const newLocal = await dispatch((createPlace(local)))
+    const newLocal =  await dispatch((createPlace(local)));
     console.log(newLocal)
 
     setLocal({
@@ -103,6 +103,7 @@ export default function CreateLocal() {
         bookPrice: "",
     })
     history.push(`/detail/${newLocal.id}`)
+    dispatch(getPlaceDetail(newLocal.id))
     }
 
 
