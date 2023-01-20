@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { filterPlaces, getPlaceDetail } from "../../redux/actions"
 import style from "./filtros.module.css"
+import arrow from "../../utils/arrow.svg"
 
 export default function Detail(props) {
     // const { id } = useParams();
@@ -46,7 +47,7 @@ export default function Detail(props) {
         <>
             <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
                 <button onClick={() => handlerDropdownClicked()}>
-                    Filtrar <img src=""></img>
+                    Filtrar <img src={arrow}></img>
                 </button>
                 <div id="menu" className={style.menu}>
                     <div id="menuinner" className={style.menuinner}>
