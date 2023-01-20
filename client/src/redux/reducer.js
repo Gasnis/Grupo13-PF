@@ -6,7 +6,8 @@ import {
     FILTER_CATEGORY,
     GET_USER,
     GET_USER_BY_ID,
-    LOGOUT
+    LOGOUT,
+    SET_INPUT
    
 } from "./actions"
 
@@ -17,11 +18,16 @@ const initialState = {
     placeDetail: {},
     profile: {},
     allUsers: [],
+    searchInput: "",
 }
 
 export default function reducer (state = initialState, action) {
     switch(action.type){
-    
+        case SET_INPUT:
+            return {
+                ...state,
+                searchInput: action.payload
+            }
         case GET_PLACES:
             return{
                 ...state,
