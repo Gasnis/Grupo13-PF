@@ -25,11 +25,10 @@ export default function Login() {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
-        const usuarios = await dispatch(getUser()) 
-
+    const usuarios = await dispatch(getUser()) 
     const currentUser = usuarios.payload.filter((user) => user.id === login.id[0])
     if (currentUser.length) {
-        if(currentUser.password === login.password[2]) {
+        if(currentUser[0].password === login.password[0]) {
             dispatch(getUserByid(login.id))
             history.push("/")
             setLogin({
