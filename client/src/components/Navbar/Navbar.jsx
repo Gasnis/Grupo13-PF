@@ -46,18 +46,15 @@ export default function Navbar(props) {
             </div>
             {isHome ?
                 <div>
-                    <input className={style.input} value={searchInput} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más" />
-                    <button className={style.Button}>
-                        <img className={style.Img} src={location} alt="" />
-                    </button>
-                    <button className={style.Button}>
-                        <img className={style.Img} src={roulette} alt="" />
-                    </button>
+                    <input className={style.searchbar} value={searchInput} onChange={handleChange} type="search" placeholder="Busca tu bar" />
                 </div>
                 : null}
             <div>
                 {isHome ?
                     <div>
+                        <button className={style.Button}>
+                            <img className={style.Img} src={roulette} alt="" />
+                        </button>
                         <button className={style.Button}>Ordenar</button>
 
                         

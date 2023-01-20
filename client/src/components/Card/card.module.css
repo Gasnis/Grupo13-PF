@@ -25,12 +25,11 @@
     
 }
 
-.place img{
+.logo{
     border-radius: 15px;
     height: 240px;
     width: 300px;
-    border: 1px solid #000000;
-
+    box-shadow: 2px 2px 2px #0c0c0c33;
 }
 
 .text{
