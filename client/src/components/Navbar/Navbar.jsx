@@ -5,7 +5,7 @@ import beer from "../../utils/beer.png"
 import location from "../../utils/location.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
-import { searchPlace } from "../../redux/actions";
+import { searchPlace, setInput } from "../../redux/actions";
 import Filtros from "../Filtros/filtros"
 import { Link } from "react-router-dom"
 import { logout } from "../../redux/actions";
@@ -14,16 +14,16 @@ import { logout } from "../../redux/actions";
 export default function Navbar(props) {
     const isHome = props.home;
     const profile = useSelector(state => state.profile)
-    const [input, setInput] = useState("");
+    const searchInput = useSelector(state=>state.searchInput);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
-        setInput(e.target.value)
+        dispatch(setInput((e.target.value)))
     }
 
     useEffect(()=>{
-        dispatch(searchPlace(input))
-    },[input])
+        dispatch(searchPlace(searchInput))
+    },[searchInput])
 
     const [open, setOpen] = useState(false);
 
@@ -46,7 +46,7 @@ export default function Navbar(props) {
             </div>
             {isHome ?
                 <div>
-                    <input className={style.input} value={input} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más" />
+                    <input className={style.input} value={searchInput} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más" />
                     <button className={style.Button}>
                         <img className={style.Img} src={location} alt="" />
                     </button>
@@ -102,13 +102,8 @@ export default function Navbar(props) {
                             </div>
                         ) : null
                         }
-                        
                     </div>
                 </div>
-                
-
-
-
             </div>
         </div>
     )

@@ -8,7 +8,15 @@ export const GET_USER = "GET_USER";
 export const FILTER_PLACES = "FILTER_PLACES";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
+export const SET_INPUT = "SET_INPUT";
 
+
+export const setInput = (payload) => {
+    return {
+        type: SET_INPUT,
+        payload
+    }
+}
 
 export const getPlaces = () => {
     return async (dispatch) => {
@@ -45,7 +53,10 @@ export const searchPlace = (input) => {
                 payload: data
             })
         } catch (error) {
-            return error;
+            dispatch({
+                type: SEARCH_PLACE,
+                payload: []
+            })
         }
     }
 }
