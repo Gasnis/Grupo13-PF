@@ -7,7 +7,7 @@ export default function Place({place}){
     return(
         <div className={style.places}>
             <Link className={style.place} to={`/detail/${place.id}`}>
-                    <img src={place.image}  alt="img" />   
+                    <img src={place.image} className={style.logo} alt="img" />   
                     <br />
                     <div className={style.text}>
                         <div>
@@ -16,6 +16,7 @@ export default function Place({place}){
                         </div>
                         <div>
                             <h4>Edad {place.ageRange.map(age=> age).join("-")}</h4>
+                            <h4>{place.rating}<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg/200px-Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg.png" height="20px" width="20px"/></h4>
                         </div>
                     </div>
              </Link>
