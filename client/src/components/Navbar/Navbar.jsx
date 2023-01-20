@@ -60,9 +60,9 @@ export default function Navbar(props) {
                     <div>
                         <button className={style.Button}>Ordenar</button>
 
-                        <button className={style.Button}>
-                            <Filtros></Filtros>
-                        </button>
+                        
+                        <Filtros></Filtros>
+                        
 
                     </div>
                     : null}
@@ -71,36 +71,39 @@ export default function Navbar(props) {
                     <span className={style.slider}></span>
                 </label>
                 <div>
-                    <img src="https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png" alt="" className={style.imagenprofile} onClick={handleOpen}/>
-                    {open ? (
-                        <div className={style.dropdown}>
-                            <div>
-                                <Link to="/login">Login</Link>
-                            </div>
-                            <div>
-                                <Link to="/sign-up">Register</Link>
-                            </div>
-                        </div>
-                    ) : null
-                    } 
-                </div>
-                <div>
-                    {profile.id && 
+                    <div>
+                        <img src="https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png" alt="" className={style.imagenprofile} onClick={handleOpen}/>
+                        {!profile.id &&
                         open ? (
-                        <div className={style.dropdown}>
-                            <div>
-                                <Link to={`/profile/${profile.id}`}>My Profile</Link>
+                            <div className={style.dropdown}>
+                                <div>
+                                    <Link to="/login">Login</Link>
+                                </div>
+                                <div>
+                                    <Link to="/sign-up">Register</Link>
+                                </div>
                             </div>
-                            <div>
-                                <Link to="/newplace">Create a Bar</Link>
+                        ) : null
+                        } 
+                    </div>
+                    <div>
+                        {profile.id && 
+                            open ? (
+                            <div className={style.dropdown}>
+                                <div>
+                                    <Link to={`/profile/${profile.id}`}>My Profile</Link>
+                                </div>
+                                <div>
+                                    <Link to="/newplace">Create a Bar</Link>
+                                </div>
+                                <div>
+                                    <button onClick={handleLogOut}>Logout</button>
+                                </div>
                             </div>
-                            <div>
-                                <button onClick={handleLogOut}>Logout</button>
-                            </div>
-                        </div>
-                    ) : null
-                    }
-                    
+                        ) : null
+                        }
+                        
+                    </div>
                 </div>
                 
 

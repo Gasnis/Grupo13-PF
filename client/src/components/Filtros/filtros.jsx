@@ -2,45 +2,41 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { filterPlaces, getPlaceDetail } from "../../redux/actions"
+import { filterCategory, filterPlaces, getPlaceDetail } from "../../redux/actions"
 import style from "./filtros.module.css"
 
-export default function Detail(props) {
-    // const { id } = useParams();
+export default function Filter() {
+
     const dispatch = useDispatch();
     const [stateDropdown, setDropdown] = useState(false);
-    const [disco, setDisco] = useState(false);
-    const [bar, setBar] = useState(false);
-    const [pub, setPub] = useState(false);
-    // useEffect(() => {
-    //     dispatch(getPlaceDetail(id));
-    // }, [])
-
-    const allPlaces = useSelector(state => state.allPlaces)
-    const showPlaces = useSelector(state => state.places)
-
-
+    const [disco, setDisco] = useState(true);
+    const [bar, setBar] = useState(true);
+    const [pub, setPub] = useState(true);
+    
+    
 
     const handlerDropdownClicked = () => {
         setDropdown(!stateDropdown)
         document.getElementById("dropdown").classList.add("open")
     }
 
-    const handlerCategory = (filter) => {
-        if (filter === "disco") setDisco(!disco);
-        if (filter === "bar") setBar(!bar);
-        if (filter === "pub") setPub(!pub);
-        console.log(filter)
+    const handlerCategory = (event) => {
+        if (event === "disco") setDisco(!disco);
+        if (event === "bar") setBar(!bar);
+        if (event === "pub") setPub(!pub);
+
+
         const filtered = [];
         if (disco) {
-            filtered.push(allPlaces.filter(ele => ele.category === "disco"))
+            filtered.push("disco")
         } else if (bar) {
-            filtered.push(allPlaces.filter(ele => ele.category === "bar"))
+            filtered.push("bar")
         } else if (pub) {
-            filtered.push(allPlaces.filter(ele => ele.category === "pub"))
+            filtered.push("pub")
         }
+
         
-        dispatch(filterPlaces(filtered))
+        dispatch(filterCategory(filtered))
     }
     return (
         <>
