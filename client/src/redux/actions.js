@@ -5,7 +5,7 @@ export const GET_PLACE_DETAIL = "GET_PLACE_DETAIL";
 export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
-export const FILTER_PLACES = "FILTER_PLACES";
+export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 
@@ -151,13 +151,13 @@ export const disablePlace = (idPlace, status) => {
 }
 
 
-export const filterPlaces = (data) => {
-    return async (dispatch) => {
-        return dispatch({
-            type: FILTER_PLACES,
-            payload: data,
-        })
+export const filterCategory = (payload) => {
+
+    return {
+        type: "FILTER_CATEGORY",
+        payload
     }
+
 }
 
 export const logout = () => {

@@ -80,7 +80,7 @@ const places =[
 		"name": "Barcito",
 		"category": "disco",
 		"image": "https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004154233-01-world-best-bars-2022-full-169.jpg?quality=100&strip=info",
-		"location": "https://www.google.com/maps/place/Gral.+Guemes+200+Avellaneda",
+		"location": "Gral. Guemes 200 Avellaneda",
 		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 		"event": false,
 		"capacity": 2000,

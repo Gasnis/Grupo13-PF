@@ -11,7 +11,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     text-decoration: none;
-    height: 10.5cm;
+    height: 9cm;
     width: 8cm;
     background-color: rgba(255, 255, 255, 0.311);
     background-size: contain;
@@ -27,7 +27,7 @@
 
 .place img{
     border-radius: 15px;
-    height: 300px;
+    height: 240px;
     width: 300px;
     border: 1px solid #000000;
 
