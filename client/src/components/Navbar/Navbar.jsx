@@ -73,6 +73,9 @@ export default function Navbar(props) {
                             <div>
                                 <Link to="/sign-up">Register</Link>
                             </div>
+                            <div>
+                                <Link to="/newplace">Create a Bar</Link>
+                            </div>
                         </div>
                     ) : null}
                 </div>
