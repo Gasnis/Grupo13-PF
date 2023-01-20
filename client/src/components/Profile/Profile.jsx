@@ -45,9 +45,10 @@ export default function Detail () {
                     </div>
 
                     <div className={style.localsInformation}>
-                        <h1>Hola</h1>
+                    
                         <div>
-                            {profile.locals? <div>No tienes locales asociados.</div>:<div><p>Hola</p></div>}
+                            {profile.locals?.length === 0 ? <div>No tienes locales asociados.</div>:<div><h1>Tus bares:</h1>{profile.locals?.map(l => l.name).join(" ")}</div>}
+                            
                         </div>
 
                     </div>
