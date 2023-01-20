@@ -89,6 +89,9 @@ export default function Navbar(props) {
                         open ? (
                         <div className={style.dropdown}>
                             <div>
+                                <Link to={`/profile/${profile.id}`}>My Profile</Link>
+                            </div>
+                            <div>
                                 <Link to="/newplace">Create a Bar</Link>
                             </div>
                             <div>
