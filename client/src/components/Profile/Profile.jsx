@@ -13,7 +13,7 @@ export default function Detail () {
 
     useEffect(()=>{
         dispatch(getUserByid(id));
-    },[])
+    },[dispatch, id])
 
     const profile = useSelector(state=>state.profile)
 
