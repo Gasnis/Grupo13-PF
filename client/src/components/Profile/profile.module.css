@@ -1,5 +1,35 @@
 .profilePict {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 10%;
+    float: left;
+    margin: 0 auto; 
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
+
+.divContainer{
+    width: 1460px;
+    height: 200px;
+    background-color: rgb(194, 192, 190);
+    border-radius: 0.8%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.name{
+  
+  font: 45px Robot, sans-serif;
+  float: left;
+  margin-left: 10px;
+  margin-top: 90px;
+}
+
+.divProfile{
+  border: 2px solid rgb(158, 50, 205) ;
+}
+
+
+.localsInformation{
+  border: 2px solid rgb(158, 50, 205) ;
+}
