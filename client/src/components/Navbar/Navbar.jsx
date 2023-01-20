@@ -60,9 +60,9 @@ export default function Navbar(props) {
                     <div>
                         <button className={style.Button}>Ordenar</button>
 
-                        <button className={style.Button}>
-                            <Filtros></Filtros>
-                        </button>
+                        
+                        <Filtros></Filtros>
+                        
 
                     </div>
                     : null}
