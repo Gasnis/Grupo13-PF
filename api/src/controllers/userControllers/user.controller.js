@@ -4,7 +4,7 @@ const {User, Local, Book} = require("../../db")
 const postUserData = async (userData) => {
     const {id,name,password,phone,image,birthday,city } = userData
 
-    if(id && name && password && phone &&image && birthday &&city ){
+    if(id && name && password && phone && birthday &&city ){
         const searchUser = await User.findOne({
             where:{id: id}
         })
