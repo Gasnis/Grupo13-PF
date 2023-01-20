@@ -85,24 +85,22 @@ export default function CreateLocal() {
     const handleSubmit = (event) => {
     event.preventDefault();
     dispatch((createPlace(local)))
-    // setLocal({
-    //     id: "",
-    //     name: "",
-    //     image: "",
-    //     location: "",
-    //     menu: "",
-    //     phone: "",
-    //     capacity: "",
-    //     schedule: [],
-    //     ageRange: [],
-    //     category: "", 
-    //     event: false, 
-    //     petFriendly: false, 
-    //     bookPrice: "",
-    // })
-    //despachar action que postee el local
-    //si lo creo, alerta q te avise y q te redirija al detail del local y limpiar el form
-    //si no lo creo, mostrar errores
+    setLocal({
+        id: "",
+        name: "",
+        image: "",
+        location: "",
+        menu: "",
+        phone: "",
+        capacity: "",
+        schedule: [],
+        ageRange: [],
+        category: "", 
+        event: false, 
+        petFriendly: false, 
+        bookPrice: "",
+    })
+    history.push('/')
     }
 
 
@@ -230,47 +228,8 @@ export default function CreateLocal() {
                         onChange={handleWeekdays}
                     ></input>
                     <label>Domingo</label>
-
                 </div>
-               
-                {/* <input
-                    type='text' 
-                    placeholder='Dia de apertura'
-                    
-                    name="schedule"
-                    onChange={handleSchedule}
-                />
-                <label>A:</label>
-                <input
-                    type='text' 
-                    placeholder='Dia de cierre'
-                    
-                    name="schedule"
-                    onChange={handleSchedule}
-                /> */}
                 </div>
-
-                {/* <div >
-                <label>Desde:</label>
-                <input
-                    type='number' 
-                    min='1'
-                    max='24'
-                    placeholder='Hora de apertura'
-                    name="schedule"
-                    onChange={handleSchedule}
-                />
-                <label>Hasta:</label>
-                <input
-                    type='number' 
-                    min='1'
-                    max='24'
-                    placeholder='Hora de cierre'
-                    
-                    name="schedule"
-                    onChange={handleSchedule}
-                />
-                </div> */}
 
                 <label>Desde:</label>
                 <select onChange={handleSchedule}>
@@ -343,11 +302,10 @@ export default function CreateLocal() {
                 />
                 </div>
                 
-                {console.log(local)}
                 <button 
                     type="submit" 
                     id="localButton" 
-                    // disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.event || !local.id || !local.image || !local.location || !local.menu || !local.name || !local.petFriendly || !local.phone || !local.schedule }
+                    disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.event || !local.image || !local.location || !local.menu || !local.name || !local.petFriendly || !local.phone || !local.schedule }
                 >Registrar local</button>
                 </form>
             </div>
