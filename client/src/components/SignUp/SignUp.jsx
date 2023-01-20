@@ -1,33 +1,50 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { createUser } from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../SignUp/SignUp.module.css';
 
 export default function SignUp() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [signUp, setSignUp] = useState({
         name: "",
-        mail: "",
+        id: "",
         password: "",
-        phoneNumber: "",
+        phone: "",
         birthday: "",
+        city: "",
+        image: ""
     })
 
     function handleChange(event) {
         setSignUp({
             ...signUp,
-            [event.target.name]: [event.target.value]
+            [event.target.name]: event.target.value
         })
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        //despachar action q postee el user
-        //limpiar form
-        //redirigir al home
+        const newUser = await dispatch(createUser(signUp)) 
+        if (newUser.id) {
+            alert('¡Usuario creado con éxito!')
+            setSignUp({
+                name: "",
+                id: "",
+                password: "",
+                phone: "",
+                birthday: "",
+                city: "",
+                image: ""
+            })
+            history.push('/home')
+        } else {
+            alert(newUser.response.data)
+        }
     }
 
     return (
@@ -50,15 +67,15 @@ export default function SignUp() {
                 <input
                     type='text' 
                     placeholder='Mail'
-                    value={signUp.mail}
-                    name="mail"
+                    value={signUp.id}
+                    name="id"
                     onChange={handleChange}
                 />
                 </div>
 
                 <div className={styles.input}>
                 <input
-                    type='text' 
+                    type='password' 
                     placeholder='Contraseña'
                     value={signUp.password}
                     name="password"
@@ -70,8 +87,8 @@ export default function SignUp() {
                 <input
                     type='text' 
                     placeholder='Teléfono'
-                    value={signUp.phoneNumber}
-                    name="phoneNumber"
+                    value={signUp.phone}
+                    name="phone"
                     onChange={handleChange}
                 />
                 </div>
@@ -82,6 +99,26 @@ export default function SignUp() {
                     placeholder='Fecha de cumpleaños'
                     value={signUp.birthday}
                     name="birthday"
+                    onChange={handleChange}
+                />
+                </div>
+                
+                <div className={styles.input}>
+                <input
+                    type='text' 
+                    placeholder='Ciudad'
+                    value={signUp.city}
+                    name="city"
+                    onChange={handleChange}
+                />
+                </div>
+
+                <div className={styles.input}>
+                <input
+                    type='text' 
+                    placeholder='Foto de perfil'
+                    value={signUp.image}
+                    name="image"
                     onChange={handleChange}
                 />
                 </div>

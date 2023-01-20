@@ -21,11 +21,34 @@ const postBookData = async (bookData) => {
 }
 
 const getBookDetail = async (id) => {
-    const local = await Local.findByPk(id);
-    if (!local) {
-        throw new Error("Local not found");
+    const book = await Book.findByPk(id);
+    if (!book) {
+        throw new Error("Book not found");
     }
-    return local
+    return book
 }
 
-module.exports = {postBookData,getBookDetail}
+const updateBook = async (id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm) =>{
+
+    let book = await Book.findByPk(id);
+    const updated = await book.update( 
+            {
+                name,
+                reservedDate,
+                createdAt,
+                updatedAt,
+                personQuantity,
+                codeProm
+            });
+    return updated
+    }
+
+
+const deleteBook = async (id) => {
+        const book = await Book.findByPk(id);
+        if(book){
+            book.destroy();  
+        }
+}
+module.exports = {postBookData,getBookDetail,deleteBook,updateBook}
+
