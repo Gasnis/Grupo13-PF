@@ -5,12 +5,13 @@ const postLocalData = async (localData) => {
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
+    
 
     if(!searchLocal){
         
-            const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
-            const searchUserById = await User.findByPk(userId) 
-            if(searchUserById){
+        const searchUserById = await User.findByPk(userId) 
+        if(searchUserById){
+                const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating})
                 await local.setUser(searchUserById);
                 return local
             }else{
