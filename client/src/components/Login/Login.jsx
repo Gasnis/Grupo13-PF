@@ -35,9 +35,9 @@ const handleSubmit = async (event) => {
                 id: "",
                 password: ""
             })
-        } else {alert('Contraseña incorrecta!')}
+        } else {alert('El usuario o contraseña es incorrecto')}
     } else {
-        alert('El usuario no existe!')
+        alert('El usuario o contraseña es incorrecto')
     }
 }
 
