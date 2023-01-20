@@ -41,7 +41,6 @@ export default function SignUp() {
                 phone: "",
                 birthday: "",
                 city: "",
-                image: ""
             })
             history.push(`/profile/${newUser.id}`)
             dispatch(getUser(newUser.id))
@@ -116,17 +115,6 @@ export default function SignUp() {
                 />
                 </div>
 
-                <div className={styles.input}>
-                <input
-                    type='text' 
-                    placeholder='Foto de perfil'
-                    value={signUp.image}
-                    name="image"
-                    onChange={handleChange}
-                />
-                </div>
-
-                {/* <h3>Sos dueño de un bar?</h3> */}
                 <button 
                     type="submit" 
                     id="signUpButton"

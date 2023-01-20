@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch , useSelector} from "react-redux"
 import style from "./navbar.module.css"
 import beer from "../../utils/beer.png"
 import location from "../../utils/location.png"
@@ -13,6 +13,7 @@ import { logout } from "../../redux/actions";
 
 export default function Navbar(props) {
     const isHome = props.home;
+    const profile = useSelector(state => state.profile)
     const [input, setInput] = useState("");
     const dispatch = useDispatch();
 
@@ -69,9 +70,8 @@ export default function Navbar(props) {
                     <input type="checkbox" />
                     <span className={style.slider}></span>
                 </label>
-
                 <div>
-                    <img src="https://i.pinimg.com/474x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg" alt="" className={style.imagenprofile} onClick={handleOpen}/>
+                    <img src="https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png" alt="" className={style.imagenprofile} onClick={handleOpen}/>
                     {open ? (
                         <div className={style.dropdown}>
                             <div>
@@ -80,6 +80,14 @@ export default function Navbar(props) {
                             <div>
                                 <Link to="/sign-up">Register</Link>
                             </div>
+                        </div>
+                    ) : null
+                    } 
+                </div>
+                <div>
+                    {profile.id && 
+                        open ? (
+                        <div className={style.dropdown}>
                             <div>
                                 <Link to="/newplace">Create a Bar</Link>
                             </div>
@@ -87,8 +95,11 @@ export default function Navbar(props) {
                                 <button onClick={handleLogOut}>Logout</button>
                             </div>
                         </div>
-                    ) : null}
+                    ) : null
+                    }
+                    
                 </div>
+                
 
 
 
