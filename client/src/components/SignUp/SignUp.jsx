@@ -3,7 +3,7 @@ import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
-import styles from '../SignUp/SignUp.module.css';
+import styles from '../FormsStyles/forms.module.css';
 export const style = styles;
 
 export default function SignUp() {
@@ -50,81 +50,95 @@ export default function SignUp() {
     }
 
     return (
-        <div className={styles.containerGeneral}>
+        <div>
             <Navbar/>
-            <div className={styles.signUpContainer}>
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
                 <h1 className={styles.title}>Registrate</h1>
                 <form onSubmit={handleSubmit}>
-                <div className={styles.input}>
+                <div>
                 <input 
                     type='text' 
                     placeholder='Nombre'
                     value={signUp.name}
                     name="name"
                     onChange={handleChange}
+                    className={styles.input}
                 /> 
                 </div>
 
-                <div className={styles.input}>
-                <input
+                <div >
+                <input 
                     type='text' 
                     placeholder='Mail'
                     value={signUp.id}
                     name="id"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='password' 
                     placeholder='Contraseña'
                     value={signUp.password}
                     name="password"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='text' 
                     placeholder='Teléfono'
                     value={signUp.phone}
                     name="phone"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='date' 
                     placeholder='Fecha de cumpleaños'
                     value={signUp.birthday}
                     name="birthday"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
                 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='text' 
                     placeholder='Ciudad'
                     value={signUp.city}
                     name="city"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <button 
-                    type="submit" 
-                    id="signUpButton"
-                    disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday}
-                    className={styles.submitButton}
-                >Registrarse</button>
-                {/* <h4>Ingresar con Google</h4> */}
-                <Link to="/login" >Ya tenes una cuenta?</Link>
+                {/* <h3>Sos dueño de un bar?</h3> */}
+
+                <div className={styles.linksContainer}>
+                    <button 
+                        type="submit" 
+                        id="signUpButton"
+                        disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday}
+                        className={styles.submitButton}
+                    >Registrarse</button>
+                    {/* <h4>Ingresar con Google</h4> */}
+                    <Link to="/login" >Ya tenes una cuenta?</Link>
+                </div>
+
                 </form>
             </div>
+        </div>
+
         </div>
     )
 }
