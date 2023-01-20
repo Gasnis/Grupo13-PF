@@ -67,7 +67,6 @@ export default function Navbar(props) {
                         <button className={style.Button}>
                             <Filtros></Filtros>
                         </button>
-                        <button className={style.Button}>Ingresar</button>
 
                     </div>
                     : null}
