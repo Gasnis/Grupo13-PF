@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch , useSelector} from "react-redux"
 import style from "./navbar.module.css"
 import beer from "../../utils/beer.png"
-import location from "../../utils/location.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
 import { searchPlace, setInput } from "../../redux/actions";
@@ -34,7 +33,6 @@ export default function Navbar(props) {
 
     const handleLogOut = () => {
         dispatch(logout());
-        alert("Sesión finalizada")
     }
 
 
@@ -53,8 +51,10 @@ export default function Navbar(props) {
             <div>
                 {isHome ?
                     <div>
+                        <h5 className={style.random}>Random?</h5>
                         <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
-                            <img className={style.Img} src={roulette} alt="" />
+                        <img className={style.Img} src={roulette} alt="" />
+                            
                         </Link>
 
                         <Filtros/>
@@ -67,7 +67,7 @@ export default function Navbar(props) {
                 </label>
                 <div>
                     <div>
-                        <img src="https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png" alt="" className={style.imagenprofile} onClick={handleOpen}/>
+                        <img src={profile.id?profile.image:"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
                         {!profile.id &&
                         open ? (
                             <div className={style.dropdown}>
@@ -86,7 +86,7 @@ export default function Navbar(props) {
                             open ? (
                             <div className={style.dropdown}>
                                 <div>
-                                    <Link to={`/profile/${profile.id}`}>My Profile</Link>
+                                    <Link to={`/profile`}>My Profile</Link>
                                 </div>
                                 <div>
                                     <Link to="/newplace">Create a Bar</Link>

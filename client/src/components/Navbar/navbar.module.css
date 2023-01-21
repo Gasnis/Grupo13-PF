@@ -14,8 +14,9 @@
     height: 70px;
     align-items: center;
     flex-wrap: nowrap;
-    padding-inline:10px;
+    padding-inline:20px;
 }
+
 
 .ContainerNoHome {
     background-color:white;
@@ -37,6 +38,7 @@
 .link:link{
     margin-right: 10px;
     text-decoration: none;
+    color: #000000;
 }
 .link:visited{text-decoration: none;}
 
@@ -100,19 +102,27 @@
     height: 40px;
 
 }
+.random{
+    color: white;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
 
 .Img{
-    width: 40px;
-    height: 40px;
+    height: 60px;
     transition: all 0.5s ease;
     
 }
 
 .Img:hover{
-    width: 50px;
-    height: 50px;
-    transform: scale(0.5);
+    animation: spinning82341 1.7s linear infinite;
 }
+
+@keyframes spinning82341 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 /* The switch - the box around the slider */
 .switch {
@@ -185,6 +195,7 @@
     width: -moz-fit-content;
     width: fit-content;
     text-decoration: none;
+    
 }
 
 

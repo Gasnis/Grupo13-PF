@@ -54,41 +54,39 @@ export default function reducer (state = initialState, action) {
 
 
             case SORT_RATING:
-                let order = state.places
+                let order = state.allPlaces
+                console.log(action.payload)
                 console.log(order)
-                // if(action.payload === 'asc'){order = order.sort(
-                //         (p1, p2) => (p1.rating < p2.rating) ? 1 : (p1.rating > p2.rating) ? -1 : 0)}
-                
-                // if(action.payload === 'dec'){order = order.sort(
-                //         (p1, p2) => (p1.rating < p2.rating) ? -1 : (p1.rating > p2.rating) ? 1 : 0)}
-                
-                        if(action.payload === 'asc'){
-                    order = order.sort(function (a, b) {
-                        if (a.rating > b.rating) {
+
+                if(action.payload === "mejor"){
+                   order = order.sort(function (place1, place2) {
+                        if (place1.rating > place2.rating) {
                             return 1;
                             
                         }
-                        if (b.rating > a.rating) {
+                        if (place2.rating > place1.rating) {
                             return -1;
                         }
                         return 0
                     })
-                }
-                if(action.payload === "dec"){
-                    order = order.sort(function (a, b) {
-                        if (a.rating > b.rating) {
+                    console.log(order)
+                }else if(action.payload === "peor"){
+                        order = order.sort(function (place1, place2) {
+                        if (place1.rating > place2.rating) {
                             return -1;
                         }
-                        if (b.rating > a.rating) {
+                        if (place2.rating > place1.rating) {
                             return 1;
                         }
                         return 0
+                        
                     })
+                    console.log(order)
                 }
-    
+                console.log(order)
                 return {
                     ...state,
-                    places: order
+                    places: order,
                 }
 
 

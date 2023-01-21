@@ -22,8 +22,14 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: normal;
     padding: 10px;
+    transition: all 0.5s ease;
     
 }
+.place:hover {
+    transform: scale(1.09) rotate(2deg);
+    cursor: pointer;
+  }
+  
 
 .logo{
     border-radius: 15px;
@@ -39,9 +45,3 @@
     text-decoration: none;
     
 }
-
-.place:hover {
-    transform: scale(1.09) rotate(1deg);
-    cursor: pointer;
-  }
-  
