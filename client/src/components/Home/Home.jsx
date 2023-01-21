@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { filterCategory, sortRating } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
@@ -23,18 +24,51 @@ export default function Home() {
         }
     }, [dispatch])
 
-    const [currentPlaces, setCurrentPlaces] = useState(12)
+    const [currentPlaces, setCurrentPlaces] = useState(10)
 
 
     function handlePlace(e) {
         e.preventDefault()
-        setCurrentPlaces(currentPlaces + 6)
+        setCurrentPlaces(currentPlaces + 10)
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
 
+    const [order, setOrder] = useState("");
+
+    
+    const handlerCategory = (event) => {
+        event.preventDefault()
+        dispatch(filterCategory(event.target.value))
+    }
+
+    const handleFilteredOrder =(event) => {
+        event.preventDefault()
+        dispatch(sortRating(event.target.value))
+        setOrder(event.target.value)
+    }
     return (
         <div>
+              
+              <div>
+                <div>
+
+                <select className={style.filter} onChange={(event)=>handleFilteredOrder(event)}>
+                    <option value="best">Mejores</option>
+                    <option value="worst">Peores</option>
+                </select>
+
+                </div>
+                <div>
+                    <select className={style.filter} onChange={(event)=>handlerCategory(event)}>
+                        <option value="all">Todos</option>
+                        <option value="pub">Pubs</option>
+                        <option value="disco">Discotecas</option>
+                        <option value="bar">Bares</option>
+                    </select>
+                </div>
+            </div>
+       
             <Navbar home={true} />
             <div className={style.info}>
                 <div>
@@ -68,7 +102,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
+                    <button className={style.botonpaginado} onChange={handlePlace}>+</button>
                 </div>
 
             </div>
