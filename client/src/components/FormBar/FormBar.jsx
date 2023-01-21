@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { createPlace, getPlaceDetail } from '../../redux/actions';
 import styles from '../FormsStyles/forms.module.css';
+import { validation } from './ValidationFormBar';
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
@@ -29,7 +30,17 @@ export default function CreateLocal() {
         available: true,
     })
 
+    const [errors, setErrors] = useState({
+        image: "",
+    })
+
     const handleChange = (event) => {
+        setErrors(
+            validation({
+                ...local,
+                [event.target.name]: event.target.value
+            })
+        );
         setLocal({
             ...local,
             [event.target.name]: event.target.value
@@ -119,6 +130,7 @@ export default function CreateLocal() {
                                 onChange={handleChange}
                                 className={styles.input}
                             />
+                            {errors.image && <p>{errors.image}</p>}
                         </div>
 
                         <div >
@@ -314,7 +326,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={styles.registrarButton}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.event || !local.image || !local.location || !local.menu || !local.name || !local.petFriendly || !local.phone || !local.schedule}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule}
                         >Registrar local</button>
                     </form>
                 </div>

@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { createUser , getUser} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
-export const style = styles;
+import { validation } from './ValidationSignUp';
 
-export default function SignUp() {
+export default function SignUp(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -19,10 +19,20 @@ export default function SignUp() {
         phone: "",
         birthday: "",
         city: "",
-        image: ""
+    })
+
+    const [errors, setErrors] = useState({
+        id: "",
     })
 
     function handleChange(event) {
+        setErrors(
+                validation({
+                        ...signUp,
+                        [event.target.name]: event.target.value,
+                    })
+                );
+
         setSignUp({
             ...signUp,
             [event.target.name]: event.target.value
@@ -76,6 +86,7 @@ export default function SignUp() {
                     onChange={handleChange}
                     className={styles.input}
                 />
+                <div>{errors.id && <p>{errors.id}</p>}</div>
                 </div>
 
                 <div>
