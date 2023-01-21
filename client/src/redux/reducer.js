@@ -58,6 +58,19 @@ export default function reducer (state = initialState, action) {
                 console.log(action.payload)
                 console.log(order)
 
+                if(action.payload === "best"){
+                    order = order.sort(function (place1, place2) {
+                    if (place1.rating > place2.rating) {
+                        return -1;
+                    }
+                    if (place2.rating > place1.rating) {
+                        return 1;
+                    }
+                    return 0
+                    
+                    })
+                    console.log(order)
+                }
                 if(action.payload === "worst"){
                    order = order.sort(function (place1, place2) {
                         if (place1.rating > place2.rating) {
@@ -68,18 +81,6 @@ export default function reducer (state = initialState, action) {
                             return -1;
                         }
                         return 0
-                    })
-                    console.log(order)
-                }else if(action.payload === "best"){
-                        order = order.sort(function (place1, place2) {
-                        if (place1.rating > place2.rating) {
-                            return -1;
-                        }
-                        if (place2.rating > place1.rating) {
-                            return 1;
-                        }
-                        return 0
-                        
                     })
                     console.log(order)
                 }

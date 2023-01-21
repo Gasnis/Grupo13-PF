@@ -1,6 +1,6 @@
 import React ,{useState} from "react";
 import { useDispatch } from "react-redux";
-import { filterCategory, sortRating , getPlaces} from "../../redux/actions"
+import { filterCategory, sortRating} from "../../redux/actions"
 import style from "./filtros.module.css"
 
 export default function Filter() {
@@ -26,6 +26,7 @@ export default function Filter() {
                 <div>
 
                 <select className={style.filter} onChange={(event)=>handleFilteredOrder(event)}>
+                    <option value="all"></option>
                     <option value="mejor">Mejores</option>
                     <option value="peor">Peores</option>
                 </select>

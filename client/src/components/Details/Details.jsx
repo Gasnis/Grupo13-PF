@@ -30,7 +30,7 @@ export default function Detail () {
     if (!placeDetail.id){
         return(
         <div>
-            <h3>loading...</h3>
+            <img src="https://toppng.com/uploads/preview/404-error-error-404-transparent-11563210406bsmsusbbzi.pnghttps://img.freepik.com/premium-vector/404-error-page-found-minimalist-dark-concept-error-landing-page-web-page-missing_111925-131.jpg?w=2000" alt="" />
         </div>
         )
     }else{

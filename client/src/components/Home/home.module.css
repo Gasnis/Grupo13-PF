@@ -63,3 +63,24 @@
 .info{
     background-color: rgb(255, 255, 255);
 }
+
+.filtercontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.filter{
+    color: #ffffff;
+    padding: 0.5em 1.3em;
+    margin-inline: 35px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    border-style: none;
+    background: #6502ab;
+    box-shadow: 6px 6px 12px #7e01d7,
+                -6px -6px 12px #52008c;
+   }
