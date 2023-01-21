@@ -17,13 +17,13 @@ export default function Filter() {
     const handleFilteredOrder =(event) => {
         event.preventDefault()
         dispatch(sortRating(event.target.value))
-        setOrder("Sortered", event.target.value);
+        setOrder("sorted", event.target.value);
     }
     return (    <div>
                 <div>
                 <select className={style.filter} onChange={(e) => handleFilteredOrder(e)}>
-                  <option value="asc">A-Z</option>
-                  <option value="dec">Z-A</option>
+                  <option value="asc">Mejores</option>
+                  <option value="dec">Peores</option>
                 </select>
                 </div>
                 <div>
