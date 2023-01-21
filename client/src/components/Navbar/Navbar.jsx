@@ -57,7 +57,7 @@ export default function Navbar(props) {
                             
                         </Link>
 
-                        <Filtros/>
+                        
 
                     </div>
                     : null}
