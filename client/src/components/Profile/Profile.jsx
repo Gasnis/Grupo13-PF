@@ -10,10 +10,10 @@ import style from "./profile.module.css";
 
 export default function Detail () {
     const dispatch = useDispatch();
-    const {id} = useParams()
+
 
     useEffect(()=>{
-        dispatch(getUserByid(id));
+        dispatch(getUserByid(profile.id));
     },[])
 
     const profile = useSelector(state=>state.profile)
