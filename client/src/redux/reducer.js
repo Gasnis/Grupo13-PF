@@ -8,7 +8,7 @@ import {
     GET_USER_BY_ID,
     LOGOUT,
     SET_INPUT,
-    FILTER_ORDER
+    SORT_RATING
    
 } from "./actions"
 
@@ -53,34 +53,36 @@ export default function reducer (state = initialState, action) {
             }
 
 
-            case FILTER_ORDER:
-                let ordplaces = state.allPlaces;
-                if (action.payload === "asc") {
-                    ordplaces.sort((a, b) => {
-                    if (a.rating > b.rating) {
-                      return 1;
-                    }
-                    if (b.rating > a.rating) {
-                      return -1;
-                    }
-                    return 0;
-                  });
-                } else if (action.payload === "dec") {
-                    ordplaces.sort((a, b) => {
-                    if (a.rating > b.rating) {
-                      return -1;
-                    }
-                    if (b.rating > a.rating) {
-                      return 1;
-                    }
-                    return 0;
-                  });
+            case SORT_RATING:
+                let order = state.places
+                console.log(order)
+                if(action.payload === 'asc'){
+                    order = order.sort(function (a, b) {
+                        if (a.rating > b.rating) {
+                            return 1;
+                        }
+                        if (b.rating > a.rating) {
+                            return -1;
+                        }
+                        return 0
+                    })
                 }
+                if(action.payload === "dec"){
+                    order = order.sort(function (a, b) {
+                        if (a.rating > b.rating) {
+                            return -1;
+                        }
+                        if (b.rating > a.rating) {
+                            return 1;
+                        }
+                        return 0
+                    })
+                }
+    
                 return {
-                  ...state,
-                  places: ordplaces,
-                };
-
+                    ...state,
+                    places: order
+                }
 
 
         case GET_PLACE_DETAIL:
