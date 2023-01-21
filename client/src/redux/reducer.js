@@ -7,6 +7,7 @@ import {
     GET_USER,
     GET_USER_BY_ID,
     LOGOUT,
+    FILTER_ORDER
    
 } from "./actions"
 
@@ -57,6 +58,36 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 places: lugaresfiltrados 
             }
+
+
+            case FILTER_ORDER:
+                let ordplaces = state.allPlaces;
+                if (action.payload === "asc") {
+                    ordplaces.sort((a, b) => {
+                    if (a.rating > b.rating) {
+                      return 1;
+                    }
+                    if (b.rating > a.rating) {
+                      return -1;
+                    }
+                    return 0;
+                  });
+                } else if (action.payload === "dec") {
+                    ordplaces.sort((a, b) => {
+                    if (a.rating > b.rating) {
+                      return -1;
+                    }
+                    if (b.rating > a.rating) {
+                      return 1;
+                    }
+                    return 0;
+                  });
+                }
+                return {
+                  ...state,
+                  places: ordplaces,
+                };
+
 
 
         case GET_PLACE_DETAIL:

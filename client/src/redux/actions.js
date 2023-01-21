@@ -6,6 +6,7 @@ export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
+export const FILTER_ORDER ='FILTER_ORDER'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 
@@ -154,6 +155,15 @@ export const filterCategory = (payload) => {
 
     return {
         type: "FILTER_CATEGORY",
+        payload
+    }
+
+}
+
+export const filterOrder = (payload) => {
+
+    return {
+        type: "FILTER_ORDER",
         payload
     }
 
