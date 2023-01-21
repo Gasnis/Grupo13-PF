@@ -19,3 +19,9 @@ input {
 button {
   border: none;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:visited{text-decoration: none;}

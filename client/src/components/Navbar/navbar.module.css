@@ -33,9 +33,11 @@
     align-items: center;
 }
 
-.link{
+.link:link{
     margin-right: 10px;
+    text-decoration: none;
 }
+.link:visited{text-decoration: none;}
 
 .Container div{
     display: flex;
