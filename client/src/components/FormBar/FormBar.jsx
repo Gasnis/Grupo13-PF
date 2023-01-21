@@ -98,8 +98,12 @@ export default function CreateLocal() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const newLocal = await dispatch((createPlace(local)));
-        dispatch(getPlaceDetail(newLocal.id))
-        history.push(`/detail/${newLocal.id}`)
+        if (newLocal.id) {
+            dispatch(getPlaceDetail(newLocal.id))
+            history.push(`/detail/${newLocal.id}`)
+        } else {
+           alert(newLocal.response.data)
+        }
     }
 
 
@@ -177,102 +181,107 @@ export default function CreateLocal() {
                             />
                         </div>
 
-                        <h4 className={styles.subtitles}>Horarios</h4>
                         <div className={styles.scheduleContainer} >
-                            <div className={styles.weekdaysContainer}>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="lunes"
-                                        value="lunes"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Lunes
-                                </label>
+                            <h4 >Horarios</h4>
+                            <div className={styles.weekHours}>
+                                <div className={styles.weekdaysContainer}>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="lunes"
+                                            value="lunes"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Lunes
+                                    </label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="martes"
-                                        value="martes"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Martes
-                                </label>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="martes"
+                                            value="martes"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Martes
+                                    </label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="miercoles"
-                                        value="miercoles"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Miercoles</label>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="miercoles"
+                                            value="miercoles"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Miercoles</label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="jueves"
-                                        value="jueves"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Jueves</label>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="jueves"
+                                            value="jueves"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Jueves</label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="viernes"
-                                        value="viernes"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Viernes</label>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="viernes"
+                                            value="viernes"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Viernes</label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="sabado"
-                                        value="sabado"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Sabado</label>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="sabado"
+                                            value="sabado"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Sabado</label>
 
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        name="domingo"
-                                        value="domingo"
-                                        onChange={handleWeekdays}
-                                    ></input>
-                                    Domingo</label>
-                            </div>
+                                    <label className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name="domingo"
+                                            value="domingo"
+                                            onChange={handleWeekdays}
+                                        ></input>
+                                        Domingo</label>
+                                </div>
 
-                            <div className={styles.hoursContainer}>
-                                <label>Desde:</label>
-                                <select onChange={handleSchedule} className={styles.select}>
-                                    <option>Seleccione horario de apertura</option>
-                                    {horaApertura.map((hora) => {
-                                        return (
-                                            <option key={hora}>{hora}</option>
-                                        )
-                                    })}
-                                </select>
+                                <div className={styles.hoursContainer}>
+                                    <div>
+                                        <label className={styles.label}>Desde:</label>
+                                        <select onChange={handleSchedule} className={styles.selectHours}>
+                                            <option>Horario de apertura</option>
+                                            {horaApertura.map((hora) => {
+                                                return (
+                                                    <option key={hora}>{hora}</option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div>
 
-                                <label>Hasta:</label>
-                                <select onChange={handleSchedule} className={styles.select}>
-                                    <option>Seleccione horario de cierre</option>
-                                    {horaCierre.map((hora) => {
-                                        return (
-                                            <option key={hora}>{hora}</option>
-                                        )
-                                    })}
-                                </select>
-                            </div>
-                            <div >
+                                    <div>
+                                        <label className={styles.label}>Hasta:</label>
+                                        <select onChange={handleSchedule} className={styles.selectHours}>
+                                            <option> Horario de cierre</option>
+                                            {horaCierre.map((hora) => {
+                                                return (
+                                                    <option key={hora}>{hora}</option>
+                                                )
+                                            })}
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
                         <h4>¿Tu local tiene restricciones por edad?</h4>
-                        <select name="ageRange" onChange={handleAge} className={styles.input}>
+                        <select name="ageRange" onChange={handleAge} className={styles.select}>
                             <option value="" hidden>Selecciona las edades</option>
                             <option value="+18">+18</option>
                             <option value="+21">+21</option>
@@ -281,7 +290,7 @@ export default function CreateLocal() {
 
                         <div >
                             <h4>Categoria</h4>
-                            <select name="category" onChange={handleCategories} className={styles.input}>
+                            <select name="category" onChange={handleCategories} className={styles.select}>
                                 <option value="" hidden>Selecciona el tipo de local que mas coincida con el tuyo</option>
                                 <option value="disco">Discoteca</option>
                                 <option value="bar">Bar</option>
@@ -300,26 +309,29 @@ export default function CreateLocal() {
                             />
                         </div>
 
-                        <div >
-                            <label>
-                                En tu local se realizan eventos(ej: shows en vivo)
-                                <input
-                                    type='checkbox'
-                                    value={local.event}
-                                    name="event"
-                                    onChange={handleEvent}
-                                />
-                            </label>
-                        </div>
+                        <div className={styles.petFriendlyEventos}>
+                            <div >
+                                <label>
+                                    En tu local se realizan eventos(ej: shows en vivo)
+                                    <input
+                                        type='checkbox'
+                                        value={local.event}
+                                        name="event"
+                                        onChange={handleEvent}
+                                    />
+                                </label>
+                            </div>
 
-                        <div >
-                            <label>Tu local es pet friendly?</label>
-                            <input
-                                type='checkbox'
-                                value={local.petFriendly}
-                                name="petFriendly"
-                                onChange={handlePetFriendly}
-                            />
+                            <div >
+                                <label>Tu local es pet friendly?
+                                    <input
+                                        type='checkbox'
+                                        value={local.petFriendly}
+                                        name="petFriendly"
+                                        onChange={handlePetFriendly}
+                                    />
+                                </label>
+                            </div>
                         </div>
 
                         <button
