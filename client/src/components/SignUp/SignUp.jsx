@@ -52,7 +52,7 @@ export default function SignUp(props) {
                 birthday: "",
                 city: "",
             })
-            history.push(`/profile/${newUser.id}`)
+            history.push(`/profile`)
             dispatch(getUser(newUser.id))
         } else {
             alert(newUser.response.data)

@@ -1,5 +1,5 @@
 .h1{
-    color: white;
+    color: rgb(255, 255, 255);
     margin:8px;
 }
 
@@ -8,7 +8,7 @@
 }
 
 .Container {
-    background-color:#660BAD;
+    background-image: linear-gradient(79deg, #9cb6fe, #660BAD 40%);
     display: flex;
     justify-content: space-between;
     height: 70px;
@@ -185,7 +185,7 @@
     background-color: rgb(247, 247, 247);
     justify-content: center;
     border-radius: 9px 0px 9px 9px;
-    padding: 10px;
+    padding: 30px;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     color: black;
     text-shadow: 2px 2px 2px #0c0c0c33;
@@ -195,7 +195,13 @@
     width: -moz-fit-content;
     width: fit-content;
     text-decoration: none;
+    transition: 1s;
     
+}
+.titulos{
+    
+    margin-bottom: 10px;
+    color: #000000;
 }
 
 
@@ -217,7 +223,7 @@
     font-size: 14px;
     font-weight: 600;
     color: rgb(0, 0, 0);
-    border: 3px solid rgb(171, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     cursor: pointer;
     position: relative;
     background-color: transparent;
@@ -225,6 +231,8 @@
     overflow: hidden;
     z-index: 1;
     font-family: inherit;
+    border-radius: 15px;
+    margin-top: 10px;
    }
    
    .logout::before {
@@ -234,7 +242,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(186, 0, 0);
+    background-color: rgba(243, 3, 3, 0.863);
     transform: translateX(-100%);
     transition: all .3s;
     z-index: -1;
