@@ -102,7 +102,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onChange={handlePlace}>+</button>
+                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>
