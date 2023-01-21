@@ -189,3 +189,36 @@
 .imagenprofile:hover{
     cursor: pointer;
 }
+
+.logout {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    border: 3px solid rgb(171, 0, 0);
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+   }
+   
+   .logout::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(186, 0, 0);
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+   .logout:hover::before {
+    transform: translateX(0);
+   }

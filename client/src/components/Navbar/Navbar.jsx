@@ -94,7 +94,7 @@ export default function Navbar(props) {
                                     <Link to="/newplace">Create a Bar</Link>
                                 </div>
                                 <div>
-                                    <button onClick={handleLogOut}>Logout</button>
+                                    <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
                                 </div>
                             </div>
                         ) : null
