@@ -17,19 +17,17 @@ export default function Navbar(props) {
     const places = useSelector(state=>state.places);
     const dispatch = useDispatch();
 
-    const handleChange = (e) => {
-        dispatch(setInput((e.target.value)))
-    }
-
-    useEffect(()=>{
-        dispatch(searchPlace(searchInput))
-    },[searchInput])
-
+    
     const [open, setOpen] = useState(false);
-
+    
     const handleOpen = () => {
         setOpen(!open);
     };
+    
+    const handleSearchBar = (e) => {
+        dispatch(setInput(e.target.value))
+        dispatch(searchPlace(searchInput))
+    }
 
     const handleLogOut = () => {
         dispatch(logout());
@@ -45,7 +43,7 @@ export default function Navbar(props) {
             </div>
             {isHome ?
                 <div>
-                    <input className={style.searchbar} value={searchInput} onChange={handleChange} type="search" placeholder="Busca tu bar" />
+                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
                 </div>
                 : null}
             <div>

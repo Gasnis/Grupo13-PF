@@ -19,13 +19,10 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPlaces())
 
-        return () => {
-            dispatch(setInput(""))
-        }
     }, [dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(10)
-    const [order, setOrder] = useState("best");
+    const [order, setOrder] = useState("");
 
 
     function handlePlace(e) {
@@ -34,35 +31,37 @@ export default function Home() {
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
-    
 
 
-    
+
+
     const handlerCategory = (event) => {
         event.preventDefault()
         dispatch(filterCategory(event.target.value))
     }
 
-    const handleFilteredOrder =(event) => {
+    const handleFilteredOrder = (event) => {
         event.preventDefault()
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
+
+
     return (
         <div>
-              
-              <div>
+
+            <Navbar home={true} />
+            <div className={style.filtercontainer}>
                 <div>
-
-                <select className={style.filter} onChange={(event)=>handleFilteredOrder(event)}>
-                    <option value="All">Rating</option>
-                    <option value="best">Mejores</option>
-                    <option value="worst">Peores</option>
-                </select>
-
+                    <select className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                        <option value="all">Rating</option>
+                        <option value="best">Mejores</option>
+                        <option value="worst">Peores</option>
+                    </select>
                 </div>
+
                 <div>
-                    <select className={style.filter} onChange={(event)=>handlerCategory(event)}>
+                    <select className={style.filter} onChange={(event) => handlerCategory(event)}>
                         <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
@@ -70,8 +69,6 @@ export default function Home() {
                     </select>
                 </div>
             </div>
-       
-            <Navbar home={true} />
             <div className={style.info}>
                 <div>
                     {
@@ -87,18 +84,18 @@ export default function Home() {
 
                                 })
                             :
-                            searchInput?
+                            searchInput ?
                                 <div>
                                     <h1>No hay sitios con este nombre</h1>
                                 </div>
                                 :
-                                <div className={style.spinercontainer}> 
+                                <div className={style.spinercontainer}>
                                     <div className={style.spinner}>
                                         <div className={style.spinner1}></div>
                                     </div>
                                 </div>
 
-                               
+
 
                     }
                 </div>
