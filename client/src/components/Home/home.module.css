@@ -68,19 +68,27 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 5px;
+    padding: 2px;
     align-items: center;
     flex-wrap: nowrap;
+    background-color: rgb(228, 228, 228);
+    
 }
 
 .filter{
-    color: #ffffff;
-    padding: 0.5em 1.3em;
-    margin-inline: 35px;
-    font-size: 18px;
+    color: #797979;
+    padding: 0.7em 1.7em;
+    margin: 10px;
+    font-size: 12px;
     border-radius: 0.5em;
-    border-style: none;
-    background: #6502ab;
-    box-shadow: 6px 6px 12px #7e01d7,
-                -6px -6px 12px #52008c;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+
    }
+.filter:hover{
+    color: #515151;
+    cursor:pointer;
+}

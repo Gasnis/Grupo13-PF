@@ -179,7 +179,7 @@
 .dropdown{
     position: absolute;
     top: 60px;
-    right: 23px;
+    right: 38px;
     flex-direction: column;
     flex-wrap: nowrap;
     background-color: rgb(247, 247, 247);
@@ -204,6 +204,7 @@
     width: 40px;
     margin-inline: 15px;
     border-radius: 10px;
+    border-style: 3px solid ;
 }
 
 .imagenprofile:hover{

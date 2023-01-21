@@ -45,6 +45,12 @@ export default function Home() {
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
+    
+    const refresh= (event) => {
+        event.preventDefault();
+        dispatch(getPlaces());
+
+    }
 
 
     return (
@@ -52,6 +58,9 @@ export default function Home() {
 
             <Navbar home={true} />
             <div className={style.filtercontainer}>
+                <div>
+                    <button className={style.filter} onClick={refresh}>Limpiar</button>
+                </div>
                 <div>
                     <select className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
                         <option value="all">Rating</option>
@@ -62,7 +71,7 @@ export default function Home() {
 
                 <div>
                     <select className={style.filter} onChange={(event) => handlerCategory(event)}>
-                        <option value="all">Categoría</option>
+                        <option disabled value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
