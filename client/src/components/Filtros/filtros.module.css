@@ -1,3 +1,16 @@
+.filter{
+    color: #ffffff;
+    padding: 0.5em 1.3em;
+    margin-inline: 35px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    border-style: none;
+    background: #6502ab;
+    box-shadow: 6px 6px 12px #7e01d7,
+                -6px -6px 12px #52008c;
+   }
+
+
 .dropdown {
     position: relative;
     perspective: 200px;

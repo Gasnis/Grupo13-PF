@@ -5,9 +5,14 @@ export const GET_PLACE_DETAIL = "GET_PLACE_DETAIL";
 export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
-export const FILTER_PLACES = "FILTER_PLACES";
+export const FILTER_CATEGORY = "FILTER_CATEGORY";
+export const SORT_RATING ='SORT_RATING'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
+export const SET_INPUT = "SET_INPUT";
+
+
+
 
 
 export const getPlaces = () => {
@@ -45,7 +50,10 @@ export const searchPlace = (input) => {
                 payload: data
             })
         } catch (error) {
-            return error;
+            dispatch({
+                type: SEARCH_PLACE,
+                payload: []
+            })
         }
     }
 }
@@ -109,8 +117,12 @@ export const createUser = (user) => {
 
 export const createPlace = (place) => {
     return async () => {
-        const { data } = await axios.post(`/local`, place);
-        return data;
+        try {
+            const { data } = await axios.post(`/local`, place);
+            return data;
+        } catch(error) {
+            return error;
+        }
     }
 }
 
@@ -151,14 +163,31 @@ export const disablePlace = (idPlace, status) => {
 }
 
 
-export const filterPlaces = (data) => {
-    return async (dispatch) => {
-        return dispatch({
-            type: FILTER_PLACES,
-            payload: data,
-        })
+export const filterCategory = (payload) => {
+
+    return {
+        type: "FILTER_CATEGORY",
+        payload
+    }
+
+}
+
+export const sortRating = (payload) => {
+
+    return {
+        type: "SORT_RATING",
+        payload
+    }
+
+}
+
+export const setInput = (payload) => {
+    return {
+        type: "SET_INPUT",
+        payload
     }
 }
+
 
 export const logout = () => {
     return {

@@ -2,9 +2,11 @@ const {User, Local, Book} = require("../../db")
 
 
 const postUserData = async (userData) => {
-    const {id,name,password,phone,image,birthday,city } = userData
-
-    if(id && name && password && phone &&image && birthday &&city ){
+    let {id,name,password,phone,image,birthday,city } = userData
+    if (!image){
+        image = "https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"
+    }
+    if(id && name && password && phone &&image && birthday && city ){
         const searchUser = await User.findOne({
             where:{id: id}
         })

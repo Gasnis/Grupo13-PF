@@ -3,10 +3,12 @@ import {
     SEARCH_PLACE,
     GET_PLACE_DETAIL,
     GET_PLACES,
-    FILTER_PLACES,
+    FILTER_CATEGORY,
     GET_USER,
     GET_USER_BY_ID,
-    LOGOUT
+    LOGOUT,
+    SET_INPUT,
+    SORT_RATING
    
 } from "./actions"
 
@@ -17,11 +19,16 @@ const initialState = {
     placeDetail: {},
     profile: {},
     allUsers: [],
+    searchInput: "",
 }
 
 export default function reducer (state = initialState, action) {
     switch(action.type){
-    
+        case SET_INPUT:
+            return {
+                ...state,
+                searchInput: action.payload
+            }
         case GET_PLACES:
             return{
                 ...state,
@@ -33,11 +40,54 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 places: action.payload,
             }
-        case FILTER_PLACES:
+
+        case FILTER_CATEGORY:
+
+            const filteredplaces = action.payload === "all" ? state.allPlaces 
+            :
+            state.allPlaces.filter(p => p.category === action.payload)
+            
             return {
                 ...state,
-                places: action.payload,
+                places: filteredplaces, 
             }
+
+
+            case SORT_RATING:
+                let order = state.places
+
+                if(action.payload === "best"){
+                    order = order.sort(function (place1, place2) {
+                    if (place1.rating > place2.rating) {
+                        return -1;
+                    }
+                    if (place2.rating > place1.rating) {
+                        return 1;
+                    }
+                    return 0
+                    
+                    })
+                  
+                }
+                if(action.payload === "worst"){
+                   order = order.sort(function (place1, place2) {
+                        if (place1.rating > place2.rating) {
+                            return 1;
+                            
+                        }
+                        if (place2.rating > place1.rating) {
+                            return -1;
+                        }
+                        return 0
+                    })
+            
+                }
+               
+                return {
+                    ...state,
+                    places: order,
+                }
+
 
         case GET_PLACE_DETAIL:
             return {

@@ -1,12 +1,94 @@
-.botonpaginado{
-    color: rgb(0, 0, 0);
-}
+.botonpaginado {
+    width: 130px;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #171717;
+    color: #fff;
+    border: none;
+    margin: 20px;
+    border-radius: 5px;
+    transition: all .4s;
+   }
+   
+   .botonpaginado:hover {
+    border-radius: 5px;
+    transform: translateY(-10px);
+    box-shadow: 0 7px 0 -2px #f859d8,
+     0 15px 0 -4px #39a2db,
+     0 16px 10px -3px #39a2db;
+   }
+   
+   .botonpaginado:active {
+    transition: all 0.2s;
+    transform: translateY(-5px);
+    box-shadow: 0 2px 0 -2px #f859d8,
+     0 8px 0 -4px #39a2db,
+     0 12px 10px -3px #39a2db;
+   }
 
-.loading{
-    color: black;
-    margin: 0px;
-}
-
+   .spinercontainer{
+    justify-content: center;
+    align-items: center;
+   }
+   .spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+    background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
+    width: 100px;
+    height: 100px;
+    animation: spinning82341 1.7s linear infinite;
+    text-align: center;
+    border-radius: 50px;
+    filter: blur(1px);
+    box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+  }
+  
+  .spinner1 {
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    filter: blur(10px);
+  }
+  
+  @keyframes spinning82341 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+   
 .info{
     background-color: rgb(255, 255, 255);
+}
+
+.filtercontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2px;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: rgb(228, 228, 228);
+    
+}
+
+.filter{
+    color: #797979;
+    padding: 0.7em 1.7em;
+    margin: 10px;
+    font-size: 12px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+
+   }
+.filter:hover{
+    color: #515151;
+    cursor:pointer;
 }

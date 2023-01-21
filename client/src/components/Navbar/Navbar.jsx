@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux"
+import React, { useEffect, useState } from "react";
+import { useDispatch , useSelector} from "react-redux"
 import style from "./navbar.module.css"
-import search from "../../utils/search.png"
 import beer from "../../utils/beer.png"
-import location from "../../utils/location.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
-import { searchPlace } from "../../redux/actions";
+import { searchPlace, setInput } from "../../redux/actions";
 import Filtros from "../Filtros/filtros"
 import { Link } from "react-router-dom"
 import { logout } from "../../redux/actions";
@@ -14,27 +12,25 @@ import { logout } from "../../redux/actions";
 
 export default function Navbar(props) {
     const isHome = props.home;
-    const [input, setInput] = useState("");
+    const profile = useSelector(state => state.profile)
+    const searchInput = useSelector(state=>state.searchInput);
+    const places = useSelector(state=>state.places);
     const dispatch = useDispatch();
-    const handleSearch = (e) => {
-        e.preventDefault();
-        dispatch(searchPlace(input));
-    }
 
-    const handleChange = (e) => {
-        setInput(e.target.value)
-    }
-
-
+    
     const [open, setOpen] = useState(false);
-
+    
     const handleOpen = () => {
         setOpen(!open);
     };
+    
+    const handleSearchBar = (e) => {
+        dispatch(setInput(e.target.value))
+        dispatch(searchPlace(searchInput))
+    }
 
     const handleLogOut = () => {
         dispatch(logout());
-        alert("Sesión finalizada")
     }
 
 
@@ -47,27 +43,19 @@ export default function Navbar(props) {
             </div>
             {isHome ?
                 <div>
-                    <input className={style.input} value={input} onChange={handleChange} type="search" placeholder="Buscar bares, boliches y más" />
-                    <button onClick={handleSearch} className={style.Button}>
-                        <img className={style.Img} src={search} alt="" />
-                    </button>
-                    <button className={style.Button}>
-                        <img className={style.Img} src={location} alt="" />
-                    </button>
-                    <button className={style.Button}>
-                        <img className={style.Img} src={roulette} alt="" />
-                    </button>
+                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
                 </div>
                 : null}
             <div>
                 {isHome ?
                     <div>
-                        <button className={style.Button}>Ordenar</button>
+                        <h5 className={style.random}>Random?</h5>
+                        <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
+                        <img className={style.Img} src={roulette} alt="" />
+                            
+                        </Link>
 
-                        <button className={style.Button}>
-                            <Filtros></Filtros>
-                        </button>
-                        <button className={style.Button}>Ingresar</button>
+                        
 
                     </div>
                     : null}
@@ -75,29 +63,40 @@ export default function Navbar(props) {
                     <input type="checkbox" />
                     <span className={style.slider}></span>
                 </label>
-
                 <div>
-                    <img src="https://i.pinimg.com/474x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg" alt="" className={style.imagenprofile} onClick={handleOpen}/>
-                    {open ? (
-                        <div className={style.dropdown}>
-                            <div>
-                                <Link to="/login">Login</Link>
+                    <div>
+                        <img src={profile.id?profile.image:"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
+                        {!profile.id &&
+                        open ? (
+                            <div className={style.dropdown}>
+                                <div>
+                                    <Link to="/login">Login</Link>
+                                </div>
+                                <div>
+                                    <Link to="/sign-up">Register</Link>
+                                </div>
                             </div>
-                            <div>
-                                <Link to="/sign-up">Register</Link>
+                        ) : null
+                        } 
+                    </div>
+                    <div>
+                        {profile.id && 
+                            open ? (
+                            <div className={style.dropdown}>
+                                <div>
+                                    <Link to={`/profile`}>My Profile</Link>
+                                </div>
+                                <div>
+                                    <Link to="/newplace">Create a Bar</Link>
+                                </div>
+                                <div>
+                                    <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
+                                </div>
                             </div>
-                            <div>
-                                <Link to="/newplace">Create a Bar</Link>
-                            </div>
-                            <div>
-                                <button onClick={handleLogOut}>Logout</button>
-                            </div>
-                        </div>
-                    ) : null}
+                        ) : null
+                        }
+                    </div>
                 </div>
-
-
-
             </div>
         </div>
     )

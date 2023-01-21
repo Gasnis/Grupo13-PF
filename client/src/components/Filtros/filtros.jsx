@@ -1,81 +1,81 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { filterPlaces, getPlaceDetail } from "../../redux/actions"
+import React ,{useState} from "react";
+import { useDispatch } from "react-redux";
+import { filterCategory, sortRating} from "../../redux/actions"
 import style from "./filtros.module.css"
 import arrow from "../../utils/arrow.svg"
 
-export default function Detail(props) {
-    // const { id } = useParams();
+export default function Filter() {
+
     const dispatch = useDispatch();
-    const [stateDropdown, setDropdown] = useState(false);
-    const [disco, setDisco] = useState(false);
-    const [bar, setBar] = useState(false);
-    const [pub, setPub] = useState(false);
-    // useEffect(() => {
-    //     dispatch(getPlaceDetail(id));
-    // }, [])
 
-    const allPlaces = useSelector(state => state.allPlaces)
-    const showPlaces = useSelector(state => state.places)
+    const [order, setOrder] = useState("");
 
-
-
-    const handlerDropdownClicked = () => {
-        setDropdown(!stateDropdown)
-        document.getElementById("dropdown").classList.add("open")
+    
+    const handlerCategory = (event) => {
+        event.preventDefault()
+        dispatch(filterCategory(event.target.value))
     }
 
-    const handlerCategory = (filter) => {
-        if (filter === "disco") setDisco(!disco);
-        if (filter === "bar") setBar(!bar);
-        if (filter === "pub") setPub(!pub);
-        console.log(filter)
-        const filtered = [];
-        if (disco) {
-            filtered.push(allPlaces.filter(ele => ele.category === "disco"))
-        } else if (bar) {
-            filtered.push(allPlaces.filter(ele => ele.category === "bar"))
-        } else if (pub) {
-            filtered.push(allPlaces.filter(ele => ele.category === "pub"))
-        }
-        
-        dispatch(filterPlaces(filtered))
+    const handleFilteredOrder =(event) => {
+        event.preventDefault()
+        dispatch(sortRating(event.target.value))
+        setOrder(event.target.value)
     }
-    return (
-        <>
-            <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
-                <button onClick={() => handlerDropdownClicked()}>
-                    Filtrar <img src={arrow}></img>
-                </button>
-                <div id="menu" className={style.menu}>
-                    <div id="menuinner" className={style.menuinner}>
-                        <div className={style.containerCheck}>
-                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("disco")} id="disco" />
-                            <label htmlFor="disco">Discoteca</label>
-                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("bar")} id="bar" />
-                            <label htmlFor="bar">Bar</label>
-                            <input className={style.check} type="checkbox" onClick={() => handlerCategory("pub")} id="pub" />
-                            <label htmlFor="pub">Pub</label>
-                        </div>
-                        {/* <div className={style.mainmenu}>
-                            <button
-                                onClick={handlerSubMenuClicked("mytools")}>
-                                <span>build</span>Tools
-                                <span>cevron_right</span>
-                            </button>
-                        </div>
-                        <div id="mytools" className="submenu">
-                            <button
-                                onClick={handlerSubMenuClicked()}>
-                                <span> arrow_back</span>Tools
-                            </button>
-                        </div> */}
-                    </div>
+// <<<<<<< HEAD
+//     return (
+//         <>
+//             <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
+//                 <button onClick={() => handlerDropdownClicked()}>
+//                     Filtrar <img src={arrow}></img>
+//                 </button>
+//                 <div id="menu" className={style.menu}>
+//                     <div id="menuinner" className={style.menuinner}>
+//                         <div className={style.containerCheck}>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("disco")} id="disco" />
+//                             <label htmlFor="disco">Discoteca</label>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("bar")} id="bar" />
+//                             <label htmlFor="bar">Bar</label>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("pub")} id="pub" />
+//                             <label htmlFor="pub">Pub</label>
+//                         </div>
+//                         {/* <div className={style.mainmenu}>
+//                             <button
+//                                 onClick={handlerSubMenuClicked("mytools")}>
+//                                 <span>build</span>Tools
+//                                 <span>cevron_right</span>
+//                             </button>
+//                         </div>
+//                         <div id="mytools" className="submenu">
+//                             <button
+//                                 onClick={handlerSubMenuClicked()}>
+//                                 <span> arrow_back</span>Tools
+//                             </button>
+//                         </div> */}
+//                     </div>
+// =======
+
+    return (    
+            <div>
+                <div>
+
+                <select className={style.filter} onChange={(event)=>handleFilteredOrder(event)}>
+                    <option value="all"></option>
+                    <option value="mejor">Mejores</option>
+                    <option value="peor">Peores</option>
+                </select>
+
+                </div>
+                <div>
+                    <select className={style.filter} onChange={(event)=>handlerCategory(event)}>
+                        <option value="all">Todos</option>
+                        <option value="pub">Pubs</option>
+                        <option value="disco">Discotecas</option>
+                        <option value="bar">Bares</option>
+                    </select>
+{/* >>>>>>> main */}
                 </div>
             </div>
-        </>
+       
     )
 }
 
