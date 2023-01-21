@@ -53,13 +53,11 @@ export default function Navbar(props) {
             <div>
                 {isHome ?
                     <div>
-                        <button className={style.Button}>
+                        <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
                             <img className={style.Img} src={roulette} alt="" />
-                        </button>
+                        </Link>
 
-                        
-                        <Filtros></Filtros>
-                        
+                        <Filtros/>
 
                     </div>
                     : null}

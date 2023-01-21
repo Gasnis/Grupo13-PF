@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import { useDispatch } from "react-redux";
 import { filterCategory, sortRating } from "../../redux/actions"
 import style from "./filtros.module.css"
@@ -6,7 +6,8 @@ import style from "./filtros.module.css"
 export default function Filter() {
 
     const dispatch = useDispatch();
-    const [order, setOrder] = React.useState("")
+    const [order, setOrder] = useState("")
+    console.log(order)
     
     const handlerCategory = (event) => {
         event.preventDefault()

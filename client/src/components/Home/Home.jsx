@@ -23,12 +23,12 @@ export default function Home() {
         }
     }, [dispatch])
 
-    const [currentPlaces, setCurrentPlaces] = useState(10)
+    const [currentPlaces, setCurrentPlaces] = useState(12)
 
 
     function handlePlace(e) {
         e.preventDefault()
-        setCurrentPlaces(currentPlaces + 10)
+        setCurrentPlaces(currentPlaces + 6)
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
@@ -68,7 +68,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onChange={handlePlace}>+</button>
+                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>
