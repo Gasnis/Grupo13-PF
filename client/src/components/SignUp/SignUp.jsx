@@ -139,7 +139,7 @@ export default function SignUp(props) {
                     <button 
                         type="submit" 
                         id="signUpButton"
-                        disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday}
+                        disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday || errors.id}
                         className={styles.submitButton}
                     >Registrarse</button>
                     {/* <h4>Ingresar con Google</h4> */}
