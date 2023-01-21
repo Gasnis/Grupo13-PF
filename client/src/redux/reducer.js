@@ -56,10 +56,17 @@ export default function reducer (state = initialState, action) {
             case SORT_RATING:
                 let order = state.places
                 console.log(order)
-                if(action.payload === 'asc'){
+                // if(action.payload === 'asc'){order = order.sort(
+                //         (p1, p2) => (p1.rating < p2.rating) ? 1 : (p1.rating > p2.rating) ? -1 : 0)}
+                
+                // if(action.payload === 'dec'){order = order.sort(
+                //         (p1, p2) => (p1.rating < p2.rating) ? -1 : (p1.rating > p2.rating) ? 1 : 0)}
+                
+                        if(action.payload === 'asc'){
                     order = order.sort(function (a, b) {
                         if (a.rating > b.rating) {
                             return 1;
+                            
                         }
                         if (b.rating > a.rating) {
                             return -1;
