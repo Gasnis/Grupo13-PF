@@ -25,6 +25,7 @@ export default function Home() {
     }, [dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(10)
+    const [order, setOrder] = useState("best");
 
 
     function handlePlace(e) {
@@ -33,8 +34,8 @@ export default function Home() {
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
+    
 
-    const [order, setOrder] = useState("");
 
     
     const handlerCategory = (event) => {
@@ -54,6 +55,7 @@ export default function Home() {
                 <div>
 
                 <select className={style.filter} onChange={(event)=>handleFilteredOrder(event)}>
+                    <option value="All">Rating</option>
                     <option value="best">Mejores</option>
                     <option value="worst">Peores</option>
                 </select>
@@ -61,7 +63,7 @@ export default function Home() {
                 </div>
                 <div>
                     <select className={style.filter} onChange={(event)=>handlerCategory(event)}>
-                        <option value="all">Todos</option>
+                        <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
