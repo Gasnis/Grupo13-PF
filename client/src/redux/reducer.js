@@ -55,8 +55,6 @@ export default function reducer (state = initialState, action) {
 
             case SORT_RATING:
                 let order = state.places
-                console.log(action.payload)
-                console.log(order)
 
                 if(action.payload === "best"){
                     order = order.sort(function (place1, place2) {
@@ -69,7 +67,7 @@ export default function reducer (state = initialState, action) {
                     return 0
                     
                     })
-                    console.log(order)
+                  
                 }
                 if(action.payload === "worst"){
                    order = order.sort(function (place1, place2) {
@@ -82,9 +80,9 @@ export default function reducer (state = initialState, action) {
                         }
                         return 0
                     })
-                    console.log(order)
+            
                 }
-                console.log(order)
+               
                 return {
                     ...state,
                     places: order,
