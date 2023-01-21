@@ -90,7 +90,7 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 5
+		"rating": 3
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -107,7 +107,7 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 5
+		"rating": 4
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -124,7 +124,7 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
-		"rating": 5
+		"rating": 1
 	},
 {
 		"userId":"gersio.zampieri@gmail.com",
@@ -159,7 +159,7 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
-		"rating": 5
+		"rating": 3
 	}
 ]
 

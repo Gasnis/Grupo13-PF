@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useDispatch } from "react-redux";
 import { filterCategory } from "../../redux/actions"
 import style from "./filtros.module.css"
@@ -13,6 +14,12 @@ export default function Filter() {
     }
     return (
                 <div>
+                      <select
+                  onChange={(e) => handleFilteredOrder(e)}
+                >
+                  <option value="asc">A-Z</option>
+                  <option value="dec">Z-A</option>
+                </select>
                     <select className={style.filter} onChange={handlerCategory}>
                         <option value="all">Todos</option>
                         <option value="pub">Pubs</option>

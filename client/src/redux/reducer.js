@@ -7,7 +7,8 @@ import {
     GET_USER,
     GET_USER_BY_ID,
     LOGOUT,
-    SET_INPUT
+    SET_INPUT,
+    FILTER_ORDER
    
 } from "./actions"
 
@@ -41,6 +42,7 @@ export default function reducer (state = initialState, action) {
             }
 
         case FILTER_CATEGORY:
+
             const filteredplaces = action.payload === "all" ? state.allPlaces 
             :
             state.allPlaces.filter(p => p.category === action.payload)
@@ -49,6 +51,37 @@ export default function reducer (state = initialState, action) {
                 ...state,
                 places: filteredplaces, 
             }
+
+
+            case FILTER_ORDER:
+                let ordplaces = state.allPlaces;
+                if (action.payload === "asc") {
+                    ordplaces.sort((a, b) => {
+                    if (a.rating > b.rating) {
+                      return 1;
+                    }
+                    if (b.rating > a.rating) {
+                      return -1;
+                    }
+                    return 0;
+                  });
+                } else if (action.payload === "dec") {
+                    ordplaces.sort((a, b) => {
+                    if (a.rating > b.rating) {
+                      return -1;
+                    }
+                    if (b.rating > a.rating) {
+                      return 1;
+                    }
+                    return 0;
+                  });
+                }
+                return {
+                  ...state,
+                  places: ordplaces,
+                };
+
+
 
         case GET_PLACE_DETAIL:
             return {

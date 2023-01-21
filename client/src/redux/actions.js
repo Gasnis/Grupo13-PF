@@ -6,17 +6,14 @@ export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
 export const FILTER_CATEGORY = "FILTER_CATEGORY";
+export const FILTER_ORDER ='FILTER_ORDER'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
 
 
-export const setInput = (payload) => {
-    return {
-        type: SET_INPUT,
-        payload
-    }
-}
+
+
 
 export const getPlaces = () => {
     return async (dispatch) => {
@@ -174,6 +171,23 @@ export const filterCategory = (payload) => {
     }
 
 }
+
+export const filterOrder = (payload) => {
+
+    return {
+        type: "FILTER_ORDER",
+        payload
+    }
+
+}
+
+export const setInput = (payload) => {
+    return {
+        type: SET_INPUT,
+        payload
+    }
+}
+
 
 export const logout = () => {
     return {
