@@ -9,6 +9,11 @@ export const FILTER_CATEGORY = "FILTER_CATEGORY";
 export const FILTER_ORDER ='FILTER_ORDER'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
+export const SET_INPUT = "SET_INPUT";
+
+
+
+
 
 export const getPlaces = () => {
     return async (dispatch) => {
@@ -45,7 +50,10 @@ export const searchPlace = (input) => {
                 payload: data
             })
         } catch (error) {
-            return error;
+            dispatch({
+                type: SEARCH_PLACE,
+                payload: []
+            })
         }
     }
 }
@@ -109,8 +117,12 @@ export const createUser = (user) => {
 
 export const createPlace = (place) => {
     return async () => {
-        const { data } = await axios.post(`/local`, place);
-        return data;
+        try {
+            const { data } = await axios.post(`/local`, place);
+            return data;
+        } catch(error) {
+            return error;
+        }
     }
 }
 
@@ -167,6 +179,13 @@ export const filterOrder = (payload) => {
         payload
     }
 
+}
+
+export const setInput = (payload) => {
+    return {
+        type: SET_INPUT,
+        payload
+    }
 }
 
 

@@ -7,6 +7,7 @@ import {
     GET_USER,
     GET_USER_BY_ID,
     LOGOUT,
+    SET_INPUT,
     FILTER_ORDER
    
 } from "./actions"
@@ -18,11 +19,16 @@ const initialState = {
     placeDetail: {},
     profile: {},
     allUsers: [],
+    searchInput: "",
 }
 
 export default function reducer (state = initialState, action) {
     switch(action.type){
-    
+        case SET_INPUT:
+            return {
+                ...state,
+                searchInput: action.payload
+            }
         case GET_PLACES:
             return{
                 ...state,
@@ -36,27 +42,14 @@ export default function reducer (state = initialState, action) {
             }
 
         case FILTER_CATEGORY:
-            // let filterCategory = []
-            console.log(action.payload)
-            let lugaresfiltrados = state.allPlaces.filter(lugar => action.payload.includes(lugar.category))
 
-            // action.paylodoad.map(category => category === state.allPlaces.category)
-            // if(action.payload === 'bar'){
-            //     let filter = state.allPlaces.filter(place =>place.category === "bar")
-            //     filterCategory.push(filter)
-            // }
-            // if(action.payload === "pub"){
-            //     let filter =  state.allPlaces.filter( place => place.category === "pub")
-            //     filterCategory.push(filter)
-            // }
-            // if(action.payload === 'disco'){
-            //     let filter = state.allPlaces.filter(place => place.category === "disco")
-            //     filterCategory.push(filter)
-
+            const filteredplaces = action.payload === "all" ? state.allPlaces 
+            :
+            state.allPlaces.filter(p => p.category === action.payload)
             
             return {
                 ...state,
-                places: lugaresfiltrados 
+                places: filteredplaces, 
             }
 
 

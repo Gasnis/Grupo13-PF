@@ -9,24 +9,26 @@
 .formContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-items: center;
     background: #FFFFFF;
-    margin: 50px;
-    padding: 50px;
+    margin: 25px;
+    padding: 25px;
     border-radius: 25px;
     box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
     height: 100%;
-    width: 800px;
+    width: 500px;
 }
 
 .input {
     display: flex;
-    flex-direction: column;
-    margin: 30px;
-    padding: 15px;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 60px;
+    padding-left: 10px;
     background: #E7E7E7;
-    border-radius: 10px;
-    width: 90%;
+    border-radius: 7px;
+    width: 85%;
 }
 
 .linksContainer {
@@ -71,14 +73,6 @@
 
 
 .title {
-    font-size: 45px;
-    font-weight: bold;
-    font-family: 'Inter';
-    font-style: normal;
-    color: #660BAD;
-}
-
-.subtitles {
     font-size: 25px;
     font-weight: bold;
     font-family: 'Inter';
@@ -86,36 +80,90 @@
     color: #660BAD;
 }
 
+.subtitles {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #660BAD;
+}
+
+.label {
+    font-size: 15px;
+}
+
 .scheduleContainer {
+    margin-top: 20px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
-    background: #E7E7E7;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* background: #E7E7E7; */
     border-radius: 10px;
-    width: 90%;
 }
 
 .weekdaysContainer {
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: space-evenly;
     padding: 25px;
+    padding-right:30px;
+    align-items: flex-start;
+    width: 100px;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#E7E7E7;
+    border-radius: 5px;
 }
 
 .hoursContainer {
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    padding: 15px;
+    padding-top: 25px;
     gap: 20px;
+    width: 150px;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#E7E7E7;
+    border-radius: 5px;
 }
 
 .select {
     display: flex;
     flex-direction: column;
-    margin: 10px;
-    padding: 5px;
+    /* margin: 10px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
     background: #E7E7E7;
     border-radius: 10px;
-    width: 90%;
+    width: 98%;
+}
+
+.selectHours {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #E7E7E7;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.weekHours {
+    display: flex;
+    justify-content: center;
+}
+
+.petFriendlyEventos {
+    margin:15px;
+    gap: 10px;
 }

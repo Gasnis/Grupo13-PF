@@ -42,10 +42,16 @@
     align-items: center;
 }
 
-.input {
-    width: 300px;
-    height: 35px;
-    border-radius: 20px;
+.searchbar {
+    color: #000000;
+    padding: 0.5em 1.3em;
+    margin-inline: 35px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    border-style: none;
+    background: #ffffff;
+    box-shadow: 6px 6px 12px #7e01d7,
+                -6px -6px 12px #52008c;
 }
 
 .Button{
@@ -94,6 +100,7 @@
 
 .Img{
     height: 27px;
+    padding-inline:5px;
 }
 
 /* The switch - the box around the slider */
@@ -161,7 +168,7 @@
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     color: black;
     text-shadow: 2px 2px 2px #0c0c0c33;
-    font-size: 15px;
+    font-size: 20px;
     height: -moz-fit-content;
     height: fit-content;
     width: -moz-fit-content;
@@ -174,7 +181,7 @@
     height: 40px;
     width: 40px;
     margin-inline: 15px;
-    border-radius: 100px;
+    border-radius: 10px;
 }
 
 .imagenprofile:hover{

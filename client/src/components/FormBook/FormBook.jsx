@@ -86,8 +86,9 @@ export default function SignUp(props) {
     }
 
     return (
+        <>
+        <Navbar/>
         <div className={styles.container}>
-            <Navbar/>
             <div className={styles.formContainer}>
                 <h1 className={styles.title}>Hace tu reserva</h1>
                 <form onSubmit={handleSubmit}>
@@ -142,5 +143,6 @@ export default function SignUp(props) {
                 {reserved ? <h3 className={styles.title}>Successful booking</h3> : null}
             </div>
         </div>
+        </>
     )
 }

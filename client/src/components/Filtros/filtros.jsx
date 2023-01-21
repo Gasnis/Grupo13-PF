@@ -1,49 +1,33 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterCategory, filterOrder, getPlaces } from "../../redux/actions"
 
+import { useDispatch } from "react-redux";
+import { filterCategory } from "../../redux/actions"
+import style from "./filtros.module.css"
 
 export default function Filter() {
-      const dispatch = useDispatch();
-      const [order, setOrder] = useState("");
-      
-      useEffect(() => {
-        dispatch(getPlaces()); 
-      }, [dispatch]);
-      
-      function handleFilteredType(e) {
-        e.preventDefault();
-        dispatch(filterCategory(e.target.value));
-      }
-      
-      
-      function handleFilteredOrder(e) {
-        e.preventDefault();
-        dispatch(filterOrder(e.target.value));
-        setOrder(`Ordered ${e.target.value}`);
-        }
-      
 
-        return (
+    const dispatch = useDispatch();
 
-              <div>
-                <select
+    const handlerCategory = (event) => {
+        event.preventDefault()
+        dispatch(filterCategory(event.target.value))
+    }
+    return (
+                <div>
+                      <select
                   onChange={(e) => handleFilteredOrder(e)}
                 >
                   <option value="asc">A-Z</option>
                   <option value="dec">Z-A</option>
                 </select>
-
-                <select
-                  onChange={(e) => handleFilteredType(e)}
-                >
-                  <option value="all">All</option>
-                  <option value="pub">PUBs</option>
-                  <option value="disco">Discotecas</option>
-                  <option value="bar">Bares</option>
-                </select>          
-              </div>
-        );
-      }
+                    <select className={style.filter} onChange={handlerCategory}>
+                        <option value="all">Todos</option>
+                        <option value="pub">Pubs</option>
+                        <option value="disco">Discotecas</option>
+                        <option value="bar">Bares</option>
+                    </select>
+                </div>
+       
+    )
+}
 
