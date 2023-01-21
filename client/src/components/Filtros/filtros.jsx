@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { filterCategory, sortRating, } from "../../redux/actions"
+import { filterCategory, sortRating } from "../../redux/actions"
 import style from "./filtros.module.css"
 
 export default function Filter() {
@@ -19,12 +19,15 @@ export default function Filter() {
         dispatch(sortRating(event.target.value))
         setOrder("sorted", event.target.value);
     }
-    return (    <div>
+    return (    
+            <div>
                 <div>
+
                 <select className={style.filter} onChange={(e) => handleFilteredOrder(e)}>
                   <option value="asc">Mejores</option>
                   <option value="dec">Peores</option>
                 </select>
+
                 </div>
                 <div>
                     <select className={style.filter} onChange={handlerCategory}>
@@ -33,8 +36,8 @@ export default function Filter() {
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
                     </select>
-                    </div>
                 </div>
+            </div>
        
     )
 }

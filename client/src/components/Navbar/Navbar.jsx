@@ -15,6 +15,7 @@ export default function Navbar(props) {
     const isHome = props.home;
     const profile = useSelector(state => state.profile)
     const searchInput = useSelector(state=>state.searchInput);
+    const places = useSelector(state=>state.places);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -55,7 +56,6 @@ export default function Navbar(props) {
                         <button className={style.Button}>
                             <img className={style.Img} src={roulette} alt="" />
                         </button>
-                        <button className={style.Button}>Ordenar</button>
 
                         
                         <Filtros></Filtros>
