@@ -9,7 +9,7 @@ import Profile from './components/Profile/Profile.jsx';
 import axios from "axios";
 
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
 
 function App() {
   return (
