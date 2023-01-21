@@ -88,7 +88,21 @@
                 -6px -6px 12px #ffffff;
 
    }
-.filter:hover{
-    color: #515151;
+
+.limpiar{
+    color: #797979;
+    padding: 0.7em 1.7em;
+    margin: 10px;
+    font-size: 12px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+}
+.limpiar:hover{
+    color: #e0e0e0;
+    background-color: #797979;
     cursor:pointer;
 }
