@@ -54,7 +54,7 @@ export default function reducer (state = initialState, action) {
 
 
             case SORT_RATING:
-                let order = state.allPlaces
+                let order = state.places
                 console.log(action.payload)
                 console.log(order)
 
