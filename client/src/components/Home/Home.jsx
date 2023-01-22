@@ -53,6 +53,13 @@ export default function Home() {
     }
 
 
+    const [checked, setChecked] = React.useState(true);
+  
+    const handleChangeSwitch = () => {
+      setChecked(!checked);
+    };
+
+
     return (
         <div>
 
@@ -68,18 +75,21 @@ export default function Home() {
 
                 <div>
                     <select className={style.filter} onChange={(event) => handlerCategory(event)}>
-                        <option value="all">Categoría</option>
+                        <option disabled value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
                     </select>
                 </div>
-                
                 <div>
                     <button className={style.limpiar} onClick={refresh}>Limpiar</button>
                 </div>
+                <label className={style.switch}>
+                    <input type="checkbox" value={checked} onChange={handleChangeSwitch}/>
+                    <span className={style.slider}></span>
+                </label>
             </div>
-            <div className={style.info}>
+            <div className={checked? style.infodark:style.info}>
                 <div>
                     {
                         renderPlaces.length ?

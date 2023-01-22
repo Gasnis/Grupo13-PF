@@ -19,6 +19,17 @@ export default function Navbar(props) {
 
     
     const [open, setOpen] = useState(false);
+    const [theme, setTheme] = useState('');
+    const [checked, setChecked] = React.useState(false);
+   
+    const toggleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }
+
     
     const handleOpen = () => {
         setOpen(!open);
@@ -59,10 +70,7 @@ export default function Navbar(props) {
 
                     </div>
                     : null}
-                <label className={style.switch}>
-                    <input type="checkbox" />
-                    <span className={style.slider}></span>
-                </label>
+               
                 <div>
                     <div>
                         <img src={profile.id?profile.image:"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
