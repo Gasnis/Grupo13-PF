@@ -15,7 +15,7 @@ export default function Home() {
     const searchInput = useSelector(state => state.searchInput)
 
     let allPlaces = useSelector((state) => state.places)
-
+    const checked = useSelector((state)=> state.checked)
     useEffect(() => {
         dispatch(getPlaces())
 
@@ -52,14 +52,6 @@ export default function Home() {
 
     }
 
-
-    const [checked, setChecked] = React.useState(true);
-  
-    const handleChangeSwitch = () => {
-      setChecked(!checked);
-    };
-
-
     return (
         <div>
 
@@ -84,10 +76,7 @@ export default function Home() {
                 <div>
                     <button className={style.limpiar} onClick={refresh}>Limpiar</button>
                 </div>
-                <label className={style.switch}>
-                    <input type="checkbox" value={checked} onChange={handleChangeSwitch}/>
-                    <span className={style.slider}></span>
-                </label>
+               
             </div>
             <div className={checked? style.infodark:style.info}>
                 <div>

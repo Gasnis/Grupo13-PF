@@ -4,7 +4,7 @@ import style from "./navbar.module.css"
 import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
-import { searchPlace, setInput } from "../../redux/actions";
+import { searchPlace, setInput,setChecked } from "../../redux/actions";
 import Filtros from "../Filtros/filtros"
 import { Link } from "react-router-dom"
 import { logout } from "../../redux/actions";
@@ -15,21 +15,12 @@ export default function Navbar(props) {
     const profile = useSelector(state => state.profile)
     const searchInput = useSelector(state=>state.searchInput);
     const places = useSelector(state=>state.places);
+    const checked = useSelector(state=>state.checked);
     const dispatch = useDispatch();
 
     
     const [open, setOpen] = useState(false);
-    const [theme, setTheme] = useState('');
-    const [checked, setChecked] = React.useState(false);
    
-    const toggleTheme = () => {
-        if (theme === 'light') {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-    }
-
     
     const handleOpen = () => {
         setOpen(!open);
@@ -43,7 +34,9 @@ export default function Navbar(props) {
     const handleLogOut = () => {
         dispatch(logout());
     }
-
+    const handleChangeSwitch = () => {
+        dispatch(setChecked(checked));
+      };
 
     return (
         <div className={isHome ? style.Container : style.ContainerNoHome}>
@@ -70,7 +63,10 @@ export default function Navbar(props) {
 
                     </div>
                     : null}
-               
+                <label className={style.switch}>
+                    <input type="checkbox" value={checked} onChange={handleChangeSwitch}/>
+                    <span className={style.slider}></span>
+                </label>
                 <div>
                     <div>
                         <img src={profile.id?profile.image:"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
