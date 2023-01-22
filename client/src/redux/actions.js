@@ -128,8 +128,12 @@ export const createPlace = (place) => {
 
 export const createBook = (book) => {
     return async () => {
-        const { data } = await axios.post(`/book`, book);
-        return data;
+        try{
+            const { data } = await axios.post(`/book`, book);
+            return data;
+        }catch(error){
+            return error;
+        }
     }
 }
 
