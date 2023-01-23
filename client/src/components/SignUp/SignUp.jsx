@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createUser , getUser} from '../../redux/actions';
+import { createUser , getUserByid} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
 import { validation } from './ValidationSignUp';
@@ -52,8 +52,8 @@ export default function SignUp(props) {
                 birthday: "",
                 city: "",
             })
+            dispatch(getUserByid(newUser.id))
             history.push(`/profile`)
-            dispatch(getUser(newUser.id))
         } else {
             alert(newUser.response.data)
         }

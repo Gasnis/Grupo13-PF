@@ -30,6 +30,7 @@ function validate (input) {
     if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
     if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
     if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
+    if (!input.userId) errors.userId = "Debes registrarte para realizar una reserva"
     return errors;
 }
 
@@ -53,7 +54,7 @@ export default function SignUp(props) {
     })
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
-    const disabled = errors.name||errors.personQuantity||!booking.reservedDate 
+    const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
 
     function handleChange(event) {
         setErrors(validate({
@@ -149,6 +150,8 @@ export default function SignUp(props) {
 
                 <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
                 </form>
+                {errors.userId ? <span>{errors.userId}</span> : null}
+
                 {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
             </div>
         </div>
