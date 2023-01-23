@@ -10,7 +10,9 @@ export const SORT_RATING ='SORT_RATING'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
-export const SET_CHECKED = "SET_CHECKED"
+export const SET_CHECKED = "SET_CHECKED";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+
 
 
 
@@ -209,4 +211,10 @@ export const logout = () => {
     }
 }
 
+export const cleanDetail = () => {
 
+    return {
+        type: "CLEAN_DETAIL"
+    }
+
+}
