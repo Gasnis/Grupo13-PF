@@ -78,7 +78,7 @@ export default function Detail () {
                         <h3>Vuelve mas tarde para ver promociones</h3>
                     }
                     {
-                        profile? <Link to="/login"><button className={style.link}>RESERVAR</button></Link> :  <Link to="/book"><button className={style.link}>RESERVAR</button></Link>
+                        profile.id? <Link to="/login"><button className={style.link}>RESERVAR</button></Link> :  <Link to="/book"><button className={style.link}>RESERVAR</button></Link>
                     }
                 </div>
                 <div className={style.sideDiv}>
