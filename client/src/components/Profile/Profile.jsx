@@ -5,12 +5,12 @@ import Navbar from "../Navbar/Navbar";
 import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
-import { useHistory} from "react-router-dom"
+
 
 
 export default function Detail() {
     const dispatch = useDispatch();
-    const history = useHistory()
+
     const { profile, allPlaces } = useSelector(state => state)
     console.log(profile)
 
@@ -23,7 +23,6 @@ export default function Detail() {
         return (
             <div>
                 <h3>loading...</h3>
-                {history.push("/")}
             </div>
         )
     }
