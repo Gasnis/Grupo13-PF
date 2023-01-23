@@ -15,7 +15,7 @@ export default function Home() {
     const searchInput = useSelector(state => state.searchInput)
 
     let allPlaces = useSelector((state) => state.places)
-
+    const checked = useSelector((state)=> state.checked)
     useEffect(() => {
         dispatch(getPlaces())
 
@@ -52,15 +52,11 @@ export default function Home() {
 
     }
 
-
     return (
         <div>
 
             <Navbar home={true} />
             <div className={style.filtercontainer}>
-                <div>
-                    <button className={style.filter} onClick={refresh}>Limpiar</button>
-                </div>
                 <div>
                     <select className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
                         <option value="all">Rating</option>
@@ -77,8 +73,12 @@ export default function Home() {
                         <option value="bar">Bares</option>
                     </select>
                 </div>
+                <div>
+                    <button className={style.limpiar} onClick={refresh}>Limpiar</button>
+                </div>
+               
             </div>
-            <div className={style.info}>
+            <div className={checked? style.infodark:style.info}>
                 <div>
                     {
                         renderPlaces.length ?

@@ -8,7 +8,8 @@ import {
     GET_USER_BY_ID,
     LOGOUT,
     SET_INPUT,
-    SORT_RATING
+    SORT_RATING,
+    SET_CHECKED,
    
 } from "./actions"
 
@@ -20,6 +21,7 @@ const initialState = {
     profile: {},
     allUsers: [],
     searchInput: "",
+    checked:true,
 }
 
 export default function reducer (state = initialState, action) {
@@ -110,6 +112,14 @@ export default function reducer (state = initialState, action) {
             return {
                 ...state,
                 profile: {}
+            }
+        case SET_CHECKED:
+            let checkstate
+
+            action.payload === true? checkstate = false: checkstate =true
+            return {
+                ...state,
+                checked: checkstate, 
             }
         
         default:
