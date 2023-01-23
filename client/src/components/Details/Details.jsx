@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import { getPlaceDetail } from "../../redux/actions";
+import { cleanDetail, getPlaceDetail } from "../../redux/actions";
 import star from "../../utils/Star 4.png";
 import vector from "../../utils/Vector.png";
 import location2 from "../../utils/location2.png";
@@ -19,6 +19,7 @@ export default function Detail () {
     const [reserve, setReserve] = useState(false);
     useEffect(()=>{
         dispatch(getPlaceDetail(id));
+        return dispatch(cleanDetail());
     },[])
 
     const placeDetail = useSelector(state=>state.placeDetail)
