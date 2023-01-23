@@ -67,7 +67,7 @@ export default function Home() {
 
                 <div>
                     <select className={style.filter} onChange={(event) => handlerCategory(event)}>
-                        <option disabled value="all">Categoría</option>
+                        <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
