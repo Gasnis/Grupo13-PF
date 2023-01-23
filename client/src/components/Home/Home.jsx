@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    getPlaces, setInput
+    getPlaces
 } from "../../redux/actions"
 
 export default function Home() {
@@ -21,13 +21,13 @@ export default function Home() {
 
     }, [dispatch])
 
-    const [currentPlaces, setCurrentPlaces] = useState(10)
+    const [currentPlaces, setCurrentPlaces] = useState(9)
     const [order, setOrder] = useState("");
-
+    console.log(order)
 
     function handlePlace(e) {
         e.preventDefault()
-        setCurrentPlaces(currentPlaces + 10)
+        setCurrentPlaces(currentPlaces + 9)
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
@@ -67,7 +67,7 @@ export default function Home() {
 
                 <div>
                     <select className={style.filter} onChange={(event) => handlerCategory(event)}>
-                        <option disabled value="all">Categoría</option>
+                        <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>

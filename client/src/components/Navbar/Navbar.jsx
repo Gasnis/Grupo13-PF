@@ -78,7 +78,6 @@ export default function Navbar(props) {
                                 <div>
                                     <Link className={style.titulos} to="/login">Login</Link>
                                 </div>
-                                <hr />
                                 <div>
                                     <Link className={style.titulos} to="/sign-up">Register</Link>
                                 </div>

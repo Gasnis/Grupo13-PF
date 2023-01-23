@@ -6,10 +6,12 @@ import FormBar from './components/FormBar/FormBar.jsx';
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile.jsx';
+import FormBook from './components/FormBook/FormBook.jsx';
 import axios from "axios";
 
+// axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
+axios.defaults.baseURL = "http://localhost:3001/"
 
-axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route exact path="/"> <Home/> </Route>
         <Route path="/detail/:id"> <Detail/> </Route>
         <Route path="/newplace"> <FormBar/> </Route>
+        <Route path="/book"> <FormBook/> </Route>
         <Route path="/login"> <Login/> </Route>
         <Route path="/sign-up"> <SignUp/> </Route>
         <Route path="/profile"> <Profile/> </Route>
