@@ -21,13 +21,13 @@ export default function Home() {
 
     }, [dispatch])
 
-    const [currentPlaces, setCurrentPlaces] = useState(10)
+    const [currentPlaces, setCurrentPlaces] = useState(9)
     const [order, setOrder] = useState("");
 
 
     function handlePlace(e) {
         e.preventDefault()
-        setCurrentPlaces(currentPlaces + 10)
+        setCurrentPlaces(currentPlaces + 9)
     }
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
