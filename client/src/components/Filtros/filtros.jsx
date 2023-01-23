@@ -2,6 +2,7 @@ import React ,{useState} from "react";
 import { useDispatch } from "react-redux";
 import { filterCategory, sortRating} from "../../redux/actions"
 import style from "./filtros.module.css"
+import arrow from "../../utils/arrow.svg"
 
 export default function Filter() {
 
@@ -20,6 +21,38 @@ export default function Filter() {
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
+// <<<<<<< HEAD
+//     return (
+//         <>
+//             <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
+//                 <button onClick={() => handlerDropdownClicked()}>
+//                     Filtrar <img src={arrow}></img>
+//                 </button>
+//                 <div id="menu" className={style.menu}>
+//                     <div id="menuinner" className={style.menuinner}>
+//                         <div className={style.containerCheck}>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("disco")} id="disco" />
+//                             <label htmlFor="disco">Discoteca</label>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("bar")} id="bar" />
+//                             <label htmlFor="bar">Bar</label>
+//                             <input className={style.check} type="checkbox" onClick={() => handlerCategory("pub")} id="pub" />
+//                             <label htmlFor="pub">Pub</label>
+//                         </div>
+//                         {/* <div className={style.mainmenu}>
+//                             <button
+//                                 onClick={handlerSubMenuClicked("mytools")}>
+//                                 <span>build</span>Tools
+//                                 <span>cevron_right</span>
+//                             </button>
+//                         </div>
+//                         <div id="mytools" className="submenu">
+//                             <button
+//                                 onClick={handlerSubMenuClicked()}>
+//                                 <span> arrow_back</span>Tools
+//                             </button>
+//                         </div> */}
+//                     </div>
+// =======
 
     return (    
             <div>
@@ -39,6 +72,7 @@ export default function Filter() {
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
                     </select>
+{/* >>>>>>> main */}
                 </div>
             </div>
        
