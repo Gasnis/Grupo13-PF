@@ -4,7 +4,7 @@ import style from "./navbar.module.css"
 import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
-import { searchPlace, setInput } from "../../redux/actions";
+import { searchPlace, setInput,setChecked } from "../../redux/actions";
 import Filtros from "../Filtros/filtros"
 import { Link } from "react-router-dom"
 import { logout } from "../../redux/actions";
@@ -15,10 +15,12 @@ export default function Navbar(props) {
     const profile = useSelector(state => state.profile)
     const searchInput = useSelector(state=>state.searchInput);
     const places = useSelector(state=>state.places);
+    const checked = useSelector(state=>state.checked);
     const dispatch = useDispatch();
 
     
     const [open, setOpen] = useState(false);
+   
     
     const handleOpen = () => {
         setOpen(!open);
@@ -32,7 +34,9 @@ export default function Navbar(props) {
     const handleLogOut = () => {
         dispatch(logout());
     }
-
+    const handleChangeSwitch = () => {
+        dispatch(setChecked(checked));
+      };
 
     return (
         <div className={isHome ? style.Container : style.ContainerNoHome}>
@@ -60,7 +64,7 @@ export default function Navbar(props) {
                     </div>
                     : null}
                 <label className={style.switch}>
-                    <input type="checkbox" />
+                    <input type="checkbox" value={checked} onChange={handleChangeSwitch}/>
                     <span className={style.slider}></span>
                 </label>
                 <div>
@@ -72,6 +76,7 @@ export default function Navbar(props) {
                                 <div>
                                     <Link className={style.titulos} to="/login">Login</Link>
                                 </div>
+                                <hr />
                                 <div>
                                     <Link className={style.titulos} to="/sign-up">Register</Link>
                                 </div>

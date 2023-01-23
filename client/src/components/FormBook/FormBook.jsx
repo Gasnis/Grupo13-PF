@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { createBook } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
@@ -30,6 +30,7 @@ function validate (input) {
     if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
     if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
     if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
+    if (!input.userId) errors.userId = "Debes registrarte para realizar una reserva"
     return errors;
 }
 
@@ -37,13 +38,15 @@ export default function SignUp(props) {
     const localId = props.localId;
     const dispatch = useDispatch();
     const history = useHistory();
+    const {profile} = useSelector(state => state )
     const date = new Date();
-    const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
+    // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
     const [booking, setBooking] = useState({
         name: "",
         reservedDate: "",
         personQuantity: "",
         discountCode: "",
+        userId: profile.id
     })
     const [errors, setErrors] = useState({
         name:"",
@@ -51,7 +54,7 @@ export default function SignUp(props) {
     })
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
-    const disabled = errors.name||errors.personQuantity||!booking.reservedDate 
+    const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
 
     function handleChange(event) {
         setErrors(validate({
@@ -64,25 +67,32 @@ export default function SignUp(props) {
         })
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        dispatch(createBook({
+        const newBooking = await dispatch(createBook({
             ...booking,
             localId
         }))
-        // limpiar form
-        setBooking({
-            name: "",
-            reservedDate: "",
-            personQuantity: "",
-            discountCode: "",
-        })
-        //setea reserved en true para mostrar un mensaje
-        // redirigir al home o a tus reservas
-        setReserved(true);
-        setTimeout(() => {
-            history.push('/')
-        }, 2000); 
+
+        console.log("booking", booking)
+        console.log("new", newBooking)
+
+        if(newBooking.id) {
+            setBooking({
+                name: "",
+                reservedDate: "",
+                personQuantity: "",
+                discountCode: "",
+            //userId?
+            })
+            // setReserved(true);
+            // setTimeout(() => {
+            //     history.push('/')
+            // }, 2000); 
+            history.push(`/profile`)
+        } else {
+            alert(newBooking.response.data)
+        }
     }
 
     return (
@@ -140,7 +150,9 @@ export default function SignUp(props) {
 
                 <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
                 </form>
-                {reserved ? <h3 className={styles.title}>Successful booking</h3> : null}
+                {errors.userId ? <span>{errors.userId}</span> : null}
+
+                {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
             </div>
         </div>
         </>

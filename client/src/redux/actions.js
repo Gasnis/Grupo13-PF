@@ -10,6 +10,9 @@ export const SORT_RATING ='SORT_RATING'
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
+export const SET_CHECKED = "SET_CHECKED"
+
+
 
 
 
@@ -128,8 +131,12 @@ export const createPlace = (place) => {
 
 export const createBook = (book) => {
     return async () => {
-        const { data } = await axios.post(`/book`, book);
-        return data;
+        try{
+            const { data } = await axios.post(`/book`, book);
+            return data;
+        }catch(error){
+            return error;
+        }
     }
 }
 
@@ -184,6 +191,13 @@ export const sortRating = (payload) => {
 export const setInput = (payload) => {
     return {
         type: "SET_INPUT",
+        payload
+    }
+}
+
+export const setChecked = (payload) => {
+    return {
+        type: "SET_CHECKED",
         payload
     }
 }

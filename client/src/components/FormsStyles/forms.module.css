@@ -4,13 +4,22 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-image: linear-gradient(79deg, #dce4fb, #b9a4c9 40%);
+}
+
+.containerDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: linear-gradient(79deg, #414347, #3c3441 40%);
 }
 
 .formContainer {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    background: #FFFFFF;
     margin: 25px;
     padding: 25px;
     border-radius: 25px;

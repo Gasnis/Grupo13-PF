@@ -99,7 +99,6 @@ export default function CreateLocal() {
         event.preventDefault();
         const newLocal = await dispatch((createPlace(local)));
         if (newLocal.id) {
-            dispatch(getPlaceDetail(newLocal.id))
             history.push(`/detail/${newLocal.id}`)
         } else {
            alert(newLocal.response.data)
