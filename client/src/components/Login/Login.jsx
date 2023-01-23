@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { getUser } from "../../redux/actions"
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
@@ -10,10 +10,14 @@ export default function Login() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const checked = useSelector((state)=> state.checked)
+
     const [login, setLogin] = useState({
         id: "",
         password: ""
     })
+
+    
 
     function handleChange(event) {
         setLogin({
@@ -44,7 +48,7 @@ const handleSubmit = async (event) => {
 return (
     <div>
         <Navbar />
-    <div className={styles.container}>
+    <div className={checked? styles.container:styles.containerDark}>
         <div className={styles.formContainer}>
             <h1 className={styles.title}>Ingresa</h1>
             <form onSubmit={handleSubmit}>

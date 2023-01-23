@@ -13,23 +13,14 @@ axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
 
 function App() {
   return (
-
       <div className="App">
-
         <Route exact path="/"> <Home/> </Route>
-
         <Route path="/detail/:id"> <Detail/> </Route>
-
         <Route path="/newplace"> <FormBar/> </Route>
-
         <Route path="/login"> <Login/> </Route>
-
         <Route path="/sign-up"> <SignUp/> </Route>
-
         <Route path="/profile"> <Profile/> </Route>
-
       </div>
-    
   );
 }
 
