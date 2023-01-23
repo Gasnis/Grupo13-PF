@@ -2,7 +2,6 @@ import React ,{useState} from "react";
 import { useDispatch } from "react-redux";
 import { filterCategory, sortRating} from "../../redux/actions"
 import style from "./filtros.module.css"
-import arrow from "../../utils/arrow.svg"
 
 export default function Filter() {
 

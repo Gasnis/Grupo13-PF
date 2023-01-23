@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    getPlaces, setInput
+    getPlaces
 } from "../../redux/actions"
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
 
     const [currentPlaces, setCurrentPlaces] = useState(9)
     const [order, setOrder] = useState("");
-
+    console.log(order)
 
     function handlePlace(e) {
         e.preventDefault()
