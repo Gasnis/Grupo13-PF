@@ -64,15 +64,15 @@ export default function Detail () {
                     }
                 </div>
                 <div className={style.centerDiv}>
-                    <h2>Horarios</h2>
+                    <h3>Horarios</h3>
                     <h3>{placeDetail.schedule?.slice(0,placeDetail.schedule.length-2).map(day=>day[0].toUpperCase()+day.slice(1)).join("-")}</h3>
                     <h3>{placeDetail.schedule?.slice(placeDetail.schedule.length-2).join("-")}</h3>
                     <a href={placeDetail.menu}><h2>Menú</h2></a>
                     {placeDetail.promo 
                     ?
                         <div>
-                            <h2>Promo:</h2>
-                            <h3>{placeDetail.promo}</h3>
+                            <h3>Promo:</h3>
+                            <h2>{placeDetail.promo}</h2>
                         </div>
                     :
                         <h3>Vuelve mas tarde para ver promociones</h3>
