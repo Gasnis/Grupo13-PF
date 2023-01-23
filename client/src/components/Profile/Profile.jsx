@@ -16,7 +16,7 @@ export default function Detail() {
     }, [])
 
 
-    if (!profile) {
+    if (!profile.id) {
         return (
             <div>
                 <h3>loading...</h3>
