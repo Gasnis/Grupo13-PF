@@ -5,6 +5,8 @@ import { getUser } from "../../redux/actions"
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
 import { getUserByid } from '../../redux/actions';
+import { GoogleLogin } from 'react-google-login';
+
 
 export default function Login() {
 
@@ -41,6 +43,13 @@ const handleSubmit = async (event) => {
     }
 }
 
+
+const responseGoogle = (response) => {
+    console.log(response);
+  }
+  
+ 
+
 return (
     <div>
         <Navbar />
@@ -76,12 +85,26 @@ return (
                         disabled={!login.id || !login.password}
                     >Ingresar</button>
 
+                    <GoogleLogin
+                            clientId="553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
+                            buttonText="Login"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
+  
+
                     <Link to="/sign-up" >Todavia no tenes una cuenta?</Link>
                 </div>
 
             </form>
         </div>
     </div>
+   
+   
+   
+ 
+    
 
     </div>
 )

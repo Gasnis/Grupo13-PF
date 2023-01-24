@@ -10,6 +10,7 @@ import style from "./profile.module.css";
 export default function Detail() {
     const dispatch = useDispatch();
     const { profile, allPlaces } = useSelector(state => state)
+    console.log(profile)
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
