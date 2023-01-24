@@ -6,6 +6,8 @@ import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
+import ProfileInfo from "../ProfileInfo/UserInfo";
+import { useState } from "react";
 
 
 
@@ -13,7 +15,7 @@ export default function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
-    console.log(profile)
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
@@ -25,6 +27,10 @@ export default function Detail() {
         }
     },[])
 
+
+    const handleInfo = (e) => {
+        setOpen(!open)
+    }
 
     if (!profile) {
         return (
@@ -45,11 +51,17 @@ export default function Detail() {
                 </div>
 
                 <div className={style.infoBarsAndInfoUser}>
-                    <div className={style.divProfile}>
-                        <span>Detalles del usuario: </span>
-                        <p> <span>Teléfono: </span> {profile.phone}</p>
-                        <p> <span>Fecha de nacimiento: </span> {profile.birthday}</p>
-                        <p> <span>Ciudad:</span> {profile.city}</p>
+                    <div>
+                        <button onClick={handleInfo}><h1>Información de usuario</h1></button>
+                        <hr />
+                        {open
+                        ?
+                        <div>
+                            <ProfileInfo profile={profile}/>
+                            <hr />
+                        </div>
+                        :
+                        null}
                     </div>
 
                     <div className={style.localsInformation}>
