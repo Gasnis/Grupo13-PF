@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import styles from "../FormsStyles/forms.module.css";
 import { getUserByid } from "../../redux/actions";
 import GoogleLogin from "react-google-login";
+import {gapi} from "gapi-script"
+import { useEffect } from "react";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -45,6 +47,16 @@ export default function Login() {
       alert("El usuario o contraseña es incorrecto");
     }
   };
+  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
+
+  useEffect(() => {
+    const start = () =>{
+        gapi.auth2.init({
+            clientId: clientId,
+        })
+    }
+    gapi.load("client:auth2", start)
+  }, [])
 
     const responseGoogle = (respuesta) => {
         console.log(respuesta);
@@ -90,7 +102,7 @@ export default function Login() {
               </button>
 
               <GoogleLogin
-                clientId="463643681739-eq215gfnj0f2vgfo7a9kkc009og0ulq8.apps.googleusercontent.com"
+                clientId={clientId}
                 buttonText="Login"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
