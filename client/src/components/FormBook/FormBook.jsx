@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import { createBook } from '../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import styles from '../FormsStyles/forms.module.css';
+import { useEffect } from 'react';
 
 function getNum (date, string) {
     switch(string){
@@ -30,12 +31,12 @@ function validate (input) {
     if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
     if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
     if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
-    if (!input.userId) errors.userId = "Debes registrarte para realizar una reserva"
+    if (!input.userId) errors.userId = "Debes loguearte para realizar una reserva"
     return errors;
 }
 
 export default function SignUp(props) {
-    const localId = props.localId;
+    const localId = useSelector(state=>state.placeDetail.id);
     const dispatch = useDispatch();
     const history = useHistory();
     const {profile} = useSelector(state => state )
@@ -56,6 +57,12 @@ export default function SignUp(props) {
     //solo es "false" cuando no existen errores ni campos vacíos (date)
     const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
 
+    useEffect(()=>{
+        if (!profile.id) {
+            history.push("/login")
+        }
+    },[])
+
     function handleChange(event) {
         setErrors(validate({
             ...booking, 
@@ -74,9 +81,6 @@ export default function SignUp(props) {
             localId
         }))
 
-        console.log("booking", booking)
-        console.log("new", newBooking)
-
         if(newBooking.id) {
             setBooking({
                 name: "",
@@ -93,6 +97,10 @@ export default function SignUp(props) {
         } else {
             alert(newBooking.response.data)
         }
+    }
+
+    const goToDetails = (e) => {
+        history.push(`/detail/${localId}`)
     }
 
     return (
@@ -149,6 +157,8 @@ export default function SignUp(props) {
                 </div>
 
                 <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
+                <br />
+                { localId ? <button className={styles.submitButton} onClick={goToDetails}>Volver</button> : null}
                 </form>
                 {errors.userId ? <span>{errors.userId}</span> : null}
 
