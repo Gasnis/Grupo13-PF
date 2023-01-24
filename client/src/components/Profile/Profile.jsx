@@ -5,16 +5,25 @@ import Navbar from "../Navbar/Navbar";
 import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
+import { useHistory } from 'react-router-dom';
+
 
 
 export default function Detail() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
     console.log(profile)
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [])
+
+    useEffect(()=>{
+        if (!profile.id) {
+            history.push("/login")
+        }
+    },[])
 
 
     if (!profile) {

@@ -18,6 +18,8 @@ export default function Navbar(props) {
     const checked = useSelector(state=>state.checked);
     const dispatch = useDispatch();
 
+
+
     
     const [open, setOpen] = useState(false);
    
@@ -28,7 +30,7 @@ export default function Navbar(props) {
     
     const handleSearchBar = (e) => {
         dispatch(setInput(e.target.value))
-        dispatch(searchPlace(searchInput))
+        dispatch(searchPlace(e.target.value))
     }
 
     const handleLogOut = () => {

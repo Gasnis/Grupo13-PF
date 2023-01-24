@@ -16,6 +16,7 @@
     flex-wrap: nowrap;
     padding-inline:20px;
 }
+
 .Containernight {
     background-image: linear-gradient(79deg, #4b587b, #3a0662 40%);
     display: flex;
@@ -162,6 +163,9 @@
     color: #000000;
 }
 
+.titulos:hover{
+    text-decoration: underline;
+}
 
 .imagenprofile{
     height: 40px;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import { createPlace, getPlaceDetail } from '../../redux/actions';
+import { createPlace } from '../../redux/actions';
 import styles from '../FormsStyles/forms.module.css';
 import { validation } from './ValidationFormBar';
 

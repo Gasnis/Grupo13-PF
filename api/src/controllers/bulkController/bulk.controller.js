@@ -264,7 +264,7 @@ const places =[
 		"rating": 3
 	},
 	{
-		"userId":"gioh2020@gmail.com",
+		"userId":"gaston@gmail.com",
 		"name": "Glow",
 		"category": "disco",
 		"image": "https://10619-2.s.cdn12.com/rests/original/107_500173515.jpg",
@@ -280,6 +280,92 @@ const places =[
 		"available": true,
 		"rating": 3
 	},
+	{
+		"userId":"gaston@gmail.com",
+		"name": "Brothers",
+		"category": "bar",
+		"image": "https://lh3.googleusercontent.com/p/AF1QipO8iMJ1JblVz5qZRY87yScty9_uFI4DmwVPSa1R=s680-w680-h510",
+		"location": "Gral. Guemes 200 Avellaneda",
+		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+		"event": true,
+		"capacity": 300,
+		"petFriendly": false,
+		"ageRange": [18, 45],
+		"phone": "3017777777",
+		"promo":"2x1",
+		"bookPrice": "400.5",
+		"available": true,
+		"rating": 3
+	},
+	{
+		"userId":"gaston@gmail.com",
+		"name": "713 Bar Arcade",
+		"category": "bar",
+		"image": "https://scontent.faep9-1.fna.fbcdn.net/v/t1.6435-9/82436858_2912633052122593_5704060037622661120_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9267fe&_nc_ohc=rg-KyoYTtkcAX8mFkqH&_nc_ht=scontent.faep9-1.fna&oh=00_AfD95uOt2Vlf2cruoGZ5ksA3AwdPwNgN5qRkGyxPT5WeAg&oe=63F60405",
+		"location": "Gral. Guemes 200 Avellaneda",
+		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+		"event": true,
+		"capacity": 300,
+		"petFriendly": false,
+		"ageRange": [18, 45],
+		"phone": "3017777777",
+		"promo":"2x1",
+		"bookPrice": "400.5",
+		"available": true,
+		"rating": 3
+	},
+	{
+		"userId":"gaston@gmail.com",
+		"name": "Golden Bar",
+		"category": "bar",
+		"image": "https://scontent.faep9-3.fna.fbcdn.net/v/t39.30808-6/277765994_400976718694159_3169832383781875844_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=GJSChYq1O0AAX_yIKN9&_nc_ht=scontent.faep9-3.fna&oh=00_AfB1Nt17kTboOf0krQDxzvQbSWQu9kR8LhNdjisRcfAoyQ&oe=63D45D89",
+		"location": "Gral. Guemes 200 Avellaneda",
+		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+		"event": true,
+		"capacity": 300,
+		"petFriendly": false,
+		"ageRange": [18, 45],
+		"phone": "3017777777",
+		"promo":"2x1",
+		"bookPrice": "400.5",
+		"available": true,
+		"rating": 3
+	},
+	{
+		"userId":"gaston@gmail.com",
+		"name": "Molly Malone",
+		"category": "bar",
+		"image": "https://lh5.googleusercontent.com/p/AF1QipPHvXtTHq42fjZqrhZoekIy_rCM6iGAYL6EPnxY=w480-h300-k-n",
+		"location": "Gral. Guemes 200 Avellaneda",
+		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+		"event": true,
+		"capacity": 300,
+		"petFriendly": false,
+		"ageRange": [18, 45],
+		"phone": "3017777777",
+		"promo":"2x1",
+		"bookPrice": "400.5",
+		"available": true,
+		"rating": 3
+	},
+	{
+		"userId":"gaston@gmail.com",
+		"name": "Gluck",
+		"category": "bar",
+		"image": "https://lh3.googleusercontent.com/p/AF1QipOdFnNDJUffpuaXAveGnfdhkXYP3DsgpRfQsWYV=s680-w680-h510",
+		"location": "Gral. Guemes 200 Avellaneda",
+		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+		"event": true,
+		"capacity": 300,
+		"petFriendly": false,
+		"ageRange": [18, 45],
+		"phone": "3017777777",
+		"promo":"2x1",
+		"bookPrice": "400.5",
+		"available": true,
+		"rating": 3
+	}
+
 ]
 
 
