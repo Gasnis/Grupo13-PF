@@ -6,6 +6,8 @@ import Navbar from "../Navbar/Navbar";
 import styles from "../FormsStyles/forms.module.css";
 import { getUserByid } from "../../redux/actions";
 import GoogleLogin from "react-google-login";
+import {gapi} from "gapi-script"
+import { useEffect } from "react";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -45,12 +47,22 @@ export default function Login() {
       alert("El usuario o contraseña es incorrecto");
     }
   };
+  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
+
+  useEffect(() => {
+    const start = () =>{
+        gapi.auth2.init({
+            clientId: clientId,
+        })
+    }
+    gapi.load("client:auth2", start)
+  }, [])
 
     const responseGoogle = (respuesta) => {
         console.log(respuesta);
     }
 
-return (
+  return (
     <div>
       <Navbar />
       <div className={checked ? styles.container : styles.containerDark}>
@@ -79,20 +91,29 @@ return (
               />
             </div>
 
-                <div className={styles.linksContainer}>
-                    <button 
-                        type="submit" 
-                        id="loginButton" 
-                        className={styles.submitButton}
-                        disabled={!login.id || !login.password}
-                    >Ingresar</button>
+            <div className={styles.linksContainer}>
+              <button
+                type="submit"
+                id="loginButton"
+                className={styles.submitButton}
+                disabled={!login.id || !login.password}
+              >
+                Ingresar
+              </button>
+
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="Login"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
 
               <Link to="/sign-up">Todavia no tenes una cuenta?</Link>
             </div>
           </form>
         </div>
-    </div>
-
+      </div>
     </div>
   );
 }
