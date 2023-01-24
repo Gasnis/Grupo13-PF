@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCategory, sortRating } from "../../redux/actions"
+import { filterCategory, setInput, sortRating } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
@@ -32,7 +32,8 @@ export default function Home() {
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
 
-
+    const orderSelection = document.querySelector("#orderSelection");
+    const category = document.querySelector("#category");
 
 
     const handlerCategory = (event) => {
@@ -49,7 +50,9 @@ export default function Home() {
     const refresh= (event) => {
         event.preventDefault();
         dispatch(getPlaces());
-
+        category.selectedIndex = 0;
+        orderSelection.selectedIndex = 0;
+        dispatch(setInput(""))
     }
 
     return (
@@ -58,7 +61,7 @@ export default function Home() {
             <Navbar home={true} />
             <div className={style.filtercontainer}>
                 <div>
-                    <select className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                    <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
                         <option value="all">Rating</option>
                         <option value="best">Mejores</option>
                         <option value="worst">Peores</option>
@@ -66,7 +69,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <select className={style.filter} onChange={(event) => handlerCategory(event)}>
+                    <select id="category" className={style.filter} onChange={(event) => handlerCategory(event)}>
                         <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
