@@ -1,5 +1,5 @@
 const {Router} =require("express")
-const {postBookData,getBookDetail, deleteBook} =require("../../controllers/bookController/book.controller")
+const {postBookData,getBookDetail, deleteBook,getAllBooks} =require("../../controllers/bookController/book.controller")
 
 const router = Router()
 
@@ -30,6 +30,17 @@ router.get("/:id", async (req, res) => {
       return res.status(400).send(error.message);
     }
 });
+
+
+    router.get("/", async (req,res) => {
+      try {
+          const allBoks = await getAllBooks()
+          res.status(200).json(allBoks)
+      } catch (error) {
+          res.status(404).send(error.message)
+      }
+  })
+  
 
     router.put("/", async (req, res) => {
       try {

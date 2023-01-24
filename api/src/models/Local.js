@@ -18,12 +18,12 @@ module.exports = (sequelize) => {
     // },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     category: {
       type: DataTypes.ENUM,
       values: ["disco", "pub", "bar"],
-      allowNull: false,
+      allowNull: true,
     },
     image: {
       type: DataTypes.TEXT,// string 255 / text unlimited
@@ -34,7 +34,7 @@ module.exports = (sequelize) => {
       allowNull: true, // **
     },
     schedule: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, // **
     },
     menu: {
@@ -47,14 +47,14 @@ module.exports = (sequelize) => {
     },
     capacity: {
       type: DataTypes.INTEGER,/* A data type. */
-      allowNull: false,
+      allowNull: true,
     },
     petFriendly: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
     ageRange: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER), // Para colocar "18+" "18  - 40" "18++"
+        type: DataTypes.ARRAY(DataTypes.STRING), // Para colocar "18+" "18  - 40" "18++"
       allowNull: true,
     },
     phone: {
@@ -66,7 +66,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     bookPrice: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: true,
     },
     available: {
@@ -75,6 +75,7 @@ module.exports = (sequelize) => {
     },
     rating: {
         type: DataTypes.INTEGER, //  || integer
+        defaultValue: "5"
       },
   });
 };

@@ -1,5 +1,6 @@
 .h1{
-    color: white;
+    color: rgb(255, 255, 255);
+    margin:8px;
 }
 
 .h1NoHome {
@@ -7,17 +8,35 @@
 }
 
 .Container {
-    background-color:#660BAD;
+    background-image: linear-gradient(79deg, #9cb6fe, #660BAD 40%);
     display: flex;
     justify-content: space-between;
+    height: 70px;
     align-items: center;
+    flex-wrap: nowrap;
+    padding-inline:20px;
 }
+
+.Containernight {
+    background-image: linear-gradient(79deg, #4b587b, #3a0662 40%);
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-inline:20px;
+}
+
 
 .ContainerNoHome {
     background-color:white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: fit-content;
+    height: 70px;
+    flex-wrap: nowrap;
+
 }
 
 .ContainerNoHome > div {
@@ -26,19 +45,28 @@
     align-items: center;
 }
 
-.link{
+.link:link{
     margin-right: 10px;
+    text-decoration: none;
+    color: #000000;
 }
+.link:visited{text-decoration: none;}
 
-.Container > div {
+.Container div{
     display: flex;
-    margin: 0 20px 0 20px;
+    align-items: center;
 }
 
-.input {
-    width: 300px;
-    height: 35px;
-    border-radius: 20px;
+.searchbar {
+    color: #000000;
+    padding: 0.5em 1.3em;
+    margin-inline: 35px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    border-style: none;
+    background: #ffffff;
+    box-shadow: 6px 6px 12px #7e01d7,
+                -6px -6px 12px #52008c;
 }
 
 .Button{
@@ -81,13 +109,112 @@
     padding: 5px;
     margin-right: 5px;
     background-color: #FFB800;
+    height: 40px;
+
+}
+.random{
+    color: white;
+    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
 }
 
 .Img{
-    height: 27px;
+    height: 60px;
+    transition: all 0.5s ease;
+    
 }
 
-/* The switch - the box around the slider */
+.Img:hover{
+    animation: spinning82341 1.7s linear infinite;
+}
+
+@keyframes spinning82341 {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+.dropdown{
+    position: absolute;
+    top: 60px;
+    right: 38px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: rgb(247, 247, 247);
+    justify-content: center;
+    border-radius: 9px 0px 9px 9px;
+    padding: 30px;
+    box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
+    color: black;
+    text-shadow: 2px 2px 2px #0c0c0c33;
+    font-size: 20px;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-decoration: none;
+    transition: 1s;
+    
+}
+.titulos{
+    
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.titulos:hover{
+    text-decoration: underline;
+}
+
+.imagenprofile{
+    height: 40px;
+    width: 40px;
+    margin-inline: 15px;
+    border-radius: 10px;
+    border-style: 3px solid ;
+}
+
+.imagenprofile:hover{
+    cursor: pointer;
+}
+
+.logout {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    font-family: inherit;
+    border-radius: 15px;
+    margin-top: 10px;
+   }
+   
+   .logout::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(243, 3, 3, 0.863);
+    transform: translateX(-100%);
+    transition: all .3s;
+    z-index: -1;
+   }
+   
+   .logout:hover::before {
+    transform: translateX(0);
+   }
+
+   /* The switch - the box around the slider */
 .switch {
     font-size: 17px;
     position: relative;

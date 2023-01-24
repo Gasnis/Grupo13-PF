@@ -2,10 +2,10 @@ const {Book, Local, User} =require("../../db")
 
 
 const postBookData = async (bookData) => {
-    const {localId,userId, name,reservedDate,createdAt,updatedAt,personQuantity,codeProm} = bookData
-    if( localId  && userId && name && reservedDate && createdAt && updatedAt && personQuantity && codeProm){ 
+    const {localId,userId, name,reservedDate,personQuantity,codeProm} = bookData
+    if( localId && userId && name && reservedDate && personQuantity){ 
 
-        const bookDataCreated = await Book.create({name,reservedDate,createdAt,updatedAt,personQuantity,codeProm})
+        const bookDataCreated = await Book.create({name,reservedDate,personQuantity,codeProm})
     
         const searchLocalById = await Local.findByPk(localId)
        
@@ -27,6 +27,11 @@ const getBookDetail = async (id) => {
     }
     return book
 }
+
+const getAllBooks = async () => {
+    return Book.findAll();
+}
+
 
 const updateBook = async (id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm) =>{
 
@@ -50,5 +55,5 @@ const deleteBook = async (id) => {
             book.destroy();  
         }
 }
-module.exports = {postBookData,getBookDetail,deleteBook,updateBook}
+module.exports = {postBookData,getBookDetail,deleteBook,updateBook,getAllBooks}
 

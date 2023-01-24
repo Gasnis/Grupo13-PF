@@ -5,6 +5,18 @@ export const GET_PLACE_DETAIL = "GET_PLACE_DETAIL";
 export const GET_PLACES = "GET_PLACES";
 export const BOOK_DETAIL = "BOOK_DETAIL";
 export const GET_USER = "GET_USER";
+export const FILTER_CATEGORY = "FILTER_CATEGORY";
+export const SORT_RATING ='SORT_RATING'
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const LOGOUT = "LOGOUT";
+export const SET_INPUT = "SET_INPUT";
+export const SET_CHECKED = "SET_CHECKED";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+
+
+
+
+
 
 
 
@@ -23,7 +35,6 @@ export const getPlaceDetail = (id) => {
 
         try {
             const { data } = await axios.get(`/local/${id}`);
-            console.log(data);
             dispatch({
                 type: GET_PLACE_DETAIL,
                 payload: data
@@ -44,7 +55,10 @@ export const searchPlace = (input) => {
                 payload: data
             })
         } catch (error) {
-            return error;
+            dispatch({
+                type: SEARCH_PLACE,
+                payload: []
+            })
         }
     }
 }
@@ -61,11 +75,21 @@ export const bookDetail = (idBook) => {
     }
 }
 
-export const getUser = (idUser) => {
+export const getUser = () => {
     return async (dispatch) => {
-        const { data } = await axios.get(`/user/${idUser}`);
+        const { data } = await axios.get(`/user`);
         return dispatch({
             type: GET_USER,
+            payload: data
+        })
+    }
+}
+
+export const getUserByid = (id) => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`/user/${id}`);
+        return dispatch({
+            type: GET_USER_BY_ID,
             payload: data
         })
     }
@@ -78,9 +102,9 @@ export const updateUser = (user) => {
     }
 }
 
-export const deleteUser = (idUser) => {
+export const deleteUser = (id) => {
     return async () => {
-        const { data } = await axios.delete(`/user/${idUser}`, idUser);
+        const { data } = await axios.delete(`/user/${id}`, id);
         return data;
     }
 }
@@ -98,15 +122,23 @@ export const createUser = (user) => {
 
 export const createPlace = (place) => {
     return async () => {
-        const { data } = await axios.post(`/local`, place);
-        return data;
+        try {
+            const { data } = await axios.post(`/local`, place);
+            return data;
+        } catch(error) {
+            return error;
+        }
     }
 }
 
 export const createBook = (book) => {
     return async () => {
-        const { data } = await axios.post(`/book`, book);
-        return data;
+        try{
+            const { data } = await axios.post(`/book`, book);
+            return data;
+        }catch(error){
+            return error;
+        }
     }
 }
 
@@ -139,3 +171,50 @@ export const disablePlace = (idPlace, status) => {
     }
 }
 
+
+export const filterCategory = (payload) => {
+
+    return {
+        type: "FILTER_CATEGORY",
+        payload
+    }
+
+}
+
+export const sortRating = (payload) => {
+
+    return {
+        type: "SORT_RATING",
+        payload
+    }
+
+}
+
+export const setInput = (payload) => {
+    return {
+        type: "SET_INPUT",
+        payload
+    }
+}
+
+export const setChecked = (payload) => {
+    return {
+        type: "SET_CHECKED",
+        payload
+    }
+}
+
+
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}
+
+export const cleanDetail = () => {
+
+    return {
+        type: "CLEAN_DETAIL"
+    }
+
+}

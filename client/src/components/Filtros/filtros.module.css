@@ -1,0 +1,164 @@
+.filter{
+    color: #ffffff;
+    padding: 0.5em 1.3em;
+    margin-inline: 35px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    border-style: none;
+    background: #6502ab;
+    box-shadow: 6px 6px 12px #7e01d7,
+                -6px -6px 12px #52008c;
+   }
+
+
+.dropdown {
+    position: relative;
+    perspective: 200px;
+    background-color: #1d1e1f;
+}
+
+.dropdown > button {
+transition: 0.3s;
+}
+
+.dropdown.open > button{
+background: rgba (0, 0, 0, 0.175);
+}
+
+.dropdown.open .menu {
+    opacity: 1;
+    transform: rotateX(0);
+    visibility: visible;
+}
+
+.dropdown button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    width: 230px;
+    height: 72px;
+    color: #f9f9f9;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menu{
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: 168px;
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: rotateX(-90deg);
+    visibility: hidden;
+    background: #2b2b2e;
+    transition: 0.4s;
+}
+
+.mainmenu{
+    width: var(--menu-width);
+}
+
+.menuinner {
+    position: absolute;
+    width: calc(var(--menu-width) * 2);
+    display: flex;
+    transition: 0.3s;
+}
+
+.containerCheck{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #FFF;
+    justify-content: center;
+}
+
+.menuinner.open { translate: -50%; }
+
+.menu button {
+    border: 0;
+    width: 100%;
+    height: 56px;
+    border-radius: 0;
+}
+
+.menu button:hover {
+    background: #1d1e1f;
+}
+
+.submenu{
+    display: none;
+    width: var(--menu-width);
+}
+
+.submenu.open{
+    display: block;
+}
+
+
+.check[type="checkbox"]:not(:checked),
+.check[type="checkbox"]:checked {
+		position: absolute;
+		left: 0;
+		opacity: 0.01;
+	}
+.check[type="checkbox"]:not(:checked) + label,
+.check[type="checkbox"]:checked + label {
+		position: relative;
+		padding-left: 2.3em;
+		font-size: 1.05em;
+		line-height: 1.7;
+		cursor: pointer;
+	}
+
+	/* checkbox aspect */
+.check[type="checkbox"]:not(:checked) + label:before,
+.check[type="checkbox"]:checked + label:before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 1.4em;
+		height: 1.4em;
+		border: 1px solid #aaa;
+		background: #FFF;
+		border-radius: .2em;
+		box-shadow: inset 0 1px 3px rgba(0,0,0, .1), 0 0 0 rgba(203, 34, 237, .2);
+		-webkit-transition: all .275s;
+				transition: all .275s;
+	}
+
+	/* checked mark aspect */
+.check[type="checkbox"]:not(:checked) + label:after,
+.check[type="checkbox"]:checked + label:after {
+		content: url("../../utils/beer.png");
+		position: absolute;
+		align-content: flex-start;
+		top: 0;
+		left: 0;
+		font-size: 1.375em;
+		color: #CB22ED;
+		line-height: 0;
+		-webkit-transition: all .2s;
+				transition: all .2s;
+	}
+
+	/* checked mark aspect changes */
+	.check[type="checkbox"]:not(:checked) + label:after {
+		opacity: 0;
+		-webkit-transform: scale(0) rotate(45deg);
+				transform: scale(0) rotate(45deg);
+	}
+
+	.check[type="checkbox"]:checked + label:after {
+		opacity: 1;
+		-webkit-transform: scale(1) rotate(0);
+				transform: scale(1) rotate(0);
+	}

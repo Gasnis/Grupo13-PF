@@ -4,9 +4,11 @@
     color: white;
     align-items: end;
     background-size: cover;
-    height: 300px;
+    height: 190px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px -162px 110px rgba(43, 34, 49, 0.87);
     border-radius: 0 0 25px  25px;
+    background-position: center;
+    padding: 10px;    
 }
 
 .head>div{
@@ -30,7 +32,6 @@
 .cardsContainer{
     display: flex;
     justify-content: space-between;
-   
 }
 
 .cardsContainer>div{
@@ -43,7 +44,7 @@
 }
 
 .centerDiv{
-    width: 45%;
+    width: 40cm;
 }
 
 .sideDiv {
@@ -65,4 +66,16 @@
 
 .link:hover{
     background: #712dc9;
+    cursor: pointer;
+}
+
+.goBack {
+    background: #660BAD;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.goBack:hover{
+    color: white;
+    cursor: pointer;
 }

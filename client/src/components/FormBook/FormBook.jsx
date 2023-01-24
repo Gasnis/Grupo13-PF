@@ -1,83 +1,153 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import styles from './formbook.css';
-// import { createBook } from '../../redux/actions';
-// import { useHistory } from 'react-router-dom';
+import { createBook } from '../../redux/actions';
+import { useHistory } from 'react-router-dom';
+import styles from '../FormsStyles/forms.module.css';
+import { useEffect } from 'react';
 
-export default function SignUp() {
+function getNum (date, string) {
+    switch(string){
+        case "Month":
+            let month = date.getMonth()+1;
+            if(month<10){
+                month = "0"+month
+            }
+            return month
+        case "Day":
+            let day = date.getDate();
+            if(day<10){
+                day = "0"+day
+            }
+            return day
+        default:
+            return string;
+    }
+}
 
+function validate (input) {
+    let errors = {}
+    if (!input.name.length) errors.name = "Debes escribir un nombre";
+    if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
+    if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
+    if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
+    if (!input.userId) errors.userId = "Debes loguearte para realizar una reserva"
+    return errors;
+}
+
+export default function SignUp(props) {
+    const localId = useSelector(state=>state.placeDetail.id);
     const dispatch = useDispatch();
-    //const history = useHistory();
-
+    const history = useHistory();
+    const {profile} = useSelector(state => state )
+    const date = new Date();
+    // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
     const [booking, setBooking] = useState({
         name: "",
-        date: "",
-        people: "",
+        reservedDate: "",
+        personQuantity: "",
         discountCode: "",
+        userId: profile.id
     })
+    const [errors, setErrors] = useState({
+        name:"",
+        personQuantity:"",
+    })
+    //valor que se pasa a la propiedad "disabled" del button
+    //solo es "false" cuando no existen errores ni campos vacíos (date)
+    const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
+
+    useEffect(()=>{
+        if (!profile.id) {
+            history.push("/login")
+        }
+    },[])
 
     function handleChange(event) {
+        setErrors(validate({
+            ...booking, 
+            [event.target.name]: event.target.value
+        }))
         setBooking({
             ...booking,
             [event.target.name]: event.target.value
         })
     }
 
-    function handleSubmit(event) {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        //dispatch(createBook(booking))
-        //limpiar form
-        //setBooking({
-        //     name: "",
-        //     date: "",
-        //     people: "",
-        //     discountCode: "",
-        // })
-        //redirigir al home o a tus reservas
-        //history.push('/home')
+        const newBooking = await dispatch(createBook({
+            ...booking,
+            localId
+        }))
+
+        if(newBooking.id) {
+            setBooking({
+                name: "",
+                reservedDate: "",
+                personQuantity: "",
+                discountCode: "",
+            //userId?
+            })
+            // setReserved(true);
+            // setTimeout(() => {
+            //     history.push('/')
+            // }, 2000); 
+            history.push(`/profile`)
+        } else {
+            alert(newBooking.response.data)
+        }
+    }
+
+    const goToDetails = (e) => {
+        history.push(`/detail/${localId}`)
     }
 
     return (
-        <div className={styles.containerGeneral}>
-            <Navbar/>
-            <div className={styles.signUpContainer}>
+        <>
+        <Navbar/>
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
                 <h1 className={styles.title}>Hace tu reserva</h1>
                 <form onSubmit={handleSubmit}>
-                <div className={styles.input}>
-                <input 
+                <div>
+                <input  className={styles.input}
                     type='text' 
                     placeholder='Nombre'
                     value={booking.name}
                     name="name"
                     onChange={handleChange}
                 /> 
+                {errors.name ? <span>{errors.name}</span> : null}
                 </div>
 
-                <div className={styles.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='date' 
+                    min={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`}
+                    max={`${date.getFullYear()}-${getNum(date,"Month")}-${getNum(date,"Day")}`} //mientras implementamos reservas posteriores
                     placeholder='Mail'
-                    value={booking.date}
-                    name="date"
+                    value={booking.reservedDate}
+                    name="reservedDate"
                     onChange={handleChange}
                 />
                 </div>
 
-                <div className={styles.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='number'
-                    min="2"
+                    min="1"
                     max="10"
                     placeholder='Cantidad de personas'
-                    value={booking.people}
-                    name="people"
+                    value={booking.personQuantity}
+                    name="personQuantity"
                     onChange={handleChange}
                 />
+                {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                 </div>
 
-                <div className={styles.input}>
-                <input
+                <div>
+                <input className={styles.input}
                     type='text' 
                     placeholder='discountCode'
                     value={booking.discountCode}
@@ -86,9 +156,15 @@ export default function SignUp() {
                 />
                 </div>
 
-                <button type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
+                <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
+                <br />
+                { localId ? <button className={styles.submitButton} onClick={goToDetails}>Volver</button> : null}
                 </form>
+                {errors.userId ? <span>{errors.userId}</span> : null}
+
+                {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
             </div>
         </div>
+        </>
     )
 }

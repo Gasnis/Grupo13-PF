@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../../redux/actions';
+import { createUser , getUserByid} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
-import styles from '../SignUp/SignUp.module.css';
+import styles from '../FormsStyles/forms.module.css';
+import { validation } from './ValidationSignUp';
 
-export default function SignUp() {
+export default function SignUp(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
 
     const [signUp, setSignUp] = useState({
         name: "",
@@ -17,10 +19,20 @@ export default function SignUp() {
         phone: "",
         birthday: "",
         city: "",
-        image: ""
+    })
+
+    const [errors, setErrors] = useState({
+        id: "",
     })
 
     function handleChange(event) {
+        setErrors(
+                validation({
+                        ...signUp,
+                        [event.target.name]: event.target.value,
+                    })
+                );
+
         setSignUp({
             ...signUp,
             [event.target.name]: event.target.value
@@ -39,96 +51,105 @@ export default function SignUp() {
                 phone: "",
                 birthday: "",
                 city: "",
-                image: ""
             })
-            history.push('/home')
+            dispatch(getUserByid(newUser.id))
+            history.push(`/profile`)
         } else {
             alert(newUser.response.data)
         }
     }
 
     return (
-        <div className={styles.containerGeneral}>
+        <div>
             <Navbar/>
-            <div className={styles.signUpContainer}>
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
                 <h1 className={styles.title}>Registrate</h1>
                 <form onSubmit={handleSubmit}>
-                <div className={styles.input}>
+                <div>
                 <input 
                     type='text' 
                     placeholder='Nombre'
                     value={signUp.name}
                     name="name"
                     onChange={handleChange}
+                    className={styles.input}
                 /> 
                 </div>
 
-                <div className={styles.input}>
-                <input
+                <div >
+                <input 
                     type='text' 
                     placeholder='Mail'
                     value={signUp.id}
                     name="id"
                     onChange={handleChange}
+                    className={styles.input}
                 />
+                <div>{errors.id && <p>{errors.id}</p>}</div>
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='password' 
                     placeholder='Contraseña'
                     value={signUp.password}
                     name="password"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='text' 
                     placeholder='Teléfono'
                     value={signUp.phone}
                     name="phone"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='date' 
                     placeholder='Fecha de cumpleaños'
                     value={signUp.birthday}
                     name="birthday"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
                 
-                <div className={styles.input}>
+                <div>
                 <input
                     type='text' 
                     placeholder='Ciudad'
                     value={signUp.city}
                     name="city"
                     onChange={handleChange}
+                    className={styles.input}
                 />
                 </div>
 
-                <div className={styles.input}>
-                <input
-                    type='text' 
-                    placeholder='Foto de perfil'
-                    value={signUp.image}
-                    name="image"
-                    onChange={handleChange}
-                />
+                {/* <h3>Sos dueño de un bar?</h3> */}
+
+                <div className={styles.linksContainer}>
+                    <button 
+                        type="submit" 
+                        id="signUpButton"
+                        disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday || errors.id}
+                        className={styles.submitButton}
+                    >Registrarse</button>
+                    {/* <h4>Ingresar con Google</h4> */}
+                    <Link to="/login" >Ya tenes una cuenta?</Link>
                 </div>
 
-                <h3>Sos dueño de un bar?</h3>
-                <button type="submit" id="signUpButton" className={styles.submitButton}>Registrarse</button>
-                <h4>Ingresar con Google</h4>
-                <Link to="/login" >Ya tenes una cuenta?</Link>
                 </form>
             </div>
+        </div>
+
         </div>
     )
 }

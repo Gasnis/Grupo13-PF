@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
-import { getPlaceDetail } from "../../redux/actions";
+import { cleanDetail, getPlaceDetail } from "../../redux/actions";
 import star from "../../utils/Star 4.png";
 import vector from "../../utils/Vector.png";
 import location2 from "../../utils/location2.png";
@@ -16,17 +16,19 @@ import style from "./details.module.css";
 export default function Detail () {
     const {id} = useParams();
     const dispatch = useDispatch();
-
+    const profile = useSelector(state=>state.profile)
     useEffect(()=>{
         dispatch(getPlaceDetail(id));
+        return dispatch(cleanDetail());
     },[])
 
     const placeDetail = useSelector(state=>state.placeDetail)
 
-    if (!placeDetail){
+
+    if (!placeDetail.id){
         return(
         <div>
-            <h3>loading...</h3>
+            <img src="https://toppng.com/uploads/preview/404-error-error-404-transparent-11563210406bsmsusbbzi.pnghttps://img.freepik.com/premium-vector/404-error-page-found-minimalist-dark-concept-error-landing-page-web-page-missing_111925-131.jpg?w=2000" alt="" />
         </div>
         )
     }
@@ -37,7 +39,7 @@ export default function Detail () {
                     <div>
                         <h1 className={style.titles}>{placeDetail.name}</h1>
                         <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <a href={placeDetail.location}><h3 className={style.titles}>{placeDetail.location}</h3></a>
+                        <a href={placeDetail.location}><h3 className={style.titles}>Location</h3></a>
                     </div>
                     <div>
                         <h2>{placeDetail.rating}</h2>
@@ -51,7 +53,7 @@ export default function Detail () {
                     ? 
                     (
                         <div>
-                            <h1>hay evento :=</h1>
+                            <h1>Hay evento</h1>
                         </div>
                     )
                     :   
@@ -62,19 +64,22 @@ export default function Detail () {
                     }
                 </div>
                 <div className={style.centerDiv}>
-                    <h2>Horarios</h2>
-                    <h3>{placeDetail.schedule}</h3>
+                    <h3>Horarios</h3>
+                    <h3>{placeDetail.schedule?.slice(0,placeDetail.schedule.length-2).map(day=>day[0].toUpperCase()+day.slice(1)).join("-")}</h3>
+                    <h3>{placeDetail.schedule?.slice(placeDetail.schedule.length-2).join("-")}</h3>
                     <a href={placeDetail.menu}><h2>Menú</h2></a>
                     {placeDetail.promo 
                     ?
                         <div>
-                            <h2>Promo:</h2>
-                            <h3>{placeDetail.promo}</h3>
+                            <h3>Promo:</h3>
+                            <h2>{placeDetail.promo}</h2>
                         </div>
                     :
                         <h3>Vuelve mas tarde para ver promociones</h3>
                     }
-                    <a className={style.link} href="/bookings">RESERVAR</a>
+                    
+                    <Link to="/book"><button className={style.link}>RESERVAR</button></Link>
+                    
                 </div>
                 <div className={style.sideDiv}>
                     <a href={placeDetail.location}><img src={location2} alt="" /></a>
@@ -96,4 +101,6 @@ export default function Detail () {
             </div>
         </div>
     )
+
 }
+    

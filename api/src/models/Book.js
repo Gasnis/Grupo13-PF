@@ -15,16 +15,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     reservedDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
-    createdAt: {
-        type: DataTypes.DATE,
-        detaultValue: DataTypes.NOW,
-        allowNull: false,
-    },
-    updatedAt: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
     },
     personQuantity: {
@@ -33,8 +24,8 @@ module.exports = (sequelize) => {
     },
     codeProm: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     }
-  },{timestamp: false});
+  });
 
 };
