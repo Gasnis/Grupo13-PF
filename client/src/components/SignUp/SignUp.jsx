@@ -5,6 +5,9 @@ import { createUser , getUserByid} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
 import { validation } from './ValidationSignUp';
+import GoogleLogin from "react-google-login";
+import {gapi} from "gapi-script"
+import { useEffect } from "react";
 
 export default function SignUp(props) {
 
@@ -52,13 +55,60 @@ export default function SignUp(props) {
                 birthday: "",
                 city: "",
             })
-            dispatch(getUserByid(newUser.id))
+            await dispatch(getUserByid(newUser.id))
             history.push(`/profile`)
         } else {
             alert(newUser.response.data)
         }
     }
 
+
+    const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
+
+    useEffect(() => {
+        const start = () =>{
+            gapi.auth2.init({
+                clientId: clientId,
+            })
+        }
+        gapi.load("client:auth2", start)
+      }, [])
+
+    const generarString = (longitud) => {
+      let result = "";
+      const abcABCNum = "a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9".split(" "); // Espacios para convertir cara letra a un elemento de un array
+      for(let i=0;i<=longitud;i++) {
+        const random = Math.floor(Math.random() * abcABCNum.length);
+        result += abcABCNum[random]
+      }
+      return result;
+    };
+    
+    const responseGoogle = async (respuesta) => {
+        const userName = respuesta.profileObj.name;
+        const userEmail = respuesta.profileObj.email;
+        const userPassword = generarString(10)
+        
+        let newUser = {
+            name: userName,
+            id: userEmail,
+            password: userPassword,
+            phone: "Completar",
+            birthday: "1111-11-11",
+            city: "Completar",
+            image: respuesta.profileObj.imageUrl
+        }
+        const userCreated = await dispatch(createUser(newUser))
+
+        if (userCreated.id) {
+            alert('¡Usuario creado con éxito!') 
+            await dispatch(getUserByid(userCreated.id))
+            history.push(`/profile`)
+        } else {
+            alert(userCreated.response.data)
+        }
+        
+    }
     return (
         <div>
             <Navbar/>
@@ -142,7 +192,14 @@ export default function SignUp(props) {
                         disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday || errors.id}
                         className={styles.submitButton}
                     >Registrarse</button>
-                    {/* <h4>Ingresar con Google</h4> */}
+                    <h4>Ingresar con Google</h4>
+                    <GoogleLogin
+                        clientId={clientId}
+                        buttonText="Registrarse con google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={"single_host_origin"}
+                    />
                     <Link to="/login" >Ya tenes una cuenta?</Link>
                 </div>
 
