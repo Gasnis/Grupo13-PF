@@ -49,8 +49,8 @@ export default function Login() {
     } else {
       alert("El usuario o contraseña es incorrecto");
     }
-  };
-  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com" 
+  }
+  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
 
   useEffect(() => {
     const start = () =>{
@@ -61,8 +61,17 @@ export default function Login() {
     gapi.load("client:auth2", start)
   }, [])
 
-    const responseGoogle = (respuesta) => {
-        console.log(respuesta);
+    const responseGoogle = async (respuesta) => {
+      const userLoginId = respuesta.profileObj.email
+      const usuarios = await dispatch(getUser());
+      const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
+      if (currentUser.length) {
+        dispatch(getUserByid(userLoginId))
+        history.push("/");
+      } else {
+        alert("Debes registrarte primero");
+        history.push("/sign-up");
+      }
     }
 
   return (
