@@ -14,9 +14,10 @@ export default function Login() {
   const history = useHistory();
   const checked = useSelector((state) => state.checked);
 
-  const [login, setLogin] = useState({
+  const [login, setLogin] = useState({  // 
     id: "",
     password: "",
+    
   });
 
   function handleChange(event) {
@@ -27,6 +28,8 @@ export default function Login() {
   }
 
   const handleSubmit = async (event) => {
+    console.log(event.target.name)
+
     event.preventDefault();
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter(
@@ -47,7 +50,7 @@ export default function Login() {
       alert("El usuario o contraseña es incorrecto");
     }
   };
-  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
+  const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com" 
 
   useEffect(() => {
     const start = () =>{
@@ -93,6 +96,7 @@ export default function Login() {
 
             <div className={styles.linksContainer}>
               <button
+                name="where"
                 type="submit"
                 id="loginButton"
                 className={styles.submitButton}
@@ -102,6 +106,7 @@ export default function Login() {
               </button>
 
               <GoogleLogin
+                name="google"
                 clientId={clientId}
                 buttonText="Login"
                 onSuccess={responseGoogle}
