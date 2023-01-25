@@ -13,17 +13,13 @@ export default function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
-    console.log(profile)
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
-    }, [])
-
-    useEffect(()=>{
         if (!profile.id) {
             history.push("/login")
         }
-    },[])
+    }, [])
 
 
     if (!profile) {
