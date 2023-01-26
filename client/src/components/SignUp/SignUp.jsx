@@ -8,6 +8,8 @@ import { validation } from './ValidationSignUp';
 import GoogleLogin from "react-google-login";
 import {gapi} from "gapi-script"
 import { useEffect } from "react";
+import emailjs from "@emailjs/browser"
+import axios from 'axios';
 
 export default function SignUp(props) {
 
@@ -87,7 +89,7 @@ export default function SignUp(props) {
     const responseGoogle = async (respuesta) => {
         const userName = respuesta.profileObj.name;
         const userEmail = respuesta.profileObj.email;
-        const userPassword = generarString(10)
+        const userPassword = await generarString(10)
         
         let newUser = {
             name: userName,
@@ -107,7 +109,23 @@ export default function SignUp(props) {
         } else {
             alert(userCreated.response.data)
         }
+        // emailjs.sendForm("service_e1td9mr", "template_xya2hg7", newUser,"ra0ajVxUcOBmQYZPK")
+        // .then(response => console.log(response))
+        // .catch(error => console.log(error))
+
+        var data = {
+            service_id: 'service_e1td9mr',
+            template_id: 'template_xya2hg7',
+            user_id: 'ra0ajVxUcOBmQYZPK',
+            template_params: {
+                'userPassword': userPassword,
+                'gmail': userEmail,
+                'userName': userName,
+            }
+        };
         
+        await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+     
     }
     return (
         <div>
