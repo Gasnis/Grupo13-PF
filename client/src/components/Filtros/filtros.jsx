@@ -21,7 +21,7 @@ export default function Filter() {
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
-// <<<<<<< HEAD
+
 //     return (
 //         <>
 //             <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
@@ -52,7 +52,7 @@ export default function Filter() {
 //                             </button>
 //                         </div> */}
 //                     </div>
-// =======
+
 
     return (    
             <div>
@@ -72,7 +72,7 @@ export default function Filter() {
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
                     </select>
-{/* >>>>>>> main */}
+
                 </div>
             </div>
        

@@ -16,7 +16,6 @@ import style from "./details.module.css";
 export default function Detail () {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const profile = useSelector(state=>state.profile)
     useEffect(()=>{
         dispatch(getPlaceDetail(id));
         return dispatch(cleanDetail());
@@ -25,10 +24,10 @@ export default function Detail () {
     const placeDetail = useSelector(state=>state.placeDetail)
 
 
-    if (!placeDetail.id){
+    if (!placeDetail.id || placeDetail.id === 400){
         return(
         <div>
-            <img src="https://toppng.com/uploads/preview/404-error-error-404-transparent-11563210406bsmsusbbzi.pnghttps://img.freepik.com/premium-vector/404-error-page-found-minimalist-dark-concept-error-landing-page-web-page-missing_111925-131.jpg?w=2000" alt="" />
+            <img src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg" alt="" />
         </div>
         )
     }
@@ -39,7 +38,7 @@ export default function Detail () {
                     <div>
                         <h1 className={style.titles}>{placeDetail.name}</h1>
                         <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <a href={placeDetail.location}><h3 className={style.titles}>Location</h3></a>
+                        <a href={`https://www.google.com/maps/place/${placeDetail.location.replace(/ /g,"+")}`}><h3 className={style.titles}>{placeDetail.location}</h3></a>
                     </div>
                     <div>
                         <h2>{placeDetail.rating}</h2>
@@ -82,7 +81,7 @@ export default function Detail () {
                     
                 </div>
                 <div className={style.sideDiv}>
-                    <a href={placeDetail.location}><img src={location2} alt="" /></a>
+                    <a href={`https://www.google.com/maps/place/${placeDetail.location}`}><img src={location2} alt="" /></a>
                     {placeDetail.ageRange 
                     ?
                     <h1>{placeDetail.ageRange.join("-")}</h1>
