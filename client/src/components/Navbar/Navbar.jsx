@@ -21,7 +21,7 @@ export default function Navbar(props) {
 
 
     
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(checked);
    
     
     const handleOpen = () => {
