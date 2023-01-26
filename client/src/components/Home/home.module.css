@@ -1,9 +1,15 @@
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
+}
+
 .botonpaginado {
     width: 130px;
     height: 40px;
     font-size: 30px;
     cursor: pointer;
-    background-color: #171717;
+    background-color: #424240;
     color: #fff;
     border: none;
     margin: 20px;
@@ -14,9 +20,9 @@
    .botonpaginado:hover {
     border-radius: 5px;
     transform: translateY(-10px);
-    box-shadow: 0 7px 0 -2px #f859d8,
-     0 15px 0 -4px #39a2db,
-     0 16px 10px -3px #39a2db;
+    box-shadow: 0 7px 0 -2px #40047C,
+     0 15px 0 -4px #FFB800,
+     0 16px 10px -3px #FFB800;
    }
 
    .botonpaginadodark {
@@ -43,9 +49,9 @@
    .botonpaginado:active {
     transition: all 0.2s;
     transform: translateY(-5px);
-    box-shadow: 0 2px 0 -2px #f859d8,
-     0 8px 0 -4px #39a2db,
-     0 12px 10px -3px #39a2db;
+    box-shadow: 0 2px 0 -2px #40047C,
+     0 8px 0 -4px #FFB800,
+     0 12px 10px -3px #FFB800;
    }
 
    .cargando h1{
@@ -59,7 +65,8 @@
    }
    
 .info{
-  background-color: #FCF9EB;
+  background-image: url(../../utils/Home2.png);
+  background-repeat: repeat-y;
 }
 
 .infodark{

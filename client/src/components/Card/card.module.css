@@ -1,5 +1,7 @@
 .places{
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     margin:5px;
@@ -8,10 +10,11 @@
 }
 
 .place {
-    flex-direction: row;
+    /* flex-direction: row;
     flex-wrap: wrap;
-    text-decoration: none;
-    height: 9cm;
+    text-decoration: none; */
+    height: 450px;
+    width: 400px;
     background-color: #fcf9eb8a;
     background-size: contain;
     border-radius: 11px;
@@ -19,7 +22,6 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-style: normal;
     transition: all 0.5s ease;
-    
 }
 .place:hover {
     transform: scale(1.09) rotate(2deg);
@@ -29,8 +31,8 @@
 
 .logo{
     border-radius: 11px 11px 0px 0px;
-    height: 240px;
-    width: 300px;
+    height: 340px;
+    width: 400px;
     box-shadow: 2px 2px 2px #0c0c0c33;
 }
 

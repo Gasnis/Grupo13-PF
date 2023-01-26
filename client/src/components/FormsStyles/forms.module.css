@@ -84,7 +84,6 @@
     font-size: 16px;
 }
 
-
 .title {
     font-size: 25px;
     font-weight: bold;
@@ -105,6 +104,7 @@
     font-size: 15px;
 }
 
+/* FormBar */
 .scheduleContainer {
     margin-top: 20px;
     display: flex;
@@ -127,7 +127,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#E7E7E7;
+    background-color:#FCF9EB;
     border-radius: 5px;
 }
 
@@ -142,7 +142,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#E7E7E7;
+    background-color:#FCF9EB;
     border-radius: 5px;
 }
 
@@ -154,7 +154,7 @@
     padding-bottom: 5px;
     padding-right: 5px;
     padding-left: 10px;
-    background: #E7E7E7;
+    background: #FCF9EB;
     border-radius: 10px;
     width: 98%;
 }
@@ -166,7 +166,7 @@
     padding-bottom: 5px;
     padding-right: 5px;
     padding-left: 10px;
-    background: #E7E7E7;
+    background: #FCF9EB;
     border-radius: 10px;
     width: 150px;
 }
