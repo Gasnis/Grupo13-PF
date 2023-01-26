@@ -66,10 +66,10 @@ const updateUser = async (newUserData) =>{
     
   const {userId,id,name,password,phone,image,birthday,city} = newUserData
 
-  if (userId && name && password && phone && image && birthday && city && id) {
+  if (userId && name && password && phone && birthday && city && id) {
       let user = await User.findByPk(id);
       if (user.id === userId) {
-          const updated = await user.update( 
+          await user.update( 
                   {
                   id,
                   name,
@@ -79,7 +79,16 @@ const updateUser = async (newUserData) =>{
                   birthday,
                   city,
               });
-          return updated
+          const userUpdated = await User.findOne({
+            where: {id: userId},
+            include:[{
+                model: Local,
+              },
+              {
+                model: Book
+              }]
+        })
+          return userUpdated
       }else{
           throw new Error("You must write your own email")
       }
