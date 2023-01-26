@@ -22,7 +22,7 @@ const initialState = {
     profile: {},
     allUsers: [],
     searchInput: "",
-    checked: true,
+    darkmode: false,
 }
 
 export default function reducer(state = initialState, action) {
@@ -125,7 +125,7 @@ export default function reducer(state = initialState, action) {
             action.payload === true ? checkstate = false : checkstate = true
             return {
                 ...state,
-                checked: checkstate,
+                darkmode: checkstate,
             }
 
         default:
