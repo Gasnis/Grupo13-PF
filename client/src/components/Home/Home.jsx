@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCategory, setInput, sortRating } from "../../redux/actions"
+import { filterCategory, searchPlace, setInput, sortRating } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
@@ -15,7 +15,7 @@ export default function Home() {
     const searchInput = useSelector(state => state.searchInput)
 
     let allPlaces = useSelector((state) => state.places)
-    const darkmode = useSelector((state)=> state.darkmode)
+    const darkmode = useSelector((state) => state.darkmode)
     useEffect(() => {
         dispatch(getPlaces())
 
@@ -46,13 +46,18 @@ export default function Home() {
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
-    
-    const refresh= (event) => {
+
+    const refresh = (event) => {
         event.preventDefault();
         dispatch(getPlaces());
         category.selectedIndex = 0;
         orderSelection.selectedIndex = 0;
         dispatch(setInput(""))
+    }
+
+    const handleSearchBar = (e) => {
+        dispatch(setInput(e.target.value))
+        dispatch(searchPlace(e.target.value))
     }
 
     return (
@@ -79,8 +84,13 @@ export default function Home() {
                 <div>
                     <button className={style.limpiar} onClick={refresh}>Limpiar</button>
                 </div>
-               
+
             </div>
+            <div className={darkmode ? style.infodark : style.info}>
+            <div>
+                <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
+            </div>
+                <div>
             <div className={darkmode? style.infodark:style.info}>
                 <div className={style.cardsContainer}>
                     {
@@ -102,7 +112,7 @@ export default function Home() {
                                 </div>
                                 :
                                 <div>
-                                    <div className={darkmode?style.cargandodark:style.cargando} >
+                                    <div className={darkmode ? style.cargandodark : style.cargando} >
                                         <h1>Cargando...</h1>
                                     </div>
                                 </div>
@@ -113,7 +123,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={darkmode?style.botonpaginadodark:style.botonpaginado} onClick={handlePlace}>+</button>
+                    <button className={darkmode ? style.botonpaginadodark : style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>
