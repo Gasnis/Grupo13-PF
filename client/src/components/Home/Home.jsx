@@ -101,9 +101,9 @@ export default function Home() {
                                     <h1>No hay sitios con este nombre</h1>
                                 </div>
                                 :
-                                <div className={style.spinercontainer}>
-                                    <div className={style.spinner}>
-                                        <div className={style.spinner1}></div>
+                                <div>
+                                    <div className={checked?style.cargando:style.cargandodark} >
+                                        <h1>Cargando...</h1>
                                     </div>
                                 </div>
 
@@ -113,7 +113,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
+                    <button className={checked?style.botonpaginadodark:style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>
