@@ -62,6 +62,7 @@ export default function Login() {
   }, [])
 
     const responseGoogle = async (respuesta) => {
+      console.log(respuesta)
       const userLoginId = respuesta.profileObj.email
       const usuarios = await dispatch(getUser());
       const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
