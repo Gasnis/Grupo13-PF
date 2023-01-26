@@ -82,7 +82,7 @@ export default function Home() {
                
             </div>
             <div className={darkmode? style.infodark:style.info}>
-                <div>
+                <div className={style.cardsContainer}>
                     {
                         renderPlaces.length ?
                             renderPlaces === "404" ?

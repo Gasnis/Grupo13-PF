@@ -1,7 +1,10 @@
-/* .profileContainer {
-  background-image: url(../../utils/profile\ 1920-1080.jpg);
+.profileContainer {
+  background-image: url(../../utils/Profile.png);
+  background-size: 100%;
   background-repeat: no-repeat;
-} */
+  background-position-y: 184px;
+  padding-bottom: 40px;
+}
 
 .profilePict {
     width: 180px;
