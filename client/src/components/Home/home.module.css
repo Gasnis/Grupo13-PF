@@ -1,3 +1,8 @@
+.fondo {
+  margin: auto 0;
+  background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
+
+}
 .botonpaginado {
     width: 130px;
     height: 40px;
@@ -63,7 +68,8 @@
 }
 
 .infodark{
-  background-image: linear-gradient(79deg, #414347, #3c3441 40%);
+  background-image: url("../../utils/homedark.png");
+  background-size: cover;
 }
 
 .filtercontainer{
@@ -74,7 +80,6 @@
     align-items: center;
     flex-wrap: nowrap;
     background-color:  #953671;
-    
 }
 
 .filter{
@@ -109,3 +114,14 @@
     cursor:pointer;
 }
 
+.searchbar {
+  color: #000000;
+  padding: 0.5em 1.3em;
+  margin-inline: 35px;
+  font-size: 18px;
+  border-radius: 0.5em;
+  border-style: none;
+  background: #ffffff;
+  box-shadow: 6px 6px 12px #7e01d7,
+              -6px -6px 12px #52008c;
+}
