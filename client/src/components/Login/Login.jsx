@@ -14,9 +14,10 @@ export default function Login() {
   const history = useHistory();
   const checked = useSelector((state) => state.checked);
 
-  const [login, setLogin] = useState({
+  const [login, setLogin] = useState({  // 
     id: "",
     password: "",
+    
   });
 
   function handleChange(event) {
@@ -27,6 +28,8 @@ export default function Login() {
   }
 
   const handleSubmit = async (event) => {
+    console.log(event.target.name)
+
     event.preventDefault();
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter(
@@ -59,6 +62,7 @@ export default function Login() {
   }, [])
 
     const responseGoogle = async (respuesta) => {
+      console.log(respuesta)
       const userLoginId = respuesta.profileObj.email
       const usuarios = await dispatch(getUser());
       const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
@@ -102,6 +106,7 @@ export default function Login() {
 
             <div className={styles.linksContainer}>
               <button
+                name="where"
                 type="submit"
                 id="loginButton"
                 className={styles.submitButton}
@@ -111,6 +116,7 @@ export default function Login() {
               </button>
 
               <GoogleLogin
+                name="google"
                 clientId={clientId}
                 buttonText="Login"
                 onSuccess={responseGoogle}
