@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import { createPlace, getPlaceDetail } from '../../redux/actions';
-import styles from '../FormsStyles/forms.module.css';
+import { createPlace } from '../../redux/actions';
+import styles from '../FormBar/FormBar.module.css';
 import { validation } from './ValidationFormBar';
 
 export default function CreateLocal() {
@@ -107,7 +107,7 @@ export default function CreateLocal() {
 
 
     return (
-        <div>
+        <div className={styles.formBarContainer}>
             <Navbar />
             <div className={styles.container}>
                 <div className={styles.formContainer}>

@@ -5,7 +5,6 @@ import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
 import { searchPlace, setInput,setChecked } from "../../redux/actions";
-import Filtros from "../Filtros/filtros"
 import { Link } from "react-router-dom"
 import { logout } from "../../redux/actions";
 
@@ -15,7 +14,7 @@ export default function Navbar(props) {
     const profile = useSelector(state => state.profile)
     const searchInput = useSelector(state=>state.searchInput);
     const places = useSelector(state=>state.places);
-    const checked = useSelector(state=>state.checked);
+    const darkmode = useSelector(state=>state.darkmode);
     const dispatch = useDispatch();
 
 
@@ -37,7 +36,7 @@ export default function Navbar(props) {
         dispatch(logout());
     }
     const handleChangeSwitch = () => {
-        dispatch(setChecked(checked));
+        dispatch(setChecked(darkmode));
       };
 
     return (
@@ -66,12 +65,14 @@ export default function Navbar(props) {
                     </div>
                     : null}
                 <label className={style.switch}>
-                    <input type="checkbox" value={checked} onChange={handleChangeSwitch}/>
-                    <span className={style.slider}></span>
+              
+                    <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch}/>
+                  
+                    <span className={style.slider} ></span>
                 </label>
                 <div>
                     <div>
-                        <img src={profile.id?profile.image:"https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
+                        <img src={profile.id?profile.image:"https://i.pinimg.com/222x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg"} alt="" className={style.imagenprofile} onClick={handleOpen}/>
                         {!profile.id &&
                         open ? (
                             <div className={style.dropdown}>

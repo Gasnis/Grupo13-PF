@@ -2,22 +2,24 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
+import { useHistory } from 'react-router-dom';
 
 
 
-export default function Detail() {
+export default  function Detail() {
     const dispatch = useDispatch();
-
+    const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
-    console.log(profile)
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [])
-
+    
+    if (!profile.id) {
+        history.push("/")
+    }
 
     if (!profile) {
         return (
@@ -27,15 +29,15 @@ export default function Detail() {
         )
     }
     return (
-        <div>
+        <div className={style.profileContainer}>
             <Navbar />
             <hr />
             <div>
                 <div className={style.divContainer} >
-                    <img src={profile.image} alt="perfil photo" className={style.profilePict} />
+                    <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
                     <h1 className={style.name}>{profile.name}</h1>
-                    <img className={style.Logo} src={beer} alt="logo" />
                 </div>
+              
 
                 <div className={style.infoBarsAndInfoUser}>
                     <div className={style.divProfile}>
@@ -92,6 +94,7 @@ export default function Detail() {
                                     </div>)
                             })}
                         </div>
+                        
                     </div> : null
                     }
                 </div>

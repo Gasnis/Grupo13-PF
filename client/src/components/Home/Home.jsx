@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCategory, sortRating } from "../../redux/actions"
+import { filterCategory, setInput, sortRating } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
 import {
-    getPlaces, setInput
+    getPlaces
 } from "../../redux/actions"
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
     const searchInput = useSelector(state => state.searchInput)
 
     let allPlaces = useSelector((state) => state.places)
-    const checked = useSelector((state)=> state.checked)
+    const darkmode = useSelector((state)=> state.darkmode)
     useEffect(() => {
         dispatch(getPlaces())
 
@@ -23,7 +23,7 @@ export default function Home() {
 
     const [currentPlaces, setCurrentPlaces] = useState(9)
     const [order, setOrder] = useState("");
-
+    console.log(order)
 
     function handlePlace(e) {
         e.preventDefault()
@@ -32,7 +32,8 @@ export default function Home() {
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
 
-
+    const orderSelection = document.querySelector("#orderSelection");
+    const category = document.querySelector("#category");
 
 
     const handlerCategory = (event) => {
@@ -49,7 +50,9 @@ export default function Home() {
     const refresh= (event) => {
         event.preventDefault();
         dispatch(getPlaces());
-
+        category.selectedIndex = 0;
+        orderSelection.selectedIndex = 0;
+        dispatch(setInput(""))
     }
 
     return (
@@ -58,7 +61,7 @@ export default function Home() {
             <Navbar home={true} />
             <div className={style.filtercontainer}>
                 <div>
-                    <select className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                    <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
                         <option value="all">Rating</option>
                         <option value="best">Mejores</option>
                         <option value="worst">Peores</option>
@@ -66,7 +69,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <select className={style.filter} onChange={(event) => handlerCategory(event)}>
+                    <select id="category" className={style.filter} onChange={(event) => handlerCategory(event)}>
                         <option value="all">Categoría</option>
                         <option value="pub">Pubs</option>
                         <option value="disco">Discotecas</option>
@@ -78,8 +81,8 @@ export default function Home() {
                 </div>
                
             </div>
-            <div className={checked? style.infodark:style.info}>
-                <div>
+            <div className={darkmode? style.infodark:style.info}>
+                <div className={style.cardsContainer}>
                     {
                         renderPlaces.length ?
                             renderPlaces === "404" ?
@@ -98,9 +101,9 @@ export default function Home() {
                                     <h1>No hay sitios con este nombre</h1>
                                 </div>
                                 :
-                                <div className={style.spinercontainer}>
-                                    <div className={style.spinner}>
-                                        <div className={style.spinner1}></div>
+                                <div>
+                                    <div className={darkmode?style.cargandodark:style.cargando} >
+                                        <h1>Cargando...</h1>
                                     </div>
                                 </div>
 
@@ -110,7 +113,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
+                    <button className={darkmode?style.botonpaginadodark:style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>

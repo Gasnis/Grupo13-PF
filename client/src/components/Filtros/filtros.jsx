@@ -2,13 +2,13 @@ import React ,{useState} from "react";
 import { useDispatch } from "react-redux";
 import { filterCategory, sortRating} from "../../redux/actions"
 import style from "./filtros.module.css"
-import arrow from "../../utils/arrow.svg"
 
 export default function Filter() {
 
     const dispatch = useDispatch();
 
     const [order, setOrder] = useState("");
+    console.log(order)
 
     
     const handlerCategory = (event) => {
@@ -21,7 +21,7 @@ export default function Filter() {
         dispatch(sortRating(event.target.value))
         setOrder(event.target.value)
     }
-// <<<<<<< HEAD
+
 //     return (
 //         <>
 //             <div className={stateDropdown ? `${style.dropdown} ${style.open}` : `${style.dropdown}`} id="dropdown">
@@ -52,7 +52,7 @@ export default function Filter() {
 //                             </button>
 //                         </div> */}
 //                     </div>
-// =======
+
 
     return (    
             <div>
@@ -72,7 +72,7 @@ export default function Filter() {
                         <option value="disco">Discotecas</option>
                         <option value="bar">Bares</option>
                     </select>
-{/* >>>>>>> main */}
+
                 </div>
             </div>
        
