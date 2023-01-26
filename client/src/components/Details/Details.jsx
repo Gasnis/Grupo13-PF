@@ -32,20 +32,34 @@ export default function Detail () {
         )
     }
     return (
-        <div>
+        <div className={style.body}>
             <Navbar/>
-            <div style={{backgroundImage:`url(${placeDetail.image})`}} className={style.head}>
+            <div className={style.container}>
+                <div className={style.img}>
+                    <img src={placeDetail.image} alt="" />
+                </div>
+                <div className={style.head}>
+                    <p>{placeDetail.category} {placeDetail.rating}<img className={style.star} src={star} alt="" /></p>
+                    <p className={style.name}>{placeDetail.name}</p>
+                    <p>Horarios</p>
+                    <p>{placeDetail.schedule?.slice(0,placeDetail.schedule.length-2).map(day=>day[0].toUpperCase()+day.slice(1)).join("-")}</p>
+                    <p>{placeDetail.schedule?.slice(placeDetail.schedule.length-2).join("-")}</p>
+                    <a href={placeDetail.menu}><h2>Menú</h2></a>
+                    {placeDetail.promo 
+                    ?
                     <div>
-                        <h1 className={style.titles}>{placeDetail.name}</h1>
-                        <h2 className={style.titles}>{placeDetail.category}</h2>
-                        <a href={`https://www.google.com/maps/place/${placeDetail.location.replace(/ /g,"+")}`}><h3 className={style.titles}>{placeDetail.location}</h3></a>
-                    </div>
-                    <div>
-                        <h2>{placeDetail.rating}</h2>
-                        <img className={style.star} src={star} alt="" />
-                    </div>
+                            <p>Promo:</p>
+                            <h2>{placeDetail.promo}</h2>
+                        </div>
+                    :
+                    <p>Vuelve mas tarde para ver promociones</p>
+                    }
+                    <a href={`https://www.google.com/maps/place/${placeDetail.location.replace(/ /g,"+")}`}><h3 className={style.titles}>Direccion: {placeDetail.location}</h3></a>
+                    
+                    <Link to="/book"><button className={style.reservar}>RESERVAR</button></Link>
+                </div>
             </div>
-            <div className={style.cardsContainer}>
+            {/* <div className={style.cardsContainer}>
                 <div className={style.sideDiv}>
                     <h1>SHOW</h1>
                     {placeDetail.event 
@@ -97,7 +111,7 @@ export default function Detail () {
                         }
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 

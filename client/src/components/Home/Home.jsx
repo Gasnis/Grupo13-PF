@@ -91,6 +91,8 @@ export default function Home() {
                 <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
             </div>
                 <div>
+            <div className={darkmode? style.infodark:style.info}>
+                <div className={style.cardsContainer}>
                     {
                         renderPlaces.length ?
                             renderPlaces === "404" ?

@@ -1,7 +1,15 @@
+.profileContainer {
+  background-image: url(../../utils/Profile.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 184px;
+  padding-bottom: 40px;
+}
+
 .profilePict {
     width: 180px;
     height: 180px;
-    border-radius: 10%;
+    border-radius: 50%;
     float: left;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -13,37 +21,31 @@
     grid-template-columns: 200px auto auto;
     width: 50%;
     height: 200px;
-    background-color: rgb(111, 111, 111);
-    border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 40px;
-    box-shadow: 0px 0px 25px rgb(91, 92, 91);
-    align-items: center;
-    justify-content: space-between;
+    align-items: end;
+    border-radius: 11px;
 }
 
 .name{
-  
   font: 30px Robot, sans-serif;
   float: left;
   font-weight: 900;
   justify-self: flex-start;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   flex-wrap: nowrap;
 }
 
 .divProfile{
-  
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
-  box-shadow: 0px 0px 25px rgb(91, 92, 91);
-  width: 400px;
+  background-color: #fdfbf2c0;
   height: 300px;
   margin-bottom: 40px;
   margin-left: 15px;
+  border-radius: 11px;
 }
 .divProfile span{
   color: rgb(58, 58, 58);
@@ -62,10 +64,14 @@
 }
 
 .localsInformation{
-  box-shadow: 0px 0px 25px rgb(91, 92, 91);
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdfbf2c0;
+  height: 300px;
   margin-left: 20px;
   width: 500px;
+  border-radius: 11px;
 }
 .booksInformation{
   box-shadow: 0px 0px 25px rgb(91, 92, 91);

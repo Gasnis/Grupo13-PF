@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
@@ -30,14 +29,13 @@ export default  function Detail() {
         )
     }
     return (
-        <div>
+        <div className={style.profileContainer}>
             <Navbar />
             <hr />
             <div>
                 <div className={style.divContainer} >
                     <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
                     <h1 className={style.name}>{profile.name}</h1>
-                    <img className={style.Logo} src={beer} alt="logo" />
                 </div>
               
 
