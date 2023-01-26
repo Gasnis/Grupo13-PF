@@ -118,7 +118,7 @@ export default function Login() {
               <GoogleLogin
                 name="google"
                 clientId={clientId}
-                buttonText="Login"
+                buttonText="Ingresar con Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={"single_host_origin"}

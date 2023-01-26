@@ -30,14 +30,13 @@ export default  function Detail() {
         )
     }
     return (
-        <div>
+        <div >
             <Navbar />
             <hr />
             <div>
                 <div className={style.divContainer} >
                     <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
                     <h1 className={style.name}>{profile.name}</h1>
-                    <img className={style.Logo} src={beer} alt="logo" />
                 </div>
               
 
