@@ -15,7 +15,7 @@ export default function Home() {
     const searchInput = useSelector(state => state.searchInput)
 
     let allPlaces = useSelector((state) => state.places)
-    const checked = useSelector((state)=> state.checked)
+    const darkmode = useSelector((state)=> state.darkmode)
     useEffect(() => {
         dispatch(getPlaces())
 
@@ -81,7 +81,7 @@ export default function Home() {
                 </div>
                
             </div>
-            <div className={checked? style.infodark:style.info}>
+            <div className={darkmode? style.infodark:style.info}>
                 <div>
                     {
                         renderPlaces.length ?
@@ -101,9 +101,9 @@ export default function Home() {
                                     <h1>No hay sitios con este nombre</h1>
                                 </div>
                                 :
-                                <div className={style.spinercontainer}>
-                                    <div className={style.spinner}>
-                                        <div className={style.spinner1}></div>
+                                <div>
+                                    <div className={darkmode?style.cargandodark:style.cargando} >
+                                        <h1>Cargando...</h1>
                                     </div>
                                 </div>
 
@@ -113,7 +113,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                    <button className={style.botonpaginado} onClick={handlePlace}>+</button>
+                    <button className={darkmode?style.botonpaginadodark:style.botonpaginado} onClick={handlePlace}>+</button>
                 </div>
 
             </div>
