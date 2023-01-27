@@ -1,9 +1,10 @@
 .profileContainer {
-  background-image: url(../../utils/Profile.png);
-  background-size: 100%;
+  background-image: url(../../utils/Profile2.png);
   background-repeat: no-repeat;
-  background-position-y: 184px;
-  padding-bottom: 40px;
+  height: 80vh;
+  width: 100%;
+  /* background-position-y: 184px;
+  padding-bottom: 40px; */
 }
 
 .profilePict {

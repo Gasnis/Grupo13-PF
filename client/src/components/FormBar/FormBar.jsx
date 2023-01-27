@@ -117,7 +117,7 @@ export default function CreateLocal() {
         if (newLocal.id) {
             history.push(`/detail/${newLocal.id}`)
         } else {
-           alert(newLocal.response.data)
+            alert(newLocal.response.data)
         }
     }
 
@@ -129,15 +129,30 @@ export default function CreateLocal() {
                 <div className={styles.formContainer}>
                     <h1 className={styles.title}>Registra tu local</h1>
                     <form onSubmit={handleSubmit}>
-                        <div >
-                            <input
-                                type='text'
-                                placeholder='Nombre del local'
-                                value={local.name}
-                                name="name"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
+                        <h3 className={styles.subtitles}>Perfil</h3>
+                        <hr />
+                        <div className={styles.doubleFields}>
+                            <div >
+                                <input
+                                    type='text'
+                                    placeholder='Nombre del local'
+                                    value={local.name}
+                                    name="name"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
+
+                            <div >
+                                <input
+                                    type='text'
+                                    placeholder='Direccion'
+                                    value={local.location}
+                                    name="location"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
                         </div>
 
                         <div >
@@ -155,28 +170,6 @@ export default function CreateLocal() {
                         <div >
                             <input
                                 type='text'
-                                placeholder='Direccion'
-                                value={local.location}
-                                name="location"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
-                        </div>
-
-                        <div >
-                            <input
-                                type='text'
-                                placeholder='Menu'
-                                value={local.menu}
-                                name="menu"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
-                        </div>
-
-                        <div >
-                            <input
-                                type='text'
                                 placeholder='Numero de telefono'
                                 value={local.phone}
                                 name="phone"
@@ -185,21 +178,11 @@ export default function CreateLocal() {
                             />
                         </div>
 
-                        <div >
-                            <input
-                                type='number'
-                                placeholder='Capacidad'
-                                value={local.capacity}
-                                name="capacity"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
-                        </div>
+                        <h3 className={styles.subtitles}>Horario de atención</h3>
+                        <hr />
 
-                        <div className={styles.scheduleContainer} >
-                            <h4 >Horarios</h4>
-                            <div className={styles.weekHours}>
-                                <div className={styles.weekdaysContainer}>
+                        <div className={styles.weekHours}>
+                            <div className={styles.weekdaysContainer}>
                                 {weekDays.map(day=>(
                                         <label key={day} className={styles.label}>
                                             <input
@@ -211,8 +194,7 @@ export default function CreateLocal() {
                                             {day}
                                         </label>
                                     ))}
-                                </div>
-
+                            </div>
                                 <div className={styles.hoursContainer}>
                                     <div>
                                         <label className={styles.label}>Desde:</label>
@@ -239,41 +221,80 @@ export default function CreateLocal() {
                                     </div>
                                 </div>
 
+                                <div>
+                                    <label className={styles.label}>Hasta:</label>
+                                    <select onChange={handleSchedule} className={styles.selectHours}>
+                                        <option> Horario de cierre</option>
+                                        {horaCierre.map((hora) => {
+                                            return (
+                                                <option key={hora}>{hora}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
                             </div>
+
                         </div>
 
-                        <h4>¿Tu local tiene restricciones por edad?</h4>
-                        <select name="ageRange" onChange={handleAge} className={styles.select}>
-                            <option value="" hidden>Selecciona las edades</option>
-                            <option value="+18">+18</option>
-                            <option value="+21">+21</option>
-                            <option value="Sin restricciones">Sin restricciones</option>
-                        </select>
+                        <h3 className={styles.subtitles}>Negocio</h3>
+                        <hr />
 
-                        <div >
-                            <h4>Categoria</h4>
-                            <select name="category" onChange={handleCategories} className={styles.select}>
-                                <option value="" hidden>Selecciona el tipo de local que mas coincida con el tuyo</option>
-                                <option value="disco">Discoteca</option>
-                                <option value="bar">Bar</option>
-                                <option value="pub">Pub</option>
+                        <div className={styles.doubleFields}>
+                            <select name="ageRange" onChange={handleAge} className={styles.select}>
+                                <option value="" hidden>Rango de edad</option>
+                                <option value="+18">+18</option>
+                                <option value="+21">+21</option>
+                                <option value="Sin restricciones">Sin restricciones</option>
                             </select>
+
+                            <div >
+                                <select name="category" onChange={handleCategories} className={styles.select}>
+                                    <option value="" hidden>Categoria</option>
+                                    <option value="disco">Discoteca</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="pub">Pub</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div >
                             <input
-                                type='number'
-                                placeholder='Precio de la reserva'
-                                value={local.bookPrice}
-                                name="bookPrice"
+                                type='text'
+                                placeholder='Menu'
+                                value={local.menu}
+                                name="menu"
                                 onChange={handleChange}
                                 className={styles.input}
                             />
                         </div>
 
+                        <div className={styles.doubleFields}>
+                            <div >
+                                <input
+                                    type='number'
+                                    placeholder='Capacidad'
+                                    value={local.capacity}
+                                    name="capacity"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
+
+                            <div >
+                                <input
+                                    type='number'
+                                    placeholder='Precio de la reserva'
+                                    value={local.bookPrice}
+                                    name="bookPrice"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
+                        </div>
+
                         <div className={styles.petFriendlyEventos}>
                             <div >
-                                <label>
+                                <label className={styles.label}>
                                     En tu local se realizan eventos(ej: shows en vivo)
                                     <input
                                         type='checkbox'
@@ -285,7 +306,7 @@ export default function CreateLocal() {
                             </div>
 
                             <div >
-                                <label>Tu local es pet friendly?
+                                <label className={styles.label}>Tu local es pet friendly?
                                     <input
                                         type='checkbox'
                                         value={local.petFriendly}
