@@ -57,7 +57,7 @@
     align-items: center;
 }
 
-.searchbar {
+/* .searchbar {
     color: #000000;
     padding: 0.5em 1.3em;
     margin-inline: 35px;
@@ -67,7 +67,7 @@
     background: #ffffff;
     box-shadow: 6px 6px 12px #7e01d7,
                 -6px -6px 12px #52008c;
-}
+} */
 
 .Button{
     height: 35px;
@@ -115,9 +115,11 @@
 
 }
 .random{
-    color: white;
-    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    font-family: 'Cambay', sans-serif;
     font-size: 20px;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 .Img{
@@ -143,13 +145,12 @@
     right: 4vh;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color: rgb(247, 247, 247);
+    background-color: #FDFBF2;
     justify-content: center;
     border-radius: 9px 0px 9px 9px;
     padding: 30px;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     color: black;
-    text-shadow: 2px 2px 2px #0c0c0c33;
     font-size: 20px;
     height: fit-content;
     width: fit-content;
@@ -163,13 +164,12 @@
     left: 4vh;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color: rgb(247, 247, 247);
+    background-color:#FDFBF2;
     justify-content: center;
     border-radius: 0px 9px 9px 9px;
     padding: 30px;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     color: black;
-    text-shadow: 2px 2px 2px #0c0c0c33;
     font-size: 20px;
     height: -moz-fit-content;
     height: fit-content;

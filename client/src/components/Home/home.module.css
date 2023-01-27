@@ -3,12 +3,14 @@
   background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
 
 }
+
 .cardsContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-left: 75px;
-  margin-right: 75px;
+  grid-template-columns: 4fr 4fr 4fr;
+  /* margin-left: 55px;
+  margin-right: 55px; */
 }
+
 
 .botonpaginado {
     width: 130px;
@@ -73,6 +75,7 @@
 .info{
   background-image: url(../../utils/Home2.png);
   background-repeat: repeat-y;
+  height: 100%;
 }
 
 .infodark{
@@ -88,7 +91,7 @@
     padding: 2px;
     align-items: center;
     flex-wrap: nowrap;
-    background-color:  #953671;
+    background-color:  #FDFBF2;
 }
 
 .filter{
@@ -100,9 +103,6 @@
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #b34187,
-                -6px -6px 12px #62264b;
-
    }
 
 .limpiar{
@@ -114,23 +114,23 @@
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #b34187,
-                -6px -6px 12px #62264b;
 }
 .limpiar:hover{
     color: #e0e0e0;
-    background-color: #b34187;
+    background-color: #FDFBF2;
     cursor:pointer;
 }
 
 .searchbar {
   color: #000000;
-  padding: 0.5em 1.3em;
+  padding: 0.3em 1.3000000000000007em;
   margin-inline: 35px;
   font-size: 18px;
-  border-radius: 0.5em;
+  border-radius: 1em;
+  width: 26em;
   border-style: none;
-  background: #ffffff;
-  box-shadow: 6px 6px 12px #7e01d7,
-              -6px -6px 12px #52008c;
+  background: #FDFBF2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #797979;
 }

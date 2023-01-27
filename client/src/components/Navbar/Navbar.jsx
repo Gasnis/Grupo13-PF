@@ -55,10 +55,10 @@ export default function Navbar(props) {
                         {openBurguer ? (
                             <div className={style.dropdown2}>
                                 <div className={style.titulos}>
-                                    <h5 className={style.random}>Ruleta de Experiencias</h5>
                                     <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
                                         <img className={style.Img} src={roulette} alt="" />
                                     </Link>
+                                    <h5 className={style.random}>Ruleta de Experiencias</h5>
                                 </div>
                                 <div>
                                     About us

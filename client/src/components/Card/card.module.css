@@ -2,7 +2,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin:50px;
+    margin-top:50px;
+    margin-bottom:50px;
+    margin-left: 25px;
+    margin-right: 25px;
     text-decoration: none;
 }
 
@@ -10,8 +13,8 @@
     /* flex-direction: row;
     flex-wrap: wrap;
     text-decoration: none; */
-    height: 450px;
-    width: 414px;
+    height: 46vh;
+    width: 70%;
     background-color: #fcf9ebaa;
     background-size: contain;
     border-radius: 11px;
@@ -29,8 +32,9 @@
 
 .logo{
     border-radius: 11px 11px 0px 0px;
-    height: 350px;
-    width: 414px;
+    height: 35vh;
+    width: 100%;
+    object-fit: cover;
 }
 
 .textContainer{
