@@ -30,7 +30,7 @@
 }
 
 .name{
-  font: 30px Robot, sans-serif;
+  font-family: 'Cambay', sans-serif;
   float: left;
   font-weight: 900;
   justify-self: flex-start;
@@ -99,7 +99,9 @@
 .infoBarsAndInfoUser{
   display: flex;
   flex-direction: row;
-  height: 300px;
+  height: 45vh;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .Logo{
