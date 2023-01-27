@@ -52,7 +52,7 @@ export default function LocalsInfo (props) {
             {!info 
             ?
             <div>
-                <h3>Tienes {locals.length} locales!</h3>
+                <h3>Tienes {locals.length} {locals.length === 1 ? "local" : "locales"}!</h3>
                 <div className={styles.CardContainer}>
                     <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                     <div className={styles.ContainCard}>
