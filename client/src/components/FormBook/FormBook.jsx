@@ -52,7 +52,7 @@ export default function SignUp(props) {
 
     const localId = useSelector(state=>state.placeDetail.id);
     const price = useSelector(state=>state.placeDetail.bookPrice )
- console.log(localId)
+
    
     const dispatch = useDispatch();
     const history = useHistory();
@@ -64,13 +64,14 @@ export default function SignUp(props) {
         reservedDate: book.reservedDate,
         personQuantity: book.personQuantity,
         discountCode: book.discountCode,
-        userId: book.userId,
+        userId: profile.id,
         priceTotal: book.priceTotal
     })
     const [errors, setErrors] = useState({
         name:"",
         personQuantity:"",
     })
+    console.log(booking)
     // console.log(booking.priceTotal * booking.personQuantity)
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
@@ -94,6 +95,7 @@ export default function SignUp(props) {
     }
     if(pay){  
         const handleSubmit = async (event) => {
+            console.log("second",booking)
 
             const newBooking = await dispatch(createBook({
                 ...booking,
@@ -115,13 +117,13 @@ export default function SignUp(props) {
                 dispatch(bookPersist({}))
                 history.push(`/profile`)
             } else {
-                alert(newBooking.response.data)
+                // alert(newBooking.response.data)
             }
     }
     handleSubmit()
 
     }
-    console.log(booking)
+  
     const handleSubmit = async (event) => {
 
         event.preventDefault();
@@ -138,7 +140,7 @@ export default function SignUp(props) {
 
     window.location.replace(payUrl)
     
-    console.log(payUrl)
+    
 
 
         // const paylink = await dispatch(getPaylink())
