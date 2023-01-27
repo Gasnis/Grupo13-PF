@@ -15,6 +15,7 @@ export default  function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
+    console.log("🚀 ~ file: Profile.jsx:18 ~ Detail ~ profile", profile)
     const [open, setOpen] = useState({
         userInfo:false,
         myBook: false,
@@ -40,6 +41,11 @@ export default  function Detail() {
             myLocalBook: false,
             [e.target.name]:!open[e.target.name]
         })
+    }
+
+    const handleCreate = (e) => {
+        e.preventDefault();
+        history.push("/newplace")
     }
 
     if (!profile) {
@@ -105,7 +111,7 @@ export default  function Detail() {
                             :
                             <div>
                                 <h3>Actualmente no tienes ningún local</h3>
-                                <button>Crear local</button>
+                                <button onClick={handleCreate}>Crear local</button>
                                 <hr />
                             </div>
                         :
