@@ -1,0 +1,7 @@
+.ContainCard {
+    display: flex;
+}
+
+.CardImage {
+    width: 300px;
+}

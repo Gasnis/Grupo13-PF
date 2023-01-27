@@ -16,10 +16,6 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 
 
 
-
-
-
-
 export const getPlaces = () => {
     return async (dispatch) => {
         const { data } = await axios.get(`/local`);
@@ -96,9 +92,16 @@ export const getUserByid = (id) => {
 }
 
 export const updateUser = (user) => {
-    return async () => {
-        const { data } = await axios.put(`/user`, user);
-        return data;
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.put(`/user`, user);
+            return dispatch ({
+                type: GET_USER_BY_ID,
+                payload: data
+            });
+        } catch (error) {
+            return error
+        }
     }
 }
 

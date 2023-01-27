@@ -1,0 +1,46 @@
+.MainContainer{
+    
+}
+
+.DivLabel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EditButton{
+
+}
+
+.Form{
+
+}
+
+.Label{
+    
+}
+
+.P{
+
+}
+
+.DivInput{
+
+}
+
+.Input{
+
+}
+
+.Errors{
+
+}
+
+.ButtonsDiv{
+
+}
+
+.Button{
+
+}
