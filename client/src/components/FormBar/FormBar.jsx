@@ -10,7 +10,7 @@ export default function CreateLocal() {
     const dispatch = useDispatch();
     const history = useHistory();
     const profile = useSelector(state => state.profile)
-    const weekDays = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
+    const weekDays = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00']
     const [scheduleArray, setScheduleArray] = useState({
@@ -93,17 +93,17 @@ export default function CreateLocal() {
     }
 
     const handleWeekdays = (event) => {
-        if (event.target.checked){
+        if (event.target.checked) {
             setScheduleArray({
                 ...scheduleArray,
-                days:[...scheduleArray.days,event.target.name]
+                days: [...scheduleArray.days, event.target.name]
             })
         }
-        else{
-            let filterDays = scheduleArray.days.filter(day=>day!==event.target.name)
+        else {
+            let filterDays = scheduleArray.days.filter(day => day !== event.target.name)
             setScheduleArray({
                 ...scheduleArray,
-                days:filterDays
+                days: filterDays
             })
         }
     }
@@ -117,7 +117,7 @@ export default function CreateLocal() {
         if (newLocal.id) {
             history.push(`/detail/${newLocal.id}`)
         } else {
-           alert(newLocal.response.data)
+            alert(newLocal.response.data)
         }
     }
 
@@ -129,15 +129,30 @@ export default function CreateLocal() {
                 <div className={styles.formContainer}>
                     <h1 className={styles.title}>Registra tu local</h1>
                     <form onSubmit={handleSubmit}>
-                        <div >
-                            <input
-                                type='text'
-                                placeholder='Nombre del local'
-                                value={local.name}
-                                name="name"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
+                        <h3 className={styles.subtitles}>Perfil</h3>
+                        <hr />
+                        <div className={styles.doubleFields}>
+                            <div >
+                                <input
+                                    type='text'
+                                    placeholder='Nombre del local'
+                                    value={local.name}
+                                    name="name"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
+
+                            <div >
+                                <input
+                                    type='text'
+                                    placeholder='Direccion'
+                                    value={local.location}
+                                    name="location"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
                         </div>
 
                         <div >
@@ -155,12 +170,91 @@ export default function CreateLocal() {
                         <div >
                             <input
                                 type='text'
-                                placeholder='Direccion'
-                                value={local.location}
-                                name="location"
+                                placeholder='Numero de telefono'
+                                value={local.phone}
+                                name="phone"
                                 onChange={handleChange}
                                 className={styles.input}
                             />
+                        </div>
+
+                        <h3 className={styles.subtitles}>Horario de atención</h3>
+                        <hr />
+
+                        <div className={styles.weekHours}>
+                            <div className={styles.weekdaysContainer}>
+                                {weekDays.map(day => (
+                                    <label key={day} className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name={day}
+                                            value={day}
+                                            onChange={handleWeekdays}
+                                        />
+                                        {day}
+                                    </label>
+                                ))}
+                            </div>
+                            <div className={styles.hoursContainer}>
+                                <div>
+                                    <label className={styles.label}>Desde:</label>
+                                    <select name='open' onChange={handleHour} className={styles.selectHours}>
+                                        <option>Horario de apertura</option>
+                                        {horaApertura.map((hora) => {
+                                            return (
+                                                <option key={hora}>{hora}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label className={styles.label}>Hasta:</label>
+                                    <select name='close' onChange={handleHour} className={styles.selectHours}>
+                                        <option> Horario de cierre</option>
+                                        {horaCierre.map((hora) => {
+                                            return (
+                                                <option key={hora}>{hora}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+{/* 
+                            <div>
+                                <label className={styles.label}>Hasta:</label>
+                                <select onChange={handleHour} className={styles.selectHours}>
+                                    <option> Horario de cierre</option>
+                                    {horaCierre.map((hora) => {
+                                        return (
+                                            <option key={hora}>{hora}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div> */}
+                        </div>
+
+                        {/* </div> */}
+
+                        <h3 className={styles.subtitles}>Negocio</h3>
+                        <hr />
+
+                        <div className={styles.doubleFields}>
+                            <select name="ageRange" onChange={handleAge} className={styles.select}>
+                                <option value="" hidden>Rango de edad</option>
+                                <option value="+18">+18</option>
+                                <option value="+21">+21</option>
+                                <option value="Sin restricciones">Sin restricciones</option>
+                            </select>
+
+                            <div >
+                                <select name="category" onChange={handleCategories} className={styles.select}>
+                                    <option value="" hidden>Categoria</option>
+                                    <option value="disco">Discoteca</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="pub">Pub</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div >
@@ -174,106 +268,33 @@ export default function CreateLocal() {
                             />
                         </div>
 
-                        <div >
-                            <input
-                                type='text'
-                                placeholder='Numero de telefono'
-                                value={local.phone}
-                                name="phone"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
-                        </div>
-
-                        <div >
-                            <input
-                                type='number'
-                                placeholder='Capacidad'
-                                value={local.capacity}
-                                name="capacity"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
-                        </div>
-
-                        <div className={styles.scheduleContainer} >
-                            <h4 >Horarios</h4>
-                            <div className={styles.weekHours}>
-                                <div className={styles.weekdaysContainer}>
-                                {weekDays.map(day=>(
-                                        <label key={day} className={styles.label}>
-                                            <input
-                                                type="checkbox"
-                                                name={day}
-                                                value={day}
-                                                onChange={handleWeekdays}
-                                            />
-                                            {day}
-                                        </label>
-                                    ))}
-                                </div>
-
-                                <div className={styles.hoursContainer}>
-                                    <div>
-                                        <label className={styles.label}>Desde:</label>
-                                        <select name='open' onChange={handleHour} className={styles.selectHours}>
-                                            <option>Horario de apertura</option>
-                                            {horaApertura.map((hora) => {
-                                                return (
-                                                    <option key={hora}>{hora}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label className={styles.label}>Hasta:</label>
-                                        <select name='close' onChange={handleHour} className={styles.selectHours}>
-                                            <option> Horario de cierre</option>
-                                            {horaCierre.map((hora) => {
-                                                return (
-                                                    <option key={hora}>{hora}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </div>
-                                </div>
-
+                        <div className={styles.doubleFields}>
+                            <div >
+                                <input
+                                    type='number'
+                                    placeholder='Capacidad'
+                                    value={local.capacity}
+                                    name="capacity"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
                             </div>
-                        </div>
 
-                        <h4>¿Tu local tiene restricciones por edad?</h4>
-                        <select name="ageRange" onChange={handleAge} className={styles.select}>
-                            <option value="" hidden>Selecciona las edades</option>
-                            <option value="+18">+18</option>
-                            <option value="+21">+21</option>
-                            <option value="Sin restricciones">Sin restricciones</option>
-                        </select>
-
-                        <div >
-                            <h4>Categoria</h4>
-                            <select name="category" onChange={handleCategories} className={styles.select}>
-                                <option value="" hidden>Selecciona el tipo de local que mas coincida con el tuyo</option>
-                                <option value="disco">Discoteca</option>
-                                <option value="bar">Bar</option>
-                                <option value="pub">Pub</option>
-                            </select>
-                        </div>
-
-                        <div >
-                            <input
-                                type='number'
-                                placeholder='Precio de la reserva'
-                                value={local.bookPrice}
-                                name="bookPrice"
-                                onChange={handleChange}
-                                className={styles.input}
-                            />
+                            <div >
+                                <input
+                                    type='number'
+                                    placeholder='Precio de la reserva'
+                                    value={local.bookPrice}
+                                    name="bookPrice"
+                                    onChange={handleChange}
+                                    className={styles.input}
+                                />
+                            </div>
                         </div>
 
                         <div className={styles.petFriendlyEventos}>
                             <div >
-                                <label>
+                                <label className={styles.label}>
                                     En tu local se realizan eventos(ej: shows en vivo)
                                     <input
                                         type='checkbox'
@@ -285,7 +306,7 @@ export default function CreateLocal() {
                             </div>
 
                             <div >
-                                <label>Tu local es pet friendly?
+                                <label className={styles.label}>Tu local es pet friendly?
                                     <input
                                         type='checkbox'
                                         value={local.petFriendly}
@@ -304,9 +325,7 @@ export default function CreateLocal() {
                         >Registrar local</button>
                     </form>
                 </div>
-
-            </div>
-
-        </div>
+            </div >
+        </div >
     )
 }
