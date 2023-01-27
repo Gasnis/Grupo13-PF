@@ -22,6 +22,7 @@ export default function Detail () {
     },[])
 
     const placeDetail = useSelector(state=>state.placeDetail)
+    console.log(placeDetail)
 
 
     if (!placeDetail.id || placeDetail.id === 400){
