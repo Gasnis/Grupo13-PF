@@ -58,10 +58,6 @@ export default function CreateLocal() {
             ...scheduleArray,
             [event.target.name]: event.target.value
         })
-        setLocal({
-            ...local,
-            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
-        })
     }
 
     const handleAge = (event) => {
@@ -102,26 +98,22 @@ export default function CreateLocal() {
                 ...scheduleArray,
                 days:[...scheduleArray.days,event.target.name]
             })
-            setLocal({
-                ...local,
-                schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close ]
-            })
-        }else{
+        }
+        else{
             let filterDays = scheduleArray.days.filter(day=>day!==event.target.name)
             setScheduleArray({
                 ...scheduleArray,
                 days:filterDays
-            })
-            setLocal({
-                ...local,
-                schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
             })
         }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newLocal = await dispatch((createPlace(local)));
+        const newLocal = await dispatch((createPlace({
+            ...local,
+            schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+        })));
         if (newLocal.id) {
             history.push(`/detail/${newLocal.id}`)
         } else {
