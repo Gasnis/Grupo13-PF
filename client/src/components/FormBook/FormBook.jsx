@@ -2,11 +2,15 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { createBook } from '../../redux/actions';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 import styles from '../FormsStyles/forms.module.css';
 import { useEffect } from 'react';
+import axios from 'axios';
+
 
 function getNum (date, string) {
+
+   
     switch(string){
         case "Month":
             let month = date.getMonth()+1;
@@ -36,7 +40,20 @@ function validate (input) {
 }
 
 export default function SignUp(props) {
+    const location = useLocation()
+   
+
+    const pay = location.search.includes("approved")
+    // const {id} = useParams()
+    // console.log(pay)
+    // console.log(id)
+
+   
+
     const localId = useSelector(state=>state.placeDetail.id);
+    const price = useSelector(state=>state.placeDetail.bookPrice )
+ console.log(localId)
+   
     const dispatch = useDispatch();
     const history = useHistory();
     const {profile} = useSelector(state => state )
@@ -47,12 +64,14 @@ export default function SignUp(props) {
         reservedDate: "",
         personQuantity: "",
         discountCode: "",
-        userId: profile.id
+        userId: profile.id,
+        priceTotal: price
     })
     const [errors, setErrors] = useState({
         name:"",
         personQuantity:"",
     })
+    // console.log(booking.priceTotal * booking.personQuantity)
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
     const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
@@ -73,30 +92,55 @@ export default function SignUp(props) {
             [event.target.name]: event.target.value
         })
     }
+    if(pay){  
+        const handleSubmit = async (event) => {
+
+            const newBooking = await dispatch(createBook({
+                ...booking,
+                localId
+            }))
+        
+            if(newBooking.id) {
+                setBooking({
+                    name: "",
+                    reservedDate: "",
+                    personQuantity: "",
+                    discountCode: "",
+                //userId?
+                })
+                // setReserved(true);
+                // setTimeout(() => {
+                //     history.push('/')
+                // }, 2000); 
+                history.push(`/profile`)
+            } else {
+                alert(newBooking.response.data)
+            }
+    }
+    handleSubmit()
+
+    }
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        const newBooking = await dispatch(createBook({
-            ...booking,
-            localId
-        }))
 
-        if(newBooking.id) {
-            setBooking({
-                name: "",
-                reservedDate: "",
-                personQuantity: "",
-                discountCode: "",
-            //userId?
-            })
-            // setReserved(true);
-            // setTimeout(() => {
-            //     history.push('/')
-            // }, 2000); 
-            history.push(`/profile`)
-        } else {
-            alert(newBooking.response.data)
-        }
+
+        event.preventDefault();
+        const  data  = await axios.post("http://localhost:3001/payment/generate-link", {
+
+        "personQuantity": 1,
+        "priceTotal": 1000
+    
+    
+    });
+    const payUrl = data.data.body.init_point
+
+    window.location.replace(payUrl)
+    
+    console.log(payUrl)
+
+
+        // const paylink = await dispatch(getPaylink())
+        
     }
 
     const goToDetails = (e) => {

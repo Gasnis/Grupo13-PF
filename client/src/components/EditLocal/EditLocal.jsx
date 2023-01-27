@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./editLocal.module.css";
 import {useDispatch} from "react-redux";
-import { updatePlace } from "../../redux/actions";
+import { getUserByid, updatePlace } from "../../redux/actions";
 import { useState } from "react";
 
 const validate = (local) => {
@@ -142,21 +142,17 @@ export default function EditLocal (props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({
-            ...local,
-            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
-        })
         const updatedLocal =await dispatch(updatePlace({
             ...local,
             schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
         }))
-        console.log("🚀 ~ file: EditLocal.jsx:160 ~ handleSubmit ~ updatedLocal", updatedLocal)
         if (updatedLocal.id){
             alert("Local actualizado!")
             props.setEditing(false);
         }else{
-            alert("no se pudo")
+            alert(updatedLocal.response.data)
         }
+        dispatch(getUserByid(userId))
     }
 
     return (
