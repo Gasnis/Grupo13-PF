@@ -36,7 +36,7 @@ export default function MyBookInfo (props) {
                 <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                 <div className={styles.Card}>
                     <h3>{places.filter(place=>place.id===books[index].localId)[0].name}</h3>
-                    <img src={places.filter(place=>place.id===books[index].localId)[0].image} alt="" /><br/>
+                    <img src={places.filter(place=>place.id===books[index].localId)[0].image} className={styles.imgLocal} alt="" /><br/>
                     <label>A nombre de: </label><p>{books[index].name}</p>
                     <label>Fecha de reserva:</label><p>{books[index].reservedDate}</p>
                     <label>Reserva para {books[index].personQuantity}</label>
