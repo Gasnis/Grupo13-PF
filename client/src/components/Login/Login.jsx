@@ -78,7 +78,7 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div className={checked ? styles.container : styles.containerDark}>
+      <div className={checked ? styles.containerLogin : styles.containerDark}>
         <div className={styles.formContainer}>
           <h1 className={styles.title}>Ingresa</h1>
           <form onSubmit={handleSubmit}>
