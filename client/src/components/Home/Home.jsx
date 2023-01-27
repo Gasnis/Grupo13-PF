@@ -62,7 +62,6 @@ export default function Home() {
 
     return (
         <div>
-
             <Navbar home={true} />
             <div className={style.filtercontainer}>
                 <div>
@@ -84,50 +83,47 @@ export default function Home() {
                 <div>
                     <button className={style.limpiar} onClick={refresh}>Limpiar</button>
                 </div>
-
             </div>
+
             <div className={darkmode ? style.infodark : style.info}>
-            <div>
-                <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
-            </div>
                 <div>
-            <div className={darkmode? style.infodark:style.info}>
-                <div className={style.cardsContainer}>
-                    {
-                        renderPlaces.length ?
-                            renderPlaces === "404" ?
-                                (
-                                    <h1>Not Found</h1>
-                                )
-                                :
-                                renderPlaces.map((place) => {
-                                    return <Card key={place.id} place={place}>
-                                    </Card>
-
-                                })
-                            :
-                            searchInput ?
-                                <div>
-                                    <h1>No hay sitios con este nombre</h1>
-                                </div>
-                                :
-                                <div>
-                                    <div className={darkmode ? style.cargandodark : style.cargando} >
-                                        <h1>Cargando...</h1>
-                                    </div>
-                                </div>
-
-
-
-                    }
+                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
                 </div>
-
                 <div>
-                    <button className={darkmode ? style.botonpaginadodark : style.botonpaginado} onClick={handlePlace}>+</button>
+                    <div className={darkmode ? style.infodark : style.info}>
+                        <div className={style.cardsContainer}>
+                            {
+                                renderPlaces.length ?
+                                    renderPlaces === "404" ?
+                                        (
+                                            <h1>Not Found</h1>
+                                        )
+                                        :
+                                        renderPlaces.map((place) => {
+                                            return <Card key={place.id} place={place}>
+                                            </Card>
+
+                                        })
+                                    :
+                                    searchInput ?
+                                        <div>
+                                            <h1>No hay sitios con este nombre</h1>
+                                        </div>
+                                        :
+                                        <div>
+                                            <div className={darkmode ? style.cargandodark : style.cargando} >
+                                                <h1>Cargando...</h1>
+                                            </div>
+                                        </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div>
+                        <button className={darkmode ? style.botonpaginadodark : style.botonpaginado} onClick={handlePlace}>+</button>
+                    </div>
                 </div>
-
             </div>
-
         </div>
     )
 }
