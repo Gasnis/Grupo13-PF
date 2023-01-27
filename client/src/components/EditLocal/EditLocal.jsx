@@ -4,30 +4,168 @@ import {useDispatch} from "react-redux";
 import { updatePlace } from "../../redux/actions";
 import { useState } from "react";
 
+const validate = (local) => {
+    let errors = {};
+    if (!local.name.length) errors.name = "Debes escribir un nombre.";
+    if (!local.location.length) errors.location = "Debes escribir una dirección.";
+    if (local.phone < 0 || !local.phone ) errors.phone = "Debes escribir un número de teléfono.";
+    if (local.bookPrice < 0 || !local.bookPrice ) errors.bookPrice = "Escribe el valor de la reserva en tu local.";
+    if (local.capacity < 0 || !local.capacity ) errors.capacity = "Escribe la capacidad o aforo de tu local.";
+    if (!local.image.length) errors.image = "Debes pegar una URL de una imagen";
+    return errors;
+}
+
 export default function EditLocal (props) {
-    const localToEdit = props.local;
+    const {localToEdit, userId} = props;
+
     const dispatch = useDispatch();
+
     const [local, setLocal] = useState({
-        ...props.localToEdit
+        ...localToEdit,
+        userId
     });
 
+    const [errors, setErrors] = useState({
+        name:"",
+        image:"",
+        location:"",
+        phone:"",
+        capacity:"",
+        bookPrice:"",
+    });
+    const [checkboxState, setCheckboxState] = useState({
+        lunes: localToEdit.schedule?.includes("lunes"),
+        martes:localToEdit.schedule?.includes("martes"),
+        miercoles:localToEdit.schedule?.includes("miercoles"),
+        jueves:localToEdit.schedule?.includes("jueves"),
+        viernes:localToEdit.schedule?.includes("viernes"),
+        sabado:localToEdit.schedule?.includes("sabado"),
+        domingo:localToEdit.schedule?.includes("domingo"),
+        event: localToEdit.event,
+        petFriendly: localToEdit.petFriendly
+    })
+    const [scheduleArray, setScheduleArray] = useState({
+            days: [...local.schedule.slice(0,local.schedule.length-2)],
+            open: local.schedule[local.schedule.length-2],
+            close: local.schedule[local.schedule.length-1]
+        }
+    )
 
+    const disabled = errors.name || errors.phone || errors.capacity || errors.image || errors.bookPrice || errors.location || !scheduleArray.days.length
+    
+    const weekDays = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
+    const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
+    const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'];
+    const categories = ["disco","bar","pub"];
+    const ageRanges = ["+18","+21","Sin restricciones"];
+    const indexApertura = horaApertura.indexOf(scheduleArray.open);
+    const indexCierre = horaCierre.indexOf(scheduleArray.close);
+    const indexCategory = categories.indexOf(local.category);
+    const indexAgeRange = ageRanges.indexOf(local.ageRange[0]);
+    setTimeout(() => {
+        let apertura = document.querySelector("#apertura");
+        let cierre = document.querySelector("#cierre");
+        let category = document.querySelector("#category");
+        let ageRange = document.querySelector("#ageRange");
+        apertura.selectedIndex = indexApertura+1;
+        cierre.selectedIndex = indexCierre+1;
+        category.selectedIndex = indexCategory+1;
+        ageRange.selectedIndex = indexAgeRange+1;
+    }, 1);
+    
+    const handleChange = (e) => {
+        setErrors(validate({
+            ...local,
+            [e.target.name]:e.target.value
+        }))
+        setLocal({
+            ...local,
+            [e.target.name]:e.target.value
+        })
+    }
 
+    const handleHour = (e) => {
+        setScheduleArray({
+            ...scheduleArray,
+            [e.target.name]: e.target.value
+        })
+    }
 
+    const handleWeekdays = (e) => {
+        setCheckboxState({
+            ...checkboxState,
+            [e.target.name]:!checkboxState[e.target.name]
+        })
+        if (e.target.checked){
+            setScheduleArray({
+                ...scheduleArray,
+                days:[...scheduleArray.days,e.target.name]
+            })
+        }else{
+            let filterDays = scheduleArray.days.filter(day=>day!==e.target.name)
+            setScheduleArray({
+                ...scheduleArray,
+                days:filterDays
+            })
+        }
+    }
 
+    const handleAge = (e) => {
+        setLocal({
+            ...local,
+            [e.target.name]:[e.target.value]
+        })
+    }
 
-    const handleSubmit = (e) => {
+    const handleCategory = (e) => {
+        setLocal({
+            ...local,
+            [e.target.name]:e.target.value
+        })
+    }
+
+    const handleCheckbox = (e) => {
+        setCheckboxState({
+            ...checkboxState,
+            [e.target.name]:!checkboxState[e.target.name]
+        })
+        setLocal({
+            ...local,
+            [e.target.name]:!local[e.target.name]
+        })
+    }
+
+    const handleCancel = (e) => {
         e.preventDefault();
-        dispatch(updatePlace(localToEdit.id, local))
+        props.setEditing(false);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log({
+            ...local,
+            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
+        })
+        const updatedLocal =await dispatch(updatePlace({
+            ...local,
+            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
+        }))
+        console.log("🚀 ~ file: EditLocal.jsx:160 ~ handleSubmit ~ updatedLocal", updatedLocal)
+        if (updatedLocal.id){
+            alert("Local actualizado!")
+            props.setEditing(false);
+        }else{
+            alert("no se pudo")
+        }
     }
 
     return (
         <div>
-            {/* <div className={styles.container}>
+            <div className={styles.container}>
                 <div className={styles.formContainer}>
-                    <h1 className={styles.title}>Registra tu local</h1>
                     <form onSubmit={handleSubmit}>
                         <div >
+                            <label style={errors.name ? {color: "red"} : null}>Nombre del local: </label>
                             <input
                                 type='text'
                                 placeholder='Nombre del local'
@@ -39,6 +177,7 @@ export default function EditLocal (props) {
                         </div>
 
                         <div >
+                            <label style={errors.image ? {color: "red"} : null}>URL de la imagen: </label>
                             <input
                                 type='url'
                                 placeholder='Imagen/logo'
@@ -47,10 +186,10 @@ export default function EditLocal (props) {
                                 onChange={handleChange}
                                 className={styles.input}
                             />
-                            {errors.image && <p>{errors.image}</p>}
                         </div>
 
                         <div >
+                            <label style={errors.location ? {color: "red"} : null}>Dirección</label>
                             <input
                                 type='text'
                                 placeholder='Direccion'
@@ -62,9 +201,10 @@ export default function EditLocal (props) {
                         </div>
 
                         <div >
+                            <label>Menú</label>
                             <input
                                 type='text'
-                                placeholder='Menu'
+                                placeholder='Menú'
                                 value={local.menu}
                                 name="menu"
                                 onChange={handleChange}
@@ -73,6 +213,7 @@ export default function EditLocal (props) {
                         </div>
 
                         <div >
+                            <label style={errors.phone ? {color: "red"} : null}>Número de teléfono</label>
                             <input
                                 type='text'
                                 placeholder='Numero de telefono'
@@ -84,6 +225,7 @@ export default function EditLocal (props) {
                         </div>
 
                         <div >
+                            <label style={errors.capacity ? {color: "red"} : null}>Capacidad</label>
                             <input
                                 type='number'
                                 placeholder='Capacidad'
@@ -95,80 +237,28 @@ export default function EditLocal (props) {
                         </div>
 
                         <div className={styles.scheduleContainer} >
-                            <h4 >Horarios</h4>
+                            <h4 style={!scheduleArray.days.length ? {color: "red"} : null}>Horarios</h4>
                             <div className={styles.weekHours}>
                                 <div className={styles.weekdaysContainer}>
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="lunes"
-                                            value="lunes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Lunes
-                                    </label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="martes"
-                                            value="martes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Martes
-                                    </label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="miercoles"
-                                            value="miercoles"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Miercoles</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="jueves"
-                                            value="jueves"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Jueves</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="viernes"
-                                            value="viernes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Viernes</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="sabado"
-                                            value="sabado"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Sabado</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="domingo"
-                                            value="domingo"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Domingo</label>
+                                    {weekDays.map(day=>(
+                                        <label key={day} className={styles.label}>
+                                            <input
+                                                checked={checkboxState[day]}
+                                                type="checkbox"
+                                                name={day}
+                                                value={day}
+                                                onChange={handleWeekdays}
+                                            />
+                                            {day}
+                                        </label>
+                                    ))}
                                 </div>
 
                                 <div className={styles.hoursContainer}>
                                     <div>
                                         <label className={styles.label}>Desde:</label>
-                                        <select onChange={handleSchedule} className={styles.selectHours}>
-                                            <option>Horario de apertura</option>
+                                        <select name="open" id="apertura" onChange={handleHour} className={styles.selectHours}>
+                                            <option hidden>Horario de apertura</option>
                                             {horaApertura.map((hora) => {
                                                 return (
                                                     <option key={hora}>{hora}</option>
@@ -179,8 +269,8 @@ export default function EditLocal (props) {
 
                                     <div>
                                         <label className={styles.label}>Hasta:</label>
-                                        <select onChange={handleSchedule} className={styles.selectHours}>
-                                            <option> Horario de cierre</option>
+                                        <select name="close" id="cierre" onChange={handleHour} className={styles.selectHours}>
+                                            <option hidden> Horario de cierre</option>
                                             {horaCierre.map((hora) => {
                                                 return (
                                                     <option key={hora}>{hora}</option>
@@ -194,8 +284,8 @@ export default function EditLocal (props) {
                         </div>
 
                         <h4>¿Tu local tiene restricciones por edad?</h4>
-                        <select name="ageRange" onChange={handleAge} className={styles.select}>
-                            <option value="" hidden>Selecciona las edades</option>
+                        <select id="ageRange" name="ageRange" onChange={handleAge} className={styles.select}>
+                            <option hidden>Selecciona las edades</option>
                             <option value="+18">+18</option>
                             <option value="+21">+21</option>
                             <option value="Sin restricciones">Sin restricciones</option>
@@ -203,7 +293,7 @@ export default function EditLocal (props) {
 
                         <div >
                             <h4>Categoria</h4>
-                            <select name="category" onChange={handleCategories} className={styles.select}>
+                            <select id="category" name="category" onChange={handleCategory} className={styles.select}>
                                 <option value="" hidden>Selecciona el tipo de local que mas coincida con el tuyo</option>
                                 <option value="disco">Discoteca</option>
                                 <option value="bar">Bar</option>
@@ -212,6 +302,7 @@ export default function EditLocal (props) {
                         </div>
 
                         <div >
+                            <label style={errors.bookPrice ? {color: "red"} : null}>Precio de la reserva</label>
                             <input
                                 type='number'
                                 placeholder='Precio de la reserva'
@@ -227,10 +318,11 @@ export default function EditLocal (props) {
                                 <label>
                                     En tu local se realizan eventos(ej: shows en vivo)
                                     <input
+                                        checked={checkboxState.event}
                                         type='checkbox'
                                         value={local.event}
                                         name="event"
-                                        onChange={handleEvent}
+                                        onChange={handleCheckbox}
                                     />
                                 </label>
                             </div>
@@ -238,10 +330,11 @@ export default function EditLocal (props) {
                             <div >
                                 <label>Tu local es pet friendly?
                                     <input
+                                        checked={checkboxState.petFriendly}
                                         type='checkbox'
                                         value={local.petFriendly}
                                         name="petFriendly"
-                                        onChange={handlePetFriendly}
+                                        onChange={handleCheckbox}
                                     />
                                 </label>
                             </div>
@@ -251,13 +344,15 @@ export default function EditLocal (props) {
                             type="submit"
                             id="localButton"
                             className={styles.registrarButton}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image}
-                        >Guardar</button>
-                        <button onClick={props.handleCancel}>Cancelar</button>
+                            disabled={disabled}
+                            >
+                            Guardar
+                        </button>
+                        <button onClick={handleCancel}>Cancelar</button>
                     </form>
                 </div>
 
-            </div> */}
+            </div>
 
         </div>
     )

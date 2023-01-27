@@ -146,9 +146,9 @@ export const createBook = (book) => {
 }
 
 
-export const updatePlace = (idPlace, update) => {
+export const updatePlace = (update) => {
     return async () => {
-        const { data } = await axios.put(`/local/${idPlace}`, update);
+        const { data } = await axios.put(`/local`, update);
         return data;
     }
 }

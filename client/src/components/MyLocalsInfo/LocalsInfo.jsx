@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import EditLocal from "../EditLocal/EditLocal";
-import CreateLocal from "../FormBar/FormBar";
 import ShowLocalInfo from "../ShowLocalInfo/ShowLocalInfo";
 import styles from "./localsInfo.module.css";
 
@@ -43,11 +42,6 @@ export default function LocalsInfo (props) {
         }
     }
 
-    const handleCancel = (e) => {
-        e.preventDefault();
-        setEditing(false);
-    }
-
     const handleEdit = (e) => {
         e.preventDefault();
         setEditing(!editing);
@@ -85,7 +79,7 @@ export default function LocalsInfo (props) {
                 </div>
                 :
                 <div>
-                    
+                    <EditLocal userId={props.profileId} localToEdit={locals.filter(local=>local.id===localToEdit)[0]} setEditing={setEditing}/>
                 </div>
             )
             }

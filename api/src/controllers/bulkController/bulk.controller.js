@@ -85,12 +85,13 @@ const places =[
 		"event": false,
 		"capacity": 2000,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -102,12 +103,13 @@ const places =[
 		"event": true,
 		"capacity": 200,
 		"petFriendly": true,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -119,12 +121,13 @@ const places =[
 		"event": false,
 		"capacity": 150,
 		"petFriendly": false,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
-		"rating": 1
+		"rating": 1,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gersio.zampieri@gmail.com",
@@ -136,12 +139,13 @@ const places =[
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
-		"rating": 5
+		"rating": 5,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 ,
 {
@@ -154,12 +158,13 @@ const places =[
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -171,12 +176,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -188,12 +194,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -205,12 +212,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -222,12 +230,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -239,12 +248,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -256,12 +266,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -273,12 +284,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -290,12 +302,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -307,12 +320,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -324,12 +338,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -341,12 +356,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -358,12 +374,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	}
 
 ]
