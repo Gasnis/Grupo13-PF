@@ -8,7 +8,7 @@
 }
 
 .Container {
-    background-color: transparent;
+    background-color: #FCF9EB;
     display: flex;
     justify-content: space-between;
     height: 8vh;
@@ -29,7 +29,7 @@
 
 
 .ContainerNoHome {
-    background-color:white;
+    background-color: #FCF9EB;
     display: flex;
     justify-content: space-between;
     align-items: center;
