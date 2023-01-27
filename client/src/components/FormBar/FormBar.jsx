@@ -10,8 +10,14 @@ export default function CreateLocal() {
     const dispatch = useDispatch();
     const history = useHistory();
     const profile = useSelector(state => state.profile)
+    const weekDays = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00']
+    const [scheduleArray, setScheduleArray] = useState({
+        days: [],
+        open: "",
+        close: ""
+    })
 
     const [local, setLocal] = useState({
         userId: profile.id,
@@ -47,13 +53,11 @@ export default function CreateLocal() {
         })
     }
 
-    const handleSchedule = (event) => {
-        if (!local.schedule.includes(event.target.value)) {
-            setLocal({
-                ...local,
-                schedule: [...local.schedule, event.target.value]
-            })
-        }
+    const handleHour = (event) => {
+        setScheduleArray({
+            ...scheduleArray,
+            [event.target.name]: event.target.value
+        })
     }
 
     const handleAge = (event) => {
@@ -89,15 +93,27 @@ export default function CreateLocal() {
     }
 
     const handleWeekdays = (event) => {
-        setLocal({
-            ...local,
-            schedule: [...local.schedule, event.target.value]
-        })
+        if (event.target.checked){
+            setScheduleArray({
+                ...scheduleArray,
+                days:[...scheduleArray.days,event.target.name]
+            })
+        }
+        else{
+            let filterDays = scheduleArray.days.filter(day=>day!==event.target.name)
+            setScheduleArray({
+                ...scheduleArray,
+                days:filterDays
+            })
+        }
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newLocal = await dispatch((createPlace(local)));
+        const newLocal = await dispatch((createPlace({
+            ...local,
+            schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+        })));
         if (newLocal.id) {
             history.push(`/detail/${newLocal.id}`)
         } else {
@@ -184,76 +200,23 @@ export default function CreateLocal() {
                             <h4 >Horarios</h4>
                             <div className={styles.weekHours}>
                                 <div className={styles.weekdaysContainer}>
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="lunes"
-                                            value="lunes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Lunes
-                                    </label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="martes"
-                                            value="martes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Martes
-                                    </label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="miercoles"
-                                            value="miercoles"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Miercoles</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="jueves"
-                                            value="jueves"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Jueves</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="viernes"
-                                            value="viernes"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Viernes</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="sabado"
-                                            value="sabado"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Sabado</label>
-
-                                    <label className={styles.label}>
-                                        <input
-                                            type="checkbox"
-                                            name="domingo"
-                                            value="domingo"
-                                            onChange={handleWeekdays}
-                                        ></input>
-                                        Domingo</label>
+                                {weekDays.map(day=>(
+                                        <label key={day} className={styles.label}>
+                                            <input
+                                                type="checkbox"
+                                                name={day}
+                                                value={day}
+                                                onChange={handleWeekdays}
+                                            />
+                                            {day}
+                                        </label>
+                                    ))}
                                 </div>
 
                                 <div className={styles.hoursContainer}>
                                     <div>
                                         <label className={styles.label}>Desde:</label>
-                                        <select onChange={handleSchedule} className={styles.selectHours}>
+                                        <select name='open' onChange={handleHour} className={styles.selectHours}>
                                             <option>Horario de apertura</option>
                                             {horaApertura.map((hora) => {
                                                 return (
@@ -265,7 +228,7 @@ export default function CreateLocal() {
 
                                     <div>
                                         <label className={styles.label}>Hasta:</label>
-                                        <select onChange={handleSchedule} className={styles.selectHours}>
+                                        <select name='close' onChange={handleHour} className={styles.selectHours}>
                                             <option> Horario de cierre</option>
                                             {horaCierre.map((hora) => {
                                                 return (

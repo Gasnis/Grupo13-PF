@@ -101,7 +101,7 @@ export default  function Detail() {
                             profile.locals?.length
                             ?
                             <div>
-                                <LocalsInfo locals={profile.locals}/>
+                                <LocalsInfo profileId={profile.id} locals={profile.locals}/>
                                 <hr />
                             </div>
                             :
