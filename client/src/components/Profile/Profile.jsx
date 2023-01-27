@@ -52,7 +52,6 @@ export default  function Detail() {
     return (
         <div className={style.profileContainer}>
             <Navbar />
-            <hr />
             <div>
                 <div className={style.divContainer} >
                     <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
@@ -68,7 +67,6 @@ export default  function Detail() {
                         ?
                         <div>
                             <ProfileInfo profile={profile}/>
-                            <hr />
                         </div>
                         :
                         null}
