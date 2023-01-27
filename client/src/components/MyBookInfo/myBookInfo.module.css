@@ -27,6 +27,7 @@
 
 .arrows {
     font-size: 50px;
+
     height: 30vh;
     background-color: transparent;
 }
@@ -39,4 +40,3 @@
     height: 10vh;
     width: 100%;
     object-fit: cover;
-}

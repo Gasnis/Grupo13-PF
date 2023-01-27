@@ -53,6 +53,7 @@ export default function LocalsInfo (props) {
             ?
             <div className={styles.infoContainer}>
                 {/* <h3>Tienes {locals.length} locales!</h3> */}
+
                 <div className={styles.CardContainer}>
                     <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                     <div className={styles.ContainCard}>
