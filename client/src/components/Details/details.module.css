@@ -1,14 +1,13 @@
-body{
-    background-color: #FDFBF2;
-}
-
 .body{
-    background-image: url(../..//utils/painted-concrete-wallpaper\ 2.png);
+    /* background-image: url(../..//utils/painted-concrete-wallpaper\ 2.png);
     background-size: 100%;
     background-attachment:local;
     background-repeat: no-repeat;
-    background-position-y: 180px;
-    
+    background-position-y: 180px; */
+    background-image: url(../../utils/Profile2.png);
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
 }
 
 .container{
@@ -27,10 +26,11 @@ body{
 
 .img{
     display: flex;
-    height: 800px;
-    width:600px;
+    height: 80vh;
+    width: 35%;
     align-items: center;
     overflow: hidden;
+    border-radius: 11px;
 }
 
 .img img{
