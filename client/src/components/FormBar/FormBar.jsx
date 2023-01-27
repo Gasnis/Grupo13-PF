@@ -10,7 +10,7 @@ export default function CreateLocal() {
     const dispatch = useDispatch();
     const history = useHistory();
     const profile = useSelector(state => state.profile)
-    const weekDays = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
+    const weekDays = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00']
     const [scheduleArray, setScheduleArray] = useState({
@@ -93,17 +93,17 @@ export default function CreateLocal() {
     }
 
     const handleWeekdays = (event) => {
-        if (event.target.checked){
+        if (event.target.checked) {
             setScheduleArray({
                 ...scheduleArray,
-                days:[...scheduleArray.days,event.target.name]
+                days: [...scheduleArray.days, event.target.name]
             })
         }
-        else{
-            let filterDays = scheduleArray.days.filter(day=>day!==event.target.name)
+        else {
+            let filterDays = scheduleArray.days.filter(day => day !== event.target.name)
             setScheduleArray({
                 ...scheduleArray,
-                days:filterDays
+                days: filterDays
             })
         }
     }
@@ -183,47 +183,34 @@ export default function CreateLocal() {
 
                         <div className={styles.weekHours}>
                             <div className={styles.weekdaysContainer}>
-                                {weekDays.map(day=>(
-                                        <label key={day} className={styles.label}>
-                                            <input
-                                                type="checkbox"
-                                                name={day}
-                                                value={day}
-                                                onChange={handleWeekdays}
-                                            />
-                                            {day}
-                                        </label>
-                                    ))}
+                                {weekDays.map(day => (
+                                    <label key={day} className={styles.label}>
+                                        <input
+                                            type="checkbox"
+                                            name={day}
+                                            value={day}
+                                            onChange={handleWeekdays}
+                                        />
+                                        {day}
+                                    </label>
+                                ))}
                             </div>
-                                <div className={styles.hoursContainer}>
-                                    <div>
-                                        <label className={styles.label}>Desde:</label>
-                                        <select name='open' onChange={handleHour} className={styles.selectHours}>
-                                            <option>Horario de apertura</option>
-                                            {horaApertura.map((hora) => {
-                                                return (
-                                                    <option key={hora}>{hora}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label className={styles.label}>Hasta:</label>
-                                        <select name='close' onChange={handleHour} className={styles.selectHours}>
-                                            <option> Horario de cierre</option>
-                                            {horaCierre.map((hora) => {
-                                                return (
-                                                    <option key={hora}>{hora}</option>
-                                                )
-                                            })}
-                                        </select>
-                                    </div>
+                            <div className={styles.hoursContainer}>
+                                <div>
+                                    <label className={styles.label}>Desde:</label>
+                                    <select name='open' onChange={handleHour} className={styles.selectHours}>
+                                        <option>Horario de apertura</option>
+                                        {horaApertura.map((hora) => {
+                                            return (
+                                                <option key={hora}>{hora}</option>
+                                            )
+                                        })}
+                                    </select>
                                 </div>
 
                                 <div>
                                     <label className={styles.label}>Hasta:</label>
-                                    <select onChange={handleSchedule} className={styles.selectHours}>
+                                    <select name='close' onChange={handleHour} className={styles.selectHours}>
                                         <option> Horario de cierre</option>
                                         {horaCierre.map((hora) => {
                                             return (
@@ -233,8 +220,21 @@ export default function CreateLocal() {
                                     </select>
                                 </div>
                             </div>
-
+{/* 
+                            <div>
+                                <label className={styles.label}>Hasta:</label>
+                                <select onChange={handleHour} className={styles.selectHours}>
+                                    <option> Horario de cierre</option>
+                                    {horaCierre.map((hora) => {
+                                        return (
+                                            <option key={hora}>{hora}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div> */}
                         </div>
+
+                        {/* </div> */}
 
                         <h3 className={styles.subtitles}>Negocio</h3>
                         <hr />
@@ -325,9 +325,7 @@ export default function CreateLocal() {
                         >Registrar local</button>
                     </form>
                 </div>
-
-            </div>
-
-        </div>
+            </div >
+        </div >
     )
 }
