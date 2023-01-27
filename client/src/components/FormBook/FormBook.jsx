@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import { createBook } from '../../redux/actions';
+import { bookPersist, createBook } from '../../redux/actions';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import styles from '../FormsStyles/forms.module.css';
 import { useEffect } from 'react';
@@ -31,8 +31,8 @@ function getNum (date, string) {
 
 function validate (input) {
     let errors = {}
-    if (!input.name.length) errors.name = "Debes escribir un nombre";
-    if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
+    if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion 
+    if (!input.personQuantity?.length) errors.personQuantity = "Debes escribir la cantidad de personas"; //puede que el signo ? rompa la validacion 
     if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
     if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
     if (!input.userId) errors.userId = "Debes loguearte para realizar una reserva"
@@ -56,16 +56,16 @@ export default function SignUp(props) {
    
     const dispatch = useDispatch();
     const history = useHistory();
-    const {profile} = useSelector(state => state )
+    const {profile,book} = useSelector(state => state )
     const date = new Date();
     // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
     const [booking, setBooking] = useState({
-        name: "",
-        reservedDate: "",
-        personQuantity: "",
-        discountCode: "",
-        userId: profile.id,
-        priceTotal: price
+        name: book.name,
+        reservedDate: book.reservedDate,
+        personQuantity: book.personQuantity,
+        discountCode: book.discountCode,
+        userId: book.userId,
+        priceTotal: book.priceTotal
     })
     const [errors, setErrors] = useState({
         name:"",
@@ -112,6 +112,7 @@ export default function SignUp(props) {
                 // setTimeout(() => {
                 //     history.push('/')
                 // }, 2000); 
+                dispatch(bookPersist({}))
                 history.push(`/profile`)
             } else {
                 alert(newBooking.response.data)
@@ -120,11 +121,12 @@ export default function SignUp(props) {
     handleSubmit()
 
     }
-
+    console.log(booking)
     const handleSubmit = async (event) => {
 
-
         event.preventDefault();
+        dispatch(bookPersist({...booking,
+            localId}))
         const  data  = await axios.post("http://localhost:3001/payment/generate-link", {
 
         "personQuantity": 1,
