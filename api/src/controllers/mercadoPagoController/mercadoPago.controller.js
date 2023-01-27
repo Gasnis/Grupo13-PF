@@ -25,9 +25,9 @@ const generateLink = async (req, res) => {
       },
     ],
     back_urls: {
-      success: "192.168.1.85:3001/book",
-      failure: "http://localhost:3001/book",
-      pending: "http://localhost:3001/book",
+      success: "http://localhost:3000/book/redirect",
+      failure: "https://google.com",
+      pending: "https://facebook.com",
     },
     auto_return: "approved",
     payment_methods: {
@@ -35,14 +35,31 @@ const generateLink = async (req, res) => {
     },
   };
 
+  let response1 = {}
+
   mercadopago.preferences
     .create(preferences)
     .then((response) => {
-      res.json(response.body.init_point);
+      response1 = response;
+      res.json(response);
     })
     .catch((error) => {
       console.log(error);
     });
+
+    console.log(response1);
+    
+
+
+    mercadopago.payment.search({
+      preference_id: response1.id
+    })
+    .then(function(data){
+      console.log(data)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
 };
 
 module.exports = {
