@@ -8,8 +8,8 @@
 }
 
 .profilePict {
-    width: 180px;
-    height: 180px;
+    width: 15%;
+    height: 15vh;
     border-radius: 50%;
     float: left;
     padding-top: 10px;
@@ -22,7 +22,7 @@
     grid-template-columns: 200px auto auto;
     width: 50%;
     height: 200px;
-    margin-left: 10px;
+    margin-left: 5em;
     margin-right: 10px;
     margin-bottom: 40px;
     align-items: end;
@@ -97,7 +97,8 @@
   margin-bottom: 10px;
 }
 .infoBarsAndInfoUser{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
   height: 45vh;
   width: 100%;
@@ -116,3 +117,45 @@
   top: 0px;
  
 }
+
+.buttons {
+  background: #fdfbf2c0;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: black;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+
+.buttons:hover {
+  cursor: pointer;
+  background: #40047ce4;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #E7E7E7;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bookInfo {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+}
+
+.localInfo {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+}
+
+
