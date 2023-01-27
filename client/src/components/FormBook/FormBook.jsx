@@ -44,9 +44,7 @@ export default function SignUp(props) {
    
 
     const pay = location.search.includes("approved")
-    // const {id} = useParams()
-    // console.log(pay)
-    // console.log(id)
+    const rejectedPay = location.search.includes("rejected")
 
    
 
@@ -72,7 +70,6 @@ export default function SignUp(props) {
         personQuantity:"",
     })
     console.log(booking)
-    // console.log(booking.priceTotal * booking.personQuantity)
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
     const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
@@ -122,6 +119,13 @@ export default function SignUp(props) {
     }
     handleSubmit()
 
+    }
+
+    if (rejectedPay) {
+        alert("pago rechazado")
+        dispatch(bookPersist({}))
+        history.push("/book")
+         
     }
   
     const handleSubmit = async (event) => {

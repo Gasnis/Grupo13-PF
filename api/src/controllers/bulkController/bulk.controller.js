@@ -5,7 +5,7 @@ const users = [{
     "name": "gioh",
     "password": "gioh2020",
     "phone": "3016444226",
-    "image": "",
+    "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
     "birthday": "2021-01-01",
     "city": "bogota"
 },
