@@ -1,9 +1,24 @@
+.fondo {
+  margin: auto 0;
+  background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
+
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  /* margin-left: 55px;
+  margin-right: 55px; */
+}
+
+
 .botonpaginado {
     width: 130px;
     height: 40px;
     font-size: 30px;
     cursor: pointer;
-    background-color: #171717;
+    background-color: #424240;
     color: #fff;
     border: none;
     margin: 20px;
@@ -14,6 +29,27 @@
    .botonpaginado:hover {
     border-radius: 5px;
     transform: translateY(-10px);
+    box-shadow: 0 7px 0 -2px #40047C,
+     0 15px 0 -4px #FFB800,
+     0 16px 10px -3px #FFB800;
+   }
+
+   .botonpaginadodark {
+    width: 130px;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #fefefe;
+    color: rgb(0, 0, 0);
+    border: none;
+    margin: 20px;
+    border-radius: 5px;
+    transition: all .4s;
+   }
+   
+   .botonpaginadodark:hover {
+    border-radius: 5px;
+    transform: translateY(-10px);
     box-shadow: 0 7px 0 -2px #f859d8,
      0 15px 0 -4px #39a2db,
      0 16px 10px -3px #39a2db;
@@ -22,50 +58,31 @@
    .botonpaginado:active {
     transition: all 0.2s;
     transform: translateY(-5px);
-    box-shadow: 0 2px 0 -2px #f859d8,
-     0 8px 0 -4px #39a2db,
-     0 12px 10px -3px #39a2db;
+    box-shadow: 0 2px 0 -2px #40047C,
+     0 8px 0 -4px #FFB800,
+     0 12px 10px -3px #FFB800;
    }
 
-   .spinercontainer{
-    justify-content: center;
-    align-items: center;
+   .cargando h1{
+    margin: 0px;
+    color: white;
    }
-   .spinner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
-    background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
-    width: 100px;
-    height: 100px;
-    animation: spinning82341 1.7s linear infinite;
-    text-align: center;
-    border-radius: 50px;
-    filter: blur(1px);
-    box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
-  }
-  
-  .spinner1 {
-    background-color: rgb(255, 255, 255);
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    filter: blur(10px);
-  }
-  
-  @keyframes spinning82341 {
-    to {
-      transform: rotate(360deg);
-    }
-  }
+
+   .cargandodark h1{
+    margin: 0px;
+    color: black;
+   }
    
 .info{
-  background-image: linear-gradient(79deg, #dce4fb, #b9a4c9 40%);
+  background-image: url(../../utils/Home2.png);
+  background-repeat: repeat-y;
+  height: 100%;
 }
 
 .infodark{
-  background-image: linear-gradient(79deg, #414347, #3c3441 40%);
+  background-image: url("../../utils/homedark.png");
+  background-size: cover;
+  background-color: #2A2A2B;
 }
 
 .filtercontainer{
@@ -75,8 +92,7 @@
     padding: 2px;
     align-items: center;
     flex-wrap: nowrap;
-    background-color:  #953671;
-    
+    background-color:  #FCF9EB;
 }
 
 .filter{
@@ -88,9 +104,6 @@
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #b34187,
-                -6px -6px 12px #62264b;
-
    }
 
 .limpiar{
@@ -102,12 +115,23 @@
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #b34187,
-                -6px -6px 12px #62264b;
 }
 .limpiar:hover{
     color: #e0e0e0;
-    background-color: #b34187;
+    background-color: #FDFBF2;
     cursor:pointer;
 }
 
+.searchbar {
+  color: #000000;
+  padding: 0.3em 1.3000000000000007em;
+  margin-inline: 35px;
+  font-size: 18px;
+  border-radius: 1em;
+  width: 26em;
+  border-style: none;
+  background: #FDFBF2;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #797979;
+}

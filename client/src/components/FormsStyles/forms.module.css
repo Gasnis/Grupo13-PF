@@ -4,7 +4,22 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-image: linear-gradient(79deg, #dce4fb, #b9a4c9 40%);
+    background-image: url(../../utils/SignUp.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.containerLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url(../../utils/Login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 .containerDark {
@@ -22,10 +37,11 @@
     justify-items: center;
     margin: 25px;
     padding: 25px;
-    border-radius: 25px;
+    border-radius: 11px;
     box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
-    height: 100%;
-    width: 500px;
+    background-color: #FCF9EB;
+    height: 55vh;
+    width: 25%;
 }
 
 .input {
@@ -33,11 +49,16 @@
     margin-top: 19px;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-right: 60px;
+    padding-right: 5px;
     padding-left: 10px;
-    background: #E7E7E7;
+    background: #FCF9EB;
     border-radius: 7px;
-    width: 85%;
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
 }
 
 .linksContainer {
@@ -45,16 +66,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
 }
 
 .submitButton {
-    background: rgba(102, 11, 173, 0.86);
+    background: #40047C;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 25px;
     padding:5px;
-    width: 100px;
+    width: 40%;
     color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
     font-size: 16px;
 }
 
@@ -80,27 +103,28 @@
     font-size: 16px;
 }
 
-
 .title {
     font-size: 25px;
     font-weight: bold;
-    font-family: 'Inter';
+    font-family: 'Cambay', sans-serif;
     font-style: normal;
-    color: #660BAD;
+    color: #40047C;
 }
 
 .subtitles {
     font-size: 15px;
     font-weight: bold;
-    font-family: 'Inter';
+    font-family: 'Cambay', sans-serif;
     font-style: normal;
-    color: #660BAD;
+    color: #40047C;
 }
 
 .label {
     font-size: 15px;
+    font-family: 'Cambay', sans-serif;
 }
 
+/* FormBar */
 .scheduleContainer {
     margin-top: 20px;
     display: flex;
@@ -123,7 +147,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#E7E7E7;
+    background-color:#FCF9EB;
     border-radius: 5px;
 }
 
@@ -138,7 +162,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#E7E7E7;
+    background-color:#FCF9EB;
     border-radius: 5px;
 }
 
@@ -150,7 +174,7 @@
     padding-bottom: 5px;
     padding-right: 5px;
     padding-left: 10px;
-    background: #E7E7E7;
+    background: #FCF9EB;
     border-radius: 10px;
     width: 98%;
 }
@@ -162,7 +186,7 @@
     padding-bottom: 5px;
     padding-right: 5px;
     padding-left: 10px;
-    background: #E7E7E7;
+    background: #FCF9EB;
     border-radius: 10px;
     width: 150px;
 }

@@ -2,24 +2,44 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import beer from "../../utils/beer.png"
 import { getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
-
+import ProfileInfo from "../UserInfo/UserInfo";
+import { useState } from "react";
+import MyBookInfo from "../MyBookInfo/myBookInfo";
+import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 
 
 export default  function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
-
+    const [open, setOpen] = useState({
+        userInfo:false,
+        myBook: false,
+        myLocal: false,
+        myLocalBook: false
+    });
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [])
-    
-    if (!profile.id) {
-        history.push("/")
+
+    useEffect(()=>{
+        if (!profile.id) {
+            history.push("/login")
+        }
+    })
+
+
+    const handleOpen = (e) => {
+        setOpen({
+            userInfo:false,
+            myBook: false,
+            myLocal: false,
+            myLocalBook: false,
+            [e.target.name]:!open[e.target.name]
+        })
     }
 
     if (!profile) {
@@ -30,75 +50,69 @@ export default  function Detail() {
         )
     }
     return (
-        <div>
+        <div className={style.profileContainer}>
             <Navbar />
             <hr />
             <div>
                 <div className={style.divContainer} >
                     <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
                     <h1 className={style.name}>{profile.name}</h1>
-                    <img className={style.Logo} src={beer} alt="logo" />
                 </div>
               
 
                 <div className={style.infoBarsAndInfoUser}>
-                    <div className={style.divProfile}>
-                        <span>Detalles del usuario: </span>
-                        <p> <span>Teléfono: </span> {profile.phone}</p>
-                        <p> <span>Fecha de nacimiento: </span> {profile.birthday}</p>
-                        <p> <span>Ciudad:</span> {profile.city}</p>
-                    </div>
-
-                    <div className={style.localsInformation}>
+                    <div>
+                        <button name="userInfo" onClick={handleOpen}>Información de usuario</button>
+                        <hr />
+                        {open.userInfo
+                        ?
                         <div>
-                            <h2>Tus Reservas</h2>
-                            {profile.locals?.length === 0 ?
-                                <div className={style.divYourBars}>
-                                    {profile.books?.map(l => {
-                                        const localName = allPlaces.filter((place) => place.id === l.localId);
-
-                                        return (
-                                            <div className={style.infoBar}>
-                                                <h1>{localName[0].name}</h1>
-                                                <h4>dia de la reserva {l.reservedDate}</h4>
-                                            </div>)
-                                    })}
-                                </div>
-                                :
-                                <div>
-                                    <h1>Tus bares:</h1>
-                                    <div className={style.divYourBars}>
-                                        {profile.locals?.map(l => {
-                                            return (
-                                                <div className={style.infoBar}>
-                                                    <h1>{l.name}</h1>
-                                                    <img className={style.imgBar} src={l.image} alt="" />
-                                                </div>)
-                                        })}
-                                    </div>
-                                </div>
-                            }
+                            <ProfileInfo profile={profile}/>
+                            <hr />
                         </div>
+                        :
+                        null}
                     </div>
-
-
-                    {/* con la siguiete linea de codigo, pretendo que si un dueño de bar quiere reservar en una bar que no sea de su propiedad le aparezcan sus reservas */}
-                    {profile.locals?.length > 0 && profile.books?.length > 0 ? <div className={style.booksInformation}>
-                        <h1>Tus reservas:</h1>
-                        <div className={style.divYourBars}>
-                            {profile.books?.map(l => {
-                                const localName = allPlaces.filter((place) => place.id === l.localId);
-
-                                return (
-                                    <div className={style.infoBar}>
-                                        <h1>{localName[0].name}</h1>
-                                        <h4>dia de la reserva {l.reservedDate}</h4>
-                                    </div>)
-                            })}
-                        </div>
-                        
-                    </div> : null
-                    }
+                    <div>
+                        <button name="myBook" onClick={handleOpen}>Mis reservas</button>
+                        <hr />
+                        {open.myBook
+                        ?
+                            (profile.books?.length 
+                            ?
+                                <div>
+                                    <MyBookInfo books={profile.books}/>
+                                    <hr />
+                                </div>
+                            :
+                                <div>
+                                    <h3>Aún no has hecho reservas</h3>
+                                    <hr />
+                                </div>
+                            )
+                        :
+                        null}
+                    </div>
+                    <div>
+                        <button name="myLocal" onClick={handleOpen}>Mis locales</button>
+                        <hr />
+                        {open.myLocal
+                        ?
+                            profile.locals?.length
+                            ?
+                            <div>
+                                <LocalsInfo locals={profile.locals}/>
+                                <hr />
+                            </div>
+                            :
+                            <div>
+                                <h3>Actualmente no tienes ningún local</h3>
+                                <button>Crear local</button>
+                                <hr />
+                            </div>
+                        :
+                        null}
+                    </div>
                 </div>
             </div>
         </div>

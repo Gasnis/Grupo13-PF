@@ -78,7 +78,7 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div className={checked ? styles.container : styles.containerDark}>
+      <div className={checked ? styles.containerLogin : styles.containerDark}>
         <div className={styles.formContainer}>
           <h1 className={styles.title}>Ingresa</h1>
           <form onSubmit={handleSubmit}>
@@ -118,7 +118,7 @@ export default function Login() {
               <GoogleLogin
                 name="google"
                 clientId={clientId}
-                buttonText="Login"
+                buttonText="Ingresar con Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 cookiePolicy={"single_host_origin"}

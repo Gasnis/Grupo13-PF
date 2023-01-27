@@ -25,7 +25,18 @@ module.exports = (sequelize) => {
     codeProm: {
         type: DataTypes.STRING,
         allowNull: true,
-    }
+    },
+    priceTotal: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    date: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+  },{
+    timestamps: false,
   });
 
 };

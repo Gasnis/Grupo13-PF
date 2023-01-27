@@ -210,10 +210,9 @@ export default function SignUp(props) {
                         disabled={!signUp.name || !signUp.id || !signUp.password || !signUp.phone || !signUp.city || !signUp.birthday || errors.id}
                         className={styles.submitButton}
                     >Registrarse</button>
-                    <h4>Ingresar con Google</h4>
                     <GoogleLogin
                         clientId={clientId}
-                        buttonText="Registrarse con google"
+                        buttonText="Registrarse con Google"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
                         cookiePolicy={"single_host_origin"}

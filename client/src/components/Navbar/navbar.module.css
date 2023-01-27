@@ -8,10 +8,10 @@
 }
 
 .Container {
-    background-image: linear-gradient(79deg, #9cb6fe, #660BAD 40%);
+    background-color: #FCF9EB;
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    height: 8vh;
     align-items: center;
     flex-wrap: nowrap;
     padding-inline:20px;
@@ -29,7 +29,7 @@
 
 
 .ContainerNoHome {
-    background-color:white;
+    background-color: #FCF9EB;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +57,7 @@
     align-items: center;
 }
 
-.searchbar {
+/* .searchbar {
     color: #000000;
     padding: 0.5em 1.3em;
     margin-inline: 35px;
@@ -67,7 +67,7 @@
     background: #ffffff;
     box-shadow: 6px 6px 12px #7e01d7,
                 -6px -6px 12px #52008c;
-}
+} */
 
 .Button{
     height: 35px;
@@ -102,6 +102,8 @@
 }
 
 .Logo{
+    position: absolute;
+    margin: 2vh;
     border-style: solid;
     border-width: 5px;
     border-color: rgb(43, 20, 10);
@@ -113,9 +115,11 @@
 
 }
 .random{
-    color: white;
-    font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    font-family: 'Cambay', sans-serif;
     font-size: 20px;
+    text-decoration: none;
+    font-weight: normal;
 }
 
 .Img{
@@ -137,17 +141,35 @@
 
 .dropdown{
     position: absolute;
-    top: 60px;
-    right: 38px;
+    top: 8vh;
+    right: 4vh;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color: rgb(247, 247, 247);
+    background-color: #FDFBF2;
     justify-content: center;
     border-radius: 9px 0px 9px 9px;
     padding: 30px;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     color: black;
-    text-shadow: 2px 2px 2px #0c0c0c33;
+    font-size: 20px;
+    height: fit-content;
+    width: fit-content;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.dropdown2{
+    position: absolute;
+    top: 8vh;
+    left: 4vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color:#FDFBF2;
+    justify-content: center;
+    border-radius: 0px 9px 9px 9px;
+    padding: 30px;
+    box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
+    color: black;
     font-size: 20px;
     height: -moz-fit-content;
     height: fit-content;
@@ -155,7 +177,6 @@
     width: fit-content;
     text-decoration: none;
     transition: 1s;
-    
 }
 .titulos{
     
@@ -264,4 +285,8 @@
   input:checked + .slider:before {
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #fff000;
+  }
+
+  .burguer{
+    height: 40px ;
   }

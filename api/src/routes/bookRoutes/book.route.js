@@ -67,6 +67,14 @@ router.get("/:id", async (req, res) => {
         }
       });
 
+      //collection_id=1311408084&collection_status=approved&payment_id=1311408084&status=approved&external_reference=null&payment_type=credit_card&merchant_order_id=7456488748&preference_id=1295777517-246a8fe2-198b-4d50-962f-3ac4e7327c60&site_id=MLC&processing_mode=aggregator&merchant_account_id=null
+
+      router.post("/redirect", (req, res) => {
+        const collectionId = req.query.collection_id;
+        const collectionStatus = req.query.collection_status;
+        console.log(collectionId,collectionStatus)
+      })
+
 
 
   module.exports = router;
