@@ -97,10 +97,11 @@ export default function Detail() {
                             {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
                         </div>
                     </div>
-
                     <Link to="/book">
                         <button className={style.reservar}>RESERVAR</button>
                     </Link>
+
+                    
                 </div>
                 <div className={style.containerevent}>
                 {placeDetail.event ? (
