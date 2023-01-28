@@ -36,13 +36,37 @@ export default function Home() {
 
     return (
         <div>
-            <Navbar />
-            <div className={darkmode ? style.infodark : style.info}>
+
+            <Navbar home={true} />
+            <div className={style.filtercontainer}>
                 <div>
-                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
+                    <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                        <option value="all">Rating</option>
+                        <option value="best">Mejores</option>
+                        <option value="worst">Peores</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select id="category" className={style.filter} onChange={(event) => handlerCategory(event)}>
+                        <option value="all">Categoría</option>
+                        <option value="pub">Pubs</option>
+                        <option value="disco">Discotecas</option>
+                        <option value="bar">Bares</option>
+                    </select>
                 </div>
                 <div>
-                    <div className={darkmode ? style.infodark : style.info}>
+                    <button className={style.limpiar} onClick={refresh}>Limpiar</button>
+                </div>
+            </div>
+
+            <div className={darkmode ? style.info : style.infodark}>
+
+                <div>
+                    <input className={darkmode?style.searchbar:style.searchbardark} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
+                </div>
+                <div>
+                    <div className={darkmode ? style.info : style.infodark}>
                         <div className={style.cardsContainer}>
                             {
                                 renderPlaces.length ?
@@ -54,7 +78,6 @@ export default function Home() {
                                         renderPlaces.map((place) => {
                                             return <Card key={place.id} place={place}>
                                             </Card>
-
                                         })
                                     :
                                     searchInput ?
@@ -64,7 +87,8 @@ export default function Home() {
                                         :
                                         <div>
                                             <div className={darkmode ? style.cargandodark : style.cargando} >
-                                                <h1>Cargando...</h1>
+                                                <h1>Cargando... <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" height="40x" width="40px"/></h1>
+            
                                             </div>
                                         </div>
                             }
@@ -72,7 +96,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                        <button className={darkmode ? style.botonpaginadodark : style.botonpaginado} onClick={handlePlace}>+</button>
+                        <button className={darkmode ? style.botonpaginado: style.botonpaginadodark} onClick={handlePlace}>+</button>
                     </div>
                 </div>
             </div>

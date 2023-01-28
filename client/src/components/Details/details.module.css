@@ -11,7 +11,7 @@
 }
 .containerevent{
     position: absolute;
-    top: 770px;
+    top: 810px;
     left: 82px;
     text-align: center;
     background-color: rgb(255, 255, 255);
@@ -33,7 +33,7 @@
 
 .img{
     display: flex;
-    height: 80vh;
+    height: 85vh;
     width: 35%;
     align-items: center;
     overflow: hidden;
@@ -59,6 +59,7 @@
     font-size: 25px;
     margin-bottom: 0px;
 }
+
 .name{
     margin: 0px;
     display: flex;
@@ -160,4 +161,15 @@
 .reservar:hover{
     background: #712dc9;
     cursor: pointer;
+}
+
+.loadingcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px;
+}
+
+.loading{
+    font-size: 80px;
 }

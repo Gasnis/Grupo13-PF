@@ -64,11 +64,13 @@
    }
 
    .cargando h1{
+    font-size: 50px;
     margin: 0px;
     color: white;
    }
 
    .cargandodark h1{
+    font-size: 50px;
     margin: 0px;
     color: black;
    }
@@ -125,6 +127,7 @@
 .searchbar {
   color: #000000;
   padding: 0.3em 1.3000000000000007em;
+  margin-top: 12px;
   margin-inline: 35px;
   font-size: 18px;
   border-radius: 1em;
@@ -134,4 +137,19 @@
   border-style: solid;
   border-width: 1px;
   border-color: #797979;
+}
+
+.searchbardark {
+  color: #f3f3f3;
+  padding: 0.3em 1.3000000000000007em;
+  margin-top: 12px;
+  margin-inline: 35px;
+  font-size: 18px;
+  border-radius: 1em;
+  width: 26em;
+  border-style: none;
+  background: #434343;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #8b8b8b;
 }
