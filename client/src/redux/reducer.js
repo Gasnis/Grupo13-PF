@@ -11,6 +11,7 @@ import {
     SORT_RATING,
     SET_CHECKED,
     CLEAN_DETAIL,
+    SET_FILTER
 
 } from "./actions"
 
@@ -23,6 +24,7 @@ const initialState = {
     allUsers: [],
     searchInput: "",
     darkmode: false,
+    isfilter: "",
 }
 
 export default function reducer(state = initialState, action) {
@@ -118,6 +120,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 placeDetail: {}
+            }
+        case SET_FILTER:
+            return {
+                ...state,
+                isfilter: action.payload
             }
         case SET_CHECKED:
             let checkstate

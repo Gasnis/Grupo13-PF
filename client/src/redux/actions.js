@@ -12,6 +12,7 @@ export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const SET_FILTER = "SET_FILTER";
 
 
 
@@ -218,6 +219,15 @@ export const cleanDetail = () => {
 
     return {
         type: "CLEAN_DETAIL"
+    }
+
+}
+
+export const setFilter = (payload) => {
+
+    return {
+        type: "SET_FILTER",
+        payload
     }
 
 }
