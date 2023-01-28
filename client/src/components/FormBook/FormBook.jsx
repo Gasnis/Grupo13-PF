@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
-import { createBook } from '../../redux/actions';
-import { useHistory } from 'react-router-dom';
+import { bookPersist, createBook } from '../../redux/actions';
+import { useHistory, useParams, useLocation } from 'react-router-dom';
 import styles from '../FormsStyles/forms.module.css';
 import { useEffect } from 'react';
+import axios from 'axios';
+
 
 function getNum (date, string) {
+
+   
     switch(string){
         case "Month":
             let month = date.getMonth()+1;
@@ -27,8 +31,8 @@ function getNum (date, string) {
 
 function validate (input) {
     let errors = {}
-    if (!input.name.length) errors.name = "Debes escribir un nombre";
-    if (!input.personQuantity.length) errors.personQuantity = "Debes escribir la cantidad de personas";
+    if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion 
+    if (!input.personQuantity?.length) errors.personQuantity = "Debes escribir la cantidad de personas"; //puede que el signo ? rompa la validacion 
     if (parseInt(input.personQuantity)>10) errors.personQuantity = "Máximo 10 personas";
     if (parseInt(input.personQuantity)<1) errors.personQuantity = "Debes ingresar un número mayor a 1";
     if (!input.userId) errors.userId = "Debes loguearte para realizar una reserva"
@@ -36,23 +40,36 @@ function validate (input) {
 }
 
 export default function SignUp(props) {
+    const location = useLocation()
+   
+
+    const pay = location.search.includes("approved")
+    const rejectedPay = location.search.includes("rejected")
+
+   
+
     const localId = useSelector(state=>state.placeDetail.id);
+    const price = useSelector(state=>state.placeDetail.bookPrice )
+
+   
     const dispatch = useDispatch();
     const history = useHistory();
-    const {profile} = useSelector(state => state )
+    const {profile,book} = useSelector(state => state )
     const date = new Date();
     // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
     const [booking, setBooking] = useState({
-        name: "",
-        reservedDate: "",
-        personQuantity: "",
-        discountCode: "",
-        userId: profile.id
+        name: book.name,
+        reservedDate: book.reservedDate,
+        personQuantity: book.personQuantity,
+        discountCode: book.discountCode,
+        userId: profile.id,
+        priceTotal: book.priceTotal
     })
     const [errors, setErrors] = useState({
         name:"",
         personQuantity:"",
     })
+    console.log(booking)
     //valor que se pasa a la propiedad "disabled" del button
     //solo es "false" cuando no existen errores ni campos vacíos (date)
     const disabled = errors.name||errors.personQuantity||!booking.reservedDate||!profile
@@ -73,30 +90,65 @@ export default function SignUp(props) {
             [event.target.name]: event.target.value
         })
     }
+    if(pay){  
+        const handleSubmit = async (event) => {
+            console.log("second",booking)
 
+            const newBooking = await dispatch(createBook({
+                ...booking,
+                localId
+            }))
+        
+            if(newBooking.id) {
+                setBooking({
+                    name: "",
+                    reservedDate: "",
+                    personQuantity: "",
+                    discountCode: "",
+                //userId?
+                })
+                // setReserved(true);
+                // setTimeout(() => {
+                //     history.push('/')
+                // }, 2000); 
+                dispatch(bookPersist({}))
+                history.push(`/profile`)
+            } else {
+                // alert(newBooking.response.data)
+            }
+    }
+    handleSubmit()
+
+    }
+
+    if (rejectedPay) {
+        alert("pago rechazado")
+        dispatch(bookPersist({}))
+        history.push("/book")
+         
+    }
+  
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        const newBooking = await dispatch(createBook({
-            ...booking,
-            localId
-        }))
 
-        if(newBooking.id) {
-            setBooking({
-                name: "",
-                reservedDate: "",
-                personQuantity: "",
-                discountCode: "",
-            //userId?
-            })
-            // setReserved(true);
-            // setTimeout(() => {
-            //     history.push('/')
-            // }, 2000); 
-            history.push(`/profile`)
-        } else {
-            alert(newBooking.response.data)
-        }
+        event.preventDefault();
+        dispatch(bookPersist({...booking,
+            localId}))
+        const  data  = await axios.post("http://localhost:3001/payment/generate-link", {
+
+        "personQuantity": 1,
+        "priceTotal": 1000
+    
+    
+    });
+    const payUrl = data.data.body.init_point
+
+    window.location.replace(payUrl)
+    
+    
+
+
+        // const paylink = await dispatch(getPaylink())
+        
     }
 
     const goToDetails = (e) => {

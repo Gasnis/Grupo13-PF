@@ -7,7 +7,7 @@ import styles from "../UserInfo/userInfo.module.css"
 const validate = (input) => {
     let errors = {};
     if (!input.name.length) errors.name = "'Nombre' no puede ser un campo vacío.";
-    if (input.phone < 0 || !input.phone ) errors.phone = "Debes escribir un número de teléfono válido.";
+    if (input.phone < 0 || !input.phone ) errors.phone = "Número de teléfono inválido.";
     if (!input.password) errors.password = "Debes asignar una contraseña.";
     return errors;
 }
@@ -65,7 +65,6 @@ export default function ProfileInfo (props) {
 
     return (
         <div className={styles.MainContainer}>
-            {editing ? null : <button className={styles.EditButton} onClick={handleEdit}>Editar</button>}
             <form className={styles.Form} onSubmit={handleSave}>
                 <div className={styles.DivLabel}>
                     <label className={styles.Label}>Nombre: </label>
@@ -83,9 +82,9 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Constraseña: </label>
                     {!editing 
                     ? 
-                        <p className={styles.Input}>{password}</p> 
+                    <p className={styles.Input}>{password}</p> 
                     : 
-                        <div className={styles.DivInput}>
+                    <div className={styles.DivInput}>
                             <input className={styles.Input} onChange={handleChange} value={input.password} name="password" type="text" />
                             {errors.password ? <span className={styles.Errors}>{errors.password}</span> : null}
                         </div>
@@ -95,9 +94,9 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Teléfono: </label>
                     {!editing 
                     ?
-                        <p className={styles.Input}>{phone}</p> 
+                    <p className={styles.Input}>{phone}</p> 
                     : 
-                        <div className={styles.DivInput}>
+                    <div className={styles.DivInput}>
                             <input className={styles.Input} onChange={handleChange} value={input.phone} name="phone" type="number" />
                             {errors.phone ? <span className={styles.Errors}>{errors.phone}</span> : null}
                         </div>
@@ -107,21 +106,22 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Ciudad: </label>
                     {!editing 
                     ? 
-                        <p className={styles.Input}>{city}</p> 
+                    <p className={styles.Input}>{city}</p> 
                     : 
-                        <input className={styles.Input} onChange={handleChange} value={input.city} name="city" type="text" />
-                    }
+                    <input className={styles.Input} onChange={handleChange} value={input.city} name="city" type="text" />
+                }
                 </div>
                 { editing
                 ?
                     <div className={styles.ButtonsDiv}>
-                        <button className={styles.Button} disabled={disabled} type="submit">Guardar</button>
-                        <button className={styles.Button} onClick={handleCancel}>Cancelar</button>
+                        <button className={styles.guardar} disabled={disabled} type="submit">Guardar</button>
+                        <button className={styles.cancelar} onClick={handleCancel}>Cancelar</button>
                     </div>
                 :
-                    null
-                }
+                null
+            }
             </form>
+            {editing ? null : <button className={styles.EditButton} onClick={handleEdit}>Editar</button>}
                 
         </div>
     )

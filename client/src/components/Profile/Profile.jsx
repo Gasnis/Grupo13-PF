@@ -15,6 +15,7 @@ export default  function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile, allPlaces } = useSelector(state => state)
+    console.log("🚀 ~ file: Profile.jsx:18 ~ Detail ~ profile", profile)
     const [open, setOpen] = useState({
         userInfo:false,
         myBook: false,
@@ -42,6 +43,11 @@ export default  function Detail() {
         })
     }
 
+    const handleCreate = (e) => {
+        e.preventDefault();
+        history.push("/newplace")
+    }
+
     if (!profile) {
         return (
             <div>
@@ -61,26 +67,25 @@ export default  function Detail() {
 
                 <div className={style.infoBarsAndInfoUser}>
                     <div>
-                        <button name="userInfo" onClick={handleOpen}>Información de usuario</button>
+                        <button name="userInfo" onClick={handleOpen} className={style.buttons}>Información de usuario</button>
                         <hr />
                         {open.userInfo
                         ?
-                        <div>
+                        <div className={style.infoContainer}>
                             <ProfileInfo profile={profile}/>
                         </div>
                         :
                         null}
                     </div>
-                    <div>
-                        <button name="myBook" onClick={handleOpen}>Mis reservas</button>
+                    <div className={style.bookInfoContainer}>
+                        <button name="myBook" onClick={handleOpen} className={style.buttons}>Mis reservas</button>
                         <hr />
                         {open.myBook
                         ?
                             (profile.books?.length 
                             ?
-                                <div>
+                                <div className={style.bookInfo}>
                                     <MyBookInfo books={profile.books}/>
-                                    <hr />
                                 </div>
                             :
                                 <div>
@@ -92,20 +97,19 @@ export default  function Detail() {
                         null}
                     </div>
                     <div>
-                        <button name="myLocal" onClick={handleOpen}>Mis locales</button>
+                        <button name="myLocal" onClick={handleOpen} className={style.buttons}>Mis locales</button>
                         <hr />
                         {open.myLocal
                         ?
                             profile.locals?.length
                             ?
-                            <div>
+                            <div className={style.localInfo}>
                                 <LocalsInfo profileId={profile.id} locals={profile.locals}/>
-                                <hr />
                             </div>
                             :
                             <div>
                                 <h3>Actualmente no tienes ningún local</h3>
-                                <button>Crear local</button>
+                                <button onClick={handleCreate}>Crear local</button>
                                 <hr />
                             </div>
                         :
