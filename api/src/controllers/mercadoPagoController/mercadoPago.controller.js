@@ -3,6 +3,8 @@ require("dotenv").config();
 const { MP_KEY } = process.env;
 // ********************************** ORDEN DE PAGO **************************************************
 const generateLink = async (req, res) => {
+  const data = req.body
+  console.log(data)
   const { personQuantity, priceTotal, id } = req.body;
 
   mercadopago.configure({
@@ -25,9 +27,9 @@ const generateLink = async (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3000/book/redirect",
-      failure: "https://google.com",
-      pending: "https://facebook.com",
+      success: "http://localhost:3000/book",
+      failure: "http://localhost:3000/book",
+      pending: "http://localhost:3000/book",
     },
     auto_return: "approved",
     payment_methods: {

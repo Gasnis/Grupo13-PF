@@ -51,6 +51,7 @@ export default function LocalsInfo (props) {
         <div>
             {!info 
             ?
+
             <div className={styles.infoContainer}>
                 {/* <h3>Tienes {locals.length} locales!</h3> */}
                 <div className={styles.CardContainer}>
