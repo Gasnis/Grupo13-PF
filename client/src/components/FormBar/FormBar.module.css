@@ -1,6 +1,7 @@
 .formBarContainer {
     background-image: url(../../utils/FormBar2.png);
     background-repeat: no-repeat;
+    height: 100%;
 }
 
 .container {

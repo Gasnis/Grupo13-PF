@@ -9,7 +9,7 @@ export default function LocalsInfo (props) {
     const [info, setInfo] = useState(false)
     const [editing, setEditing] = useState(false)
     const [localToEdit, setLocalToEdit] = useState("")
-    const localsPerPage = 3;
+    const localsPerPage = 1;
     const localsToShow = locals.slice(localsPerPage*index,(index+1)*localsPerPage)
 
     const handlePage = (e) => {
@@ -51,17 +51,17 @@ export default function LocalsInfo (props) {
         <div>
             {!info 
             ?
-            <div>
-                <h3>Tienes {locals.length} locales!</h3>
+            <div className={styles.infoContainer}>
+                {/* <h3>Tienes {locals.length} locales!</h3> */}
                 <div className={styles.CardContainer}>
                     <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                     <div className={styles.ContainCard}>
                         {localsToShow.map(local=>(
                             <div key={local.id} className={styles.Card}>
-                                <button name={local.id} onClick={handleDetails}>Ver detalles</button>
-                                <img className={styles.CardImage} src={local.image} alt="" />
                                 <h3>{local.name}</h3>
+                                <img className={styles.CardImage} src={local.image} alt="" />
                                 <h4>{local.category}</h4>
+                                <button name={local.id} onClick={handleDetails} className={styles.verDetalles}>Ver detalles</button>
                             </div>
                         ))}
                     </div>
