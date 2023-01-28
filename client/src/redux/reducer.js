@@ -25,6 +25,7 @@ const initialState = {
     searchInput: "",
     darkmode: false,
     book:{}
+// >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
 }
 
 export default function reducer(state = initialState, action) {
@@ -120,6 +121,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 placeDetail: {}
+            }
+        case SET_FILTER:
+            return {
+                ...state,
+                isfilter: action.payload
             }
         case SET_CHECKED:
             let checkstate
