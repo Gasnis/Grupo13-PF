@@ -54,20 +54,7 @@
 
 .Container div{
     display: flex;
-    align-items: center;
 }
-
-/* .searchbar {
-    color: #000000;
-    padding: 0.5em 1.3em;
-    margin-inline: 35px;
-    font-size: 18px;
-    border-radius: 0.5em;
-    border-style: none;
-    background: #ffffff;
-    box-shadow: 6px 6px 12px #7e01d7,
-                -6px -6px 12px #52008c;
-} */
 
 .Button{
     height: 35px;
@@ -101,6 +88,24 @@
     background-color: white;
 }
 
+.orderinline{
+    display: flex;
+    position: relative;
+    left: 1vh;
+    flex-direction: row;
+    bottom: 1vh;
+}
+
+.arrows{
+    height: 1.5vh;
+    padding-top: 0.8vh;
+    padding-left: 5vh;
+}
+.arrows2{
+    height: 1.5vh;
+    padding-top: 0.8vh;
+    padding-left: 2.8vh;
+}
 .Logo{
     border-style: solid;
     border-width: 5px;
@@ -110,6 +115,7 @@
     background-color: #FFB800;
     height: 40px;
     margin: 0px;
+
 
 }
 .link{
@@ -123,18 +129,69 @@
     font-size: 20px;
     text-decoration: none;
     font-weight: normal;
+    display:flex;
+    flex-direction: row;
+
 }
 
 .Img{
-    height: 60px;
+    position: relative;
+    height: 7vh;
     transition: all 0.5s ease;
-    
+    bottom: 2.6vh
 }
 
 .Img:hover{
     animation: spinning82341 1.7s linear infinite;
 }
 
+.favorite{
+    bottom: 1vh;
+    position: relative;
+    height: 5vh;
+    left: -1.4vh;
+}
+
+.limpiar{
+    position: relative;
+    left: 2vh;
+    display: flex;
+    height: 2vh;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.aboutimg{
+    padding-right: 1vh;
+    height: 4vh;
+}
+
+.about{
+    position: relative;
+    left: 1.5vh;
+}
+.escoba{
+    height: 4vh;
+    position: relative;
+    bottom: 2vh;
+    right: 1.2vh;}
+
+.filterCategory{
+    position: relative;
+    margin: 1vh;
+    bottom: 1.1vh;
+    left: 1vh;}
+.filterRating{
+    position: relative;
+    margin: 1vh;
+    bottom: 1.8vh;
+    left: 1vh;
+}
+
+.titulorating{
+    font-size: 2vh;
+}
 @keyframes spinning82341 {
     to {
       transform: rotate(360deg);
@@ -291,5 +348,11 @@
   }
 
   .burguer{
-    height: 40px ;
+    height: 3vh ;
   }
+
+  .category{
+    position: relative;
+    height: 5vh;
+    bottom: 1.3vh;
+    right: 0.5vh;  }

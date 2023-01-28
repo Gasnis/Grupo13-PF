@@ -12,18 +12,15 @@ export default function Home() {
 
     const dispatch = useDispatch();
 
-    const searchInput = useSelector(state => state.searchInput)
-
+    const {searchInput, darkmode} = useSelector(state => state)
     let allPlaces = useSelector((state) => state.places)
-    const darkmode = useSelector((state) => state.darkmode)
+
     useEffect(() => {
         dispatch(getPlaces())
 
     }, [dispatch])
 
     const [currentPlaces, setCurrentPlaces] = useState(9)
-    const [order, setOrder] = useState("");
-    console.log(order)
 
     function handlePlace(e) {
         e.preventDefault()
@@ -32,29 +29,6 @@ export default function Home() {
 
     let renderPlaces = allPlaces.slice(0, currentPlaces)
 
-    const orderSelection = document.querySelector("#orderSelection");
-    const category = document.querySelector("#category");
-
-
-    const handlerCategory = (event) => {
-        event.preventDefault()
-        dispatch(filterCategory(event.target.value))
-    }
-
-    const handleFilteredOrder = (event) => {
-        event.preventDefault()
-        dispatch(sortRating(event.target.value))
-        setOrder(event.target.value)
-    }
-
-    const refresh = (event) => {
-        event.preventDefault();
-        dispatch(getPlaces());
-        category.selectedIndex = 0;
-        orderSelection.selectedIndex = 0;
-        dispatch(setInput(""))
-    }
-
     const handleSearchBar = (e) => {
         dispatch(setInput(e.target.value))
         dispatch(searchPlace(e.target.value))
@@ -62,6 +36,7 @@ export default function Home() {
 
     return (
         <div>
+
             <Navbar home={true} />
             <div className={style.filtercontainer}>
                 <div>
@@ -86,6 +61,7 @@ export default function Home() {
             </div>
 
             <div className={darkmode ? style.info : style.infodark}>
+
                 <div>
                     <input className={darkmode?style.searchbar:style.searchbardark} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
                 </div>
