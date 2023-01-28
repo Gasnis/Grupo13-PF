@@ -68,9 +68,9 @@ export default function Navbar(props) {
                         }
                     </div>
 
-                    <div>
+                    <Link to="/" className={style.link}>
                         <img className={style.Logo} src={beer} alt="logo" />
-                    </div>
+                    </Link>
                     <div>
                         <label className={style.switch}>
 
@@ -116,7 +116,7 @@ export default function Navbar(props) {
                 </div>
                 :
                 <div className={style.Container}>
-                    <Link to="/" className={style.link} href="/"><img src={arrow} /></Link>
+                    <Link to="/"  href="/"><img src={arrow} /></Link>
                     <div>
                     <img className={style.Logo} src={beer} alt="logo" />
                     </div>

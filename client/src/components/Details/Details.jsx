@@ -21,17 +21,29 @@ export default function Detail() {
 
     const placeDetail = useSelector((state) => state.placeDetail);
     console.log(placeDetail);
-
-    if (!placeDetail.id || placeDetail.id === 400) {
-        return (
+    
+    if (!placeDetail.id) {
+        return(
             <div>
-                <img
-                    src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
-                    alt=""
-                />
-                
+                <Navbar />
+                <div className={style.loadingcontainer}>
+                    <h1 className={style.loading}>Cargando...</h1>
+                    <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />
+                </div>
             </div>
-        );
+        )
+    }
+
+    if(placeDetail.id == 400){
+    return (
+        <div>
+            <img
+                src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
+                alt="" height="100%" width="100%"
+            />
+            
+        </div>
+    );
     }
     return (
         <div className={style.body}>
