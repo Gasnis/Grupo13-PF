@@ -1,49 +1,79 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import style from "./navbar.module.css"
 import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
-import { searchPlace, setInput, setChecked } from "../../redux/actions";
+import { setChecked, sortRating, filterCategory, getPlaces, setInput } from "../../redux/actions";
 import { logout } from "../../redux/actions";
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import burguer from "../../utils/burguer.png"
+import categorylist from "../../utils/ListaNegra.png"
+import favorito from "../../utils/favorito.png"
+import arrowR from "../../utils/arrowRight.png"
+import escoba from "../../utils/escoba.png"
+import about from "../../utils/about.png"
 
 
 export default function Navbar(props) {
-    const isHome = props.home;
     const profile = useSelector(state => state.profile)
-    const searchInput = useSelector(state => state.searchInput);
     const places = useSelector(state => state.places);
     const darkmode = useSelector(state => state.darkmode);
     const dispatch = useDispatch();
     const location = useLocation();
 
 
-    const [openLogin, setOpenLogin] = useState(false);
-    const [openBurguer, setOpenBurguer] = useState(false);
+    const [open, setOpen] = useState("");
+    const [openSub, setOpenSub] = useState("");
 
+
+    const orderSelection = document.querySelector("#orderSelection");
+    const category = document.querySelector("#category");
 
     const handleOpen = (drop) => {
-        if (drop == "burguer") {
-            setOpenBurguer(!openBurguer);
-        } else {
-            setOpenLogin(!openLogin);
+        switch (drop) {
+            case "burguer":
+                open === "burguer" ? setOpen("") : setOpen("burguer");
+                break;
+            case "login":
+                open === "login" ? setOpen("") : setOpen("login");
+                break;
         }
-
     };
-
-    // const handleSearchBar = (e) => {
-    //     dispatch(setInput(e.target.value))
-    //     dispatch(searchPlace(e.target.value))
-    // }
-
+    const handleOpenSub = (drop) => {
+        switch (drop) {
+            case "rating":
+                openSub === "rating" ? setOpenSub("") : setOpenSub("rating");
+                break;
+            case "category":
+                openSub === "category" ? setOpenSub("") : setOpenSub("category");
+                break;
+        }
+    };
     const handleLogOut = () => {
         dispatch(logout());
     }
     const handleChangeSwitch = () => {
         dispatch(setChecked(darkmode));
     };
+
+    const handleFilteredOrder = (event) => {
+        event.preventDefault()
+        dispatch(sortRating(event.target.value))
+    }
+
+    const handlerCategory = (event) => {
+        event.preventDefault()
+        dispatch(filterCategory(event.target.value))
+    }
+
+    const refresh = (event) => {
+        event.preventDefault();
+        dispatch(getPlaces());
+        category.selectedIndex = 0;
+        orderSelection.selectedIndex = 0;
+        dispatch(setInput(""))
+    }
 
     return (
         <>
@@ -52,25 +82,65 @@ export default function Navbar(props) {
                 <div className={style.Container}>
                     <div>
                         <img src={burguer} className={style.burguer} onClick={() => handleOpen("burguer")} alt=""></img>
-                        {openBurguer ? (
+                        {open === "burguer" ? (
                             <div className={style.dropdown2}>
                                 <div className={style.titulos}>
-                                    <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
+                                    <Link className={style.random} to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
                                         <img className={style.Img} src={roulette} alt="" />
+                                        Ruleta de Experiencias
                                     </Link>
-                                    <h5 className={style.random}>Ruleta de Experiencias</h5>
+                                </div>
+                                <div className={style.orderinline}>
+                                    <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.orderinline}>
+                                        <img className={style.favorite} src={favorito} />
+                                        Rating
+                                        <img src={arrowR} alt="Filtros" className={style.arrows} />
+                                    </div>
+                                    {openSub === "rating" &&
+                                        <div className={style.filterRating}>
+                                            <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                                                <option value="all">Rating</option>
+                                                <option value="best">Mejores</option>
+                                                <option value="worst">Peores</option>
+                                            </select>
+                                        </div>
+
+                                    }
+                                </div>
+                                <div className={style.orderinline}>
+                                    <div onClick={() => handleOpenSub("category")} alt="Donde comer?">
+                                        <img className={style.category} src={categorylist} /> Categorías
+                                        <img src={arrowR} alt="Filtros" className={style.arrows2} />
+                                    </div>
+                                    {openSub === "category" &&
+                                        <div className={style.filterCategory}>
+                                            <select id="category" onChange={(event) => handlerCategory(event)}>
+                                                <option value="all">Categoría</option>
+                                                <option value="pub">Pubs</option>
+                                                <option value="disco">Discotecas</option>
+                                                <option value="bar">Bares</option>
+                                            </select>
+                                        </div>
+
+                                    }
                                 </div>
                                 <div>
-                                    About us
+                                    <button className={style.limpiar} onClick={refresh}>
+                                        <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
+                                    </button>
+                                </div>
+                                <br />
+                                <div className={style.about}>
+                                    <img src={about} className={style.aboutimg} alt="sobre wwwere"/>About us
                                 </div>
                             </div>
                         ) : null
                         }
                     </div>
 
-                    <div>
+                    <Link to="/" className={style.link}>
                         <img className={style.Logo} src={beer} alt="logo" />
-                    </div>
+                    </Link>
                     <div>
                         <label className={style.switch}>
 
@@ -80,9 +150,10 @@ export default function Navbar(props) {
                         </label>
                         <div>
                             <div>
-                                <img src={profile.id ? profile.image : "https://i.pinimg.com/222x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg"} alt="" className={style.imagenprofile} onClick={handleOpen} value="profile" />
+                                <img src={profile.id ? profile.image : "https://i.pinimg.com/222x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg"}
+                                    alt="" className={style.imagenprofile} onClick={() => handleOpen("login")} value="profile" />
                                 {!profile.id &&
-                                    openLogin ? (
+                                    open === "login" ? (
                                     <div className={style.dropdown}>
                                         <div>
                                             <Link className={style.titulos} to="/login">Login</Link>
@@ -96,7 +167,7 @@ export default function Navbar(props) {
                             </div>
                             <div>
                                 {profile.id &&
-                                    openLogin ? (
+                                    open === "login" ? (
                                     <div className={style.dropdown}>
                                         <div>
                                             <Link className={style.titulos} to={`/profile`}>Mi Perfil</Link>
@@ -116,9 +187,9 @@ export default function Navbar(props) {
                 </div>
                 :
                 <div className={style.Container}>
-                    <Link to="/" className={style.link} href="/"><img src={arrow} /></Link>
+                    <Link to="/"  href="/"><img src={arrow} /></Link>
                     <div>
-                    <img className={style.Logo} src={beer} alt="logo" />
+                        <img className={style.Logo} src={beer} alt="logo" />
                     </div>
                     <label className={style.switch}>
                         <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />

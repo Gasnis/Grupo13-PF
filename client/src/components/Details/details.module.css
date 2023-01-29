@@ -6,19 +6,20 @@
     background-position-y: 180px; */
     background-image: url(../../utils/Profile2.png);
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 90vh;
     width: 100%;
 }
 .containerevent{
     position: absolute;
-    top: 900px;
-    left: 269px;
-    width: 300px;
+    top: 810px;
+    left: 82px;
     text-align: center;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px 20px 20px 20px ;
-    padding: 5px;
-    border: #000000 3px solid;
+    border-radius: 0px 16px 0px 14px;
+    padding-inline: 19px;
+    border: black 3px solid;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 .container{
@@ -32,7 +33,7 @@
 
 .img{
     display: flex;
-    height: 80vh;
+    height: 85vh;
     width: 35%;
     align-items: center;
     overflow: hidden;
@@ -55,19 +56,19 @@
 .category{
     flex-direction: row;
     justify-content: space-around;
-    font-size: 30px;
+    font-size: 25px;
     margin-bottom: 0px;
 }
+
 .name{
     margin: 0px;
     display: flex;
-    font-size: 105px;
-    
+    font-size: 110px;
 }
 .rating{
     position: absolute;
     top: 121px;
-    font-size: 40px;
+    font-size: 30px;
     left: 96px;
     color: white;
     width: -moz-fit-content;
@@ -86,35 +87,35 @@
 }
 
 .horariotitulo{
-    font-size: 40px;
+    font-size: 30px;
     
 }
 
 .horario{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     
 }
 .horariohora{
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;    
 }
 
 .menu{
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
     color: #40047C;
 }
 
 .promo{
-    font-size: 40px;
+    font-size: 30px;
 }
 .promo h2{
     margin: 0px;
 }
 
 .direccion{
-    font-size:30px;
+    font-size:25px;
     text-decoration: none;
     color: rgb(43, 43, 43);
 }
@@ -143,8 +144,6 @@
 }
 .reservar{
     position: relative;
-    top: 107px;
-    right: -350px;
     font-size: large;
     justify-self: center;
     text-decoration: none;
@@ -154,9 +153,23 @@
     color: white;
     box-shadow: 0px 0px 19px 6px rgb(0 0 0 / 25%);
     border-radius: 25px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 320px;
 }
 
 .reservar:hover{
     background: #712dc9;
     cursor: pointer;
+}
+
+.loadingcontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 200px;
+}
+
+.loading{
+    font-size: 80px;
 }
