@@ -14,7 +14,7 @@ import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 export default  function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { profile, allPlaces } = useSelector(state => state)
+    const { profile } = useSelector(state => state)
     console.log("🚀 ~ file: Profile.jsx:18 ~ Detail ~ profile", profile)
     const [open, setOpen] = useState({
         userInfo:false,
@@ -24,7 +24,7 @@ export default  function Detail() {
     });
     useEffect(() => {
         dispatch(getUserByid(profile.id));
-    }, [])
+    }, [dispatch, profile.id])
 
     useEffect(()=>{
         if (!profile.id) {
