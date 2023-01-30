@@ -4,7 +4,7 @@ import styles from "./showLocalInfo.module.css"
 export default function ShowLocalInfo (props) {
     const local = props.local;
     return (
-        <div>
+        <div className={styles.localInfoContainer}>
             <img className={styles.Image} src={local.image} alt="" />
             <h3 className={styles.Data}>Nombre: {local.name}</h3>
             <h3 className={styles.Data}>Teléfono: {local.phone}</h3>
