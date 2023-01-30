@@ -78,13 +78,13 @@ export default function Login() {
   return (
     <div>
       <Navbar />
-      <div className={checked ? styles.containerLogin : styles.containerDark}>
-        <div className={styles.formContainer}>
-          <h1 className={styles.title}>Ingresa</h1>
+      <div className={checked ? styles.containerLogin : styles.containerLoginDark}>
+        <div className={checked ? styles.formContainer : styles.formContainerDark}>
+          <h1 className={checked ? styles.title : styles.titleDark}>Ingresa</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <input
-                className={styles.input}
+                className={checked ? styles.input : styles.inputDark}
                 type="text"
                 placeholder="Mail"
                 value={login.id}
@@ -95,7 +95,7 @@ export default function Login() {
 
             <div>
               <input
-                className={styles.input}
+                className={checked ? styles.input : styles.inputDark}
                 type="password"
                 placeholder="Contraseña"
                 value={login.password}
@@ -109,7 +109,7 @@ export default function Login() {
                 name="where"
                 type="submit"
                 id="loginButton"
-                className={styles.submitButton}
+                className={checked ? styles.submitButton : styles.submitButtonDark}
                 disabled={!login.id || !login.password}
               >
                 Ingresar
@@ -124,7 +124,7 @@ export default function Login() {
                 cookiePolicy={"single_host_origin"}
               />
 
-              <Link to="/sign-up">Todavia no tenes una cuenta?</Link>
+              <Link to="/sign-up"  className={checked ? styles.link : styles.linkDark}>Todavia no tenes una cuenta?</Link>
             </div>
           </form>
         </div>

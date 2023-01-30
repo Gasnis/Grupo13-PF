@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUser , getUserByid} from '../../redux/actions';
 import Navbar from '../Navbar/Navbar';
 import styles from '../FormsStyles/forms.module.css';
@@ -15,6 +15,7 @@ export default function SignUp(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const checked = useSelector((state) => state.darkmode);
 
 
     const [signUp, setSignUp] = useState({
@@ -130,9 +131,9 @@ export default function SignUp(props) {
     return (
         <div>
             <Navbar/>
-        <div className={styles.container}>
-            <div className={styles.formContainer}>
-                <h1 className={styles.title}>Registrate</h1>
+        <div className={checked ? styles.container : styles.containerDark}>
+            <div className={checked ? styles.formContainer : styles.formContainerDark}>
+                <h1 className={checked ? styles.title : styles.titleDark}>Registrate</h1>
                 <form onSubmit={handleSubmit}>
                 <div>
                 <input 
@@ -141,7 +142,7 @@ export default function SignUp(props) {
                     value={signUp.name}
                     name="name"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 /> 
                 </div>
 
@@ -152,7 +153,7 @@ export default function SignUp(props) {
                     value={signUp.id}
                     name="id"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 />
                 <div>{errors.id && <p>{errors.id}</p>}</div>
                 </div>
@@ -164,7 +165,7 @@ export default function SignUp(props) {
                     value={signUp.password}
                     name="password"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 />
                 </div>
 
@@ -175,7 +176,7 @@ export default function SignUp(props) {
                     value={signUp.phone}
                     name="phone"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 />
                 </div>
 
@@ -186,7 +187,7 @@ export default function SignUp(props) {
                     value={signUp.birthday}
                     name="birthday"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 />
                 </div>
                 
@@ -197,7 +198,7 @@ export default function SignUp(props) {
                     value={signUp.city}
                     name="city"
                     onChange={handleChange}
-                    className={styles.input}
+                    className={checked ? styles.input : styles.inputDark}
                 />
                 </div>
 
@@ -217,7 +218,7 @@ export default function SignUp(props) {
                         onFailure={responseGoogle}
                         cookiePolicy={"single_host_origin"}
                     />
-                    <Link to="/login" >Ya tenes una cuenta?</Link>
+                    <Link to="/login" className={checked ? styles.link : styles.linkDark}>Ya tenes una cuenta?</Link>
                 </div>
 
                 </form>
