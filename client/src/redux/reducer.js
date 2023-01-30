@@ -122,11 +122,6 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 placeDetail: {}
             }
-        case SET_FILTER:
-            return {
-                ...state,
-                isfilter: action.payload
-            }
         case SET_CHECKED:
             let checkstate
 

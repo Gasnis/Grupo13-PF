@@ -125,7 +125,7 @@ export default function Navbar(props) {
                                     }
                                 </div>
                                 <div>
-                                    <button className={style.limpiar} onClick={refresh}>
+                                    <button className={style.limpiar}  onClick={refresh}>
                                         <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
                                     </button>
                                 </div>

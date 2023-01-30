@@ -13,8 +13,6 @@ export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const BOOK_PERSIST = "BOOK_PERSIST"
-eb7179f0736f99dc09075f7cff394fa55294975d
-
 
 
 export const getPlaces = () => {
