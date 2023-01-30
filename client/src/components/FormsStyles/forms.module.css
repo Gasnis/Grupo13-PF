@@ -92,6 +92,22 @@
     color:rgba(255, 255, 255, 0.86)
 }
 
+.volverButton {
+    background: #E7E7E7;
+    border-radius: 5px;
+    padding:5px;
+    width: 40%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 16px;
+}
+
+.volverButton:hover {
+    cursor: pointer;
+    background: #E7E7E7;
+    color:rgba(255, 255, 255, 0.86)
+}
+
 .registrarButton {
     background: rgba(102, 11, 173, 0.86);
     border-radius: 5px;

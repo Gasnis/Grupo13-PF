@@ -3,7 +3,7 @@
     /* flex-direction: column; */
     /* align-items: center; */
     justify-content: right;
-    width: 80%;
+    width: 100%;
 }
 
 .formContainer {
@@ -31,14 +31,28 @@
 }
 
 .registrarButton {
-    background: rgba(102, 11, 173, 0.86);
+    background: #40047C;
     border-radius: 5px;
     margin-top: 35px;
     margin-bottom: 25px;
     padding:5px;
-    width: 200px;
+    width: 100%;
     color: #E7E7E7;
     font-size: 16px;
+}
+
+.cancelar {
+    background: #E7E7E7;
+    border-radius: 5px;
+    margin-bottom: 1em;
+    padding:5px;
+    width: 100%;
+    color: #40047C;
+    font-size: 16px;
+}
+
+.cancelar:hover {
+    cursor: pointer;
 }
 
 .title {

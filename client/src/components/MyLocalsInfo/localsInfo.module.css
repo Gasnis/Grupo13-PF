@@ -59,3 +59,47 @@
     border-radius: 5px;
     color: white;
 }
+
+.editarBar {
+    background: #40047C;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.editarBar:hover {
+    cursor:pointer;
+    background-color: #40047ce4 ;
+    border-radius: 5px;
+    color: white;
+}
+
+.volver {
+    background: #E7E7E7;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.volver:hover {
+    cursor:pointer;
+    background-color: #E7E7E7 ;
+    border-radius: 5px;
+    color: 40047C;
+}
+
+.buttonsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
+}
