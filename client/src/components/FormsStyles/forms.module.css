@@ -76,6 +76,7 @@
     border-radius: 5px;
     padding:5px;
     width: 40%;
+    /* margin-top: 35px; */
     color: #E7E7E7;
     font-family: 'Cambay', sans-serif;
     font-size: 16px;
@@ -111,7 +112,7 @@
 .registrarButton {
     background: rgba(102, 11, 173, 0.86);
     border-radius: 5px;
-    margin-top: 35px;
+    /* margin-top: 35px; */
     margin-bottom: 25px;
     padding:5px;
     width: 200px;
@@ -218,3 +219,94 @@
 }
 
 
+/* --------------------------------------------------Dark Mode ---------------------------------------------------- */
+
+.containerDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url(../../utils/SignUpDark.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.containerLoginDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url(../../utils/LoginDark.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.formContainerDark {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 11px;
+    box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
+    background-color: #4F4F4F;
+    height: 55vh;
+    width: 25%;
+}
+
+.inputDark {
+    display: flex;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #4F4F4F;
+    color: #FCF9EB;
+    border-radius: 7px;
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+}
+
+.titleDark {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    color: #FCF9EB;
+}
+
+.subtitlesDark {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    color: #FCF9EB;
+}
+
+.submitButtonDark {
+    background: #894FB8;
+    border-radius: 5px;
+    /* margin-top: 35px; */
+    padding:5px;
+    width: 200px;
+    color: #E7E7E7;
+    font-size: 16px;
+}
+
+.submitButtonDark:hover {
+    cursor: pointer;
+    background: #9867c0;
+}
+
+.linkDark {
+    color: #FCF9EB;
+}
