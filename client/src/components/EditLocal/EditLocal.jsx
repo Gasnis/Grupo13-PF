@@ -344,7 +344,7 @@ export default function EditLocal (props) {
                             >
                             Guardar
                         </button>
-                        <button onClick={handleCancel}>Cancelar</button>
+                        <button onClick={handleCancel} className={styles.cancelar}>Cancelar</button>
                     </form>
                 </div>
 
