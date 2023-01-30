@@ -49,6 +49,10 @@
 .head{
     margin-left: 1.5cm;
 }
+
+.head p{
+    margin: 0px;
+}
 .category{
     flex-direction: row;
     justify-content: space-around;
@@ -59,8 +63,7 @@
 .name{
     margin: 0px;
     display: flex;
-    font-size: 80px;
-    margin-bottom: 20px;
+    font-size: 110px;
 }
 .rating{
     position: absolute;
