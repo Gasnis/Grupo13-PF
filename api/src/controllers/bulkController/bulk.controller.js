@@ -10,9 +10,9 @@ const users = [{
     "city": "bogota"
 },
 {
-    "id": "gersio.zampieri@gmail.com",
-    "name": "gersioz",
-    "password": "gersioz2020",
+    "id": "sergio@gmail.com",
+    "name": "sergio",
+    "password": "sergio2020",
     "phone": "3016444226",
     "image": "https://www.jokesforfunny.com/wp-content/uploads/2021/06/0596bdb89b60fe771acd2f5972a9d3e3.jpg",
     "birthday": "1992-11-01",
@@ -130,7 +130,7 @@ const places =[
 		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
-		"userId":"gersio.zampieri@gmail.com",
+		"userId":"sergio@gmail.com",
 		"name": "EL Pub de Sergio",
 		"category": "pub",
 		"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg",
