@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import { bookPersist, createBook } from '../../redux/actions';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import styles from '../FormsStyles/forms.module.css';
 import { useEffect } from 'react';
 import axios from 'axios';
