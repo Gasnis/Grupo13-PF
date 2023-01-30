@@ -1,14 +1,15 @@
 .profileContainer {
-  background-image: url(../../utils/Profile.png);
-  background-size: 100%;
+  background-image: url(../../utils/Profile2.png);
   background-repeat: no-repeat;
-  background-position-y: 184px;
-  padding-bottom: 40px;
+  height: 80vh;
+  width: 100%;
+  /* background-position-y: 184px;
+  padding-bottom: 40px; */
 }
 
 .profilePict {
-    width: 180px;
-    height: 180px;
+    width: 15%;
+    height: 15vh;
     border-radius: 50%;
     float: left;
     padding-top: 10px;
@@ -21,7 +22,7 @@
     grid-template-columns: 200px auto auto;
     width: 50%;
     height: 200px;
-    margin-left: 10px;
+    margin-left: 5em;
     margin-right: 10px;
     margin-bottom: 40px;
     align-items: end;
@@ -29,7 +30,7 @@
 }
 
 .name{
-  font: 30px Robot, sans-serif;
+  font-family: 'Cambay', sans-serif;
   float: left;
   font-weight: 900;
   justify-self: flex-start;
@@ -96,9 +97,12 @@
   margin-bottom: 10px;
 }
 .infoBarsAndInfoUser{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   flex-direction: row;
-  height: 300px;
+  height: 45vh;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .Logo{
@@ -113,3 +117,45 @@
   top: 0px;
  
 }
+
+.buttons {
+  background: #fdfbf2c0;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: black;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+
+.buttons:hover {
+  cursor: pointer;
+  background: #40047ce4;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #E7E7E7;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bookInfo {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+}
+
+.localInfo {
+  display: flex;
+  justify-content: center;
+  height: 40vh;
+}
+
+

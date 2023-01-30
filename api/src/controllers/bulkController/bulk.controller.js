@@ -5,7 +5,7 @@ const users = [{
     "name": "gioh",
     "password": "gioh2020",
     "phone": "3016444226",
-    "image": "",
+    "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
     "birthday": "2021-01-01",
     "city": "bogota"
 },
@@ -85,63 +85,67 @@ const places =[
 		"event": false,
 		"capacity": 2000,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gioh2020@gmail.com",
-		"name": "el Bar de GioH",
+		"name": "El Bar de GioH",
 		"category": "bar",
 		"image": "https://conteudo.imguol.com.br/c/entretenimento/d3/2022/10/18/agito-do-bar-paradiso-de-barcelona-1666096825973_v2_4x3.jpg",
-		"location": "https://www.google.com/maps/place/Gral.+Guemes+200+Avellaneda",
+		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 		"event": true,
 		"capacity": 200,
 		"petFriendly": true,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gioh2020@gmail.com",
 		"name": "Chiquito el Barcito",
 		"category": "pub",
 		"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg",
-		"location": "https://www.google.com/maps/place/Gral.+Guemes+200+Avellaneda",
+		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 		"event": false,
 		"capacity": 150,
 		"petFriendly": false,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
-		"rating": 1
+		"rating": 1,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 {
 		"userId":"gersio.zampieri@gmail.com",
 		"name": "EL Pub de Sergio",
 		"category": "pub",
 		"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg",
-		"location": "https://www.google.com/maps/place/Gral.+Guemes+200+Avellaneda",
+		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
-		"rating": 5
+		"rating": 5,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 ,
 {
@@ -149,17 +153,18 @@ const places =[
 		"name": "El Thomisaurodromo",
 		"category": "bar",
 		"image": "https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,f_jpg,q_64,w_587/https://images.citybreak.com/image.aspx%3FImageId%3D7124625",
-		"location": "https://www.google.com/maps/place/Gral.+Guemes+200+Avellaneda",
+		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": "https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": [18, 99],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -171,12 +176,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -188,12 +194,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -205,12 +212,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 4
+		"rating": 4,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -222,12 +230,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -239,12 +248,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -256,12 +266,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -273,12 +284,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -290,12 +302,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -307,12 +320,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -324,12 +338,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -341,12 +356,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -358,12 +374,13 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": [18, 45],
+		"ageRange": ["+18"],
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
-		"rating": 3
+		"rating": 3,
+		"schedule":["sabado","domingo","17:00","00:00"]
 	}
 
 ]

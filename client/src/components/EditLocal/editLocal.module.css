@@ -1,0 +1,349 @@
+.container {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: right;
+    width: 80%;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin: 25px;
+    padding: 50px;
+    border-radius: 11px;
+    box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
+    background-color: #FCF9EB;
+    height: 100%;
+    width: 100%;
+}
+
+.registrarButton:disabled {
+    background: #E7E7E7;
+    color:#660BAD;
+}
+
+.registrarButton:hover:enabled {
+    cursor: pointer;
+    background: #660BAD;
+    color:rgba(255, 255, 255, 0.86)
+}
+
+.registrarButton {
+    background: rgba(102, 11, 173, 0.86);
+    border-radius: 5px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    padding:5px;
+    width: 200px;
+    color: #E7E7E7;
+    font-size: 16px;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    color: #40047C;
+}
+
+.subtitles {
+    display: flex;
+    margin-top: 3em;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    color: #40047C;
+}
+
+.label {
+    font-size: medium;
+    font-family: 'Cambay', sans-serif;
+    gap:5px;
+}
+
+/* FormBar */
+/* .scheduleContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #E7E7E7;
+    border-radius: 10px;
+} */
+
+.weekdaysContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 25px;
+    padding-right:30px;
+    align-items: flex-start;
+    width: 100%;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#FCF9EB;
+    border-radius: 11px;
+    border: solid #A7A7A7 1px;
+}
+
+.hoursContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 25px;
+    gap: 20px;
+    width: 60%;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#FCF9EB;
+    border-radius: 11px;
+    border: solid #A7A7A7 1px;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #FCF9EB;
+    border-radius: 10px;
+}
+
+.selectHours {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #FCF9EB;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.weekHours {
+    display: flex;
+    justify-content: center;
+}
+
+.petFriendlyEventos {
+    display: flex;
+    flex-direction: column;
+    margin-top:2em;
+    gap: 10px;
+}
+
+.input {
+    display: flex;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #FCF9EB;
+    border-radius: 7px;
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+}
+
+.doubleFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 97%;
+}
+
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: linear-gradient(79deg, #dce4fb, #b9a4c9 40%);
+}
+
+.containerDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: linear-gradient(79deg, #414347, #3c3441 40%);
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
+    height: 100%;
+    width: 500px;
+}
+
+.input {
+    display: flex;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 60px;
+    padding-left: 10px;
+    background: #E7E7E7;
+    border-radius: 7px;
+    width: 85%;
+}
+
+.linksContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.submitButton {
+    background: rgba(102, 11, 173, 0.86);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding:5px;
+    width: 100px;
+    color: #E7E7E7;
+    font-size: 16px;
+}
+
+.submitButton:disabled, .registrarButton:disabled {
+    background: #E7E7E7;
+    color:#660BAD;
+}
+
+.submitButton:hover:enabled, .registrarButton:hover:enabled {
+    cursor: pointer;
+    background: #660BAD;
+    color:rgba(255, 255, 255, 0.86)
+}
+
+.registrarButton {
+    background: rgba(102, 11, 173, 0.86);
+    border-radius: 5px;
+    margin-top: 35px;
+    margin-bottom: 25px;
+    padding:5px;
+    width: 200px;
+    color: #E7E7E7;
+    font-size: 16px;
+}
+
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #660BAD;
+}
+
+.subtitles {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #660BAD;
+}
+
+.label {
+    font-size: 15px;
+}
+
+.scheduleContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #E7E7E7;
+    border-radius: 10px;
+}
+
+.weekdaysContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 25px;
+    padding-right:30px;
+    align-items: flex-start;
+    width: 100px;
+    margin-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#E7E7E7;
+    border-radius: 5px;
+}
+
+.hoursContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 25px;
+    gap: 20px;
+    width: 150px;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color:#E7E7E7;
+    border-radius: 5px;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #E7E7E7;
+    border-radius: 10px;
+    width: 98%;
+}
+
+.selectHours {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #E7E7E7;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.weekHours {
+    display: flex;
+    justify-content: center;
+}
+
+.petFriendlyEventos {
+    margin:15px;
+    gap: 10px;
+} */
+

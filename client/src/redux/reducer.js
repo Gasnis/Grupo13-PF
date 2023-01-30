@@ -11,6 +11,7 @@ import {
     SORT_RATING,
     SET_CHECKED,
     CLEAN_DETAIL,
+    BOOK_PERSIST,
 
 } from "./actions"
 
@@ -23,6 +24,8 @@ const initialState = {
     allUsers: [],
     searchInput: "",
     darkmode: false,
+    book:{}
+// >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
 }
 
 export default function reducer(state = initialState, action) {
@@ -127,7 +130,11 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 darkmode: checkstate,
             }
-
+        case BOOK_PERSIST:
+            return {
+                ...state,
+                book: action.payload
+            }
         default:
             return state;
     }

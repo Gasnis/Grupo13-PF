@@ -12,12 +12,7 @@ export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-
-
-
-
-
-
+export const BOOK_PERSIST = "BOOK_PERSIST"
 
 
 export const getPlaces = () => {
@@ -96,9 +91,16 @@ export const getUserByid = (id) => {
 }
 
 export const updateUser = (user) => {
-    return async () => {
-        const { data } = await axios.put(`/user`, user);
-        return data;
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.put(`/user`, user);
+            return dispatch ({
+                type: GET_USER_BY_ID,
+                payload: data
+            });
+        } catch (error) {
+            return error
+        }
     }
 }
 
@@ -143,9 +145,9 @@ export const createBook = (book) => {
 }
 
 
-export const updatePlace = (idPlace, update) => {
+export const updatePlace = (update) => {
     return async () => {
-        const { data } = await axios.put(`/local/${idPlace}`, update);
+        const { data } = await axios.put(`/local`, update);
         return data;
     }
 }
@@ -215,6 +217,29 @@ export const cleanDetail = () => {
 
     return {
         type: "CLEAN_DETAIL"
+    }
+
+
+    
+
+}
+export const bookPersist = (payload) => {
+
+    return {
+        type: "BOOK_PERSIST",
+        payload
+    }
+
+
+    
+
+}
+
+export const setFilter = (payload) => {
+
+    return {
+        type: "SET_FILTER",
+        payload
     }
 
 }
