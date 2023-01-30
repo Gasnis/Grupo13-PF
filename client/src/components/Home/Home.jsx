@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterCategory, searchPlace, setInput, sortRating } from "../../redux/actions"
+import { searchPlace, setInput } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"
@@ -38,27 +38,7 @@ export default function Home() {
         <div>
 
             <Navbar home={true} />
-            <div className={style.filtercontainer}>
-                <div>
-                    <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
-                        <option value="all">Rating</option>
-                        <option value="best">Mejores</option>
-                        <option value="worst">Peores</option>
-                    </select>
-                </div>
-
-                <div>
-                    <select id="category" className={style.filter} onChange={(event) => handlerCategory(event)}>
-                        <option value="all">Categoría</option>
-                        <option value="pub">Pubs</option>
-                        <option value="disco">Discotecas</option>
-                        <option value="bar">Bares</option>
-                    </select>
-                </div>
-                <div>
-                    <button className={style.limpiar} onClick={refresh}>Limpiar</button>
-                </div>
-            </div>
+     
 
             <div className={darkmode ? style.info : style.infodark}>
 
