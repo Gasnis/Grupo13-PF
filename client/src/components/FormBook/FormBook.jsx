@@ -131,20 +131,21 @@ export default function SignUp(props) {
     const handleSubmit = async (event) => {
 
         event.preventDefault();
+
         dispatch(bookPersist({
             ...booking,
             localId
         }))
-        const data = await axios.post("http://localhost:3001/payment/generate-link", {
+        const data = await axios.post("/payment/generate-link", {
 
             "personQuantity": 1,
             "priceTotal": 1000
-
 
         });
         const payUrl = data.data.body.init_point
 
         window.location.replace(payUrl)
+
 
 
 
