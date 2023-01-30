@@ -12,7 +12,7 @@ import { useEffect } from "react";
 export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const checked = useSelector((state) => state.checked);
+  const checked = useSelector((state) => state.darkmode);
 
   const [login, setLogin] = useState({  // 
     id: "",
