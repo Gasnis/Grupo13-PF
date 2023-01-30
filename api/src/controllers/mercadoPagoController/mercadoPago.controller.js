@@ -27,9 +27,9 @@ const generateLink = async (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3000/book",
-      failure: "http://localhost:3000/book",
-      pending: "http://localhost:3000/book",
+      success: "https://wwwhere.up.railway.app/book",
+      failure: "https://wwwhere.up.railway.app/book",
+      pending: "https://wwwhere.up.railway.app/book",
     },
     auto_return: "approved",
     payment_methods: {
