@@ -7,88 +7,89 @@
   padding-bottom: 40px; */
 }
 
+
 .profilePict {
-    width: 15%;
-    height: 15vh;
-    border-radius: 50%;
-    float: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 5px;
-  }
+  width: 15%;
+  height: 15vh;
+  border-radius: 50%;
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+}
 
 .divContainer{
-    display: flex;
-    grid-template-columns: 200px auto auto;
-    width: 50%;
-    height: 200px;
-    margin-left: 5em;
-    margin-right: 10px;
-    margin-bottom: 40px;
+  display: flex;
+  grid-template-columns: 200px auto auto;
+  width: 50%;
+  height: 200px;
+  margin-left: 5em;
+  margin-right: 10px;
+  margin-bottom: 40px;
     align-items: end;
     border-radius: 11px;
-}
-
-.name{
-  font-family: 'Cambay', sans-serif;
-  float: left;
-  font-weight: 900;
-  justify-self: flex-start;
-  color: rgb(0, 0, 0);
-  flex-wrap: nowrap;
-}
-
-.divProfile{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fdfbf2c0;
-  height: 300px;
-  margin-bottom: 40px;
-  margin-left: 15px;
-  border-radius: 11px;
-}
-.divProfile span{
-  color: rgb(58, 58, 58);
-  font-weight: 600;
-  width: 100px;
-}
-.divProfile p{
-  margin: 10px;
-  width: 400px;
-  text-align: left;
-}
-.divProfile span{
-  margin: 10px;
-  width: 300px;
-  text-align: left;
-}
-
-.localsInformation{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fdfbf2c0;
-  height: 300px;
-  margin-left: 20px;
-  width: 500px;
-  border-radius: 11px;
-}
-.booksInformation{
-  box-shadow: 0px 0px 25px rgb(91, 92, 91);
-  border-radius: 10px;
-  margin-left: 20px;
-  width: 500px;
-}
-.imgBar{
-  width: 100px;
+  }
+  
+  .name{
+    font-family: 'Cambay', sans-serif;
+    float: left;
+    font-weight: 900;
+    justify-self: flex-start;
+    color: rgb(0, 0, 0);
+    flex-wrap: nowrap;
+  }
+  
+  .divProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfbf2c0;
+    height: 300px;
+    margin-bottom: 40px;
+    margin-left: 15px;
+    border-radius: 11px;
+  }
+  .divProfile span{
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+    width: 100px;
+  }
+  .divProfile p{
+    margin: 10px;
+    width: 400px;
+    text-align: left;
+  }
+  .divProfile span{
+    margin: 10px;
+    width: 300px;
+    text-align: left;
+  }
+  
+  .localsInformation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfbf2c0;
+    height: 300px;
+    margin-left: 20px;
+    width: 500px;
+    border-radius: 11px;
+  }
+  .booksInformation{
+    box-shadow: 0px 0px 25px rgb(91, 92, 91);
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 500px;
+  }
+  .imgBar{
+    width: 100px;
   height: 110px;
 }
 .divYourBars{
   display: flex;
   flex-direction: row;
   justify-content: center;
- 
+  
 }
 .infoBar{
   border: 2px solid rgb(158, 50, 205) ;
@@ -115,7 +116,7 @@
   height: 80px;
   width: 60px;
   top: 0px;
- 
+  
 }
 
 .buttons {
@@ -158,4 +159,82 @@
   height: 40vh;
 }
 
+/* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
+.mainContainer {
+  background-color: #2A2A2B;
+  height: 100%;
+  width: 100%;
+}
 
+.profileContainerDark {
+  background-image: url(../../utils/ProfileDark.png);
+  background-repeat:repeat-y;
+  height: 100vh;
+  width: 100%;
+  background-color: #FFB800;
+  /* background-position-y: 184px;
+  padding-bottom: 40px; */
+}
+
+.nameDark{
+  font-family: 'Cambay', sans-serif;
+  float: left;
+  font-weight: normal;
+  justify-self: flex-start;
+  color: #fdfbf2;
+  flex-wrap: nowrap;
+}
+
+.divProfileDark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdfbf2c0;
+  height: 300px;
+  margin-bottom: 40px;
+  margin-left: 15px;
+  border-radius: 11px;
+}
+.divProfile span{
+  color: rgb(58, 58, 58);
+  font-weight: 600;
+  width: 100px;
+}
+
+.localsInformationDark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdfbf2c0;
+  height: 300px;
+  margin-left: 20px;
+  width: 500px;
+  border-radius: 11px;
+}
+.booksInformationDark{
+  box-shadow: 0px 0px 25px rgb(91, 92, 91);
+  border-radius: 10px;
+  margin-left: 20px;
+  width: 500px;
+}
+
+.buttonsDark {
+  background: #575757;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #fdfbf2;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+
+.buttonsDark:hover {
+  cursor: pointer;
+  background: #fdfbf2c0;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #575757;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}

@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./showLocalInfo.module.css"
+import { useSelector } from "react-redux";
 
 export default function ShowLocalInfo (props) {
     const local = props.local;
+    const checked = useSelector((state) => state.darkmode);
+
     return (
-        <div className={styles.localInfoContainer}>
+        <div className={checked ? styles.localInfoContainer : styles.localInfoContainerDark}>
             <img className={styles.Image} src={local.image} alt="" />
             <h3 className={styles.Data}>Nombre: {local.name}</h3>
             <h3 className={styles.Data}>Teléfono: {local.phone}</h3>

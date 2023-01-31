@@ -103,3 +103,80 @@
     margin-bottom: 20px;
     gap: 20px;
 }
+
+/* ---------------------------------------------------------------Dark Mode ------------------------------------------------------ */
+
+.infoContainerDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vh;
+    background-color: #575757a3;
+    border-radius: 11px;
+    height: 40vh;
+}
+
+.CardDark {
+    width: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#303031;
+    color: #b7b6b3;
+    box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
+    border-radius: 11px;
+    height: 30vh;
+}
+
+.verDetallesDark {
+    background: #894FB8;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.verDetallesDark:hover {
+    cursor:pointer;
+    background-color: rgb(64, 4, 124);
+    border-radius: 5px;
+    color: white;
+}
+
+.editarBarDark {
+    background: #894FB8;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.editarBarDark:hover {
+    cursor:pointer;
+    background-color: #894FB8 ;
+    border-radius: 5px;
+    color: white;
+}
+
+.volverDark {
+    background: #E7E7E7;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.volverDark:hover {
+    cursor:pointer;
+    background-color: #E7E7E7 ;
+    border-radius: 5px;
+    color: 40047C;
+}
