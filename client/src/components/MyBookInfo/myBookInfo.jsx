@@ -5,6 +5,7 @@ import styles from "./myBookInfo.module.css"
 export default function MyBookInfo(props) {
     const books = props.books;
     const places = useSelector(state => state.places)
+    const checked = useSelector((state) => state.darkmode);
     const [index, setIndex] = useState(0)
 
     const handlePage = (e) => {
@@ -30,11 +31,11 @@ export default function MyBookInfo(props) {
     }
 
     return (
-        <div className={styles.infoContainer}>
+        <div className={checked ? styles.infoContainer : styles.infoContainerDark}>
             {/* <h3>Tienes {books.length} reservas!</h3> */}
             <div className={styles.CardContainer}>
                 <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
-                <div className={styles.Card}>
+                <div className={checked ? styles.Card : styles.CardDark}>
 
                     <h3>{places.filter(place => place.id === books[index].localId)[0].name}</h3>
                     <img src={places.filter(place => place.id === books[index].localId)[0].image} alt="" className={styles.localImage} /><br />
