@@ -145,6 +145,13 @@ export const createBook = (book) => {
 }
 
 
+export const deletePlace = (id) => {
+    return async () =>{
+        const { data } = await axios.delete("/local" , id)
+        return data
+    }
+}
+
 export const updatePlace = (update) => {
     return async () => {
         const { data } = await axios.put(`/local`, update);
@@ -243,3 +250,8 @@ export const setFilter = (payload) => {
     }
 
 }
+
+
+//aceptar bar
+//no aceptar bar
+//banear usuario

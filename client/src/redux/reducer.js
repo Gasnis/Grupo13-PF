@@ -26,7 +26,7 @@ const initialState = {
     searchInput: "",
     darkmode: false,
     book:{}
-// >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
+    // >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
 }
 
 export default function reducer(state = initialState, action) {
