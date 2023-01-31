@@ -51,7 +51,11 @@ export default function Navbar(props) {
         }
     };
     const handleLogOut = () => {
-        dispatch(logout());
+        if (window.confirm("Desea cerrar sesión?")) {
+            window.alert("Sesión finalizada");
+            dispatch(logout());  
+        }
+        
     }
     const handleChangeSwitch = () => {
         dispatch(setChecked(darkmode));
