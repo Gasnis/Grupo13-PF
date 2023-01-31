@@ -2,10 +2,18 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from "./Dashboard.module.css"
 
+
+/*
+
+
+
+*/
+
 const Dashboard = () => {
 
-    const solicitudes = useSelector((state)=> state.places)
-
+  const solicitudes = useSelector((state)=> state.places)
+  const statusDashboard = useState(false)
+  
   return (
     <div className={style.navbar}>
         <div className={style.titulos}>
@@ -18,6 +26,13 @@ const Dashboard = () => {
             <p>SearchBar</p>
         </div>
         
+
+
+      <p>solicitudes</p>
+
+
+
+
     </div>
   )
 }
