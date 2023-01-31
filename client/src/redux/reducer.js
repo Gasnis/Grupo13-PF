@@ -17,6 +17,7 @@ import {
 
 
 const initialState = {
+    placesAproved: [],
     places: [],
     allPlaces: [],
     placeDetail: {},

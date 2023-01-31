@@ -13,7 +13,7 @@ export default function Home() {
     const dispatch = useDispatch();
 
     const {searchInput, darkmode} = useSelector(state => state)
-    let allPlaces = useSelector((state) => state.places)
+    let allPlaces = useSelector((state) => state.placesAproved)
 
     useEffect(() => {
         dispatch(getPlaces())
