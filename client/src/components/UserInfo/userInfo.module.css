@@ -63,6 +63,7 @@
 
 .Input {
     background: #FCF9EB;
+    color:#40047C;
     border-radius: 7px;
     font-family: 'Cambay', sans-serif;
     font-size: medium;
@@ -159,7 +160,7 @@
     font-size: 14px;
 }
 
-.Input {
+.InputDark {
     background: transparent;
     color: #fdfbf2;
     border-radius: 7px;
