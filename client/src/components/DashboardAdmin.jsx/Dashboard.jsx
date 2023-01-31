@@ -19,19 +19,47 @@ const Dashboard = () => {
   const apro = allPlaces?.filter(p=>p.status === "aprobado")
   const bannedUsers = allUsers?.filter (u => u.ban === true)
   const NonBannedUsers = allUsers?.filter (u => u.ban === false)
+
   
   const [statusDashboard, setStatusDashboard] = useState("Solicitudes")
-  
+  const [data, setData] = useState({
+    soli: soli,
+    bane: bane,
+    apro: apro,
+    bannedUsers: bannedUsers,
+    NonBannedUsers: NonBannedUsers,
+  })
+
   const handleState= (e) => {
     setStatusDashboard(e.target.value)
   }
-  const handleSearch = (e) => {
-    if (e.target.name === "Solicitudes") {
+  const handleSearchSoli = (e) => {
+      const newData = soli.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
+      setData({...data, soli: newData})
+  }
+  const handleSearchBane = (e) => {
+    const newData = bane.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    setData({...data, bane: newData})
+  }
+  const handleSearchApro = (e) => {
+    const newData = apro.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    setData({...data, apro: newData})
+  }
+  const handleSearchBannedUsers = (e) => {
+    const newData = bannedUsers.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    setData({...data, bannedUsers: newData})
+  }
+  const handleSearchNonBannedUsers = (e) => {
+    const newData = NonBannedUsers.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    setData({...data, NonBannedUsers: newData})
+  }
 
-      // completar aca
 
-    }
-}
+  const handleApprove = (e) => {
+ 
+  }
+
+
 
 
   return (
@@ -53,31 +81,43 @@ const Dashboard = () => {
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes"?<div>
       <div>
-            <input name="Solicitudes" onChange={handleSearch} type="search" placeholder="Buscar..." />
+            <input name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {soli?.map((p) => {return <div>{p.name}<button>APROBAR</button><button>DESAPROBAR</button><button>BANEAR</button><hr/></div> })}
+      {data.soli?.map((p) => {return <div key={p.id}>{p.name}//<button onClick={handleApprove}>APROBAR</button><button>DESAPROBAR</button><button>BANEAR</button><hr/></div> })}
       </div>:null}
       
       
       {/* ------------------------------locales---------------------------------------------------------------- */}
       {statusDashboard === "Locales"?<div>
-      {apro?.map((p) => {return <div>{p.name}<button>SIMBOLO</button><button>BANEAR</button><hr/></div> })}
+      <div>
+            <input name="Locales" onChange={handleSearchApro} type="search" placeholder="Buscar..." />
+      </div> <hr />
+      {data.apro?.map((p) => {return <div>{p.name}<button>SIMBOLO</button><button>BANEAR</button><hr/></div> })}
       </div>:null}
       
       
       {/* ------------------------------Locales baneados---------------------------------------------------------------- */}
       {statusDashboard === "LocalesBaneados"?<div>
-      {bane?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
+      <div>
+            <input name="LocalesBaneados" onChange={handleSearchBane} type="search" placeholder="Buscar..." />
+      </div> <hr />
+      {data.bane?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
       </div>:null}
       
       {/* ------------------------------usuarios---------------------------------------------------------------- */}
       {statusDashboard === "Usuarios"?<div>
-      {NonBannedUsers?.map((p) => {return <div>{p.name}<button>BANEAR</button><hr/></div> })}
+      <div>
+            <input name="Usuarios" onChange={handleSearchNonBannedUsers} type="search" placeholder="Buscar..." />
+      </div> <hr />
+      {data.NonBannedUsers?.map((p) => {return <div>{p.name}<button>BANEAR</button><hr/></div> })}
       </div>:null}
 
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
       {statusDashboard === "UsuariosBaneados"?<div>
-      {bannedUsers?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
+      <div>
+            <input name="UsuariosBaneados" onChange={handleSearchBannedUsers} type="search" placeholder="Buscar..." />
+      </div> <hr />
+      {data.bannedUsers?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
       </div>:null}
     </div>
   )
