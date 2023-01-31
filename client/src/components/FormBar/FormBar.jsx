@@ -34,6 +34,7 @@ export default function CreateLocal() {
         petFriendly: false,
         bookPrice: "",
         available: true,
+        status:"solicitud"
     })
 
     const [errors, setErrors] = useState({
