@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/actions";
 import styles from "../UserInfo/userInfo.module.css"
 
@@ -14,6 +14,7 @@ const validate = (input) => {
 
 export default function ProfileInfo (props) {
     const dispatch = useDispatch();
+    const checked = useSelector((state) => state.darkmode);
     const {name, password, phone, city, id} = props.profile
     const [editing, setEditing] = useState(false);
     const [input, setInput] = useState({
@@ -64,7 +65,7 @@ export default function ProfileInfo (props) {
     }
 
     return (
-        <div className={styles.MainContainer}>
+        <div className={checked ? styles.MainContainer : styles.MainContainerDark}>
             <form className={styles.Form} onSubmit={handleSave}>
                 <div className={styles.DivLabel}>
                     <label className={styles.Label}>Nombre: </label>
@@ -115,13 +116,13 @@ export default function ProfileInfo (props) {
                 ?
                     <div className={styles.ButtonsDiv}>
                         <button className={styles.guardar} disabled={disabled} type="submit">Guardar</button>
-                        <button className={styles.cancelar} onClick={handleCancel}>Cancelar</button>
+                        <button className={checked ? styles.cancelar : styles.cancelarDark} onClick={handleCancel}>Cancelar</button>
                     </div>
                 :
                 null
             }
             </form>
-            {editing ? null : <button className={styles.EditButton} onClick={handleEdit}>Editar</button>}
+            {editing ? null : <button className={checked ? styles.EditButton : styles.EditButtonDark} onClick={handleEdit}>Editar</button>}
                 
         </div>
     )
