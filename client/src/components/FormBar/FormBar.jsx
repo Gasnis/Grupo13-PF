@@ -335,7 +335,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>
