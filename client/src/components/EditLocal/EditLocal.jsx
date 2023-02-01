@@ -326,6 +326,18 @@ export default function EditLocal (props) {
                             />
                         </div>
 
+                        <div >
+                            <label style={errors.bookPrice ? {color: "red"} : null}>Promo</label>
+                            <input
+                                type='text'
+                                placeholder='Promo'
+                                value={local.promo}
+                                name="promo"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
+                        </div>
+
                         <div className={styles.petFriendlyEventos}>
                             <div >
                                 <label>

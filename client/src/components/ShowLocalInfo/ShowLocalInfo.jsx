@@ -2,6 +2,11 @@ import React from "react";
 import styles from "./showLocalInfo.module.css"
 import { useSelector } from "react-redux";
 
+export function sortDays(days) {
+    const daysArray = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
+    return days.sort((a, b) => daysArray.indexOf(a) - daysArray.indexOf(b));
+  }
+
 export default function ShowLocalInfo (props) {
     const local = props.local;
     const checked = useSelector((state) => state.darkmode);
@@ -17,8 +22,15 @@ export default function ShowLocalInfo (props) {
             <h3 className={styles.Data}>Precio de reserva: ${local.bookPrice}</h3>
             {local.schedule 
             ? 
-            <h3 className={styles.Data}>Horarios: {local.schedule.slice(0, local.schedule.length-2).join("-")+" "}
-            {local.schedule.slice(local.schedule.length-2).join("-")}</h3> 
+            <>
+                <h3 className={styles.Data}>Horarios:</h3>
+                <h3 className={styles.Data}>
+                    {sortDays(local.schedule.slice(0, local.schedule.length-2))
+                        .map(day=>day[0].toUpperCase()+day.slice(1))
+                        .join(" - ")+" "}
+                </h3>
+                <h3 className={styles.Data}>{local.schedule.slice(local.schedule.length-2).join("-")}</h3> 
+            </>
             : null}
             <h3 className={styles.Data}>Capacidad: {local.capacity}</h3>
             <h3 className={styles.Data}>Rango de edad: {local.ageRange?.join("-")}</h3>

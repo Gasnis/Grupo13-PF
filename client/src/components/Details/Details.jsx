@@ -10,6 +10,7 @@ import location2 from "../../utils/location2.png";
 import footprint from "../../utils/huella.png";
 import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
+import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
 
 export default function Detail() {
     const { id } = useParams();
@@ -74,8 +75,8 @@ export default function Detail() {
                     <div className={ checked ? style.fondoamarillo : style.fondoVioleta}>
                         <h3 className={style.horariotitulo}>Horarios</h3>
                         <span className={style.horario}>
-                            {placeDetail.schedule
-                                ?.slice(0, placeDetail.schedule.length - 2)
+                            {sortDays(placeDetail.schedule
+                                ?.slice(0, placeDetail.schedule.length - 2))
                                 .map((day) => day[0].toUpperCase() + day.slice(1))
                                 .join(" - ")}
                         </span>
