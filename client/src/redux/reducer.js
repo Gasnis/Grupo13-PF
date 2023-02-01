@@ -12,6 +12,7 @@ import {
     SET_CHECKED,
     CLEAN_DETAIL,
     BOOK_PERSIST,
+    SEARCH_USER,
 
 } from "./actions"
 
@@ -21,11 +22,11 @@ const initialState = {
     allPlaces: [],
     placeDetail: {},
     profile: {},
+    users: [],
     allUsers: [],
-    searchInput: "",
     darkmode: false,
     book:{}
-// >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
+    // >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
 }
 
 export default function reducer(state = initialState, action) {
@@ -45,6 +46,13 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 places: action.payload,
+            }
+
+        case SEARCH_USER:
+            console.log(state.users)
+            return {
+                ...state,
+                users:action.payload,
             }
 
         case FILTER_CATEGORY:
@@ -101,9 +109,11 @@ export default function reducer(state = initialState, action) {
                 placeDetail: action.payload
             }
         case GET_USER:
+            
             return {
                 ...state,
-                allUsers: action.payload
+                allUsers: action.payload,
+                users: action.payload
             }
 
         case GET_USER_BY_ID:

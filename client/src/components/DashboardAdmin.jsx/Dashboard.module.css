@@ -1,0 +1,44 @@
+.navbar{
+    display: flex;
+    background-color: #40047C;
+    color: white;
+    padding-inline: 20px; 
+    justify-content: space-between;
+    font-weight: bold;
+    
+}
+.titulos{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    
+}
+
+.botones{
+    background-color: #40047C;
+    color: white;
+    margin: 5px;
+}
+
+.botones:hover{
+    color: gray !important;
+    cursor: pointer;
+}
+
+.card{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: #40047c7c 1px solid;
+    font-size: 15px;
+    padding-inline:20px;
+}
+
+.cosito{
+    width: 200px;
+    display: inline;
+    text-align: start;
+}

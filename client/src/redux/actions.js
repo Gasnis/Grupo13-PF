@@ -13,6 +13,7 @@ export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const BOOK_PERSIST = "BOOK_PERSIST"
+export const SEARCH_USER = "SEARCH_USER"
 
 
 export const getPlaces = () => {
@@ -77,6 +78,22 @@ export const getUser = () => {
             type: GET_USER,
             payload: data
         })
+    }
+}
+export const searchUser = (input) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`/user?name=${input}`);
+            dispatch({
+                type: SEARCH_USER,
+                payload: data
+            })
+        } catch (error) {
+            dispatch({
+                type: SEARCH_USER,
+                payload: []
+            })
+        }
     }
 }
 
@@ -144,6 +161,13 @@ export const createBook = (book) => {
     }
 }
 
+
+export const deletePlace = (id) => {
+    return async () =>{
+        const { data } = await axios.delete(`/local/${id}`, id);
+        return data
+    }
+}
 
 export const updatePlace = (update) => {
     return async () => {
@@ -243,3 +267,12 @@ export const setFilter = (payload) => {
     }
 
 }
+
+
+
+
+
+
+//aceptar bar
+//no aceptar bar
+//banear usuario

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./editLocal.module.css";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { getUserByid, updatePlace } from "../../redux/actions";
 import { useState } from "react";
 
@@ -19,6 +19,7 @@ export default function EditLocal (props) {
     const {localToEdit, userId} = props;
 
     const dispatch = useDispatch();
+    const checked = useSelector((state) => state.darkmode);
 
     const [local, setLocal] = useState({
         ...localToEdit,
@@ -142,23 +143,25 @@ export default function EditLocal (props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedLocal =await dispatch(updatePlace({
-            ...local,
-            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
-        }))
-        if (updatedLocal.id){
-            alert("Local actualizado!")
-            props.setEditing(false);
-        }else{
-            alert(updatedLocal.response.data)
+        if (window.confirm("Desea guardar estos cambios?")) {
+                const updatedLocal =await dispatch(updatePlace({
+                    ...local,
+                    schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
+                }))
+                if (updatedLocal.id){
+                    alert("Local actualizado!")
+                    props.setEditing(false);
+                }else{
+                    alert(updatedLocal.response.data)
+                }
+                dispatch(getUserByid(userId))
         }
-        dispatch(getUserByid(userId))
     }
 
     return (
         <div>
             <div className={styles.container}>
-                <div className={styles.formContainer}>
+                <div className={checked ? styles.formContainer : styles.formContainerDark}>
                     <form onSubmit={handleSubmit}>
                         <div >
                             <label style={errors.name ? {color: "red"} : null}>Nombre del local: </label>
@@ -168,7 +171,7 @@ export default function EditLocal (props) {
                                 value={local.name}
                                 name="name"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -180,7 +183,7 @@ export default function EditLocal (props) {
                                 value={local.image}
                                 name="image"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -192,7 +195,7 @@ export default function EditLocal (props) {
                                 value={local.location}
                                 name="location"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -204,7 +207,7 @@ export default function EditLocal (props) {
                                 value={local.menu}
                                 name="menu"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -216,7 +219,7 @@ export default function EditLocal (props) {
                                 value={local.phone}
                                 name="phone"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -228,14 +231,14 @@ export default function EditLocal (props) {
                                 value={local.capacity}
                                 name="capacity"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
                         <div className={styles.scheduleContainer} >
                             <h4 style={!scheduleArray.days.length ? {color: "red"} : null}>Horarios</h4>
                             <div className={styles.weekHours}>
-                                <div className={styles.weekdaysContainer}>
+                                <div className={checked ? styles.weekdaysContainer : styles.weekdaysContainerDark}>
                                     {weekDays.map(day=>(
                                         <label key={day} className={styles.label}>
                                             <input
@@ -250,10 +253,10 @@ export default function EditLocal (props) {
                                     ))}
                                 </div>
 
-                                <div className={styles.hoursContainer}>
+                                <div className={checked ? styles.hoursContainer : styles.hoursContainerDark}>
                                     <div>
                                         <label className={styles.label}>Desde:</label>
-                                        <select name="open" id="apertura" onChange={handleHour} className={styles.selectHours}>
+                                        <select name="open" id="apertura" onChange={handleHour} className={checked ? styles.selectHours : styles.selectHoursDark}>
                                             <option hidden>Horario de apertura</option>
                                             {horaApertura.map((hora) => {
                                                 return (
@@ -265,7 +268,7 @@ export default function EditLocal (props) {
 
                                     <div>
                                         <label className={styles.label}>Hasta:</label>
-                                        <select name="close" id="cierre" onChange={handleHour} className={styles.selectHours}>
+                                        <select name="close" id="cierre" onChange={handleHour} className={checked ? styles.selectHours : styles.selectHoursDark}>
                                             <option hidden> Horario de cierre</option>
                                             {horaCierre.map((hora) => {
                                                 return (
@@ -280,7 +283,7 @@ export default function EditLocal (props) {
                         </div>
 
                         <h4>¿Tu local tiene restricciones por edad?</h4>
-                        <select id="ageRange" name="ageRange" onChange={handleAge} className={styles.select}>
+                        <select id="ageRange" name="ageRange" onChange={handleAge} className={checked ? styles.select : styles.selectDark}>
                             <option hidden>Selecciona las edades</option>
                             <option value="+18">+18</option>
                             <option value="+21">+21</option>
@@ -289,7 +292,7 @@ export default function EditLocal (props) {
 
                         <div >
                             <h4>Categoria</h4>
-                            <select id="category" name="category" onChange={handleCategory} className={styles.select}>
+                            <select id="category" name="category" onChange={handleCategory} className={checked ? styles.select : styles.selectDark}>
                                 <option value="" hidden>Selecciona el tipo de local que mas coincida con el tuyo</option>
                                 <option value="disco">Discoteca</option>
                                 <option value="bar">Bar</option>
@@ -305,7 +308,7 @@ export default function EditLocal (props) {
                                 value={local.bookPrice}
                                 name="bookPrice"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 

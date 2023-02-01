@@ -63,6 +63,7 @@
 
 .Input {
     background: #FCF9EB;
+    color:#40047C;
     border-radius: 7px;
     font-family: 'Cambay', sans-serif;
     font-size: medium;
@@ -123,3 +124,68 @@
     font-size: 14px;
 }
 
+/* ---------------------------------------------------Dark Mode ---------------------------------------------------------------------- */
+
+.MainContainerDark {
+    background-color: #575757a3;
+    color: #b7b6b3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40vh;
+    padding: 2em;
+    border-radius: 11px;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+}
+
+.EditButtonDark {
+    background: #5a0fa5;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.EditButtonDark:hover {
+    cursor: pointer;
+    background: #5a0fa5;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.InputDark {
+    background: transparent;
+    color: #fdfbf2;
+    border-radius: 7px;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+    width: 100%;
+}
+
+.cancelarDark {
+    background: #b7b6b3;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.cancelarDark:hover {
+    cursor: pointer;
+    background: #eae7dd;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}

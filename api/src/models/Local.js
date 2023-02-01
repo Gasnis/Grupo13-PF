@@ -73,6 +73,10 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    status: {
+      type: DataTypes.ENUM("solicitud", "aprobado", "baneado"),
+    
+    },
     rating: {
         type: DataTypes.INTEGER, //  || integer
         defaultValue: "5"

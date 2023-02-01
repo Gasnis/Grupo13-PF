@@ -42,6 +42,7 @@ function validate(input) {
 
 export default function SignUp(props) {
     const location = useLocation()
+    const checked = useSelector((state) => state.darkmode);
 
   const pay = location.search.includes("approved");
   const rejectedPay = location.search.includes("rejected");
@@ -169,12 +170,12 @@ export default function SignUp(props) {
     return (
         <>
             <Navbar />
-            <div className={styles.container}>
-                <div className={styles.formContainer}>
-                    <h1 className={styles.title}>Hace tu reserva</h1>
+            <div className={checked ? styles.container : styles.containerDark}>
+                <div className={checked ? styles.formContainer : styles.formContainerDark}>
+                    <h1 className={checked ? styles.title : styles.titleDark}>Hace tu reserva</h1>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <input className={styles.input}
+                            <input className={checked ? styles.input : styles.inputDark}
                                 type='text'
                                 placeholder='Nombre'
                                 value={booking.name}
@@ -185,7 +186,7 @@ export default function SignUp(props) {
                         </div>
 
                         <div>
-                            <input className={styles.input}
+                            <input className={checked ? styles.input : styles.inputDark}
                                 type='date'
                                 min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
                                 max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
@@ -197,7 +198,7 @@ export default function SignUp(props) {
                         </div>
 
                         <div>
-                            <input className={styles.input}
+                            <input className={checked ? styles.input : styles.inputDark}
                                 type='number'
                                 min="1"
                                 max="10"
@@ -210,7 +211,7 @@ export default function SignUp(props) {
                         </div>
 
                         <div>
-                            <input className={styles.input}
+                            <input className={checked ? styles.input : styles.inputDark}
                                 type='text'
                                 placeholder='discountCode'
                                 value={booking.discountCode}
@@ -220,7 +221,7 @@ export default function SignUp(props) {
                         </div>
 
                         <div className={styles.linksContainer}>
-                            <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
+                            <button disabled={disabled} type="submit" id="signUpButton" className={checked ? styles.submitButton : styles.submitButtonDark}>Reservar</button>
                             {localId ? <button className={styles.volverButton} onClick={goToDetails}>Volver</button> : null}
                         </div>
                     </form>

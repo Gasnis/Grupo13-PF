@@ -1,7 +1,7 @@
 const {Local,User, Book} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
+    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,  }  = localData
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
@@ -40,16 +40,12 @@ const getLocalDetail = async (id) => {
 const getLocalName = async (name) => {
   const localInfo = await Local.findAll();
   if (name) {
-    const byName = localInfo?.filter((local) =>
+    localInfo = localInfo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
     if (byName.length) {
       return byName
-    }else{
-        throw new Error(`${name} not found :/`);
     }
-
-   
   }
   return localInfo;
 };
@@ -57,13 +53,18 @@ const getLocalName = async (name) => {
 
 const deleteLocal = async (id) => {
     const local = await Local.findByPk(id);
-    local.destroy();
+    if(local){
+        local.destroy();
+    }else{
+        throw new Error("Ese Id no se encontro")
+    }
 }
 
 
-const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
-
+const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status) =>{
+  
     let local = await Local.findByPk(id);
+
     const updated = await local.update( 
             {
                 name,
@@ -80,7 +81,9 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
                 promo,
                 bookPrice,
                 available,
-                rating
+                rating,
+                status
+
             });
     return updated
     }

@@ -8,6 +8,8 @@ import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile.jsx';
 import FormBook from './components/FormBook/FormBook.jsx';
 import axios from "axios";
+import Dashboard from './components/DashboardAdmin.jsx/Dashboard';
+import BarOwnerPanel from './components/BarOwnerPanel/BarOwnerPanel.jsx';
 
 // axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
 axios.defaults.baseURL = "http://localhost:3001/"
@@ -23,6 +25,9 @@ function App() {
         <Route path="/login"> <Login/> </Route>
         <Route path="/sign-up"> <SignUp/> </Route>
         <Route path="/profile"> <Profile/> </Route>
+        <Route path="/admin"> <Dashboard/> </Route>
+        <Route path="/bar-owner"> <BarOwnerPanel/> </Route>
+        
       </div>
   );
 }

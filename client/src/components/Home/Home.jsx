@@ -13,7 +13,8 @@ export default function Home() {
     const dispatch = useDispatch();
 
     const {searchInput, darkmode} = useSelector(state => state)
-    let allPlaces = useSelector((state) => state.places)
+    let stateplaces = useSelector((state) => state.places)
+    let allPlaces = stateplaces?.filter(place => place.status === "aprobado")
 
     useEffect(() => {
         dispatch(getPlaces())
@@ -30,7 +31,6 @@ export default function Home() {
     let renderPlaces = allPlaces.slice(0, currentPlaces)
 
     const handleSearchBar = (e) => {
-        dispatch(setInput(e.target.value))
         dispatch(searchPlace(e.target.value))
     }
 
@@ -43,7 +43,7 @@ export default function Home() {
             <div className={darkmode ? style.info : style.infodark}>
 
                 <div>
-                    <input className={darkmode?style.searchbar:style.searchbardark} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
+                    <input className={darkmode?style.searchbar:style.searchbardark} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
                 </div>
                 <div>
                     <div className={darkmode ? style.info : style.infodark}>

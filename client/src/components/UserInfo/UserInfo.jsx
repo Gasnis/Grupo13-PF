@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/actions";
 import styles from "../UserInfo/userInfo.module.css"
 
@@ -14,6 +14,7 @@ const validate = (input) => {
 
 export default function ProfileInfo (props) {
     const dispatch = useDispatch();
+    const checked = useSelector((state) => state.darkmode);
     const {name, password, phone, city, id} = props.profile
     const [editing, setEditing] = useState(false);
     const [input, setInput] = useState({
@@ -34,13 +35,16 @@ export default function ProfileInfo (props) {
 
     const handleSave =async (e)=>{
         e.preventDefault();
-        const infoUpdated = await dispatch(updateUser(input))
-        if (infoUpdated.payload?.id){
-            setEditing(false);
-            // alert("Cambios guardados exitosamente!")
+        if (window.confirm("Desea guardar estos cambios?")) {
+            const infoUpdated = await dispatch(updateUser(input))
+            if (infoUpdated.payload?.id){
+                setEditing(false);
+                window.alert("Datos exitosamente guardados");
         }else{
             alert(infoUpdated.response.data)
         }
+        }
+           
     }
 
     const handleCancel = (e) => {
@@ -64,16 +68,16 @@ export default function ProfileInfo (props) {
     }
 
     return (
-        <div className={styles.MainContainer}>
+        <div className={checked ? styles.MainContainer : styles.MainContainerDark}>
             <form className={styles.Form} onSubmit={handleSave}>
                 <div className={styles.DivLabel}>
                     <label className={styles.Label}>Nombre: </label>
                     {!editing 
                     ? 
-                        <p className={styles.Input}>{name}</p> 
+                        <p className={checked ? styles.Input : styles.InputDark}>{name}</p> 
                     : 
                         <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.name} name="name" type="text" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.name} name="name" type="text" />
                             {errors.name ? <span className={styles.Errors}>{errors.name}</span> : null}
                         </div>
                     }
@@ -82,10 +86,10 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Constraseña: </label>
                     {!editing 
                     ? 
-                    <p className={styles.Input}>{password}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{password}</p> 
                     : 
                     <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.password} name="password" type="text" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.password} name="password" type="text" />
                             {errors.password ? <span className={styles.Errors}>{errors.password}</span> : null}
                         </div>
                     }
@@ -94,10 +98,10 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Teléfono: </label>
                     {!editing 
                     ?
-                    <p className={styles.Input}>{phone}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{phone}</p> 
                     : 
                     <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.phone} name="phone" type="number" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.phone} name="phone" type="number" />
                             {errors.phone ? <span className={styles.Errors}>{errors.phone}</span> : null}
                         </div>
                     }
@@ -106,22 +110,22 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Ciudad: </label>
                     {!editing 
                     ? 
-                    <p className={styles.Input}>{city}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{city}</p> 
                     : 
-                    <input className={styles.Input} onChange={handleChange} value={input.city} name="city" type="text" />
+                    <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.city} name="city" type="text" />
                 }
                 </div>
                 { editing
                 ?
                     <div className={styles.ButtonsDiv}>
                         <button className={styles.guardar} disabled={disabled} type="submit">Guardar</button>
-                        <button className={styles.cancelar} onClick={handleCancel}>Cancelar</button>
+                        <button className={checked ? styles.cancelar : styles.cancelarDark} onClick={handleCancel}>Cancelar</button>
                     </div>
                 :
                 null
             }
             </form>
-            {editing ? null : <button className={styles.EditButton} onClick={handleEdit}>Editar</button>}
+            {editing ? null : <button className={checked ? styles.EditButton : styles.EditButtonDark} onClick={handleEdit}>Editar</button>}
                 
         </div>
     )
