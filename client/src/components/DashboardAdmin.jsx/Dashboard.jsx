@@ -4,6 +4,9 @@ import style from "./Dashboard.module.css"
 import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
+// import { approveLocal } from '../../redux/actions';
+import { updatePlace, getPlaces } from '../../redux/actions';
+import {useHistory} from 'react-router-dom'
 import aproved from "../../utils/confirm.png"
 
 
@@ -11,7 +14,9 @@ import aproved from "../../utils/confirm.png"
 const Dashboard = () => {
   
   const dispatch = useDispatch()
-  useEffect(()=>{dispatch(getUser())},[])
+  const history = useHistory()
+  useEffect(()=>{dispatch(getUser())
+  dispatch(getPlaces())},[])
   const allPlaces = useSelector((state)=> state.allPlaces)
   const allUsers = useSelector((state)=> state.allUsers)
   
@@ -56,7 +61,15 @@ const Dashboard = () => {
   }
 
 
-  const handleApprove = (e) => {
+  const handleApprove = async (e) => {
+    const local = data.soli?.find(local => local.id === e.target.value)
+
+    await dispatch(updatePlace({...local, status: 'aprobado'}))
+
+    dispatch(getPlaces())
+    
+
+    history.push("/")
  
   }
 
