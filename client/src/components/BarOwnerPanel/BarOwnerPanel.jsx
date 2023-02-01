@@ -20,22 +20,26 @@ export default function BarOwnerPanel() {
         <>
             <Navbar />
             <button onClick={handleVolver}>Volver al perfil</button>
-            <div>
-                <h1>Locales</h1>
-                {profile.locals?.length
-                    ?
-                    <div className={style.localInfo}>
-                        <LocalsInfo profileId={profile.id} locals={profile.locals} />
-                    </div>
-                    :
-                    <div>
-                        <h3>Actualmente no tienes ningún local</h3>
-                        <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
-                        <hr />
-                    </div>}
-            </div>
-            <div>
-                <h1>Reservas</h1>
+            <div className={style.mainContainer}>
+                <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
+                    <h1>Locales</h1>
+                    {profile.locals?.length
+                        ?
+                        <div className={style.localInfo}>
+                            <LocalsInfo profileId={profile.id} locals={profile.locals} />
+                        </div>
+                        :
+                        <div>
+                            <h3>Actualmente no tienes ningún local</h3>
+                            <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
+                            <hr />
+                        </div>}
+                </div>
+
+                {/* ------------------------------Igna--------------------------- */}
+                <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
+                    <h1>Reservas</h1>
+                </div>
             </div>
         </>
     )
