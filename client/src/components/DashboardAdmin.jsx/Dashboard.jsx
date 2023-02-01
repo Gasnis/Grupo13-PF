@@ -4,6 +4,7 @@ import style from "./Dashboard.module.css"
 import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
+import aproved from "../../utils/confirm.png"
 
 
 
@@ -66,11 +67,11 @@ const Dashboard = () => {
     <div>
     <div className={style.navbar}>
         <div className={style.titulos}>
-            <button value="Solicitudes" onClick={handleState}>Solicitudes</button>
-            <button value="Locales" onClick={handleState}>Locales</button>
-            <button value="LocalesBaneados" onClick={handleState}>Locales Baneados</button>
-            <button value="Usuarios" onClick={handleState}>Usuarios No Baneados</button>
-            <button value="UsuariosBaneados" onClick={handleState}>Usuarios Baneados</button>
+            <button className={style.botones} value="Solicitudes" onClick={handleState}>Solicitudes</button>
+            <button className={style.botones} value="Locales" onClick={handleState}>Locales</button>
+            <button className={style.botones} value="LocalesBaneados" onClick={handleState}>Locales Baneados</button>
+            <button className={style.botones} value="Usuarios" onClick={handleState}>Usuarios</button>
+            <button className={style.botones} value="UsuariosBaneados" onClick={handleState}>Usuarios Baneados</button>
         </div>
         
 
@@ -81,9 +82,29 @@ const Dashboard = () => {
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes"?<div>
       <div>
-            <input name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
-      </div> <hr />
-      {data.soli?.map((p) => {return <div key={p.id}>{p.name}//<button onClick={handleApprove}>APROBAR</button><button>DESAPROBAR</button><button>BANEAR</button><hr/></div> })}
+            <input  name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
+      </div>
+      {data.soli?.map((p) => {return <div className={style.card} key={p.id}>
+            <div>
+               <img src={p.image} alt="" height="40px" width="40px"/> 
+                {p.name}
+            </div>
+            <div>
+                {p.phone}
+            </div>
+
+            <div>
+                {p.userId}
+            </div>
+
+            <div>
+                <img src={aproved} height="40px" onClick={handleApprove}/>
+                <button>X</button>
+                <button>B</button>
+            </div>
+        
+        </div> 
+    })}
       </div>:null}
       
       
@@ -109,7 +130,14 @@ const Dashboard = () => {
       <div>
             <input name="Usuarios" onChange={handleSearchNonBannedUsers} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {data.NonBannedUsers?.map((p) => {return <div>{p.name}<button>BANEAR</button><hr/></div> })}
+      {data.NonBannedUsers?.map((p) => {return <div className={style.card}>
+
+        <div>{p.name}</div>
+        <button>BANEAR</button><hr/>
+        
+      
+      
+      </div> })}
       </div>:null}
 
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
