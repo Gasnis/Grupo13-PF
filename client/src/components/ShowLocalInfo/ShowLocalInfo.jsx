@@ -39,6 +39,7 @@ export default function ShowLocalInfo (props) {
             <h3 className={styles.Data}>{local.event ? "Evento disponible" : "Evento no disponible"}</h3>
             <h3 className={styles.Data}>{local.petFriendly ? null : "No"} Pet Friendly</h3>
             <h3 className={styles.Data}>{local.promo ? `Promo actual: ${local.promo}` : "Sin promo disponible"}</h3>
+            <h3>Disponible: {local.available ? "Si" : "No"}</h3>
         </div>
     )
 }

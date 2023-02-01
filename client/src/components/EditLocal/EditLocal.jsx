@@ -45,7 +45,8 @@ export default function EditLocal (props) {
         sabado:localToEdit.schedule?.includes("sabado"),
         domingo:localToEdit.schedule?.includes("domingo"),
         event: localToEdit.event,
-        petFriendly: localToEdit.petFriendly
+        petFriendly: localToEdit.petFriendly,
+        available: localToEdit.available
     })
     const [scheduleArray, setScheduleArray] = useState({
             days: [...local.schedule.slice(0,local.schedule.length-2)],
@@ -359,6 +360,18 @@ export default function EditLocal (props) {
                                         type='checkbox'
                                         value={local.petFriendly}
                                         name="petFriendly"
+                                        onChange={handleCheckbox}
+                                    />
+                                </label>
+                            </div>
+
+                            <div >
+                                <label>Local disponible
+                                    <input
+                                        checked={checkboxState.available}
+                                        type='checkbox'
+                                        value={local.available}
+                                        name="available"
                                         onChange={handleCheckbox}
                                     />
                                 </label>
