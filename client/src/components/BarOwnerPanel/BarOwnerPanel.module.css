@@ -1,0 +1,15 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2em;
+}
+
+.localsContainer {
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    background-color: #FCF9EB;
+    width: 45%;
+    height: 60vh;
+    border-radius: 1rem;
+    margin: 2em;
+}
