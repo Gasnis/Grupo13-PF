@@ -21,9 +21,9 @@ export default function Detail() {
 
     const placeDetail = useSelector((state) => state.placeDetail);
     console.log(placeDetail);
-    
+
     if (!placeDetail.id) {
-        return(
+        return (
             <div>
                 <Navbar />
                 <div className={style.loadingcontainer}>
@@ -34,67 +34,66 @@ export default function Detail() {
         )
     }
 
-    if(placeDetail.id == 400){
-    return (
-        <div>
-            <img
-                src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
-                alt="" height="100%" width="100%"
-            />
-            
-        </div>
-    );
+    if (placeDetail.id == 400) {
+        return (
+            <div>
+                <img
+                    src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
+                    alt="" height="100%" width="100%"
+                />
+
+            </div>
+        );
     }
     return (
-        <div className={style.body}>
+        <>
             <Navbar />
-
-            <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
 
             <div className={style.container}>
                 <div className={style.img}>
                     <img src={placeDetail.image} alt="" />
-
                 </div>
-                <div className={style.head}>
-                    <p className={style.category}> 
-                        {placeDetail.category} 
-                        
-                    </p>
-                    <p className={style.name}>{placeDetail.name}</p>
-                    
-                    <p className={style.horariotitulo}>Horarios</p>
-                    <p className={style.horario}>
-                        {placeDetail.schedule
-                            ?.slice(0, placeDetail.schedule.length - 2)
-                            .map((day) => day[0].toUpperCase() + day.slice(1))
-                            .join(" - ")}
-                    </p>
-                    <p className={style.horariohora}>
-                        {placeDetail.schedule
-                            ?.slice(placeDetail.schedule.length - 2)
-                            .join(" a ")}
-                    </p>
-                    <a className={style.menu} href={placeDetail.menu}>
-                        <h2>Menú</h2>
-                    </a>
-                    {placeDetail.promo ? (
-                        <div className={style.promo}>
-                            <p>Promo:</p>
-                            <h2>{placeDetail.promo}</h2>
-                        </div>
-                    ) : (
-                        <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
-                    )}
-                    <a className={style.direccion}
-                        href={`https://www.google.com/maps/place/${placeDetail.location.replace(
-                            / /g,
-                            "+"
-                        )}`}
-                    >
-                        <h3 className={style.titles}>{placeDetail.location}</h3>
-                    </a>
 
+                <div className={style.head}>
+                    <div className={style.textup}>
+                        <p className={style.category}>
+                            {placeDetail.category}
+                        </p>
+                        <p className={style.name}>{placeDetail.name}</p>
+                    </div>
+                    <div className={style.fondoamarillo}>
+                        <p className={style.horariotitulo}>Horarios</p>
+                        <p className={style.horario}>
+                            {placeDetail.schedule
+                                ?.slice(0, placeDetail.schedule.length - 2)
+                                .map((day) => day[0].toUpperCase() + day.slice(1))
+                                .join(" - ")}
+                        </p>
+                        <p className={style.horariohora}>
+                            {placeDetail.schedule
+                                ?.slice(placeDetail.schedule.length - 2)
+                                .join(" a ")}
+                        </p>
+                        <a className={style.menu} href={placeDetail.menu}>
+                            <h2>Menú</h2>
+                        </a>
+                        {placeDetail.promo ? (
+                            <div className={style.promo}>
+                                <p>Promo:</p>
+                                <h2>{placeDetail.promo}</h2>
+                            </div>
+                        ) : (
+                            <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
+                        )}
+                        <a className={style.direccion}
+                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(
+                                / /g,
+                                "+"
+                            )}`}
+                        >
+                            <h3 className={style.titles}>{placeDetail.location}</h3>
+                        </a>
+                    </div>
                     <div className={style.sideDiv}>
                         <a
                             href={`https://www.google.com/maps/place/${placeDetail.location}`}
@@ -109,25 +108,25 @@ export default function Detail() {
                             {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
                         </div>
                     </div>
-                    <Link to="/book">
-                        <button className={style.reservar}>RESERVAR</button>
-                    </Link>
+                    <div className={style.centrar}>
+                        <Link to="/book">
+                            <button className={style.reservar}>RESERVAR</button>
+                        </Link>
+                    </div>
 
-                    
-                </div>
-                <div className={style.containerevent}>
-                {placeDetail.event ? (
-                        <div className={style.event}>
-                            <h1>Show{placeDetail.event}</h1>
+                    <div>
+                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.containerevent}>
+                            {placeDetail.event ? (
+                                <div className={style.event}>
+                                    <h1>Show{placeDetail.event}</h1>
+                                </div>
+                            ) : null}
                         </div>
-                    ) : (
-                        <div className={style.event} >
-                            <h1>No hay eventos</h1>
-                        </div>
-                    )}
+                    </div>
                 </div>
-                
+
             </div>
-        </div>
+        </>
     );
 }

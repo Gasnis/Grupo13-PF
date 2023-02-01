@@ -35,13 +35,16 @@ export default function ProfileInfo (props) {
 
     const handleSave =async (e)=>{
         e.preventDefault();
-        const infoUpdated = await dispatch(updateUser(input))
-        if (infoUpdated.payload?.id){
-            setEditing(false);
-            // alert("Cambios guardados exitosamente!")
+        if (window.confirm("Desea guardar estos cambios?")) {
+            const infoUpdated = await dispatch(updateUser(input))
+            if (infoUpdated.payload?.id){
+                setEditing(false);
+                window.alert("Datos exitosamente guardados");
         }else{
             alert(infoUpdated.response.data)
         }
+        }
+           
     }
 
     const handleCancel = (e) => {

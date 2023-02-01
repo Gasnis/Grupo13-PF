@@ -1,18 +1,30 @@
-.body{
-    /* background-image: url(../..//utils/painted-concrete-wallpaper\ 2.png);
-    background-size: 100%;
-    background-attachment:local;
-    background-repeat: no-repeat;
-    background-position-y: 180px; */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bodyblack {
     background-image: url(../../utils/Profile2.png);
     background-repeat: no-repeat;
     height: 90vh;
     width: 100%;
 }
-.containerevent{
-    position: absolute;
+
+.fondoamarillo {
+    background-image: url(../../utils/fondoamarillo.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    width: 100%;
+}
+
+.containerevent {
+    /* position: absolute; */
     top: 810px;
-    left: 82px;
+    left: 161px;
     text-align: center;
     background-color: rgb(255, 255, 255);
     border-radius: 0px 16px 0px 14px;
@@ -22,54 +34,64 @@
     font-size: 12px;
 }
 
-.container{
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.5cm;
-    margin-left: 2cm;
-    font-display: right;
-    text-align: start;
-}
 
-.img{
+.img {
+    /* position: absolute; */
     display: flex;
-    height: 85vh;
-    width: 35%;
     align-items: center;
-    overflow: hidden;
-    border-radius: 11px;
+    padding: 0% 5%;
+    width: 40vw;
+    border-radius: 10px;
+
+
 }
 
-.img img{
+.img img {
     width: 100%;
-    height:100%;
-    object-fit: cover;    
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+
+
 }
 
-.head{
-    margin-left: 1.5cm;
+.head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    width: 40vw;
+    border-radius: 10px;
+
 }
 
-.head p{
-    margin: 0px;
+.textup{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    width: 100%;
+    padding-left: 2vw;
 }
-.category{
-    flex-direction: row;
-    justify-content: space-around;
+
+.category {
+    justify-content: start;
     font-size: 25px;
-    margin-bottom: 0px;
+    width: 100%;
 }
 
-.name{
+.name {
     margin: 0px;
     display: flex;
-    font-size: 110px;
+    font-size: 60px;
 }
-.rating{
-    position: absolute;
+
+.rating {
+    /* position: absolute; */
     top: 121px;
     font-size: 30px;
-    left: 96px;
+    left: 161px;
     color: white;
     width: -moz-fit-content;
     width: fit-content;
@@ -81,41 +103,43 @@
     padding: 5px;
 }
 
-.star{
+.star {
     height: 30px;
     align-self: center;
 }
 
-.horariotitulo{
+.horariotitulo {
     font-size: 30px;
-    
+
 }
 
-.horario{
+.horario {
     font-size: 25px;
     font-weight: 600;
-    
-}
-.horariohora{
-    font-size: 25px;
-    font-weight: 600;    
+
 }
 
-.menu{
+.horariohora {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.menu {
     font-size: 20px;
     text-decoration: none;
     color: #40047C;
 }
 
-.promo{
+.promo {
     font-size: 30px;
 }
-.promo h2{
+
+.promo h2 {
     margin: 0px;
 }
 
-.direccion{
-    font-size:25px;
+.direccion {
+    font-size: 25px;
     text-decoration: none;
     color: rgb(43, 43, 43);
 }
@@ -125,25 +149,29 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;   
-    width:900px;
+    align-items: center;
+    width: 900px;
     align-content: space-around;
+    /* position: absolute; */
+    top: 72vh;
 }
 
-.location2{
+.location2 {
     height: 100px;
     width: 100px;
 }
-.edad{
+
+.edad {
     font-size: 50px;
 }
 
-.footprint{
+.footprint {
     height: 80px;
     width: 80px;
 }
-.reservar{
-    position: relative;
+
+.reservar {
+    /* position: relative; */
     font-size: large;
     justify-self: center;
     text-decoration: none;
@@ -154,22 +182,30 @@
     box-shadow: 0px 0px 19px 6px rgb(0 0 0 / 25%);
     border-radius: 25px;
     justify-content: center;
-    margin-top: 10px;
-    margin-left: 320px;
 }
 
-.reservar:hover{
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50vw;
+    /* position: relative; */
+    top: 7vh;
+}
+
+.reservar:hover {
     background: #712dc9;
     cursor: pointer;
 }
 
-.loadingcontainer{
+.loadingcontainer {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 200px;
 }
 
-.loading{
+.loading {
     font-size: 80px;
 }

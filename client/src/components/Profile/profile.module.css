@@ -164,6 +164,7 @@
   background-color: #2A2A2B;
   height: 100%;
   width: 100%;
+  overflow: auto;
 }
 
 .profileContainerDark {
@@ -171,9 +172,9 @@
   background-repeat:repeat-y;
   height: 100vh;
   width: 100%;
-  background-color: #FFB800;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
+  
 }
 
 .nameDark{
