@@ -48,16 +48,20 @@ router.get("/:id", async (req, res) => {
     }
   });
 
-  router.delete("/", async (req, res) => {
+  router.delete("/:id", async (req, res) => {
     try {
-    const { id } = req.body;
+    const {id} = req.params;
+    console.log(id + "  abajo del req.body ");
       if (id) {
+        console.log("entré al if");
         deleteLocal(id)
         res.status(200).send(`${id} was deleted succesfully`);
       } else {
+        console.log(id+"   else");
         res.status(404).send("ID not found");
       }
     } catch (error) {
+      console.log("catch");
       res.status(400).send(error.message);
     }
   });

@@ -69,7 +69,6 @@ const Dashboard = () => {
   }
 
   const handleDenegate = async (e) =>{
-    console.log(e.target.value);
     await dispatch(deletePlace(e.target.value))
     await dispatch(getPlaces())
     window.location.reload()
