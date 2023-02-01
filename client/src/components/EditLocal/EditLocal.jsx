@@ -143,17 +143,19 @@ export default function EditLocal (props) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const updatedLocal =await dispatch(updatePlace({
-            ...local,
-            schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
-        }))
-        if (updatedLocal.id){
-            alert("Local actualizado!")
-            props.setEditing(false);
-        }else{
-            alert(updatedLocal.response.data)
+        if (window.confirm("Desea guardar estos cambios?")) {
+                const updatedLocal =await dispatch(updatePlace({
+                    ...local,
+                    schedule:[...scheduleArray.days,scheduleArray.open,scheduleArray.close]
+                }))
+                if (updatedLocal.id){
+                    alert("Local actualizado!")
+                    props.setEditing(false);
+                }else{
+                    alert(updatedLocal.response.data)
+                }
+                dispatch(getUserByid(userId))
         }
-        dispatch(getUserByid(userId))
     }
 
     return (
