@@ -4,14 +4,14 @@
     color: white;
     padding-inline: 20px; 
     justify-content: space-between;
-    width: 100%;
-    font-size: 25px;
+    font-weight: bold;
     
 }
 .titulos{
     display: flex;
     justify-content: space-around;
     width: 50%;
+    
 }
 
 .botones{
@@ -26,12 +26,19 @@
 }
 
 .card{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     border-top: #40047c7c 1px solid;
-    font-size: 20px;
+    font-size: 15px;
+    padding-inline:20px;
+}
+
+.cosito{
+    width: 200px;
+    display: inline;
+    text-align: start;
 }
