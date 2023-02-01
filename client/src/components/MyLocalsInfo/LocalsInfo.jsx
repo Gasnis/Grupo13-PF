@@ -50,7 +50,7 @@ export default function LocalsInfo(props) {
     }
 
     return (
-        <div>
+        <div className={styles.localsContainer}>
             {!info
                 ?
 

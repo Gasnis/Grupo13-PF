@@ -10,19 +10,16 @@
 }
 
 .place {
-    /* flex-direction: row;
-    flex-wrap: wrap;
-    text-decoration: none; */
     height: 46vh;
     width: 25rem;
     background-color: #fcf9ebaa;
     background-size: contain;
     border-radius: 11px;
     color:black;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif, 'Cambay'; */
     font-family: 'Cambay', sans-serif;
     font-style: normal;
     transition: all 0.5s ease;
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
 }
 .place:hover {
     transform: scale(1.09) rotate(2deg);

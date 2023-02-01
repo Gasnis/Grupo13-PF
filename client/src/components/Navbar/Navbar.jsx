@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import style from "./navbar.module.css"
-import beer from "../../utils/beer.png"
+// import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
 import { setChecked, sortRating, filterCategory, getPlaces, setInput } from "../../redux/actions";
@@ -13,6 +13,7 @@ import favorito from "../../utils/favorito.png"
 import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
 import about from "../../utils/about.png"
+import wwwhere from "../../utils/wwwhere.png"
 
 
 export default function Navbar(props) {
@@ -53,9 +54,9 @@ export default function Navbar(props) {
     const handleLogOut = () => {
         if (window.confirm("Desea cerrar sesión?")) {
             window.alert("Sesión finalizada");
-            dispatch(logout());  
+            dispatch(logout());
         }
-        
+
     }
     const handleChangeSwitch = () => {
         dispatch(setChecked(darkmode));
@@ -129,13 +130,13 @@ export default function Navbar(props) {
                                     }
                                 </div>
                                 <div>
-                                    <button className={style.limpiar}  onClick={refresh}>
+                                    <button className={style.limpiar} onClick={refresh}>
                                         <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
                                     </button>
                                 </div>
                                 <br />
                                 <div className={style.about}>
-                                    <img src={about} className={style.aboutimg} alt="sobre wwwere"/>About us
+                                    <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us
                                 </div>
                             </div>
                         ) : null
@@ -143,7 +144,7 @@ export default function Navbar(props) {
                     </div>
 
                     <Link to="/" className={style.link}>
-                        <img className={style.Logo} src={beer} alt="logo" />
+                        <img className={style.Logo} src={wwwhere} alt="logo" />
                     </Link>
                     <div>
                         <label className={style.switch}>
@@ -180,6 +181,9 @@ export default function Navbar(props) {
                                             <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
                                         </div>
                                         <div>
+                                            <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
+                                        </div>
+                                        <div>
                                             <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
                                         </div>
                                     </div>
@@ -191,9 +195,9 @@ export default function Navbar(props) {
                 </div>
                 :
                 <div className={style.Container}>
-                    <Link to="/"  href="/"><img src={arrow} /></Link>
+                    <Link to="/" href="/"><img src={arrow} /></Link>
                     <div>
-                        <img className={style.Logo} src={beer} alt="logo" />
+                        <img className={style.Logo} src={wwwhere} alt="logo" />
                     </div>
                     <label className={style.switch}>
                         <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />

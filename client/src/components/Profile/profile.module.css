@@ -159,6 +159,17 @@
   height: 40vh;
 }
 
+.crearButton {
+  padding: 11px;
+  background-color: #fdfbf2c0;
+}
+
+.crearButton:hover {
+  cursor: pointer;
+  padding: 11px;
+  background-color: #fdfbf2d9;
+}
+
 /* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
 
 .mainContainer {
