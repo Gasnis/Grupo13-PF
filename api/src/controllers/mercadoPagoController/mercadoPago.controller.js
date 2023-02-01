@@ -1,6 +1,6 @@
 const mercadopago = require("mercadopago");
 require("dotenv").config();
-const { MP_KEY } = process.env;
+const { MP_KEY } = process.env
 // ********************************** ORDEN DE PAGO **************************************************
 const generateLink = async (req, res) => {
   const data = req.body

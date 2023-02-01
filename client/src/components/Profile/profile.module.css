@@ -160,6 +160,15 @@
 }
 
 /* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
+
+.mainContainer {
+  background-color: #2A2A2B;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+
 .profileContainerDark {
   background-image: url(../../utils/ProfileDark.png);
   background-repeat:repeat-y;
@@ -167,6 +176,7 @@
   width: 100%;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
+  
 }
 
 .nameDark{
