@@ -28,6 +28,7 @@ export default function CreateLocal() {
         menu: "",
         phone: "",
         capacity: "",
+        city: "",
         schedule: [],
         ageRange: [],
         category: '',
@@ -167,6 +168,17 @@ export default function CreateLocal() {
                                 className={checked ? styles.input : styles.inputDark}
                             />
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
+                        </div>
+
+                        <div >
+                            <input
+                                type='text'
+                                placeholder='Ciudad'
+                                value={local.city}
+                                name="city"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
                         </div>
 
                         <div >

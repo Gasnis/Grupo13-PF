@@ -81,5 +81,9 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER, //  || integer
         defaultValue: "5"
       },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    }
   });
 };

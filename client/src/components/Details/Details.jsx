@@ -103,6 +103,7 @@ export default function Detail() {
                         >
                             <span className={style.titles}>{placeDetail.location}</span>
                         </a>
+                        <span className={style.ciudad}>{placeDetail.city}</span>
                     </div>
                     <div className={style.sideDiv}>
                         <a
