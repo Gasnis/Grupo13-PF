@@ -40,16 +40,12 @@ const getLocalDetail = async (id) => {
 const getLocalName = async (name) => {
   const localInfo = await Local.findAll();
   if (name) {
-    const byName = localInfo?.filter((local) =>
+    localInfo = localInfo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
     if (byName.length) {
       return byName
-    }else{
-        throw new Error(`${name} not found :/`);
     }
-
-   
   }
   return localInfo;
 };
@@ -57,7 +53,11 @@ const getLocalName = async (name) => {
 
 const deleteLocal = async (id) => {
     const local = await Local.findByPk(id);
-    local.destroy();
+    if(local){
+        local.destroy();
+    }else{
+        throw new Error("Ese Id no se encontro")
+    }
 }
 
 
