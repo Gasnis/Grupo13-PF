@@ -146,8 +146,10 @@ export const createBook = (book) => {
 
 
 export const deletePlace = (id) => {
+    let json = [{ id: id }];
+    console.log(json)
     return async () =>{
-        const { data } = await axios.delete("/local" , id)
+        const { data } = await axios.delete(`/local` , json )
         return data
     }
 }
@@ -250,6 +252,8 @@ export const setFilter = (payload) => {
     }
 
 }
+
+
 
 
 
