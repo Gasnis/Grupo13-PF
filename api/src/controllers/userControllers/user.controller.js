@@ -24,8 +24,20 @@ const postUserData = async (userData) => {
      
 }
 
-const getAllUsers = async () => {
-    return User.findAll();
+const getAllUsers = async (name) => {
+    let todos = await User.findAll();
+    if (name) {
+        const byName = todos.filter((local) =>
+          local.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (byName.length) {
+          return byName
+        }else{
+            throw new Error(`${name} not found :/`);
+        }
+    }
+    return todos;
+    
 }
 
 const getUserDetail = async (id) => {

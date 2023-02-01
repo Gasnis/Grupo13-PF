@@ -15,13 +15,18 @@ router.post("/", async(req, res)=>{
 })
 
 router.get("/", async (req,res) => {
-    try {
-        const allUsers = await getAllUsers()
-        res.status(200).json(allUsers)
-    } catch (error) {
-        res.status(404).send(error.message)
+  try {
+    const { name } = req.query;
+    if (name) {
+      const localName = await getAllUsers(name);
+      res.status(200).json(localName);
+    }else{
+      res.status(200).json(await getAllUsers());
     }
-})
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
 
 
 router.get("/:id", async (req,res) => {
