@@ -49,6 +49,10 @@ export default function Detail() {
         history.push("/newplace")
     }
 
+    const handleMyLocals = (e) => {
+        history.push("/bar-owner")
+    }
+
     if (!profile) {
         return (
             <div>
@@ -100,7 +104,7 @@ export default function Detail() {
                                 null}
                         </div>
                         <div>
-                            <button name="myLocal" onClick={handleOpen} className={checked ? style.buttons : style.buttonsDark}>Mis locales</button>
+                            {/* <button name="myLocal" onClick={handleOpen} className={checked ? style.buttons : style.buttonsDark}>Mis locales</button>
                             <hr />
                             {open.myLocal
                                 ?
@@ -112,11 +116,12 @@ export default function Detail() {
                                     :
                                     <div>
                                         <h3>Actualmente no tienes ningún local</h3>
-                                        <button onClick={handleCreate}>Crear local</button>
+                                        <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
                                         <hr />
                                     </div>
                                 :
-                                null}
+                                null} */}
+                            <button name="myLocal" onClick={handleMyLocals} className={checked ? style.buttons : style.buttonsDark}>Mis locales</button>
                         </div>
                     </div>
                 </div>
