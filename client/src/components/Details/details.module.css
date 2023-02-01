@@ -1,7 +1,12 @@
+.mainContainer {
+    background-color: #FCF9EB;
+    height: 100vh;
+}
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    padding-top: 3em;
 }
 
 .bodyblack {
@@ -26,11 +31,10 @@
     top: 810px;
     left: 161px;
     text-align: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 0px 16px 0px 14px;
-    padding-inline: 19px;
-    border: black 3px solid;
-    font-weight: 100;
+    background-color: rgba(0, 0, 0, 0.707);
+    color: white;
+    border-radius: 11px;
+    padding-inline: 1.5em;
     font-size: 12px;
 }
 
@@ -39,11 +43,10 @@
     /* position: absolute; */
     display: flex;
     align-items: center;
-    padding: 0% 5%;
-    width: 40vw;
+    /* padding: 0% 5%; */
+    padding-right: 3em;
+    width: 35vw;
     border-radius: 10px;
-
-
 }
 
 .img img {
@@ -52,8 +55,6 @@
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
-
-
 }
 
 .head {
@@ -61,9 +62,10 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
-    width: 40vw;
+    width: 35vw;
+    height: 80vh;
     border-radius: 10px;
-
+    background-color: #FCF9EB;
 }
 
 .textup{
@@ -73,6 +75,7 @@
     text-align: left;
     width: 100%;
     padding-left: 2vw;
+    padding-top: 2vh;
 }
 
 .category {
@@ -84,13 +87,13 @@
 .name {
     margin: 0px;
     display: flex;
-    font-size: 60px;
+    font-size: 3em;
 }
 
 .rating {
     /* position: absolute; */
     top: 121px;
-    font-size: 30px;
+    font-size: 1.2em;
     left: 161px;
     color: white;
     width: -moz-fit-content;
@@ -104,44 +107,50 @@
 }
 
 .star {
-    height: 30px;
+    height: 1em;
     align-self: center;
 }
 
 .horariotitulo {
-    font-size: 30px;
-
+    font-size: 1.5em;
+    padding-left: 1em;
 }
 
 .horario {
-    font-size: 25px;
+    font-size: 1.2em;
     font-weight: 600;
-
+    padding-left: 1em;
 }
 
 .horariohora {
-    font-size: 25px;
+    font-size: 1.2em;
     font-weight: 600;
+    padding-left: 1em;
 }
 
 .menu {
-    font-size: 20px;
+    font-size: 1.2em;
     text-decoration: none;
     color: #40047C;
+    padding-left: 1em;
 }
 
 .promo {
-    font-size: 30px;
+    font-size: 1.2em;
+    padding-left: 1em;
 }
 
 .promo h2 {
     margin: 0px;
+    padding-left: 1em;
 }
 
 .direccion {
-    font-size: 25px;
+    font-size: 1.2em;
     text-decoration: none;
     color: rgb(43, 43, 43);
+    padding-left: 1em;
+    padding-bottom: 2em;
 }
 
 
@@ -150,37 +159,37 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 900px;
+    width: 100%;
     align-content: space-around;
     /* position: absolute; */
     top: 72vh;
+    margin: 0.5em;
 }
 
 .location2 {
-    height: 100px;
-    width: 100px;
+    height: 3em;
+    width: 3em;
 }
 
 .edad {
-    font-size: 50px;
+    font-size: 2em;
 }
 
 .footprint {
-    height: 80px;
-    width: 80px;
+    height: 2em;
+    width: 2em;
 }
 
 .reservar {
     /* position: relative; */
-    font-size: large;
+    font-size: medium;
     justify-self: center;
     text-decoration: none;
-    height: 80px;
-    width: 300px;
+    height: 5vh;
+    width: 10vw;
     background: #40047C;
     color: white;
-    box-shadow: 0px 0px 19px 6px rgb(0 0 0 / 25%);
-    border-radius: 25px;
+    border-radius: 11px;
     justify-content: center;
 }
 
@@ -189,7 +198,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    width: 50vw;
+    width: 100%;
     /* position: relative; */
     top: 7vh;
 }
@@ -208,4 +217,42 @@
 
 .loading {
     font-size: 80px;
+}
+
+.ratingShow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    padding: 1em;
+}
+
+/* ---------------------------------------------------------- Dark Mode --------------------------------------------------- */
+
+.fondoVioleta {
+    background-image: url(../../utils/fondovioleta.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    width: 100%;
+}
+
+.mainContainerDark {
+    background-color: #2A2A2B;
+    height: 100vh;
+}
+
+.headDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    width: 35vw;
+    height: 80vh;
+    border-radius: 10px;
+    background-color: #323234;
+    color: #FCF9EB;
 }

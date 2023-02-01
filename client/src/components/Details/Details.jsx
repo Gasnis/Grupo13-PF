@@ -13,6 +13,7 @@ import style from "./details.module.css";
 
 export default function Detail() {
     const { id } = useParams();
+    const checked = useSelector((state) => state.darkmode);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPlaceDetail(id));
@@ -20,7 +21,6 @@ export default function Detail() {
     }, []);
 
     const placeDetail = useSelector((state) => state.placeDetail);
-    console.log(placeDetail);
 
     if (!placeDetail.id) {
         return (
@@ -46,7 +46,7 @@ export default function Detail() {
         );
     }
     return (
-        <>
+        <div className={ checked ? style.mainContainer : style.mainContainerDark}>
             <Navbar />
 
             <div className={style.container}>
@@ -54,33 +54,43 @@ export default function Detail() {
                     <img src={placeDetail.image} alt="" />
                 </div>
 
-                <div className={style.head}>
-                    <div className={style.textup}>
-                        <p className={style.category}>
-                            {placeDetail.category}
-                        </p>
-                        <p className={style.name}>{placeDetail.name}</p>
+                <div className={ checked ? style.head : style.headDark}>
+                    <div className={style.ratingShow}>
+                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.containerevent}>
+                            {placeDetail.event ? (
+                                <div className={style.event}>
+                                    <h3>Show{placeDetail.event}</h3>
+                                </div>
+                            ) : null}
+                        </div>
                     </div>
-                    <div className={style.fondoamarillo}>
-                        <p className={style.horariotitulo}>Horarios</p>
-                        <p className={style.horario}>
+                    <div className={style.textup}>
+                        <span className={style.category}>
+                            {placeDetail.category}
+                        </span>
+                        <span className={style.name}>{placeDetail.name}</span>
+                    </div>
+                    <div className={ checked ? style.fondoamarillo : style.fondoVioleta}>
+                        <h3 className={style.horariotitulo}>Horarios</h3>
+                        <span className={style.horario}>
                             {placeDetail.schedule
                                 ?.slice(0, placeDetail.schedule.length - 2)
                                 .map((day) => day[0].toUpperCase() + day.slice(1))
                                 .join(" - ")}
-                        </p>
-                        <p className={style.horariohora}>
+                        </span>
+                        <span className={style.horariohora}>
                             {placeDetail.schedule
                                 ?.slice(placeDetail.schedule.length - 2)
                                 .join(" a ")}
-                        </p>
+                        </span>
                         <a className={style.menu} href={placeDetail.menu}>
-                            <h2>Menú</h2>
+                            <h3>Menú</h3>
                         </a>
                         {placeDetail.promo ? (
                             <div className={style.promo}>
-                                <p>Promo:</p>
-                                <h2>{placeDetail.promo}</h2>
+                                <span>Promo:</span>
+                                <h4>{placeDetail.promo}</h4>
                             </div>
                         ) : (
                             <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
@@ -91,7 +101,7 @@ export default function Detail() {
                                 "+"
                             )}`}
                         >
-                            <h3 className={style.titles}>{placeDetail.location}</h3>
+                            <span className={style.titles}>{placeDetail.location}</span>
                         </a>
                     </div>
                     <div className={style.sideDiv}>
@@ -110,23 +120,13 @@ export default function Detail() {
                     </div>
                     <div className={style.centrar}>
                         <Link to="/book">
-                            <button className={style.reservar}>RESERVAR</button>
+                            <button className={style.reservar}>Reservar</button>
                         </Link>
                     </div>
 
-                    <div>
-                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
-                        <div className={style.containerevent}>
-                            {placeDetail.event ? (
-                                <div className={style.event}>
-                                    <h1>Show{placeDetail.event}</h1>
-                                </div>
-                            ) : null}
-                        </div>
-                    </div>
                 </div>
 
             </div>
-        </>
+        </div>
     );
 }
