@@ -1,7 +1,7 @@
 const {Local,User, Book} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating }  = localData
+    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,  }  = localData
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
@@ -61,9 +61,10 @@ const deleteLocal = async (id) => {
 }
 
 
-const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating) =>{
-
+const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status) =>{
+  
     let local = await Local.findByPk(id);
+
     const updated = await local.update( 
             {
                 name,
@@ -80,7 +81,9 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
                 promo,
                 bookPrice,
                 available,
-                rating
+                rating,
+                status
+
             });
     return updated
     }

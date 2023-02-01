@@ -252,6 +252,8 @@ export const setFilter = (payload) => {
 }
 
 
+
+
 //aceptar bar
 //no aceptar bar
 //banear usuario

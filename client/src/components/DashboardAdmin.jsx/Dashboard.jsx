@@ -4,13 +4,18 @@ import style from "./Dashboard.module.css"
 import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
+// import { approveLocal } from '../../redux/actions';
+import { updatePlace, getPlaces } from '../../redux/actions';
+import {useHistory} from 'react-router-dom'
 
 
 
 const Dashboard = () => {
   
   const dispatch = useDispatch()
-  useEffect(()=>{dispatch(getUser())},[])
+  const history = useHistory()
+  useEffect(()=>{dispatch(getUser())
+  dispatch(getPlaces())},[])
   const allPlaces = useSelector((state)=> state.allPlaces)
   const allUsers = useSelector((state)=> state.allUsers)
   
@@ -55,7 +60,15 @@ const Dashboard = () => {
   }
 
 
-  const handleApprove = (e) => {
+  const handleApprove = async (e) => {
+    const local = data.soli?.find(local => local.id === e.target.value)
+
+    await dispatch(updatePlace({...local, status: 'aprobado'}))
+
+    dispatch(getPlaces())
+    
+
+    history.push("/")
  
   }
 
@@ -83,8 +96,8 @@ const Dashboard = () => {
       <div>
             <input name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {data.soli?.map((p) => {return <div key={p.id}>{p.name}//<button onClick={handleApprove}>APROBAR</button><button>DESAPROBAR</button><button>BANEAR</button><hr/></div> })}
-      </div>:null}
+      {data.soli?.map((p) => {return <div key={p.id}>{p.name}//<button value={p.id} onClick={handleApprove}>APROBAR</button><button>DESAPROBAR</button><button>BANEAR</button><hr/></div> })}
+      </div>: <div> no hay solicitudes</div>}
       
       
       {/* ------------------------------locales---------------------------------------------------------------- */}
