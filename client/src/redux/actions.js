@@ -146,10 +146,8 @@ export const createBook = (book) => {
 
 
 export const deletePlace = (id) => {
-    let json = [{ id: id }];
-    console.log(json)
     return async () =>{
-        const { data } = await axios.delete(`/local` , json )
+        const { data } = await axios.delete(`/local/${id}`, id);
         return data
     }
 }
