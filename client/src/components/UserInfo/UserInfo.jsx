@@ -74,10 +74,10 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Nombre: </label>
                     {!editing 
                     ? 
-                        <p className={styles.Input}>{name}</p> 
+                        <p className={checked ? styles.Input : styles.InputDark}>{name}</p> 
                     : 
                         <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.name} name="name" type="text" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.name} name="name" type="text" />
                             {errors.name ? <span className={styles.Errors}>{errors.name}</span> : null}
                         </div>
                     }
@@ -86,10 +86,10 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Constraseña: </label>
                     {!editing 
                     ? 
-                    <p className={styles.Input}>{password}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{password}</p> 
                     : 
                     <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.password} name="password" type="text" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.password} name="password" type="text" />
                             {errors.password ? <span className={styles.Errors}>{errors.password}</span> : null}
                         </div>
                     }
@@ -98,10 +98,10 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Teléfono: </label>
                     {!editing 
                     ?
-                    <p className={styles.Input}>{phone}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{phone}</p> 
                     : 
                     <div className={styles.DivInput}>
-                            <input className={styles.Input} onChange={handleChange} value={input.phone} name="phone" type="number" />
+                            <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.phone} name="phone" type="number" />
                             {errors.phone ? <span className={styles.Errors}>{errors.phone}</span> : null}
                         </div>
                     }
@@ -110,9 +110,9 @@ export default function ProfileInfo (props) {
                     <label className={styles.Label}>Ciudad: </label>
                     {!editing 
                     ? 
-                    <p className={styles.Input}>{city}</p> 
+                    <p className={checked ? styles.Input : styles.InputDark}>{city}</p> 
                     : 
-                    <input className={styles.Input} onChange={handleChange} value={input.city} name="city" type="text" />
+                    <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.city} name="city" type="text" />
                 }
                 </div>
                 { editing

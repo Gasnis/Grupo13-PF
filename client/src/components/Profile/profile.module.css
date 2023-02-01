@@ -160,12 +160,14 @@
 }
 
 /* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
+
 .mainContainer {
   background-color: #2A2A2B;
   height: 100%;
   width: 100%;
   overflow: auto;
 }
+
 
 .profileContainerDark {
   background-image: url(../../utils/ProfileDark.png);

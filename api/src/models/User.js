@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
+    ban: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     city: {
         type: DataTypes.STRING,
         allowNull: false,
