@@ -41,7 +41,7 @@ function validate(input) {
 }
 
 export default function SignUp(props) {
-  const location = useLocation();
+    const location = useLocation()
 
   const pay = location.search.includes("approved");
   const rejectedPay = location.search.includes("rejected");
@@ -166,88 +166,65 @@ export default function SignUp(props) {
     history.push(`/detail/${localId}`);
   };
 
-  return (
-    <>
-      <Navbar />
-      <div className={styles.container}>
-        <div className={styles.formContainer}>
-          <h1 className={styles.title}>Hace tu reserva</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="Nombre"
-                value={booking.name}
-                name="name"
-                onChange={handleChange}
-              />
-              {errors.name ? <span>{errors.name}</span> : null}
-            </div>
+    return (
+        <>
+            <Navbar />
+            <div className={styles.container}>
+                <div className={styles.formContainer}>
+                    <h1 className={styles.title}>Hace tu reserva</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <input className={styles.input}
+                                type='text'
+                                placeholder='Nombre'
+                                value={booking.name}
+                                name="name"
+                                onChange={handleChange}
+                            />
+                            {errors.name ? <span>{errors.name}</span> : null}
+                        </div>
 
-            <div>
-              <input
-                className={styles.input}
-                type="date"
-                min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(
-                  date,
-                  "Day"
-                )}`}
-                max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(
-                  date,
-                  "Day"
-                )}`} //mientras implementamos reservas posteriores
-                placeholder="Mail"
-                value={booking.reservedDate}
-                name="reservedDate"
-                onChange={handleChange}
-              />
-            </div>
+                        <div>
+                            <input className={styles.input}
+                                type='date'
+                                min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
+                                max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
+                                placeholder='Mail'
+                                value={booking.reservedDate}
+                                name="reservedDate"
+                                onChange={handleChange}
+                            />
+                        </div>
 
-            <div>
-              <input
-                className={styles.input}
-                type="number"
-                min="1"
-                max="10"
-                placeholder="Cantidad de personas"
-                value={booking.personQuantity}
-                name="personQuantity"
-                onChange={handleChange}
-              />
-              {errors.personQuantity ? (
-                <span>{errors.personQuantity}</span>
-              ) : null}
-            </div>
+                        <div>
+                            <input className={styles.input}
+                                type='number'
+                                min="1"
+                                max="10"
+                                placeholder='Cantidad de personas'
+                                value={booking.personQuantity}
+                                name="personQuantity"
+                                onChange={handleChange}
+                            />
+                            {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
+                        </div>
 
-            <div>
-              <input
-                className={styles.input}
-                type="text"
-                placeholder="discountCode"
-                value={booking.discountCode}
-                name="discountCode"
-                onChange={handleChange}
-              />
-            </div>
+                        <div>
+                            <input className={styles.input}
+                                type='text'
+                                placeholder='discountCode'
+                                value={booking.discountCode}
+                                name="discountCode"
+                                onChange={handleChange}
+                            />
+                        </div>
 
-            <div className={styles.linksContainer}>
-              <button
-                disabled={disabled}
-                type="submit"
-                id="signUpButton"
-                className={styles.submitButton}
-              >
-                Reservar
-              </button>
-              {localId ? (
-                <button className={styles.volverButton} onClick={goToDetails}>
-                  Volver
-                </button>
-              ) : null}
-            </div>
-          </form>
-          {errors.userId ? <span>{errors.userId}</span> : null}
+                        <div className={styles.linksContainer}>
+                            <button disabled={disabled} type="submit" id="signUpButton" className={styles.submitButton}>Reservar</button>
+                            {localId ? <button className={styles.volverButton} onClick={goToDetails}>Volver</button> : null}
+                        </div>
+                    </form>
+                    {errors.userId ? <span>{errors.userId}</span> : null}
 
           {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
         </div>
