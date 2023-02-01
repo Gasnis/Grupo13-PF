@@ -5,16 +5,12 @@ import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 // import { approveLocal } from '../../redux/actions';
-import { updatePlace, getPlaces } from '../../redux/actions';
-import {useHistory} from 'react-router-dom'
-import aproved from "../../utils/confirm.png"
-
+import { updatePlace, getPlaces , deletePlace} from '../../redux/actions';
 
 
 const Dashboard = () => {
   
   const dispatch = useDispatch()
-  const history = useHistory()
   useEffect(()=>{dispatch(getUser())
   dispatch(getPlaces())},[])
   const allPlaces = useSelector((state)=> state.allPlaces)
@@ -62,15 +58,21 @@ const Dashboard = () => {
 
 
   const handleApprove = async (e) => {
-    const local = data.soli?.find(local => local.id === e.target.value)
+    const local = data.soli.find(local => local.id === e.target.value)
 
     await dispatch(updatePlace({...local, status: 'aprobado'}))
 
-    dispatch(getPlaces())
-    
+    await dispatch(getPlaces())
 
-    history.push("/")
+    window.location.reload()
  
+  }
+
+  const handleDenegate = async (e) =>{
+    console.log(e.target.value);
+    await dispatch(deletePlace(e.target.value))
+    await dispatch(getPlaces())
+    window.location.reload()
   }
 
 
@@ -98,21 +100,22 @@ const Dashboard = () => {
             <input  name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
       </div>
       {data.soli?.map((p) => {return <div className={style.card} key={p.id}>
-            <div>
-               <img src={p.image} alt="" height="40px" width="40px"/> 
-                {p.name}
+            <div className={style.cosito}>            
+                <img src={p.image} alt="" height="30px" width="30px"/>     
+                   {p.name}
             </div>
-            <div>
+            <div className={style.cosito}>
                 {p.phone}
             </div>
 
-            <div>
+            <div className={style.cosito}>
                 {p.userId}
             </div>
 
-            <div>
-                <img src={aproved} height="40px" onClick={handleApprove}/>
-                <button>X</button>
+            <div className={style.cosito}>
+                {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
+                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleDenegate} >X</button>
                 <button>B</button>
             </div>
         
@@ -126,7 +129,7 @@ const Dashboard = () => {
       <div>
             <input name="Locales" onChange={handleSearchApro} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {data.apro?.map((p) => {return <div>{p.name}<button>SIMBOLO</button><button>BANEAR</button><hr/></div> })}
+      {data.apro?.map((p) => {return <div className={style.card} >{p.name}<button>SIMBOLO</button><button>BANEAR</button><hr/></div> })}
       </div>:null}
       
       
@@ -135,7 +138,7 @@ const Dashboard = () => {
       <div>
             <input name="LocalesBaneados" onChange={handleSearchBane} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {data.bane?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
+      {data.bane?.map((p) => {return <div className={style.card} >{p.name}<button>DESBANEAR</button><hr/></div> })}
       </div>:null}
       
       {/* ------------------------------usuarios---------------------------------------------------------------- */}
@@ -158,7 +161,7 @@ const Dashboard = () => {
       <div>
             <input name="UsuariosBaneados" onChange={handleSearchBannedUsers} type="search" placeholder="Buscar..." />
       </div> <hr />
-      {data.bannedUsers?.map((p) => {return <div>{p.name}<button>DESBANEAR</button><hr/></div> })}
+      {data.bannedUsers?.map((p) => {return <div className={style.card} >{p.name}<button>DESBANEAR</button><hr/></div> })}
       </div>:null}
     </div>
   )
