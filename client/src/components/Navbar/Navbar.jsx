@@ -14,7 +14,7 @@ import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
 import about from "../../utils/about.png"
 import wwwhere from "../../utils/wwwhere.png"
-import swal from "sweetalert"
+import swal from "sweetalert";
 
 
 export default function Navbar(props) {
