@@ -48,7 +48,11 @@ export default function SignUp(props) {
   const rejectedPay = location.search.includes("rejected");
 
   const localId = useSelector((state) => state.placeDetail.id);
-  const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5
+  const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
+  const local = useSelector((state) => state.placeDetail);
+
+
+  console.log('local',local)
  
 
   const dispatch = useDispatch();
@@ -93,6 +97,10 @@ export default function SignUp(props) {
       [event.target.name]: event.target.value,
     });
   }
+
+
+ 
+
   if (pay) {
     const handleSubmit = async (event) => {
      
@@ -103,6 +111,23 @@ export default function SignUp(props) {
           localId,
         })
       );
+      console.log("booking",booking)
+      var data = {
+        service_id: 'service_z67u7pr',
+        template_id: 'template_l49usqb',
+        user_id: 'ZuL0aq8mApf9t1Ax8',
+        template_params: {
+            name: booking.name,
+            reservedDate: booking.reservedDate,
+            personQuantity: booking.personQuantity,
+            localName: local.name,
+            email: booking.userId
+
+        }
+      };
+      console.log('datos para enviar',data)
+    
+      await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
       if (newBooking.id) {
         setBooking({

@@ -27,7 +27,7 @@ export default function Password() {
     event.preventDefault();
     
     const user = await getUserId(login.id[0])
-    // console.log(user.response.data)
+   
     if(user.data?.id){
       var data = {
         service_id: 'service_e1td9mr',
