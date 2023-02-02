@@ -28,8 +28,6 @@ export default function Login() {
   }
 
   const handleSubmit = async (event) => {
-    console.log(event.target.name)
-
     event.preventDefault();
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter(
@@ -62,7 +60,6 @@ export default function Login() {
   }, [])
 
     const responseGoogle = async (respuesta) => {
-      console.log(respuesta)
       const userLoginId = respuesta.profileObj.email
       const usuarios = await dispatch(getUser());
       const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
@@ -124,6 +121,7 @@ export default function Login() {
                 cookiePolicy={"single_host_origin"}
               />
 
+              <Link to="/forgot-password"  className={checked ? styles.link : styles.linkDark}>Olvidé mi contraseña</Link>
               <Link to="/sign-up"  className={checked ? styles.link : styles.linkDark}>Todavia no tenes una cuenta?</Link>
             </div>
           </form>

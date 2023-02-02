@@ -268,6 +268,12 @@ export const setFilter = (payload) => {
 
 }
 
+export const getUserId = async(id) => {  
+        const data  = await axios.get(`/user/${id}`);
+        return data
+    
+}
+
 
 
 
