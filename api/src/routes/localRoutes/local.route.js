@@ -52,12 +52,8 @@ router.get("/:id", async (req, res) => {
     try {
     const {id} = req.params;
       if (id) {
-        console.log("entré al if");
         deleteLocal(id)
-        res.status(200).send(`${id} was deleted succesfully`);
-      } else {
-        console.log(id+"   else");
-        res.status(404).send("ID not found");
+        res.status(200).send(`${id} was deleted succesfully`)
       }
     } catch (error) {
       console.log("catch");
@@ -68,9 +64,9 @@ router.get("/:id", async (req, res) => {
 
   router.put("/", async (req, res) => {
     try {
-      const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status} = req.body
-      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && available && rating ) {
-        const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status)
+      const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city} = req.body
+      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && rating && city ) {
+        const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city)
 
         
          res.status(200).send(updated);

@@ -25,6 +25,19 @@
     transform: scale(1.09) rotate(2deg);
     cursor: pointer;
   }
+
+  .placedisabled {
+    height: 46vh;
+    width: 25rem;
+    background-color: #000000;
+    background-size: contain;
+    border-radius: 11px;
+    color:black;
+    font-family: 'Cambay', sans-serif;
+    font-style: normal;
+    transition: all 0.5s ease;
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+}
   
 
 .logo{

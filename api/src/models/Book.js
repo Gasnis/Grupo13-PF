@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         allowNull: true,
     },
     priceTotal: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: true,
     },
     date: {

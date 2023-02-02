@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import { createPlace } from '../../redux/actions';
 import styles from '../FormBar/FormBar.module.css';
 import { validation } from './ValidationFormBar';
+import swal from "sweetalert"
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export default function CreateLocal() {
         menu: "",
         phone: "",
         capacity: "",
+        city: "",
         schedule: [],
         ageRange: [],
         category: '',
@@ -35,7 +37,7 @@ export default function CreateLocal() {
         petFriendly: false,
         bookPrice: "",
         available: true,
-        status:"solicitud"
+        status: "solicitud"
     })
 
     const [errors, setErrors] = useState({
@@ -112,15 +114,41 @@ export default function CreateLocal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newLocal = await dispatch((createPlace({
-            ...local,
-            schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
-        })));
-        if (newLocal.id) {
-            history.push(`/detail/${newLocal.id}`)
-        } else {
-            alert(newLocal.response.data)
-        }
+
+        // const newLocal = await dispatch((createPlace({
+        //     ...local,
+        //     schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+        // })));
+        // if (newLocal.id) {
+        //     history.push(`/detail/${newLocal.id}`)
+        // } else {
+        //     alert(newLocal.response.data)
+        // }
+
+        swal({
+            title: "Crear local?",
+            text: "Se enviara una solicitud de aprobacion de tu local",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(async (willSend) => {
+                if (willSend) {
+                    const newLocal = await dispatch((createPlace({
+                        ...local,
+                        schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+                    })));
+                    swal("Solicitud enviada! Te mandaremos un mail cuando tu local sea aprobado!", {
+                        icon: "success",
+                    });
+                    if (newLocal.id) {
+                        history.push(`/detail/${newLocal.id}`)
+                    } else {
+                        swal(newLocal.response.data, {
+                            icon: "error",
+                        });
+                    } 
+                }
+            });
     }
 
 
@@ -167,6 +195,17 @@ export default function CreateLocal() {
                                 className={checked ? styles.input : styles.inputDark}
                             />
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
+                        </div>
+
+                        <div >
+                            <input
+                                type='text'
+                                placeholder='Ciudad'
+                                value={local.city}
+                                name="city"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
                         </div>
 
                         <div >
@@ -222,7 +261,7 @@ export default function CreateLocal() {
                                     </select>
                                 </div>
                             </div>
-{/* 
+                            {/* 
                             <div>
                                 <label className={checked ? styles.label : styles.labelDark}>Hasta:</label>
                                 <select onChange={handleHour} className={styles.selectHours}>
@@ -323,7 +362,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>

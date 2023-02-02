@@ -6,8 +6,9 @@ import Navbar from "../Navbar/Navbar";
 import styles from "../FormsStyles/forms.module.css";
 import { getUserByid } from "../../redux/actions";
 import GoogleLogin from "react-google-login";
-import {gapi} from "gapi-script"
+import { gapi } from "gapi-script"
 import { useEffect } from "react";
+import swal from "sweetalert";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function Login() {
   const [login, setLogin] = useState({  // 
     id: "",
     password: "",
-    
+
   });
 
   function handleChange(event) {
@@ -28,8 +29,6 @@ export default function Login() {
   }
 
   const handleSubmit = async (event) => {
-    console.log(event.target.name)
-
     event.preventDefault();
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter(
@@ -44,36 +43,39 @@ export default function Login() {
           password: "",
         });
       } else {
-        alert("El usuario o contraseña es incorrecto");
+        swal("El usuario o contraseña es incorrecto", {
+          icon: "error",
+        });
       }
     } else {
-      alert("El usuario o contraseña es incorrecto");
+      swal("El usuario o contraseña es incorrecto", {
+        icon: "error",
+      });
     }
   }
   const clientId = "553757960148-cs9ei96qh12hekvt7kecuo3fdf9d6ofp.apps.googleusercontent.com"
 
   useEffect(() => {
-    const start = () =>{
-        gapi.auth2.init({
-            clientId: clientId,
-        })
+    const start = () => {
+      gapi.auth2.init({
+        clientId: clientId,
+      })
     }
     gapi.load("client:auth2", start)
   }, [])
 
-    const responseGoogle = async (respuesta) => {
-      console.log(respuesta)
-      const userLoginId = respuesta.profileObj.email
-      const usuarios = await dispatch(getUser());
-      const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
-      if (currentUser.length) {
-        dispatch(getUserByid(userLoginId))
-        history.push("/");
-      } else {
-        alert("Debes registrarte primero");
-        history.push("/sign-up");
-      }
+  const responseGoogle = async (respuesta) => {
+    const userLoginId = respuesta.profileObj.email
+    const usuarios = await dispatch(getUser());
+    const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
+    if (currentUser.length) {
+      dispatch(getUserByid(userLoginId))
+      history.push("/");
+    } else {
+      alert("Debes registrarte primero");
+      history.push("/sign-up");
     }
+  }
 
   return (
     <div>
@@ -124,7 +126,8 @@ export default function Login() {
                 cookiePolicy={"single_host_origin"}
               />
 
-              <Link to="/sign-up"  className={checked ? styles.link : styles.linkDark}>Todavia no tenes una cuenta?</Link>
+              <Link to="/forgot-password" className={checked ? styles.link : styles.linkDark}>Olvidé mi contraseña</Link>
+              <Link to="/sign-up" className={checked ? styles.link : styles.linkDark}>Todavia no tenes una cuenta?</Link>
             </div>
           </form>
         </div>

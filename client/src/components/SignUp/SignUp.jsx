@@ -10,6 +10,7 @@ import {gapi} from "gapi-script"
 import { useEffect } from "react";
 import emailjs from "@emailjs/browser"
 import axios from 'axios';
+import swal from "sweetalert";
 
 export default function SignUp(props) {
 
@@ -49,7 +50,9 @@ export default function SignUp(props) {
         event.preventDefault();
         const newUser = await dispatch(createUser(signUp)) 
         if (newUser.id) {
-            alert('¡Usuario creado con éxito!')
+            swal("Usuario creado con exito!", {
+                icon: "success",
+            });
             setSignUp({
                 name: "",
                 id: "",
@@ -61,7 +64,9 @@ export default function SignUp(props) {
             await dispatch(getUserByid(newUser.id))
             history.push(`/profile`)
         } else {
-            alert(newUser.response.data)
+            swal(newUser.response.data, {
+                icon: "error",
+            });
         }
     }
 

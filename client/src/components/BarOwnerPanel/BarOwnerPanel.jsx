@@ -1,9 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
+import { getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
 import { getPlaceDetail, cleanDetail } from "../../redux/actions";
 
@@ -24,6 +25,10 @@ export default function BarOwnerPanel() {
         setFecha(event.target.value)
         console.log(books)
     }
+
+    useEffect(() => {
+        dispatch(getUserByid(profile.id));
+    }, [dispatch, profile.id])
 
     return (
         <>

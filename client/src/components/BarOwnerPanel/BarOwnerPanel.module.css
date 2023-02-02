@@ -13,7 +13,24 @@
     height: 80vh;
     border-radius: 1rem;
     margin: 2em;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.crearButton {
+    background-color: #40047C;
+    color: #FCF9EB;
+    border-radius: 1em;
+    padding: 1em;
+    width: 10em;
+}
+
+.crearButton:hover {
+    cursor: pointer;
+    background-color: #40047ce0;
+    color: #FCF9EB;
+    border-radius: 1em;
+    padding: 1em;
+    width: 10em;
 }
 
 /* ----------------------------------------------Dark Mode ----------------------------------------- */

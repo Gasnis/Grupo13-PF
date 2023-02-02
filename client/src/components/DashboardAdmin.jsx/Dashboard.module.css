@@ -1,10 +1,11 @@
+
 .navbar{
     display: flex;
     background-color: #40047C;
     color: white;
     padding-inline: 20px; 
     justify-content: space-between;
-    font-weight: bold;
+    padding: 10px;
     
 }
 .titulos{
@@ -18,11 +19,17 @@
     background-color: #40047C;
     color: white;
     margin: 5px;
+    font-size: medium;
+    font-weight: 500;
 }
 
 .botones:hover{
     color: gray !important;
     cursor: pointer;
+}
+
+.botones:focus{
+    text-decoration: underline;
 }
 
 .card{
@@ -37,8 +44,24 @@
     padding-inline:20px;
 }
 
+.carddark{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: #40047c7c 1px solid;
+    font-size: 15px;
+    padding-inline:20px;
+    font: white;
+    background-color: black;
+}
+
+
 .cosito{
     width: 200px;
     display: inline;
     text-align: start;
+    color: black;
 }
