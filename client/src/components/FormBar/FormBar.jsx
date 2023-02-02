@@ -30,7 +30,7 @@ export default function CreateLocal() {
         capacity: "",
         city: "",
         schedule: [],
-        ageRange: [],
+        ageRange: "",
         category: '',
         event: false,
         petFriendly: false,
@@ -66,7 +66,7 @@ export default function CreateLocal() {
     const handleAge = (event) => {
         setLocal({
             ...local,
-            ageRange: [event.target.value]
+            ageRange: event.target.value
         })
     }
 
