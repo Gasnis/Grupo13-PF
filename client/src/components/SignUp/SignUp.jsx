@@ -12,6 +12,21 @@ import emailjs from "@emailjs/browser"
 import axios from 'axios';
 import swal from "sweetalert";
 
+function getMaxDate(minAge){
+    let today = new Date ();
+    let birthdate = new Date (today - minAge * 365 * 24 * 60 * 60 * 1000);
+    let year = birthdate.getFullYear();
+    let month = birthdate.getMonth()+1;
+    let day = birthdate.getDate();
+    if (month<10){
+        month = `0${month}`;
+    }
+    if (day<10){
+        day = `0${day}`;
+    }
+    return `${year}-${month}-${day}`
+}
+
 export default function SignUp(props) {
 
     const dispatch = useDispatch();
@@ -190,6 +205,7 @@ export default function SignUp(props) {
                     type='date' 
                     placeholder='Fecha de cumpleaños'
                     value={signUp.birthday}
+                    max={getMaxDate(15)}
                     name="birthday"
                     onChange={handleChange}
                     className={checked ? styles.input : styles.inputDark}
