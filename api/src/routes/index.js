@@ -4,7 +4,7 @@ const localRouter = require("./localRoutes/local.route");
 const bookRouter = require("./bookRoutes/book.route");
 const bulkRouter = require("./bulkRoute/bulk.route");
 const paymentRouter = require("./paymentRoutes/payment.route");
-const cloudinaryRouter = require("./cloudinaryRoutes/cloudinary.route")
+const cloudinaryRouter = require("./cloudinaryRoutes/cloudinary.route.js")
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
