@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getUser())
     dispatch(getPlaces())
-  }, [])
+  }, [dispatch])
   useEffect(() => {
     if (profile.id !== "admin@admin.admin") {
       history.push("/login")
@@ -35,17 +35,21 @@ const Dashboard = () => {
     setStatusDashboard(e.target.value)
   }
 
+  const handleSearchBar = async (e) => {
+    await dispatch(searchPlace(e.target.value))
+    await dispatch(searchUser(e.target.value))
+  }
   const handleApprove = async (e) => {
     swal({
-      title: "Estas seguro?",
-      text: "Una vez aprobado este local va a pasar al home!",
+      title: "¿Estas seguro?",
+      text: "Una vez APROBADO este local aparecera en la aplicacion",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
       .then(async (willDelete) => {
         if (willDelete) {
-          swal("APROBADO! Hay un nuevo bar en wwwhere!", {
+          swal("El local fue APROBADO con exito", {
             icon: "success",
           });
           const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
@@ -57,15 +61,15 @@ const Dashboard = () => {
 
   const handleDenegate = async (e) => {
     swal({
-      title: "Estas seguro?",
-      text: "Se va a ELIMINAR el local y avisar a su creador!",
+      title: "¿Estas seguro?",
+      text: "Estas por ELIMINAR un local",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
       .then(async (willDelete) => {
         if (willDelete) {
-          swal("APROBADO! Hay un nuevo bar en wwwhere!", {
+          swal("Has ELIMINADO un local", {
             icon: "success",
           });
           await dispatch(deletePlace(e.target.value))
@@ -74,55 +78,96 @@ const Dashboard = () => {
       });
   }
 
-  const handleSearchBar = async (e) => {
-    await dispatch(searchPlace(e.target.value))
-    await dispatch(searchUser(e.target.value))
-  }
 
-  
   const handleBan = async (e) => {
-    allPlaces?.filter(locales => locales.userId === e.target.value).forEach(async local => {
-      await dispatch(deletePlace(local.id))
-    });
-    
-    const userban = allUsers?.find(user => user.id === e.target.value)
-    await dispatch(updateUser({ ...userban.id, ban: true , userId:e.target.value }))
-
-    await dispatch(getPlaces())
-    await dispatch(getUser())
-  }
-  
-  const handlePardonUser = async (e) => {
     swal({
-      title: "Estas seguro?",
-      text: "Una vez perdonado este usuario puede volver a crear bares!",
+      title: "¿Estas seguro?",
+      text: "Una vez BANEADO este usuario se borraran todos sus bares y se inhabilitara su cuenta",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     })
       .then(async (willDelete) => {
         if (willDelete) {
-          swal("PERDONADO!Este bar volvio a formar parte de wwwhere!", {
+          swal("Este usuario ha sido BANEADO y todos sus locales han sido ELIMINADOS", {
+            icon: "success",
+          });
+          allPlaces?.filter(locales => locales.userId === e.target.value).forEach(async local => {
+            await dispatch(deletePlace(local.id))
+          });
+          
+          const userban = allUsers?.find(user => user.id === e.target.value)
+          await dispatch(updateUser({ ...userban, ban: true , userId:e.target.value }))
+          await dispatch(getUser())
+        }
+      });
+  }
+
+
+  
+  const handlePardonUser = async (e) => {
+    swal({
+      title: "¿Estas seguro?",
+      text: "Una vez PERDONADO este usuario puede volver a crear bares",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          swal("Este usuario ha sido PERDONADO", {
             icon: "success",
           });
           const user = allUsers?.find(u => u.id === e.target.value)
-          await dispatch(updatePlace({ ...user, ban: false , userId: e.target.value}))
+          await dispatch(updateUser({ ...user, ban: false , userId: e.target.value}))
+          await dispatch(getUser())
           await dispatch(getPlaces())
         }
       });
   }
   
-  const handleDisbled = async(e) =>{
-      const local = allPlaces?.find(p => p.id === e.target.value)
+
+
+  const handleDisbled = async (e) => {
+    swal({
+      title: "¿Estas seguro?",
+      text: "Estas por DESHABILITAR un lugar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          swal("Este lugar ha sido DESHABILITADO", {
+            icon: "success",
+          });
+          const local = allPlaces?.find(p => p.id === e.target.value)
       await dispatch(updatePlace({ ...local, available: false }))
       await dispatch(getPlaces())
+        }
+      });
   }
+  
 
-  const handleEnabled = async(e) =>{
-    const local = allPlaces?.find(p => p.id === e.target.value)
-    await dispatch(updatePlace({ ...local, available: true , status : "aprobado"}))
-    await dispatch(getPlaces())
-}
+  const handleEnabled = async (e) => {
+    swal({
+      title: "¿Estas seguro?",
+      text: "Estas por HABILITAR un lugar",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          swal("Este lugar ha sido HABILITADO", {
+            icon: "success",
+          });
+          const local = allPlaces?.find(p => p.id === e.target.value)
+          await dispatch(updatePlace({ ...local, available: true , status : "aprobado"}))
+          await dispatch(getPlaces())
+        }
+      });
+  }
 
 
   return (
@@ -164,7 +209,7 @@ const Dashboard = () => {
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
               <button value={p.id} onClick={handleApprove}>Aceptar</button>
               <button value={p.id} onClick={handleDenegate} >X</button>
-              <button value={p.userId} onClick={handleBan}>Banear</button>
+
             </div>
 
           </div>
@@ -192,7 +237,6 @@ const Dashboard = () => {
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
               <button value={p.id} onClick={handleDisbled}>Desahabilitar</button>
               <button value={p.id} onClick={handleDenegate}>X</button>
-              <button value={p.id} onClick={handleBan}>Banear</button>
             </div>
           </div>
         })}
