@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar';
 import { createPlace } from '../../redux/actions';
 import styles from '../FormBar/FormBar.module.css';
 import { validation } from './ValidationFormBar';
+import swal from "sweetalert"
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export default function CreateLocal() {
         petFriendly: false,
         bookPrice: "",
         available: true,
-        status:"solicitud"
+        status: "solicitud"
     })
 
     const [errors, setErrors] = useState({
@@ -113,15 +114,41 @@ export default function CreateLocal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newLocal = await dispatch((createPlace({
-            ...local,
-            schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
-        })));
-        if (newLocal.id) {
-            history.push(`/detail/${newLocal.id}`)
-        } else {
-            alert(newLocal.response.data)
-        }
+
+        // const newLocal = await dispatch((createPlace({
+        //     ...local,
+        //     schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+        // })));
+        // if (newLocal.id) {
+        //     history.push(`/detail/${newLocal.id}`)
+        // } else {
+        //     alert(newLocal.response.data)
+        // }
+
+        swal({
+            title: "Crear local?",
+            text: "Se enviara una solicitud de aprobacion de tu local",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(async (willSend) => {
+                if (willSend) {
+                    const newLocal = await dispatch((createPlace({
+                        ...local,
+                        schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+                    })));
+                    swal("Solicitud enviada! Te mandaremos un mail cuando tu local sea aprobado!", {
+                        icon: "success",
+                    });
+                    if (newLocal.id) {
+                        history.push(`/detail/${newLocal.id}`)
+                    } else {
+                        swal(newLocal.response.data, {
+                            icon: "error",
+                        });
+                    } 
+                }
+            });
     }
 
 
@@ -234,7 +261,7 @@ export default function CreateLocal() {
                                     </select>
                                 </div>
                             </div>
-{/* 
+                            {/* 
                             <div>
                                 <label className={checked ? styles.label : styles.labelDark}>Hasta:</label>
                                 <select onChange={handleHour} className={styles.selectHours}>

@@ -53,9 +53,7 @@ router.get("/:id", async (req, res) => {
     const {id} = req.params;
       if (id) {
         deleteLocal(id)
-        res.status(200).send(`${id} was deleted succesfully`);
-      } else {
-        res.status(404).send("ID not found");
+        res.status(200).send(`${id} was deleted succesfully`)
       }
     } catch (error) {
       console.log("catch");

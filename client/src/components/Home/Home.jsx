@@ -56,10 +56,9 @@ export default function Home() {
                                         )
                                         :
                                         renderPlaces.map((place) => {
-                                            if (place.available){
                                                 return <Card key={place.id} place={place}>
                                                 </Card>
-                                            }
+                                            
                                         })
                                     :
                                     searchInput ?
