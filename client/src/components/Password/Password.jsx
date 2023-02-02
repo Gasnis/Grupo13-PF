@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
 import styles from "../FormsStyles/forms.module.css";
 import { getUserId } from "../../redux/actions";
@@ -28,20 +27,27 @@ export default function Password() {
     event.preventDefault();
     
     const user = await getUserId(login.id[0])
+   
+    if(user.data?.id){
+      var data = {
+        service_id: 'service_e1td9mr',
+        template_id: 'template_svs0o8i',
+        user_id: 'ra0ajVxUcOBmQYZPK',
+        template_params: {
+            'userPassword': user.data.password,
+            'gmail': user.data.id,
+            'userName': user.data.name,
+        }
+      };
     
+      await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
-    var data = {
-      service_id: 'service_e1td9mr',
-      template_id: 'template_svs0o8i',
-      user_id: 'ra0ajVxUcOBmQYZPK',
-      template_params: {
-          'userPassword': user.data.password,
-          'gmail': user.data.id,
-          'userName': user.data.name,
-      }
-  };
-  
-  await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+    }
+    else{
+      alert('Este usuario no existe en la base de datos, por favor registrate')
+      history.push(`/login`);
+    }
+
   }
 
   return (
