@@ -1,6 +1,15 @@
 const {User, Local, Book} = require("../../db")
 
 const users = [{
+    "id": "admin@admin.admin",
+    "name": "admin",
+    "password": "admin",
+    "phone": "0",
+    "image": "http://cdn.onlinewebfonts.com/svg/img_325788.png",
+    "birthday": "2023-02-02",
+    "city": "Tandil",
+	"ban": false
+},{
     "id": "gioh2020@gmail.com",
     "name": "gioh",
     "password": "gioh2020",
