@@ -128,7 +128,7 @@ const Dashboard = () => {
   
 
 
-  const handleDisbled = async (e) => {
+  const handleDisabled = async (e) => {
     swal({
       title: "¿Estas seguro?",
       text: "Estas por DESHABILITAR un lugar",
@@ -207,8 +207,8 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-              <button value={p.id} onClick={handleApprove}>Aceptar</button>
-              <button value={p.id} onClick={handleDenegate} >X</button>
+              <button className={style.botonaccept} value={p.id} onClick={handleApprove}>Aceptar</button>
+              <button className={style.botondenegate} value={p.id} onClick={handleDenegate} >X</button>
 
             </div>
 
@@ -235,8 +235,8 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-              <button value={p.id} onClick={handleDisbled}>Desahabilitar</button>
-              <button value={p.id} onClick={handleDenegate}>X</button>
+              <button className={style.botondisabled} value={p.id} onClick={handleDisabled}>Desahabilitar</button>
+              <button className={style.botondenegate} value={p.id} onClick={handleDenegate}>X</button>
             </div>
           </div>
         })}
@@ -262,7 +262,7 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-              <button value={p.id} onClick={handleEnabled}>Habilitar</button>
+              <button className={style.botonhabilitar} value={p.id} onClick={handleEnabled}>Habilitar</button>
             </div>
           </div>
         })}
@@ -285,7 +285,7 @@ const Dashboard = () => {
               {u.id}
             </div>
             <div className={style.cosito}>
-              <button value={u.id} onClick={handleBan} >Banear</button>
+              <button className={style.botondenegate}  value={u.id} onClick={handleBan} >Banear</button>
             </div>
 
 
@@ -310,7 +310,7 @@ const Dashboard = () => {
             {u.id}
           </div>
           <div className={style.cosito}>
-            <button value={u.id} onClick={handlePardonUser} >Desbanear</button>
+            <button className={style.botonhabilitar} value={u.id} onClick={handlePardonUser} >Desbanear</button>
           </div>
         </div>
         })}
