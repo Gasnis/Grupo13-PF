@@ -197,6 +197,15 @@
     justify-content: center;
 }
 
+.reservar:hover {
+    background: #712dc9;
+    cursor: pointer;
+}
+
+.book{
+    border: #FCF9EB;
+
+}
 .centrar {
     display: flex;
     justify-content: center;
@@ -207,10 +216,6 @@
     top: 7vh;
 }
 
-.reservar:hover {
-    background: #712dc9;
-    cursor: pointer;
-}
 
 .loadingcontainer {
     display: flex;

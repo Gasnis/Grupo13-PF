@@ -1,7 +1,7 @@
 import { useState } from "react";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
 import { getUserByid } from "../../redux/actions";
@@ -14,6 +14,7 @@ export default function BarOwnerPanel() {
     const date = new Date();
     const dispatch = useDispatch();
     const [id, setId] = useState("")
+
     const handleCreate = () => {
         history.push("/newplace")
     }
@@ -23,8 +24,12 @@ export default function BarOwnerPanel() {
     const handleChange = async (event) => {
         dispatch(getPlaceDetail(id));
         setFecha(event.target.value)
-        console.log(books)
+
     }
+
+    const reservado = books.filter((reserva) => reserva.reservedDate === fecha)
+    .map((resfecha) => resfecha.personQuantity)
+    .reduce((prev, curr) => prev + curr, 0);
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
@@ -59,15 +64,35 @@ export default function BarOwnerPanel() {
                         name="reservedDate"
                         onChange={handleChange}
                     />
+                    <div className={style.containerBook}>
+                        {
+                            books.some((reserva) => reserva.reservedDate === fecha)
+                                ?
+                                books?.map((reserva) => {
+                                    if (reserva.reservedDate === fecha) {
+                                        return (<div className={style.book}>Nombre: {reserva.name} Personas: {reserva.personQuantity}  </div>)
+                                    }
+                                }
+                                )
+                                :
+                                <h1>No tienes reservas todavia</h1>
+
+
+                        }
+
+                    </div>
+
+                    <div className={style.datos}>
+                        <h2>Capacidad: {placeDetail.capacity}</h2>
+                        <h2>Resevas para esta fecha: {reservado}</h2>
+                        <h2>Lugares disponibles: {placeDetail.capacity - reservado}</h2>
+
+                    </div>
 
                     <div>
-                        {
-                            books?.map((reserva) => {
-                                if (reserva.reservedDate === fecha) {
-                                    return (<div>Nombre: {reserva.name} Personas: {reserva.personQuantity}  </div>)
-                                } else { return <div>No hay reservas para esta fecha</div> }
-                            })
-                        }
+                        <Link to="/book">
+                            <button className={style.reservar}>Reservar</button>
+                        </Link>
                     </div>
 
 
