@@ -178,7 +178,7 @@ const handlePardonPlace = async (e) => {
       {/* ------------------------------usuarios---------------------------------------------------------------- */}
       {statusDashboard === "Usuarios"?<div>
 
-      {allUsers?.filter (u => u.ban === false)?.map((u) => {return <div className={style.card}>
+      {allUsers?.filter (u => u.ban === false && u.name!== "admin")?.map((u) => {return <div className={style.card}>
 
         <div className={style.cosito}>
           <img src={u.image} alt="" height="30px" width="30px" />
@@ -202,7 +202,7 @@ const handlePardonPlace = async (e) => {
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
       {statusDashboard === "UsuariosBaneados"?<div>
 
-      { allUsers?.filter (u => u.ban === true)?.map((u) => {return <div className={style.card} >{u.name}<button value={u.id} onClick={handlePardonUser} >Pardon</button><hr/></div> })}
+      { allUsers?.filter (u => u.ban === true && u.name!== "admin")?.map((u) => {return <div className={style.card} >{u.name}<button value={u.id} onClick={handlePardonUser} >Pardon</button><hr/></div> })}
       </div>:null}
     </div>
   )
