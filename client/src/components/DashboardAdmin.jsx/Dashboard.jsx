@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 // import { approveLocal } from '../../redux/actions';
-import { updatePlace, getPlaces , deletePlace} from '../../redux/actions';
+import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser} from '../../redux/actions';
 
 
 const Dashboard = () => {
@@ -13,66 +13,32 @@ const Dashboard = () => {
   const dispatch = useDispatch()
   useEffect(()=>{dispatch(getUser())
   dispatch(getPlaces())},[])
-  const allPlaces = useSelector((state)=> state.allPlaces)
-  const allUsers = useSelector((state)=> state.allUsers)
-  
-  const soli = allPlaces?.filter(p=>p.status === "solicitud")
-  const bane = allPlaces?.filter(p=>p.status === "baneado")
-  const apro = allPlaces?.filter(p=>p.status === "aprobado")
-  const bannedUsers = allUsers?.filter (u => u.ban === true)
-  const NonBannedUsers = allUsers?.filter (u => u.ban === false)
-
+  const allPlaces = useSelector((state)=> state.places)
+  const allUsers = useSelector((state)=> state.users)
   
   const [statusDashboard, setStatusDashboard] = useState("Solicitudes")
-  const [data, setData] = useState({
-    soli: soli,
-    bane: bane,
-    apro: apro,
-    bannedUsers: bannedUsers,
-    NonBannedUsers: NonBannedUsers,
-  })
 
   const handleState= (e) => {
     setStatusDashboard(e.target.value)
   }
-  const handleSearchSoli = (e) => {
-      const newData = soli.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
-      setData({...data, soli: newData})
-  }
-  const handleSearchBane = (e) => {
-    const newData = bane.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    setData({...data, bane: newData})
-  }
-  const handleSearchApro = (e) => {
-    const newData = apro.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    setData({...data, apro: newData})
-  }
-  const handleSearchBannedUsers = (e) => {
-    const newData = bannedUsers.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    setData({...data, bannedUsers: newData})
-  }
-  const handleSearchNonBannedUsers = (e) => {
-    const newData = NonBannedUsers.filter((local) =>local.name.toLowerCase().includes(e.target.value.toLowerCase()));
-    setData({...data, NonBannedUsers: newData})
-  }
-
 
   const handleApprove = async (e) => {
-    const local = data.soli.find(local => local.id === e.target.value)
-
+    const local = allPlaces?.filter(p=>p.status === "solicitud").find(local => local.id === e.target.value)
     await dispatch(updatePlace({...local, status: 'aprobado'}))
-
-    await dispatch(getPlaces())
-
-    window.location.reload()
+    dispatch(getPlaces())
  
   }
 
   const handleDenegate = async (e) =>{
     await dispatch(deletePlace(e.target.value))
-    await dispatch(getPlaces())
-    window.location.reload()
+    dispatch(getPlaces())
   }
+
+  const handleSearchBar = async(e) => {
+    await dispatch(searchPlace(e.target.value))
+    await dispatch(searchUser(e.target.value))
+}
+
 
 
 
@@ -88,17 +54,16 @@ const Dashboard = () => {
             <button className={style.botones} value="UsuariosBaneados" onClick={handleState}>Usuarios Baneados</button>
         </div>
         
-
+    <div>
+      <input  onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
+    </div>
 
       </div>
       
       
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes"?<div>
-      <div>
-            <input  name="Solicitudes" onChange={handleSearchSoli} type="search" placeholder="Buscar..." />
-      </div>
-      {data.soli?.map((p) => {return <div className={style.card} key={p.id}>
+      {allPlaces?.filter(p=>p.status === "solicitud")?.map((p) => {return <div className={style.card} key={p.id}>
             <div className={style.cosito}>            
                 <img src={p.image} alt="" height="30px" width="30px"/>     
                    {p.name}
@@ -125,30 +90,72 @@ const Dashboard = () => {
       
       {/* ------------------------------locales---------------------------------------------------------------- */}
       {statusDashboard === "Locales"?<div>
-      <div>
-            <input name="Locales" onChange={handleSearchApro} type="search" placeholder="Buscar..." />
-      </div> <hr />
-      {data.apro?.map((p) => {return <div className={style.card} >{p.name}<button>SIMBOLO</button><button>BANEAR</button><hr/></div> })}
+      {allPlaces?.filter(p=>p.status === "aprobado")?.map((p) => {return <div className={style.card} >
+      <div className={style.cosito}>            
+                <img src={p.image} alt="" height="30px" width="30px"/>     
+                   {p.name}
+            </div>
+            <div className={style.cosito}>
+                {p.phone}
+            </div>
+
+            <div className={style.cosito}>
+                {p.userId}
+            </div>
+
+            <div className={style.cosito}>
+                {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
+                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleDenegate} >X</button>
+                <button>B</button>
+            </div>
+        </div> })}
       </div>:null}
       
       
       {/* ------------------------------Locales baneados---------------------------------------------------------------- */}
       {statusDashboard === "LocalesBaneados"?<div>
-      <div>
-            <input name="LocalesBaneados" onChange={handleSearchBane} type="search" placeholder="Buscar..." />
-      </div> <hr />
-      {data.bane?.map((p) => {return <div className={style.card} >{p.name}<button>DESBANEAR</button><hr/></div> })}
+
+      {allPlaces?.filter(p=>p.status === "baneado")?.map((p) => {return <div className={style.card} >
+                <div className={style.cosito}>            
+                  <img src={p.image} alt="" height="30px" width="30px"/>     
+                  {p.name}
+                </div>
+                <div className={style.cosito}>
+                    {p.phone}
+                </div>
+
+                <div className={style.cosito}>
+                    {p.userId}
+                </div>
+
+                <div className={style.cosito}>
+                    {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
+                    <button value={p.id} onClick={handleApprove}>accept</button>
+                    <button value={p.id} onClick={handleDenegate} >X</button>
+                    <button>B</button>
+                </div>
+            </div> })}
       </div>:null}
       
       {/* ------------------------------usuarios---------------------------------------------------------------- */}
       {statusDashboard === "Usuarios"?<div>
-      <div>
-            <input name="Usuarios" onChange={handleSearchNonBannedUsers} type="search" placeholder="Buscar..." />
-      </div> <hr />
-      {data.NonBannedUsers?.map((p) => {return <div className={style.card}>
 
-        <div>{p.name}</div>
-        <button>BANEAR</button><hr/>
+      {allUsers?.filter (u => u.ban === false)?.map((u) => {return <div className={style.card}>
+
+        <div className={style.cosito}>
+          <img src={u.image} alt="" height="30px" width="30px" />
+          {u.name}
+        </div>
+        <div className={style.cosito}>
+          {u.phone}
+        </div>
+        <div className={style.cosito}>
+          {u.id}
+        </div>
+        <div className={style.cosito}>
+          <button>BANEAR</button>
+        </div>
         
       
       
@@ -157,10 +164,8 @@ const Dashboard = () => {
 
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
       {statusDashboard === "UsuariosBaneados"?<div>
-      <div>
-            <input name="UsuariosBaneados" onChange={handleSearchBannedUsers} type="search" placeholder="Buscar..." />
-      </div> <hr />
-      {data.bannedUsers?.map((p) => {return <div className={style.card} >{p.name}<button>DESBANEAR</button><hr/></div> })}
+
+      { allUsers?.filter (u => u.ban === true)?.map((u) => {return <div className={style.card} >{u.name}<button>DESBANEAR</button><hr/></div> })}
       </div>:null}
     </div>
   )
