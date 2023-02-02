@@ -1,17 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
+import { getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
 
 export default function BarOwnerPanel() {
     const { profile, darkmode } = useSelector(state => state)
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const handleCreate = () => {
         history.push("/newplace")
     }
+
+    useEffect(() => {
+        dispatch(getUserByid(profile.id));
+    }, [dispatch, profile.id])
 
     return (
         <>
