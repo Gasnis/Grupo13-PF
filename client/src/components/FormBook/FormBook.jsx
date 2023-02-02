@@ -26,6 +26,21 @@ function getNum(date, string) {
   }
 }
 
+function getNextWeek(date){
+  let nextWeek = new Date (date.getTime() + 7 * 24 * 60 * 60 * 1000);
+  let year = nextWeek.getFullYear();
+  let month = nextWeek.getMonth()+1;
+  let day = nextWeek.getDate();
+  if (month<10) {
+    month = `0${month}`
+  }
+  if (day<10){
+    day = `0${day}`
+  }
+  let maxDateToBook = `${year}-${month}-${day}`
+  return maxDateToBook
+}
+
 function validate(input) {
   let errors = {};
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
@@ -54,7 +69,9 @@ export default function SignUp(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { profile, book } = useSelector((state) => state);
+
   const date = new Date();
+
   // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
   const [booking, setBooking] = useState({
     name: book.name,
@@ -78,6 +95,11 @@ export default function SignUp(props) {
   useEffect(() => {
     if (!profile.id) {
       history.push("/login");
+    }
+    return ()=>{
+      setBooking({
+        
+      })
     }
   }, []);
 
@@ -189,7 +211,7 @@ export default function SignUp(props) {
                             <input className={checked ? styles.input : styles.inputDark}
                                 type='date'
                                 min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
-                                max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
+                                max={getNextWeek(date)}
                                 placeholder='Mail'
                                 value={booking.reservedDate}
                                 name="reservedDate"
