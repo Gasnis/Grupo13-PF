@@ -26,6 +26,21 @@ function getNum(date, string) {
   }
 }
 
+function getNextWeek(date){
+  let nextWeek = new Date (date.getTime() + 7 * 24 * 60 * 60 * 1000);
+  let year = nextWeek.getFullYear();
+  let month = nextWeek.getMonth()+1;
+  let day = nextWeek.getDate();
+  if (month<10) {
+    month = `0${month}`
+  }
+  if (day<10){
+    day = `0${day}`
+  }
+  let maxDateToBook = `${year}-${month}-${day}`
+  return maxDateToBook
+}
+
 function validate(input) {
   let errors = {};
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
@@ -48,13 +63,19 @@ export default function SignUp(props) {
   const rejectedPay = location.search.includes("rejected");
 
   const localId = useSelector((state) => state.placeDetail.id);
-  const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5
+  const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
+  const local = useSelector((state) => state.placeDetail);
+
+
+  console.log('local',local)
  
 
   const dispatch = useDispatch();
   const history = useHistory();
   const { profile, book } = useSelector((state) => state);
+
   const date = new Date();
+
   // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
   const [booking, setBooking] = useState({
     name: book.name,
@@ -79,6 +100,11 @@ export default function SignUp(props) {
     if (!profile.id) {
       history.push("/login");
     }
+    return ()=>{
+      setBooking({
+        
+      })
+    }
   }, []);
 
   function handleChange(event) {
@@ -93,6 +119,10 @@ export default function SignUp(props) {
       [event.target.name]: event.target.value,
     });
   }
+
+
+ 
+
   if (pay) {
     const handleSubmit = async (event) => {
      
@@ -103,6 +133,23 @@ export default function SignUp(props) {
           localId,
         })
       );
+      console.log("booking",booking)
+      var data = {
+        service_id: 'service_z67u7pr',
+        template_id: 'template_l49usqb',
+        user_id: 'ZuL0aq8mApf9t1Ax8',
+        template_params: {
+            name: booking.name,
+            reservedDate: booking.reservedDate,
+            personQuantity: booking.personQuantity,
+            localName: local.name,
+            email: booking.userId
+
+        }
+      };
+      console.log('datos para enviar',data)
+    
+      await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
       if (newBooking.id) {
         setBooking({
@@ -189,7 +236,7 @@ export default function SignUp(props) {
                             <input className={checked ? styles.input : styles.inputDark}
                                 type='date'
                                 min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
-                                max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
+                                max={getNextWeek(date)}
                                 placeholder='Mail'
                                 value={booking.reservedDate}
                                 name="reservedDate"

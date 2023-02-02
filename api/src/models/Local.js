@@ -75,11 +75,16 @@ module.exports = (sequelize) => {
     },
     status: {
       type: DataTypes.ENUM("solicitud", "aprobado", "baneado"),
+      defaultValue: "solicitud",
     
     },
     rating: {
         type: DataTypes.INTEGER, //  || integer
-        defaultValue: "5"
+        defaultValue: "5",
       },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    }
   });
 };
