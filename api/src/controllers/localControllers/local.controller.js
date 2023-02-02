@@ -38,13 +38,13 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-  const localInfo = await Local.findAll();
+  let localInfo = await Local.findAll();
   if (name) {
     localInfo = localInfo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
-    if (byName.length) {
-      return byName
+    if (localInfo.length) {
+      return localInfo
     }
   }
   return localInfo;
