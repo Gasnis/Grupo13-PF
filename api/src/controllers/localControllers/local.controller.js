@@ -56,7 +56,7 @@ const deleteLocal = async (id) => {
     if(local){
         local.destroy();
     }else{
-        throw new Error("Ese Id no se encontro")
+        return ("Ese"+ id + "no se encontro")
     }
 }
 

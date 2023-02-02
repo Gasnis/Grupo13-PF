@@ -177,7 +177,7 @@ export default function Navbar(props) {
                                         <div>
                                             {profile.name === "admin" ? <div> <Link className={style.titulos} to="/admin">Dashboard Admin</Link></div> : null}
                                         </div>
-                                        
+
                                         <div>
                                             <Link className={style.titulos} to={`/profile`}>Mi Perfil</Link>
                                         </div>
