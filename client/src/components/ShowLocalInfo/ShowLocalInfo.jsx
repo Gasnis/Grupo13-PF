@@ -8,7 +8,7 @@ export default function ShowLocalInfo (props) {
 
     return (
         <div className={checked ? styles.localInfoContainer : styles.localInfoContainerDark}>
-            <img className={styles.Image} src={local.image} alt="" />
+            {/* <img className={styles.Image} src={local.image} alt="" /> */}
             <h3 className={styles.Data}>Nombre: {local.name}</h3>
             <h3 className={styles.Data}>Teléfono: {local.phone}</h3>
             {/* <h3 className={styles.Data}>Dirección: {local.location}</h3> */}
