@@ -28,6 +28,7 @@ export default function CreateLocal() {
         menu: "",
         phone: "",
         capacity: "",
+        city: "",
         schedule: [],
         ageRange: [],
         category: '',
@@ -167,6 +168,17 @@ export default function CreateLocal() {
                                 className={checked ? styles.input : styles.inputDark}
                             />
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
+                        </div>
+
+                        <div >
+                            <input
+                                type='text'
+                                placeholder='Ciudad'
+                                value={local.city}
+                                name="city"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
                         </div>
 
                         <div >
@@ -323,7 +335,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>

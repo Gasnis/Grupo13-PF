@@ -150,9 +150,13 @@
     text-decoration: none;
     color: rgb(43, 43, 43);
     padding-left: 1em;
-    padding-bottom: 2em;
 }
 
+.ciudad {
+    font-size: 1.2em;
+    padding-left: 1em;
+    padding-bottom: 2em;
+}
 
 .sideDiv {
     display: flex;
@@ -238,6 +242,11 @@
     align-items: left;
     text-align: left;
     width: 100%;
+}
+
+.fondoVioleta>a {
+    text-decoration: underline;
+    color: white;
 }
 
 .mainContainerDark {

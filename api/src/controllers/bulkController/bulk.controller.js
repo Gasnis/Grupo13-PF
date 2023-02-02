@@ -101,7 +101,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -120,7 +121,8 @@ const places =[
 		"available": true,
 		"rating": 4,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -139,7 +141,8 @@ const places =[
 		"available": true,
 		"rating": 1,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 {
 		"userId":"sergio@gmail.com",
@@ -158,7 +161,8 @@ const places =[
 		"available": true,
 		"rating": 5,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 ,
 {
@@ -178,7 +182,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -197,7 +202,8 @@ const places =[
 		"available": true,
 		"rating": 4,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -216,7 +222,8 @@ const places =[
 		"available": true,
 		"rating": 4,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -235,7 +242,8 @@ const places =[
 		"available": true,
 		"rating": 4,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -254,7 +262,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -273,7 +282,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -292,7 +302,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -311,7 +322,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -330,7 +342,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -349,7 +362,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -368,7 +382,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "solicitud"
+		"status": "solicitud",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -387,7 +402,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "baneado"
+		"status": "baneado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -406,7 +422,8 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "baneado"
+		"status": "baneado",
+		"city": "anyCity"
 	}
 
 ]
