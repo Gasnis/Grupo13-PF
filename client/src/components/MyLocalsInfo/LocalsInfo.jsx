@@ -50,7 +50,7 @@ export default function LocalsInfo(props) {
     }
 
     return (
-        <div>
+        <div className={styles.localsContainer}>
             {!info
                 ?
 
@@ -62,7 +62,7 @@ export default function LocalsInfo(props) {
                         <div className={styles.ContainCard}>
                             {localsToShow.map(local => (
                                 <div key={local.id} className={checked ? styles.Card : styles.CardDark}>
-                                    <h3>{local.name}</h3>
+                                    <h3>{local.name} {local.available ? null : "(desactivado)"}</h3>
                                     <img className={styles.CardImage} src={local.image} alt="" />
                                     <h4>{local.category}</h4>
                                     <button name={local.id} onClick={handleDetails} className={checked ? styles.verDetalles : styles.verDetallesDark}>Ver detalles</button>

@@ -1,18 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from "./Dashboard.module.css"
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 // import { approveLocal } from '../../redux/actions';
-import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser} from '../../redux/actions';
+import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser,updateUser} from '../../redux/actions';
 
 
 const Dashboard = () => {
-  
+  const profile  = useSelector(state => state.profile)
+  const history = useHistory()
   const dispatch = useDispatch()
   useEffect(()=>{dispatch(getUser())
   dispatch(getPlaces())},[])
+  useEffect(() => {
+    if (profile.id!=="admin@admin.admin") {
+        history.push("/login")
+    }
+})
+
   const allPlaces = useSelector((state)=> state.places)
   const allUsers = useSelector((state)=> state.users)
   
@@ -39,8 +47,37 @@ const Dashboard = () => {
     await dispatch(searchUser(e.target.value))
 }
 
+const handleBanUser = async (e) => {
+  const user = allUsers?.find(user => user.id === e.target.value)
+  await dispatch(updateUser({...user, ban: true, userId:user.id}))
+  await dispatch((getUser()))
+}
+
+const handlePardonUser = async (e) => {
+  const user = allUsers?.find(user => user.id === e.target.value)
+  await dispatch(updateUser({...user, ban: false, userId:user.id}))
+  await dispatch(dispatch(getUser()))
+}
+
+const handleSolicitud = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: 'solicitud'}))
+  dispatch(getPlaces())
+
+}
 
 
+const handleBanPlace = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: "baneado"}))
+  dispatch(getPlaces())
+}
+
+const handlePardonPlace = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: "solicitud"}))
+  dispatch(getPlaces())
+}
 
 
   return (
@@ -78,9 +115,9 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
                 {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleApprove}>Aceptar</button>
                 <button value={p.id} onClick={handleDenegate} >X</button>
-                <button>B</button>
+                <button value={p.id} onClick={handleBanPlace}  >Banear</button>
             </div>
         
         </div> 
@@ -105,9 +142,9 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
                 {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleSolicitud}>Solicitud</button>
                 <button value={p.id} onClick={handleDenegate} >X</button>
-                <button>B</button>
+                <button value={p.id} onClick={handleBanPlace} >Banear</button>
             </div>
         </div> })}
       </div>:null}
@@ -131,9 +168,9 @@ const Dashboard = () => {
 
                 <div className={style.cosito}>
                     {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                    <button value={p.id} onClick={handleApprove}>accept</button>
+                    <button value={p.id} onClick={handleApprove}>Aceptar</button>
                     <button value={p.id} onClick={handleDenegate} >X</button>
-                    <button>B</button>
+                    <button value={p.id} onClick={handlePardonPlace} >perdonar</button>
                 </div>
             </div> })}
       </div>:null}
@@ -141,7 +178,7 @@ const Dashboard = () => {
       {/* ------------------------------usuarios---------------------------------------------------------------- */}
       {statusDashboard === "Usuarios"?<div>
 
-      {allUsers?.filter (u => u.ban === false)?.map((u) => {return <div className={style.card}>
+      {allUsers?.filter (u => u.ban === false && u.name!== "admin")?.map((u) => {return <div className={style.card}>
 
         <div className={style.cosito}>
           <img src={u.image} alt="" height="30px" width="30px" />
@@ -154,7 +191,7 @@ const Dashboard = () => {
           {u.id}
         </div>
         <div className={style.cosito}>
-          <button>BANEAR</button>
+          <button value={u.id} onClick={handleBanUser} >Banear</button>
         </div>
         
       
@@ -165,7 +202,7 @@ const Dashboard = () => {
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
       {statusDashboard === "UsuariosBaneados"?<div>
 
-      { allUsers?.filter (u => u.ban === true)?.map((u) => {return <div className={style.card} >{u.name}<button>DESBANEAR</button><hr/></div> })}
+      { allUsers?.filter (u => u.ban === true && u.name!== "admin")?.map((u) => {return <div className={style.card} >{u.name}<button value={u.id} onClick={handlePardonUser} >Pardon</button><hr/></div> })}
       </div>:null}
     </div>
   )

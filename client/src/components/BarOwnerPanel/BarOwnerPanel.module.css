@@ -1,6 +1,7 @@
 .mainContainer {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-around;
     margin: 2em;
 }
@@ -8,6 +9,18 @@
 .localsContainer {
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
     background-color: #FCF9EB;
+    width: 45%;
+    height: 80vh;
+    border-radius: 1rem;
+    margin: 2em;
+    overflow: scroll;
+}
+
+/* ----------------------------------------------Dark Mode ----------------------------------------- */
+
+.localsContainerDark {
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    background-color: #2D2D2D;
     width: 45%;
     height: 60vh;
     border-radius: 1rem;

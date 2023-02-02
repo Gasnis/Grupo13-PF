@@ -49,7 +49,6 @@ export default function reducer(state = initialState, action) {
             }
 
         case SEARCH_USER:
-            console.log(state.users)
             return {
                 ...state,
                 users:action.payload,

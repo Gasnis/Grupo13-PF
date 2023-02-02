@@ -12,27 +12,21 @@ export default function BarOwnerPanel() {
     const handleCreate = () => {
         history.push("/newplace")
     }
-    const handleVolver = () => {
-        history.push("/profile")
-    }
 
     return (
         <>
             <Navbar />
-            <button onClick={handleVolver}>Volver al perfil</button>
+            {/* <button onClick={handleVolver}>Volver al perfil</button> */}
             <div className={style.mainContainer}>
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h1>Locales</h1>
                     {profile.locals?.length
                         ?
-                        <div className={style.localInfo}>
-                            <LocalsInfo profileId={profile.id} locals={profile.locals} />
-                        </div>
+                        <LocalsInfo profileId={profile.id} locals={profile.locals} />
                         :
                         <div>
                             <h3>Actualmente no tienes ningún local</h3>
                             <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
-                            <hr />
                         </div>}
                 </div>
 
