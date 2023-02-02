@@ -56,7 +56,6 @@ export default function LocalsInfo(props) {
 
                 <div className={checked ? styles.infoContainer : styles.infoContainerDark}>
                     {/* <h3>Tienes {locals.length} locales!</h3> */}
-
                     <div className={styles.CardContainer}>
                         <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                         <div className={styles.ContainCard}>
@@ -64,7 +63,7 @@ export default function LocalsInfo(props) {
                                 <div key={local.id} className={checked ? styles.Card : styles.CardDark}>
                                     <h3>{local.name}</h3>
                                     <img className={styles.CardImage} src={local.image} alt="" />
-                                    <h4>{local.category}</h4>
+                                    {/* <h4>{local.category}</h4> */}
                                     <button name={local.id} onClick={handleDetails} className={checked ? styles.verDetalles : styles.verDetallesDark}>Ver detalles</button>
                                 </div>
                             ))}
@@ -84,9 +83,7 @@ export default function LocalsInfo(props) {
                             </div>
                         </div>
                         :
-                        <div>
-                            <EditLocal userId={props.profileId} localToEdit={locals.filter(local => local.id === localToEdit)[0]} setEditing={setEditing} />
-                        </div>
+                        <EditLocal userId={props.profileId} localToEdit={locals.filter(local => local.id === localToEdit)[0]} setEditing={setEditing} />
                 )
             }
         </div>

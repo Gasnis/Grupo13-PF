@@ -159,12 +159,12 @@ export default function EditLocal (props) {
     }
 
     return (
-        <div>
+        // <div>
             <div className={styles.container}>
                 <div className={checked ? styles.formContainer : styles.formContainerDark}>
                     <form onSubmit={handleSubmit}>
-                        <div >
-                            <label style={errors.name ? {color: "red"} : null}>Nombre del local: </label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.name ? {color: "red"} : null} className={styles.label}>Nombre del local: </label>
                             <input
                                 type='text'
                                 placeholder='Nombre del local'
@@ -175,8 +175,8 @@ export default function EditLocal (props) {
                             />
                         </div>
 
-                        <div >
-                            <label style={errors.image ? {color: "red"} : null}>URL de la imagen: </label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.image ? {color: "red"} : null} className={styles.label}>URL de la imagen: </label>
                             <input
                                 type='url'
                                 placeholder='Imagen/logo'
@@ -187,8 +187,8 @@ export default function EditLocal (props) {
                             />
                         </div>
 
-                        <div >
-                            <label style={errors.location ? {color: "red"} : null}>Dirección</label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.location ? {color: "red"} : null} className={styles.label}>Dirección</label>
                             <input
                                 type='text'
                                 placeholder='Direccion'
@@ -199,8 +199,8 @@ export default function EditLocal (props) {
                             />
                         </div>
 
-                        <div >
-                            <label>Menú</label>
+                        <div className={styles.alinearIzq}>
+                            <label className={styles.label}>Menú</label>
                             <input
                                 type='text'
                                 placeholder='Menú'
@@ -211,8 +211,8 @@ export default function EditLocal (props) {
                             />
                         </div>
 
-                        <div >
-                            <label style={errors.phone ? {color: "red"} : null}>Número de teléfono</label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.phone ? {color: "red"} : null} className={styles.label}>Número de teléfono</label>
                             <input
                                 type='text'
                                 placeholder='Numero de telefono'
@@ -223,8 +223,8 @@ export default function EditLocal (props) {
                             />
                         </div>
 
-                        <div >
-                            <label style={errors.capacity ? {color: "red"} : null}>Capacidad</label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.capacity ? {color: "red"} : null} className={styles.label}>Capacidad</label>
                             <input
                                 type='number'
                                 placeholder='Capacidad'
@@ -300,8 +300,8 @@ export default function EditLocal (props) {
                             </select>
                         </div>
 
-                        <div >
-                            <label style={errors.bookPrice ? {color: "red"} : null}>Precio de la reserva</label>
+                        <div className={styles.alinearIzq}>
+                            <label style={errors.bookPrice ? {color: "red"} : null} className={styles.label}>Precio de la reserva</label>
                             <input
                                 type='number'
                                 placeholder='Precio de la reserva'
@@ -353,6 +353,6 @@ export default function EditLocal (props) {
 
             </div>
 
-        </div>
+        // </div>
     )
 }
