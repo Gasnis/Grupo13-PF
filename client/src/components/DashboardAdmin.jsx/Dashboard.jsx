@@ -79,16 +79,23 @@ const Dashboard = () => {
     await dispatch(searchUser(e.target.value))
   }
 
-  const handleBanUser = async (e) => {
-    const user = allUsers?.find(user => user.id === e.target.value)
-    await dispatch(updateUser({ ...user, ban: true, userId: user.id }))
-    await dispatch((getUser()))
-  }
+  
+  const handleBan = async (e) => {
+    allPlaces?.filter(locales => locales.userId === e.target.value).forEach(async local => {
+      await dispatch(deletePlace(local.id))
+    });
+    
+    const userban = allUsers?.find(user => user.id === e.target.value)
+    await dispatch(updateUser({ ...userban.id, ban: true , userId:e.target.value }))
 
+    await dispatch(getPlaces())
+    await dispatch(getUser())
+  }
+  
   const handlePardonUser = async (e) => {
     swal({
       title: "Estas seguro?",
-      text: "Una vez perdonado este local va a pasar al home!",
+      text: "Una vez perdonado este usuario puede volver a crear bares!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -98,32 +105,24 @@ const Dashboard = () => {
           swal("PERDONADO!Este bar volvio a formar parte de wwwhere!", {
             icon: "success",
           });
-          const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
-          await dispatch(updatePlace({ ...local, status: 'aprobado' }))
+          const user = allUsers?.find(u => u.id === e.target.value)
+          await dispatch(updatePlace({ ...user, ban: false , userId: e.target.value}))
           await dispatch(getPlaces())
         }
       });
   }
-
-  const handleSolicitud = async (e) => {
-    const local = allPlaces?.find(local => local.id === e.target.value)
-    await dispatch(updatePlace({ ...local, status: 'solicitud' }))
-    dispatch(getPlaces())
-
+  
+  const handleDisbled = async(e) =>{
+      const local = allPlaces?.find(p => p.id === e.target.value)
+      await dispatch(updatePlace({ ...local, available: false }))
+      await dispatch(getPlaces())
   }
 
-
-  const handleBanPlace = async (e) => {
-    const local = allPlaces?.find(local => local.id === e.target.value)
-    await dispatch(updatePlace({ ...local, status: "baneado" }))
-    dispatch(getPlaces())
-  }
-
-  const handlePardonPlace = async (e) => {
-    const local = allPlaces?.find(local => local.id === e.target.value)
-    await dispatch(updatePlace({ ...local, status: "solicitud" }))
-    dispatch(getPlaces())
-  }
+  const handleEnabled = async(e) =>{
+    const local = allPlaces?.find(p => p.id === e.target.value)
+    await dispatch(updatePlace({ ...local, available: true , status : "aprobado"}))
+    await dispatch(getPlaces())
+}
 
 
   return (
@@ -133,7 +132,7 @@ const Dashboard = () => {
         <div className={style.titulos}>
           <button className={style.botones} value="Solicitudes" onClick={handleState}>Solicitudes</button>
           <button className={style.botones} value="Locales" onClick={handleState}>Locales</button>
-          <button className={style.botones} value="LocalesBaneados" onClick={handleState}>Locales Baneados</button>
+          <button className={style.botones} value="LocalesDisabled" onClick={handleState}>Locales Deshabilitados</button>
           <button className={style.botones} value="Usuarios" onClick={handleState}>Usuarios</button>
           <button className={style.botones} value="UsuariosBaneados" onClick={handleState}>Usuarios Baneados</button>
         </div>
@@ -147,7 +146,7 @@ const Dashboard = () => {
 
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes" ? <div>
-        {allPlaces?.filter(p => p.status === "solicitud")?.map((p) => {
+        {allPlaces?.filter(p => p.status === "solicitud" && p.available)?.map((p) => {
           return <div className={darkmode ? style.card : style.carddark} key={p.id}>
             <div className={style.cosito}>
               <img src={p.image} alt="" height="30px" width="30px" />
@@ -165,7 +164,7 @@ const Dashboard = () => {
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
               <button value={p.id} onClick={handleApprove}>Aceptar</button>
               <button value={p.id} onClick={handleDenegate} >X</button>
-              <button value={p.id} onClick={handleBanPlace}  >Banear</button>
+              <button value={p.userId} onClick={handleBan}>Banear</button>
             </div>
 
           </div>
@@ -175,7 +174,7 @@ const Dashboard = () => {
 
       {/* ------------------------------locales---------------------------------------------------------------- */}
       {statusDashboard === "Locales" ? <div>
-        {allPlaces?.filter(p => p.status === "aprobado")?.map((p) => {
+        {allPlaces?.filter(p => p.status === "aprobado" && p.available)?.map((p) => {
           return <div className={style.card} >
             <div className={style.cosito}>
               <img src={p.image} alt="" height="30px" width="30px" />
@@ -191,9 +190,9 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-              <button value={p.id} onClick={handleSolicitud}>Solicitud</button>
-              <button value={p.id} onClick={handleDenegate} >X</button>
-              <button value={p.id} onClick={handleBanPlace} >Banear</button>
+              <button value={p.id} onClick={handleDisbled}>Desahabilitar</button>
+              <button value={p.id} onClick={handleDenegate}>X</button>
+              <button value={p.id} onClick={handleBan}>Banear</button>
             </div>
           </div>
         })}
@@ -201,9 +200,9 @@ const Dashboard = () => {
 
 
       {/* ------------------------------Locales baneados---------------------------------------------------------------- */}
-      {statusDashboard === "LocalesBaneados" ? <div>
+      {statusDashboard === "LocalesDisabled" ? <div>
 
-        {allPlaces?.filter(p => p.status === "baneado")?.map((p) => {
+        {allPlaces?.filter(p => p.available === false)?.map((p) => {
           return <div className={style.card} >
             <div className={style.cosito}>
               <img src={p.image} alt="" height="30px" width="30px" />
@@ -219,7 +218,7 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
               {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-              <button value={p.id} onClick={handlePardonPlace} >Desbanear</button>
+              <button value={p.id} onClick={handleEnabled}>Habilitar</button>
             </div>
           </div>
         })}
@@ -242,7 +241,7 @@ const Dashboard = () => {
               {u.id}
             </div>
             <div className={style.cosito}>
-              <button value={u.id} onClick={handleBanUser} >Banear</button>
+              <button value={u.id} onClick={handleBan} >Banear</button>
             </div>
 
 
