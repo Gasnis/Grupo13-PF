@@ -7,6 +7,7 @@ import { useState } from "react";
 const validate = (local) => {
     let errors = {};
     if (!local.name.length) errors.name = "Debes escribir un nombre.";
+    if (!local.city.length) errors.city = "Debes escribir una ciudad.";
     if (!local.location.length) errors.location = "Debes escribir una dirección.";
     if (local.phone < 0 || !local.phone ) errors.phone = "Debes escribir un número de teléfono.";
     if (local.bookPrice < 0 || !local.bookPrice ) errors.bookPrice = "Escribe el valor de la reserva en tu local.";
@@ -33,6 +34,7 @@ export default function EditLocal (props) {
         phone:"",
         capacity:"",
         bookPrice:"",
+        city: "",
     });
     const [checkboxState, setCheckboxState] = useState({
         lunes: localToEdit.schedule?.includes("lunes"),
@@ -43,7 +45,8 @@ export default function EditLocal (props) {
         sabado:localToEdit.schedule?.includes("sabado"),
         domingo:localToEdit.schedule?.includes("domingo"),
         event: localToEdit.event,
-        petFriendly: localToEdit.petFriendly
+        petFriendly: localToEdit.petFriendly,
+        available: localToEdit.available
     })
     const [scheduleArray, setScheduleArray] = useState({
             days: [...local.schedule.slice(0,local.schedule.length-2)],
@@ -52,7 +55,7 @@ export default function EditLocal (props) {
         }
     )
 
-    const disabled = errors.name || errors.phone || errors.capacity || errors.image || errors.bookPrice || errors.location || !scheduleArray.days.length
+    const disabled = errors.name || errors.phone || errors.capacity || errors.image || errors.bookPrice || errors.location || !scheduleArray.days.length || errors.city
     
     const weekDays = ["lunes","martes","miercoles","jueves","viernes","sabado","domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
@@ -199,6 +202,18 @@ export default function EditLocal (props) {
                             />
                         </div>
 
+                        <div >
+                            <label style={errors.city ? {color: "red"} : null}>Ciudad</label>
+                            <input
+                                type='text'
+                                placeholder='Ciudad'
+                                value={local.city}
+                                name="city"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
+                        </div>
+
                         <div className={styles.alinearIzq}>
                             <label className={styles.label}>Menú</label>
                             <input
@@ -312,6 +327,18 @@ export default function EditLocal (props) {
                             />
                         </div>
 
+                        <div >
+                            <label style={errors.bookPrice ? {color: "red"} : null}>Promo</label>
+                            <input
+                                type='text'
+                                placeholder='Promo'
+                                value={local.promo}
+                                name="promo"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
+                        </div>
+
                         <div className={styles.petFriendlyEventos}>
                             <div >
                                 <label>
@@ -333,6 +360,18 @@ export default function EditLocal (props) {
                                         type='checkbox'
                                         value={local.petFriendly}
                                         name="petFriendly"
+                                        onChange={handleCheckbox}
+                                    />
+                                </label>
+                            </div>
+
+                            <div >
+                                <label>Local disponible
+                                    <input
+                                        checked={checkboxState.available}
+                                        type='checkbox'
+                                        value={local.available}
+                                        name="available"
                                         onChange={handleCheckbox}
                                     />
                                 </label>

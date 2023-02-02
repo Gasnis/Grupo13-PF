@@ -19,12 +19,7 @@ const generateLink = async (req, res) => {
         currency_id: "ARS", // opesos arg
         unit_price: priceTotal, //precio de venta * quantity
       },
-      {
-        title: "Premium Local",
-        quantity: personQuantity,
-        currency_id: "ARS",
-        unit_price: priceTotal,
-      },
+      
     ],
     back_urls: {
       success: "http://localhost:3000/book",
