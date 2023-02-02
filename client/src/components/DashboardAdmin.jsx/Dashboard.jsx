@@ -7,6 +7,7 @@ import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 // import { approveLocal } from '../../redux/actions';
 import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser,updateUser} from '../../redux/actions';
+import Navbar from '../Navbar/Navbar';
 
 
 const Dashboard = () => {
@@ -23,8 +24,9 @@ const Dashboard = () => {
 
   const allPlaces = useSelector((state)=> state.places)
   const allUsers = useSelector((state)=> state.users)
+  const darkmode = useSelector((state)=> state.darkmode)
   
-  const [statusDashboard, setStatusDashboard] = useState("Solicitudes")
+  const [statusDashboard, setStatusDashboard] = useState("Welcome")
 
   const handleState= (e) => {
     setStatusDashboard(e.target.value)
@@ -82,6 +84,7 @@ const handlePardonPlace = async (e) => {
 
   return (
     <div>
+      <Navbar/>
     <div className={style.navbar}>
         <div className={style.titulos}>
             <button className={style.botones} value="Solicitudes" onClick={handleState}>Solicitudes</button>
@@ -100,7 +103,7 @@ const handlePardonPlace = async (e) => {
       
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes"?<div>
-      {allPlaces?.filter(p=>p.status === "solicitud")?.map((p) => {return <div className={style.card} key={p.id}>
+      {allPlaces?.filter(p=>p.status === "solicitud")?.map((p) => {return <div className={darkmode?style.card:style.carddark} key={p.id}>
             <div className={style.cosito}>            
                 <img src={p.image} alt="" height="30px" width="30px"/>     
                    {p.name}
@@ -204,8 +207,13 @@ const handlePardonPlace = async (e) => {
 
       { allUsers?.filter (u => u.ban === true && u.name!== "admin")?.map((u) => {return <div className={style.card} >{u.name}<button value={u.id} onClick={handlePardonUser} >Pardon</button><hr/></div> })}
       </div>:null}
+      {/* ----------------------------------Welcome------------------------------------------------------------------- */}
+      {statusDashboard === "Welcome"?<div><h1>Welcome admin</h1></div>:null
+
+      }
     </div>
   )
+  
 }
 
 export default Dashboard

@@ -141,7 +141,6 @@ export default function Navbar(props) {
                                                 <option value="bar">Bares</option>
                                             </select>
                                         </div>
-
                                     }
                                 </div>
                                 <div>
@@ -162,6 +161,7 @@ export default function Navbar(props) {
                         <img className={style.Logo} src={wwwhere} alt="logo" />
                     </Link>
                     <div>
+
                         <label className={style.switch}>
 
                             <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />
@@ -190,14 +190,21 @@ export default function Navbar(props) {
                                     open === "login" ? (
                                     <div className={style.dropdown}>
                                         <div>
+                                            {profile.name === "admin" ? <div> <Link className={style.titulos} to="/admin">Dashboard Admin</Link></div> : null}
+                                        </div>
+                                        
+                                        <div>
                                             <Link className={style.titulos} to={`/profile`}>Mi Perfil</Link>
                                         </div>
+
                                         <div>
                                             <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
                                         </div>
+
                                         <div>
                                             <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
                                         </div>
+
                                         <div>
                                             <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
                                         </div>
@@ -222,28 +229,6 @@ export default function Navbar(props) {
                 </div>
             }
 
-
-
-
-
-            {/* {isHome ?
-                <div>
-                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
-                </div>
-            : null} */}
-            {/* <div>
-                {isHome ?
-                    <div>
-                        <h5 className={style.random}>Random?</h5>
-                        <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
-                            <img className={style.Img} src={roulette} alt="" />
-
-                        </Link>
-
-
-
-                    </div>
-                    : null} */}
         </>
     )
 }
