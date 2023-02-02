@@ -23,6 +23,7 @@ export default function Detail() {
 
     const placeDetail = useSelector((state) => state.placeDetail);
 
+
     if (!placeDetail.id) {
         return (
             <div>
@@ -112,9 +113,7 @@ export default function Detail() {
                         >
                             <img className={style.location2} src={location2} alt="" />
                         </a>
-                        {placeDetail.ageRange ? (
-                            <h1 className={style.edad}>{placeDetail.ageRange.join("-")}</h1>
-                        ) : null}
+                        <h1 className={style.edad}>{placeDetail.ageRange}</h1>
                         <div>
                             <img className={style.footprint} src={footprint} alt="" />
                             {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}

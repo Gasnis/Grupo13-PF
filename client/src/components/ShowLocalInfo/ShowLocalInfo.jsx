@@ -33,7 +33,7 @@ export default function ShowLocalInfo (props) {
             </>
             : null}
             <h3 className={styles.Data}>Capacidad: {local.capacity}</h3>
-            <h3 className={styles.Data}>Rango de edad: {local.ageRange?.join("-")}</h3>
+            <h3 className={styles.Data}>Rango de edad: {local.ageRange}</h3>
             {/* <h3 className={styles.Data}>Menú: {local.menu}</h3> */}
             <h3 className={styles.Data}>Estado: {local.available ? "Abierto" : "Cerrado"}</h3>
             <h3 className={styles.Data}>{local.event ? "Evento disponible" : "Evento no disponible"}</h3>
