@@ -14,6 +14,7 @@ import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
 import about from "../../utils/about.png"
 import wwwhere from "../../utils/wwwhere.png"
+import swal from "sweetalert";
 
 
 export default function Navbar(props) {
@@ -52,12 +53,26 @@ export default function Navbar(props) {
         }
     };
     const handleLogOut = () => {
-        if (window.confirm("Desea cerrar sesión?")) {
-            window.alert("Sesión finalizada");
-            dispatch(logout());
-        }
+        // if (window.confirm("Desea cerrar sesión?")) {
+        //     window.alert("Sesión finalizada");
+        //     dispatch(logout());
+        // }
 
+        swal({
+            title: "Estas seguro que deseas cerrar sesion?",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(async (willLogout) => {
+                if (willLogout) {
+                    swal("Sesion finalizada!", {
+                        icon: "success",
+                    });
+                    dispatch(logout());
+                }
+            });
     }
+
     const handleChangeSwitch = () => {
         dispatch(setChecked(darkmode));
     };
