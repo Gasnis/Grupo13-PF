@@ -411,7 +411,7 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "baneado",
+		"status": "solicitud",
 		"city": "anyCity"
 	},
 	{
@@ -431,7 +431,7 @@ const places =[
 		"available": true,
 		"rating": 3,
 		"schedule":["sabado","domingo","17:00","00:00"],
-		"status": "baneado",
+		"status": "solicitud",
 		"city": "anyCity"
 	}
 
