@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
 // import { approveLocal } from '../../redux/actions';
-import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser} from '../../redux/actions';
+import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser,updateUser} from '../../redux/actions';
 
 
 const Dashboard = () => {
@@ -39,8 +39,37 @@ const Dashboard = () => {
     await dispatch(searchUser(e.target.value))
 }
 
+const handleBanUser = async (e) => {
+  const user = allUsers?.find(user => user.id === e.target.value)
+  await dispatch(updateUser({...user, ban: true, userId:user.id}))
+  await dispatch((getUser()))
+}
+
+const handlePardonUser = async (e) => {
+  const user = allUsers?.find(user => user.id === e.target.value)
+  await dispatch(updateUser({...user, ban: false, userId:user.id}))
+  await dispatch(dispatch(getUser()))
+}
+
+const handleSolicitud = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: 'solicitud'}))
+  dispatch(getPlaces())
+
+}
 
 
+const handleBanPlace = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: "baneado"}))
+  dispatch(getPlaces())
+}
+
+const handlePardonPlace = async (e) => {
+  const local = allPlaces?.find(local => local.id === e.target.value)
+  await dispatch(updatePlace({...local, status: "solicitud"}))
+  dispatch(getPlaces())
+}
 
 
   return (
@@ -78,9 +107,9 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
                 {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleApprove}>Aceptar</button>
                 <button value={p.id} onClick={handleDenegate} >X</button>
-                <button>B</button>
+                <button value={p.id} onClick={handleBanPlace}  >Banear</button>
             </div>
         
         </div> 
@@ -105,9 +134,9 @@ const Dashboard = () => {
 
             <div className={style.cosito}>
                 {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                <button value={p.id} onClick={handleApprove}>accept</button>
+                <button value={p.id} onClick={handleSolicitud}>Solicitud</button>
                 <button value={p.id} onClick={handleDenegate} >X</button>
-                <button>B</button>
+                <button value={p.id} onClick={handleBanPlace} >Banear</button>
             </div>
         </div> })}
       </div>:null}
@@ -131,9 +160,9 @@ const Dashboard = () => {
 
                 <div className={style.cosito}>
                     {/* <img src={aproved} height="40px" onClick={handleApprove}/> */}
-                    <button value={p.id} onClick={handleApprove}>accept</button>
+                    <button value={p.id} onClick={handleApprove}>Aceptar</button>
                     <button value={p.id} onClick={handleDenegate} >X</button>
-                    <button>B</button>
+                    <button value={p.id} onClick={handlePardonPlace} >perdonar</button>
                 </div>
             </div> })}
       </div>:null}
@@ -154,7 +183,7 @@ const Dashboard = () => {
           {u.id}
         </div>
         <div className={style.cosito}>
-          <button>BANEAR</button>
+          <button value={u.id} onClick={handleBanUser} >Banear</button>
         </div>
         
       
@@ -165,7 +194,7 @@ const Dashboard = () => {
       {/* ------------------------------usuariosBaneados---------------------------------------------------------------- */}
       {statusDashboard === "UsuariosBaneados"?<div>
 
-      { allUsers?.filter (u => u.ban === true)?.map((u) => {return <div className={style.card} >{u.name}<button>DESBANEAR</button><hr/></div> })}
+      { allUsers?.filter (u => u.ban === true)?.map((u) => {return <div className={style.card} >{u.name}<button value={u.id} onClick={handlePardonUser} >Pardon</button><hr/></div> })}
       </div>:null}
     </div>
   )

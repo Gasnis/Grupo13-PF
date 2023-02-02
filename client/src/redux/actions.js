@@ -107,17 +107,11 @@ export const getUserByid = (id) => {
     }
 }
 
-export const updateUser = (user) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.put(`/user`, user);
-            return dispatch ({
-                type: GET_USER_BY_ID,
-                payload: data
-            });
-        } catch (error) {
-            return error
-        }
+export const updateUser = (update) => {
+    return async () => {
+            const { data } = await axios.put(`/user`, update);
+            return data;
+        
     }
 }
 
