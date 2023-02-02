@@ -52,11 +52,9 @@ router.get("/:id", async (req, res) => {
     try {
     const {id} = req.params;
       if (id) {
-        console.log("entré al if");
         deleteLocal(id)
         res.status(200).send(`${id} was deleted succesfully`);
       } else {
-        console.log(id+"   else");
         res.status(404).send("ID not found");
       }
     } catch (error) {

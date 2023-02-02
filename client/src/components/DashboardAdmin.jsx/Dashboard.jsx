@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from "./Dashboard.module.css"
+import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser } from '../../redux/actions';
 import { useEffect } from 'react';
@@ -9,10 +10,17 @@ import { updatePlace, getPlaces , deletePlace, searchPlace, searchUser,updateUse
 
 
 const Dashboard = () => {
-  
+  const profile  = useSelector(state => state.profile)
+  const history = useHistory()
   const dispatch = useDispatch()
   useEffect(()=>{dispatch(getUser())
   dispatch(getPlaces())},[])
+  useEffect(() => {
+    if (profile.id!=="admin@admin.admin") {
+        history.push("/login")
+    }
+})
+
   const allPlaces = useSelector((state)=> state.places)
   const allUsers = useSelector((state)=> state.users)
   
