@@ -26,10 +26,10 @@
     cursor: pointer;
   }
 
-  .placedisbled {
+  .placedisabled {
     height: 46vh;
     width: 25rem;
-    background-color: #00000094;
+    background-color: #000000;
     background-size: contain;
     border-radius: 11px;
     color:black;
