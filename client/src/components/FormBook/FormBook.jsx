@@ -7,6 +7,19 @@ import styles from "../FormsStyles/forms.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 
+function getRestriction(ageRange){
+  switch (ageRange){
+    case "+18":
+      return 18
+    case "+21":
+      return 21
+    case "Sin restricciones":
+      return 0
+    default:
+      break
+  }
+}
+
 function getNum(date, string) {
   switch (string) {
     case "Month":
@@ -41,7 +54,21 @@ function getNextWeek(date){
   return maxDateToBook
 }
 
-function validate(input) {
+
+function calculateAge(birthday) {
+  var today = new Date();
+  var birthDate = new Date(birthday);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+  }
+  return age;
+}
+
+
+function validate(input,local) {
+  let bookingsByDate = local.books.filter(book=>book.reservedDate===input.reservedDate)
   let errors = {};
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
   if (!input.personQuantity?.length)
@@ -52,6 +79,8 @@ function validate(input) {
     errors.personQuantity = "Debes ingresar un número mayor a 1";
   if (!input.userId)
     errors.userId = "Debes loguearte para realizar una reserva";
+  if (!(local.capacity-bookingsByDate.length))
+    errors.availability = "El local no tiene disponibilidad para esta fecha"
   return errors;
 }
 
@@ -66,16 +95,12 @@ export default function SignUp(props) {
   const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
   const local = useSelector((state) => state.placeDetail);
 
-
-  console.log('local',local)
- 
-
   const dispatch = useDispatch();
   const history = useHistory();
   const { profile, book } = useSelector((state) => state);
-
+  
   const date = new Date();
-
+  
   // const [reserved, setReserved] = useState(false) //se cambia cuando se completa la reserva para renderizar un mensaje al usuario antes de ir al home
   const [booking, setBooking] = useState({
     name: book.name,
@@ -85,16 +110,22 @@ export default function SignUp(props) {
     userId: profile.id,
     priceTotal: book.priceTotal,
   });
-
+  
   const [errors, setErrors] = useState({
     name: "",
     personQuantity: "",
+    age: ""
   });
+  
+    const age = calculateAge(profile.birthday)
+    const ageRestriction = getRestriction(local.ageRange)
+
+
 
   //valor que se pasa a la propiedad "disabled" del button
   //solo es "false" cuando no existen errores ni campos vacíos (date)
   const disabled =
-    errors.name || errors.personQuantity || !booking.reservedDate || !profile;
+    errors.name || errors.personQuantity || !booking.reservedDate || !profile || errors.age || ageRestriction>age;
 
   useEffect(() => {
     if (!profile.id) {
@@ -112,7 +143,7 @@ export default function SignUp(props) {
       validate({
         ...booking,
         [event.target.name]: event.target.value,
-      })
+      },local)
     );
     setBooking({
       ...booking,
@@ -272,7 +303,8 @@ export default function SignUp(props) {
                             {localId ? <button className={styles.volverButton} onClick={goToDetails}>Volver</button> : null}
                         </div>
                     </form>
-                    {errors.userId ? <span>{errors.userId}</span> : null}
+                    {ageRestriction>age ? <span>No tienes la edad mínima para reservar en este local</span> : null}
+                    {errors.availability ? <span>{errors.availability}</span> : null}
 
           {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
         </div>
@@ -280,3 +312,5 @@ export default function SignUp(props) {
     </>
   );
 }
+
+

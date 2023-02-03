@@ -45,6 +45,7 @@ export default function Login() {
       } else {
         swal("El usuario o contraseña es incorrecto", {
           icon: "error",
+          className: styles.swal,
         });
       }
     } else {

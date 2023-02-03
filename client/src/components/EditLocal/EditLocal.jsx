@@ -66,7 +66,7 @@ export default function EditLocal(props) {
     const indexApertura = horaApertura.indexOf(scheduleArray.open);
     const indexCierre = horaCierre.indexOf(scheduleArray.close);
     const indexCategory = categories.indexOf(local.category);
-    const indexAgeRange = ageRanges.indexOf(local.ageRange[0]);
+    const indexAgeRange = ageRanges.indexOf(local.ageRange);
     setTimeout(() => {
         let apertura = document.querySelector("#apertura");
         let cierre = document.querySelector("#cierre");
@@ -118,7 +118,7 @@ export default function EditLocal(props) {
     const handleAge = (e) => {
         setLocal({
             ...local,
-            [e.target.name]: [e.target.value]
+            [e.target.name]:e.target.value
         })
     }
 

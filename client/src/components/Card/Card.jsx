@@ -22,7 +22,7 @@ export default function Place({ place }) {
                     width="20px"
                   />
                 </h4>
-                <h4>Edad {place.ageRange.map((age) => age).join("-")}</h4>
+                <h4>Edad {place.ageRange}</h4>
               </div>
             </div>
           </Link>
@@ -45,7 +45,7 @@ export default function Place({ place }) {
                     width="20px"
                   />
                 </h4>
-                <h4>Edad {place.ageRange.map((age) => age).join("-")}</h4>
+                <h4>Edad {place.ageRange}</h4>
               </div>
             </div>
           </div>

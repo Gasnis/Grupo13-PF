@@ -54,7 +54,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     ageRange: {
-        type: DataTypes.ARRAY(DataTypes.STRING), // Para colocar "18+" "18  - 40" "18++"
+        type: DataTypes.STRING, // Para colocar "18+" "18  - 40" "18++"
       allowNull: true,
     },
     phone: {
@@ -76,7 +76,6 @@ module.exports = (sequelize) => {
     status: {
       type: DataTypes.ENUM("solicitud", "aprobado"),
       defaultValue: "solicitud",
-
     },
     rating: {
         type: DataTypes.INTEGER, //  || integer

@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
 import { useState } from "react";
 import MyBookInfo from "../MyBookInfo/myBookInfo";
-import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
+// import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 
 
 export default function Detail() {
@@ -16,13 +16,14 @@ export default function Detail() {
     const history = useHistory();
     const { profile } = useSelector(state => state)
     const checked = useSelector((state) => state.darkmode);
-    console.log("🚀 ~ file: Profile.jsx:18 ~ Detail ~ profile", profile)
+
     const [open, setOpen] = useState({
         userInfo: false,
         myBook: false,
         myLocal: false,
         myLocalBook: false
     });
+
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [dispatch, profile.id])
@@ -44,10 +45,10 @@ export default function Detail() {
         })
     }
 
-    const handleCreate = (e) => {
-        e.preventDefault();
-        history.push("/newplace")
-    }
+    // const handleCreate = (e) => {
+    //     e.preventDefault();
+    //     history.push("/newplace")
+    // }
 
     const handleMyLocals = (e) => {
         history.push("/bar-owner")
