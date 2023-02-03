@@ -65,3 +65,48 @@
     text-align: start;
     color: black;
 }
+
+.botonaccept{
+    background-color: green;
+    border-style: solid;
+    border-radius: 14px;
+    color: white;
+}
+.botonaccept:hover{
+    background-color: rgb(0, 210, 0);
+    color: rgb(6, 6, 6);
+}
+
+.botondenegate{
+    background-color: rgb(163, 0, 0);
+    border-style: solid;
+    border-radius: 100px;
+    color: white;
+}
+
+.botondenegate:hover{
+    background-color: rgb(218, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+.botondisabled{
+    background-color: rgb(230, 150, 0);
+    border-style: solid;
+    border-radius: 100px;
+    color: white;
+}
+.botondisabled:hover{
+    background-color: rgb(254, 180, 42);
+    color: rgb(0, 0, 0);
+}
+
+.botonhabilitar{
+    background-color: rgb(0, 0, 209);
+    color: white;
+    border-style: solid;
+    border-radius: 100px;
+}
+.botonhabilitar:hover{
+    background-color: #0022ff;
+    color: rgb(0, 0, 0);
+}
