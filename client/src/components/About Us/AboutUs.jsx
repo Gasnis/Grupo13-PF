@@ -66,7 +66,7 @@ export default function AboutUs() {
         <div>
             <NavBar />
             <h1>Sobre el equipo</h1>
-            <p>Somos un grupo de alumnos del bootcamp soyHenry, presentando como proyecto final una aplicación web para aquellas personas que buscan conectar con experiencias nocturnas entre amigos.</p>
+            <p>Somos un grupo de alumnos del bootcamp soyHenry, y estamos muy emocionados de presentar nuestro proyecto final: una aplicación web innovadora diseñada para conectar a las personas que buscan vivir experiencias nocturnas inolvidables con sus amigos. Con nuestra plataforma, los usuarios pueden explorar y reservar lugares nocturnos únicos, planificar eventos con sus amigos y hacer que la noche sea más emocionante y memorable. ¡Esperamos que disfruten de nuestra aplicación y vivan noches llenas de diversión!</p>
             <div className={styles.container}>
                 {nosotros.map((dev) =>
                     <div className={styles.each}>

@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
     },
+    hourDate:{
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     personQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -33,7 +37,7 @@ module.exports = (sequelize) => {
     date: {
         type: DataTypes.STRING,
         allowNull: true,
-      },
+    },
 
   },{
     timestamps: false,

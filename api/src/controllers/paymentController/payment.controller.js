@@ -3,13 +3,14 @@ const { Book, User } = require("../../db");
 const createBookingTicket = async (req, res) => {
     
   try {
-    const { priceTotal, personQuantity, date, name, id } = req.body;
+    const { priceTotal, personQuantity, date, name, id, hourDate} = req.body;
     const newBookTicket = await Book.create({
       id: id,
       priceTotal: priceTotal,
       personQuantity: personQuantity,
       date: date,
       name: name,
+      hourDate: hourDate,
       
     });
     
