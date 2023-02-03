@@ -52,7 +52,6 @@ export default function BarOwnerPanel() {
                         </div>}
                 </div>
 
-                {/* ------------------------------Igna--------------------------- */}
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h2>Reservas</h2>
                     <input className={darkmode ? style.date : style.dateDark}
