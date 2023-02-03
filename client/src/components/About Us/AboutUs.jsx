@@ -5,6 +5,7 @@ import Gaston from "../../utils/AboutUs/Gaston.jpg";
 import Sergio from "../../utils/AboutUs/Sergio.jpg";
 import Seba from "../../utils/AboutUs/Seba.jpg";
 import Gio from "../../utils/AboutUs/Gio.jpg";
+import Jose from "../../utils/AboutUs/jose.jpeg";
 import GitHubLogo from "../../utils/AboutUs/GitHubLogo.png";
 import LinkedinLogo from "../../utils/AboutUs/LinkedinLogo.png"
 import styles from "../About Us/AboutUs.module.css";
@@ -37,20 +38,20 @@ export default function AboutUs() {
     },
     {
         name: "Jose Canelo",
-        image: Gaston,
+        image: Jose,
         linkedin: "",
         github: "https://github.com/Josecanelo",
     },
     {
         name: "Thomas Rojas",
         image: Gaston,
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/jose-canelo-suarez-06ba71223/",
         github: "https://github.com/ThomRojas",
     },
     {
         name: "Giovany Vazquez ",
         image: Gio,
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/giovanny-vasquez/",
         github: "https://github.com/gioh2020",
     },
     {
