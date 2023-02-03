@@ -27,7 +27,7 @@ export default function BarOwnerPanel() {
 
     }
 
-    const reservado = books.filter((reserva) => reserva.reservedDate === fecha)
+    const reservado = books?.filter((reserva) => reserva.reservedDate === fecha)
     .map((resfecha) => resfecha.personQuantity)
     .reduce((prev, curr) => prev + curr, 0);
 
@@ -52,7 +52,6 @@ export default function BarOwnerPanel() {
                         </div>}
                 </div>
 
-                {/* ------------------------------Igna--------------------------- */}
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h2>Reservas</h2>
                     <input className={darkmode ? style.date : style.dateDark}
@@ -66,7 +65,7 @@ export default function BarOwnerPanel() {
                     />
                     <div className={style.containerBook}>
                         {
-                            books.some((reserva) => reserva.reservedDate === fecha)
+                            books?.some((reserva) => reserva.reservedDate === fecha)
                                 ?
                                 books?.map((reserva) => {
                                     if (reserva.reservedDate === fecha) {

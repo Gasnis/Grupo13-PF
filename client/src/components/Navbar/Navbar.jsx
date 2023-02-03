@@ -150,7 +150,7 @@ export default function Navbar(props) {
                                 </div>
                                 <br />
                                 <div className={style.about}>
-                                    <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us
+                                    <Link to="/about-us">  <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us</Link>
                                 </div>
                             </div>
                         ) : null

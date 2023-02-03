@@ -11,6 +11,7 @@ import axios from "axios";
 import Dashboard from './components/DashboardAdmin.jsx/Dashboard';
 import BarOwnerPanel from './components/BarOwnerPanel/BarOwnerPanel.jsx';
 import Password from './components/Password/Password';
+import AboutUs from './components/About Us/AboutUs';
 
 // axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
 axios.defaults.baseURL = "http://localhost:3001/"
@@ -29,6 +30,7 @@ function App() {
         <Route path="/admin"> <Dashboard/> </Route>
         <Route path="/bar-owner"> <BarOwnerPanel/> </Route>
         <Route path="/forgot-password"> <Password/> </Route>
+        <Route path="/about-us"> <AboutUs/></Route>
         
       </div>
   );

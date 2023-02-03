@@ -1,7 +1,6 @@
 .fondo {
   margin: auto 0;
   background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
-
 }
 
 .cardsContainer {
@@ -50,9 +49,9 @@
    .botonpaginadodark:hover {
     border-radius: 5px;
     transform: translateY(-10px);
-    box-shadow: 0 7px 0 -2px #f859d8,
-     0 15px 0 -4px #39a2db,
-     0 16px 10px -3px #39a2db;
+    box-shadow: 0 7px 0 -2px #40047C,
+     0 15px 0 -4px #FFB800,
+     0 16px 10px -3px #FFB800;
    }
    
    .botonpaginado:active {

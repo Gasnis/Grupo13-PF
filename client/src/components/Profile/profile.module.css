@@ -1,7 +1,7 @@
 .profileContainer {
   background-image: url(../../utils/Profile2.png);
   background-repeat: no-repeat;
-  height: 80vh;
+  height: 90vh;
   width: 100%;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
@@ -172,13 +172,12 @@
 
 /* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
 
-.mainContainer {
+/* .mainContainer {
   background-color: #2A2A2B;
   height: 100%;
   width: 100%;
   overflow: auto;
-}
-
+} */
 
 .profileContainerDark {
   background-image: url(../../utils/ProfileDark.png);
