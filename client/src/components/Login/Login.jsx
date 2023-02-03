@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/actions";
+import { getUser, logout } from "../../redux/actions";
 import Navbar from "../Navbar/Navbar";
 import styles from "../FormsStyles/forms.module.css";
 import { getUserByid } from "../../redux/actions";
@@ -14,12 +14,14 @@ export default function Login() {
   const dispatch = useDispatch();
   const history = useHistory();
   const checked = useSelector((state) => state.darkmode);
-
+  const currentProfile = useSelector((state) => state.profile);
   const [login, setLogin] = useState({  // 
     id: "",
     password: "",
 
   });
+
+  
 
   function handleChange(event) {
     setLogin({
@@ -35,6 +37,17 @@ export default function Login() {
       (user) => user.id === login.id[0]
     );
     if (currentUser.length) {
+      if (currentUser[0].ban === true) {
+        logout()
+        setLogin({
+          id: "",
+          password: "",
+        });
+        swal("El usuario ha sido BANEADO", {
+          icon: "error",
+          className: styles.swal,
+        });
+      }else{
       if (currentUser[0].password === login.password[0]) {
         dispatch(getUserByid(login.id));
         history.push("/");
@@ -47,6 +60,7 @@ export default function Login() {
           icon: "error",
           className: styles.swal,
         });
+      }
       }
     } else {
       swal("El usuario o contraseña es incorrecto", {
@@ -77,6 +91,7 @@ export default function Login() {
       history.push("/sign-up");
     }
   }
+
 
   return (
     <div>
