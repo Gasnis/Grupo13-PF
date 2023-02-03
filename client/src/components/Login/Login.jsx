@@ -83,14 +83,30 @@ export default function Login() {
     const userLoginId = respuesta.profileObj.email
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
+    console.log(currentUser)
     if (currentUser.length) {
-      dispatch(getUserByid(userLoginId))
-      history.push("/");
-    } else {
-      alert("Debes registrarte primero");
-      history.push("/sign-up");
+      if (currentUser[0].ban===true){
+        logout()
+          setLogin({
+            id: "",
+            password: "",
+          });
+          swal("El usuario ha sido baneado", {
+            icon: "error",
+          });
+        }else{
+          await dispatch(getUserByid(userLoginId))
+          history.push("/");
+        } 
+    }else {
+      swal("Debes registrarte primero", {
+        icon: "error",
+      });
+          history.push("/sign-up");
+        
     }
-  }
+}
+
 
 
   return (
