@@ -14,6 +14,8 @@ export default function LocalsInfo(props) {
     const localsPerPage = 1;
     const localsToShow = locals.slice(localsPerPage * index, (index + 1) * localsPerPage)
 
+    props.set(localsToShow[0].id)
+    
     const handlePage = (e) => {
         e.preventDefault();
         switch (e.target.name) {
