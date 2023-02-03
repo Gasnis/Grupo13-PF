@@ -1,3 +1,7 @@
+.principalDiv{
+  align-items: center;
+}
+
 .fondo {
   margin: auto 0;
   background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
@@ -9,6 +13,13 @@
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   /* margin-left: 55px;
   margin-right: 55px; */
+}
+@media (max-width: 550px){
+  .cardsContainer{
+     display: flex;
+     flex-direction: column;
+     
+  }
 }
 
 
@@ -82,8 +93,9 @@
 
 .infodark{
   background-image: url("../../utils/homedark.png");
-  background-size: cover;
+  background-size: repeat-y;
   background-color: #2A2A2B;
+  height: 100%;
 }
 
 .filtercontainer{
@@ -137,6 +149,14 @@
   border-width: 1px;
   border-color: #797979;
 }
+@media (max-width: 550px){
+  .searchbar{
+     width: 95%;
+     margin: 25px 10px 13px 10px;
+     
+  }
+}
+
 
 .searchbardark {
   color: #f3f3f3;
@@ -151,4 +171,11 @@
   border-style: solid;
   border-width: 1px;
   border-color: #8b8b8b;
+}
+@media (max-width: 550px){
+  .searchbardark{
+     width: 95%;
+     margin: 25px 10px 13px 10px;
+     
+  }
 }
