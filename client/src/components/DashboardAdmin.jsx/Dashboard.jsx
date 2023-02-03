@@ -98,6 +98,7 @@ const Dashboard = () => {
           
           const userban = allUsers?.find(user => user.id === e.target.value)
           await dispatch(updateUser({ ...userban, ban: true , userId:e.target.value }))
+          await dispatch(getPlaces())
           await dispatch(getUser())
         }
       });
