@@ -2,7 +2,10 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    justify-content: center;
+    
 }
+
 
 .infoContainer {
     display: flex;
@@ -13,7 +16,13 @@
     background-color: #fdfbf2c0;
     border-radius: 11px;
 }
-
+@media (max-width: 704px){
+    .infoContainer{
+        width: 100%;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 .CardContainer {
     display: flex;
     flex-direction: row;
@@ -21,6 +30,13 @@
     width: 30vw;
     height: 40vh;
 }
+@media (max-width: 704px){
+    .CardContainer{
+        width: 100%;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 
 .Card {
     width: 100%;
@@ -33,12 +49,25 @@
     border-radius: 11px;
     height: 40vh;
 }
-
+@media (max-width: 704px){
+    .Card{
+        width: 280px;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 .CardImage {
     height: 20vh;
     width: 30vw;
     object-fit: cover;
 }
+@media (max-width: 704px){
+    .CardImage{
+        width: 95%;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 
 .arrows {
     font-size: 30px;
@@ -103,12 +132,16 @@
 
 .buttonsContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     flex-direction: column;
+    margin: 0px;
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-right: 0px;
     gap: 20px;
+    width: 80px;
+    margin-left:120px ;
 }
 
 /* ---------------------------------------------------------------Dark Mode ------------------------------------------------------ */

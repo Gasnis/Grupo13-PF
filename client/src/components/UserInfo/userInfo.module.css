@@ -9,6 +9,12 @@
     font-family: 'Cambay', sans-serif;
     font-size: medium;
 }
+@media (max-width: 704px){
+    .MainContainer{
+        padding: 1em;
+  
+    }
+  }
 
 .DivLabel {
     display: flex;
