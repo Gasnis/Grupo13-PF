@@ -109,6 +109,7 @@ export default function SignUp(props) {
     discountCode: book.discountCode,
     userId: profile.id,
     priceTotal: book.priceTotal,
+    hourDate: book.hourDate,
   });
   
   const [errors, setErrors] = useState({
@@ -119,6 +120,9 @@ export default function SignUp(props) {
   
     const age = calculateAge(profile.birthday)
     const ageRestriction = getRestriction(local.ageRange)
+
+
+    
 
 
 
@@ -164,7 +168,6 @@ export default function SignUp(props) {
           localId,
         })
       );
-      console.log("booking",booking)
       var data = {
         service_id: 'service_z67u7pr',
         template_id: 'template_l49usqb',
@@ -174,12 +177,12 @@ export default function SignUp(props) {
             reservedDate: booking.reservedDate,
             personQuantity: booking.personQuantity,
             localName: local.name,
-            email: booking.userId
+            email: booking.userId,
+            hourDate: booking.hourDate,
 
         }
       };
       console.log('datos para enviar',data)
-    
       await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
       if (newBooking.id) {
@@ -188,6 +191,7 @@ export default function SignUp(props) {
           reservedDate: "",
           personQuantity: "",
           discountCode: "",
+          hourDate: "",
           //userId?
         });
         // setReserved(true);
@@ -200,7 +204,7 @@ export default function SignUp(props) {
         // alert(newBooking.response.data)
       }
     };
-    handleSubmit();
+    handleSubmit() // recurcion jajaja hace muchos llamados hasta que funciona???
   }
 
   if (rejectedPay) {
@@ -285,6 +289,22 @@ export default function SignUp(props) {
                                 name="personQuantity"
                                 onChange={handleChange}
                             />
+                            {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
+                        </div>
+
+                        <div>
+                            <select className={checked ? styles.input : styles.inputDark}
+                                value={booking.hourDate}
+                                name="hourDate"
+                                onChange={handleChange}>
+                                  <option value="18:00">18:00</option>                                    
+                                  <option value="19:00">19:00</option>
+                                  <option value="20:00">20:00</option>
+                                  <option value="21:00">21:00</option>
+                                  <option value="22:00">22:00</option>
+                                  <option value="23:00">23:00</option>
+
+                            </select>
                             {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                         </div>
 

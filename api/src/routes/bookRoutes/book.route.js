@@ -44,9 +44,9 @@ router.get("/:id", async (req, res) => {
 
     router.put("/", async (req, res) => {
       try {
-        const {id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm} = req.body
-        if (id && name && reservedDate && createdAt && updatedAt && personQuantity && codeProm){
-           const updated = await updateBook(id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm)
+        const {id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm, hourDate} = req.body
+        if (id && name && reservedDate && createdAt && updatedAt && personQuantity && codeProm && hourDate) {
+           const updated = await updateBook(id,name,reservedDate,createdAt,updatedAt,personQuantity,codeProm, hourDate)
   
            res.status(200).send(updated);
       } else {

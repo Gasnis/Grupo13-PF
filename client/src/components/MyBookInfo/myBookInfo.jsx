@@ -40,9 +40,8 @@ export default function MyBookInfo(props) {
                     <h3>{places.filter(place => place.id === books[index].localId)[0].name}</h3>
                     <img src={places.filter(place => place.id === books[index].localId)[0].image} alt="" className={styles.localImage} /><br />
                     <div> {`A nombre de: ${books[index].name}`} </div>
-                        {/* <label>A nombre de: </label><p>{books[index].name}</p> */}
                     <div> {`Fecha de reserva: ${books[index].reservedDate}`}</div>
-                         {/* <label>Fecha de reserva:</label><p>{books[index].reservedDate}</p> */}
+                    <div> {`Hora de reserva: ${books[index].hourDate}`}</div>
                     <label>Reserva para {books[index].personQuantity}</label>
                 </div>
                 <button className={styles.arrows} name="right" onClick={handlePage}>»</button>
