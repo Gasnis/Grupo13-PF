@@ -111,7 +111,7 @@ export default function ProfileInfo(props) {
                     <label className={styles.Label}>Constraseña: </label>
                     {!editing
                         ?
-                        <p className={checked ? styles.Input : styles.InputDark}>{password}</p>
+                        <p className={checked ? styles.Input : styles.InputDark}>*****************</p>
                         :
                         <div className={styles.DivInput}>
                             <input className={checked ? styles.Input : styles.InputDark} onChange={handleChange} value={input.password} name="password" type="text" />

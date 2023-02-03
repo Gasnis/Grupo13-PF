@@ -61,7 +61,7 @@ export default function LocalsInfo(props) {
                     <div className={styles.CardContainer}>
                         <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
                         <div className={styles.ContainCard}>
-                            {localsToShow.map(local => (
+                            {localsToShow?.map(local => (
                                 <div key={local.id} className={checked ? styles.Card : styles.CardDark}>
                                     <h3>{local.name} {local.available ? null : "(desactivado)"}</h3>
                                     <img className={styles.CardImage} src={local.image} alt="" />
@@ -78,14 +78,14 @@ export default function LocalsInfo(props) {
                     !editing
                         ?
                         <div>
-                            <ShowLocalInfo local={locals.filter(local => local.id === localToEdit)[0]} />
+                            <ShowLocalInfo local={locals?.filter(local => local.id === localToEdit)[0]} />
                             <div className={styles.buttonsContainer}>
                                 <button onClick={handleEdit} className={checked ? styles.editarBar : styles.editarBarDark}>Editar</button>
                                 <button name="goBack" onClick={handleDetails} className={styles.volver}>Volver</button>
                             </div>
                         </div>
                         :
-                        <EditLocal userId={props.profileId} localToEdit={locals.filter(local => local.id === localToEdit)[0]} setEditing={setEditing} />
+                        <EditLocal userId={props.profileId} localToEdit={locals?.filter(local => local.id === localToEdit)[0]} setEditing={setEditing} />
                 )
             }
         </div>

@@ -5,17 +5,23 @@
     justify-content: space-around;
     margin: 2em;
 }
+@media (max-width: 704px){
+    .mainContainer{
+        flex-direction: column;
+        margin: 5px;
+    }
+  }
 
 .book{
     display: flex;
     flex-direction: column;
     color: #000000;
-    padding: 0.3em 1.3000000000000007em;
+    /* padding: 0.3em 1.3000000000000007em; */
     margin-top: 12px;
-    margin-inline: 35px;
+    margin-inline: 5px;
     font-size: 18px;
     border-radius: 1em;
-    width: 26em;
+    width: 88%;
     border-style: none;
     background: #FDFBF2;
     border-style: solid;
@@ -23,17 +29,31 @@
     border-color: #797979;
 
 }
+
+@media (max-width: 704px){
+    .book{
+       width: 85%;
+    }
+  }
+
 .datos{
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
+width: 95%;
+margin: 2px;
 }
+@media (max-width: 704px){
+    .datos{
+       flex-direction: column;
+    }
+  }
 
 .containerBook{
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    height: 50vh;
+    /* height: 50vh; */
     align-items: center;
     
 }
@@ -44,11 +64,12 @@ justify-content: space-evenly;
     justify-self: center;
     text-decoration: none;
     height: 5vh;
-    width: 10vw;
+    width: 80%;
     background: #40047C;
     color: white;
     border-radius: 11px;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .reservar:hover {
@@ -65,7 +86,14 @@ justify-content: space-evenly;
     margin: 2em;
     overflow-y: scroll;
 }
-
+@media (max-width: 704px){
+    .localsContainer{
+        width: 95%;
+        height: 60vh;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 .crearButton {
     background-color: #40047C;
     color: #FCF9EB;

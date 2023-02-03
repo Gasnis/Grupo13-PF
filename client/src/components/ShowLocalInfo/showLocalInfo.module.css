@@ -1,10 +1,17 @@
 .localInfoContainer {
     background-color: #FCF9EB;
     border-radius: 11px;
-    width: 80vh;
-    height: 45vh;
+    width: 300px;
+    height: 70vh;
     /* box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%); */
 }
+@media (max-width: 704px){
+    .localInfoContainer{
+        height: 81vh;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 
 .Image {
     width: 100%;
