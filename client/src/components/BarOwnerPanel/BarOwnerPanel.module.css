@@ -90,8 +90,21 @@ margin: 2px;
     .localsContainer{
         width: 95%;
         height: 60vh;
-     
-      /* grid-template-columns: 200px auto; */
+    }
+  }
+  .localsContainerDark {
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    background-color: #2D2D2D;
+    width: 45%;
+    height: 80vh;
+    border-radius: 1rem;
+    margin: 2em;
+    overflow-y: scroll;
+}
+@media (max-width: 704px){
+    .localsContainerDark{
+        width: 95%;
+        height: 60vh;
     }
   }
 .crearButton {
@@ -113,11 +126,3 @@ margin: 2px;
 
 /* ----------------------------------------------Dark Mode ----------------------------------------- */
 
-.localsContainerDark {
-    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
-    background-color: #2D2D2D;
-    width: 45%;
-    height: 60vh;
-    border-radius: 1rem;
-    margin: 2em;
-}

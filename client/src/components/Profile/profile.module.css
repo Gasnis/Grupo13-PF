@@ -50,27 +50,42 @@
       margin-left: 2px;
       margin-bottom: 5px;
       align-items: center;
-     
-      /* grid-template-columns: 200px auto; */
     }
   }
   
   .name{
     font-family: 'Cambay', sans-serif;
     float: left;
-    font-weight: 900;
+    font-weight: 800;
     justify-self: flex-start;
     color: rgb(0, 0, 0);
     flex-wrap: nowrap;
     margin-left: 5px;
+    line-height: 1
   }
   @media (max-width: 704px){
     .name{
       width: 95%;
       justify-self: start;
       text-align: start;
+      margin-left: 10px;  
+    }
+  }
+
+  .nameDark{
+    font-family: 'Cambay', sans-serif;
+    float: left;
+    font-weight: normal;
+    justify-self: flex-start;
+    color: #fdfbf2;
+    flex-wrap: nowrap;
+  }
+  @media (max-width: 704px){
+    .nameDark{
+      width: 95%;
+      justify-self: start;
+      text-align: start;
       margin-left: 10px;
-      
     }
   }
   
@@ -179,8 +194,7 @@
   font-size: 16px;
 }
 @media (max-width: 704px){
-  .buttons{
-    
+  .buttons{   
     margin-top: 10px;
   }
 }
@@ -193,6 +207,31 @@
   padding:5px;
   width: 70%;
   color: black;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+.buttonsDark {
+  background: #575757;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #fdfbf2;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+@media (max-width: 704px){
+  .buttonsDark{   
+    margin-top: 10px;
+  }
+}
+
+.buttonsDark:hover {
+  cursor: pointer;
+  background: #fdfbf2c0;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #575757;
   font-family: 'Cambay', sans-serif;
   font-size: 16px;
 }
@@ -246,14 +285,7 @@
   
 }
 
-.nameDark{
-  font-family: 'Cambay', sans-serif;
-  float: left;
-  font-weight: normal;
-  justify-self: flex-start;
-  color: #fdfbf2;
-  flex-wrap: nowrap;
-}
+
 
 .divProfileDark{
   display: flex;
@@ -288,23 +320,3 @@
   width: 500px;
 }
 
-.buttonsDark {
-  background: #575757;
-  border-radius: 5px;
-  padding:5px;
-  width: 70%;
-  color: #fdfbf2;
-  font-family: 'Cambay', sans-serif;
-  font-size: 16px;
-}
-
-.buttonsDark:hover {
-  cursor: pointer;
-  background: #fdfbf2c0;
-  border-radius: 5px;
-  padding:5px;
-  width: 70%;
-  color: #575757;
-  font-family: 'Cambay', sans-serif;
-  font-size: 16px;
-}

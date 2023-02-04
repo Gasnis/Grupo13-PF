@@ -8,6 +8,14 @@
     margin-right: 25px;
     text-decoration: none;
 }
+@media (max-width: 550px){
+    .places{
+       margin: 15px 12px 0px 12px;
+       height: 350px;
+       
+    }
+  }
+  
 
 .place {
     height: 46vh;
@@ -67,10 +75,35 @@
     text-align: start;
     padding-left: 10px;
     padding-bottom: 10px;
+    height: 50px;
 }
+.text h3{
+    margin-bottom: 18px;
+}
+
+.text h4{
+    margin: 0px;
+}
+
+
+@media (max-width: 550px){
+    .text h3{
+        margin-bottom: 10px;
+    }
+  }
+  
 
 .numbersInfo {
     text-align: end;
     padding-right: 10px;
     padding-bottom: 10px;
 }
+.numbersInfo h4{
+    margin: 0px;
+    margin-top: 18px;
+}
+@media (max-width: 550px){
+    .numbersInfo h4{
+        margin-top: 13px;  
+    }
+  }
