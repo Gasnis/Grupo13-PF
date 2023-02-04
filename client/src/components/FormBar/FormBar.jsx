@@ -5,11 +5,13 @@ import Navbar from '../Navbar/Navbar';
 import { createPlace } from '../../redux/actions';
 import styles from '../FormBar/FormBar.module.css';
 import { validation } from './ValidationFormBar';
+import swal from "sweetalert"
 
 export default function CreateLocal() {
     const dispatch = useDispatch();
     const history = useHistory();
     const profile = useSelector(state => state.profile)
+    const checked = useSelector((state) => state.darkmode);
     const weekDays = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00']
@@ -27,13 +29,15 @@ export default function CreateLocal() {
         menu: "",
         phone: "",
         capacity: "",
+        city: "",
         schedule: [],
-        ageRange: [],
+        ageRange: "",
         category: '',
         event: false,
         petFriendly: false,
         bookPrice: "",
         available: true,
+        status: "solicitud"
     })
 
     const [errors, setErrors] = useState({
@@ -63,7 +67,7 @@ export default function CreateLocal() {
     const handleAge = (event) => {
         setLocal({
             ...local,
-            ageRange: [event.target.value]
+            ageRange: event.target.value
         })
     }
 
@@ -110,26 +114,52 @@ export default function CreateLocal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const newLocal = await dispatch((createPlace({
-            ...local,
-            schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
-        })));
-        if (newLocal.id) {
-            history.push(`/detail/${newLocal.id}`)
-        } else {
-            alert(newLocal.response.data)
-        }
+
+        // const newLocal = await dispatch((createPlace({
+        //     ...local,
+        //     schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+        // })));
+        // if (newLocal.id) {
+        //     history.push(`/detail/${newLocal.id}`)
+        // } else {
+        //     alert(newLocal.response.data)
+        // }
+
+        swal({
+            title: "Crear local?",
+            text: "Se enviara una solicitud de aprobacion de tu local",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(async (willSend) => {
+                if (willSend) {
+                    const newLocal = await dispatch((createPlace({
+                        ...local,
+                        schedule: [...scheduleArray.days, scheduleArray.open, scheduleArray.close]
+                    })));
+                    swal("Solicitud enviada! Te mandaremos un mail cuando tu local sea aprobado!", {
+                        icon: "success",
+                    });
+                    if (newLocal.id) {
+                        history.push(`/detail/${newLocal.id}`)
+                    } else {
+                        swal(newLocal.response.data, {
+                            icon: "error",
+                        });
+                    } 
+                }
+            });
     }
 
 
     return (
-        <div className={styles.formBarContainer}>
+        <div className={checked ? styles.formBarContainer : styles.formBarContainerDark}>
             <Navbar />
             <div className={styles.container}>
-                <div className={styles.formContainer}>
-                    <h1 className={styles.title}>Registra tu local</h1>
+                <div className={checked ? styles.formContainer : styles.formContainerDark}>
+                    <h1 className={checked ? styles.title : styles.titleDark}>Registra tu local</h1>
                     <form onSubmit={handleSubmit}>
-                        <h3 className={styles.subtitles}>Perfil</h3>
+                        <h3 className={checked ? styles.subtitles : styles.subtitlesDark}>Perfil</h3>
                         <hr />
                         <div className={styles.doubleFields}>
                             <div >
@@ -139,7 +169,7 @@ export default function CreateLocal() {
                                     value={local.name}
                                     name="name"
                                     onChange={handleChange}
-                                    className={styles.input}
+                                    className={checked ? styles.input : styles.inputDark}
                                 />
                             </div>
 
@@ -150,7 +180,7 @@ export default function CreateLocal() {
                                     value={local.location}
                                     name="location"
                                     onChange={handleChange}
-                                    className={styles.input}
+                                    className={checked ? styles.input : styles.inputDark}
                                 />
                             </div>
                         </div>
@@ -162,9 +192,20 @@ export default function CreateLocal() {
                                 value={local.image}
                                 name="image"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
-                            {errors.image && <p>{errors.image}</p>}
+                            {errors.image && <p className={styles.errors}>{errors.image}</p>}
+                        </div>
+
+                        <div >
+                            <input
+                                type='text'
+                                placeholder='Ciudad'
+                                value={local.city}
+                                name="city"
+                                onChange={handleChange}
+                                className={checked ? styles.input : styles.inputDark}
+                            />
                         </div>
 
                         <div >
@@ -174,17 +215,17 @@ export default function CreateLocal() {
                                 value={local.phone}
                                 name="phone"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
-                        <h3 className={styles.subtitles}>Horario de atención</h3>
+                        <h3 className={checked ? styles.subtitles : styles.subtitlesDark}>Horario de atención</h3>
                         <hr />
 
                         <div className={styles.weekHours}>
-                            <div className={styles.weekdaysContainer}>
+                            <div className={checked ? styles.weekdaysContainer : styles.weekdaysContainerDark}>
                                 {weekDays.map(day => (
-                                    <label key={day} className={styles.label}>
+                                    <label key={day} className={checked ? styles.label : styles.labelDark}>
                                         <input
                                             type="checkbox"
                                             name={day}
@@ -195,10 +236,10 @@ export default function CreateLocal() {
                                     </label>
                                 ))}
                             </div>
-                            <div className={styles.hoursContainer}>
+                            <div className={checked ? styles.hoursContainer : styles.hoursContainerDark}>
                                 <div>
-                                    <label className={styles.label}>Desde:</label>
-                                    <select name='open' onChange={handleHour} className={styles.selectHours}>
+                                    <label className={checked ? styles.label : styles.labelDark}>Desde:</label>
+                                    <select name='open' onChange={handleHour} className={checked ? styles.selectHours : styles.selectHoursDark}>
                                         <option>Horario de apertura</option>
                                         {horaApertura.map((hora) => {
                                             return (
@@ -209,8 +250,8 @@ export default function CreateLocal() {
                                 </div>
 
                                 <div>
-                                    <label className={styles.label}>Hasta:</label>
-                                    <select name='close' onChange={handleHour} className={styles.selectHours}>
+                                    <label className={checked ? styles.label : styles.labelDark}>Hasta:</label>
+                                    <select name='close' onChange={handleHour} className={checked ? styles.selectHours : styles.selectHoursDark}>
                                         <option> Horario de cierre</option>
                                         {horaCierre.map((hora) => {
                                             return (
@@ -220,9 +261,9 @@ export default function CreateLocal() {
                                     </select>
                                 </div>
                             </div>
-{/* 
+                            {/* 
                             <div>
-                                <label className={styles.label}>Hasta:</label>
+                                <label className={checked ? styles.label : styles.labelDark}>Hasta:</label>
                                 <select onChange={handleHour} className={styles.selectHours}>
                                     <option> Horario de cierre</option>
                                     {horaCierre.map((hora) => {
@@ -236,11 +277,11 @@ export default function CreateLocal() {
 
                         {/* </div> */}
 
-                        <h3 className={styles.subtitles}>Negocio</h3>
+                        <h3 className={checked ? styles.subtitles : styles.subtitlesDark}>Negocio</h3>
                         <hr />
 
                         <div className={styles.doubleFields}>
-                            <select name="ageRange" onChange={handleAge} className={styles.select}>
+                            <select name="ageRange" onChange={handleAge} className={checked ? styles.select : styles.selectDark}>
                                 <option value="" hidden>Rango de edad</option>
                                 <option value="+18">+18</option>
                                 <option value="+21">+21</option>
@@ -248,7 +289,7 @@ export default function CreateLocal() {
                             </select>
 
                             <div >
-                                <select name="category" onChange={handleCategories} className={styles.select}>
+                                <select name="category" onChange={handleCategories} className={checked ? styles.select : styles.selectDark}>
                                     <option value="" hidden>Categoria</option>
                                     <option value="disco">Discoteca</option>
                                     <option value="bar">Bar</option>
@@ -264,7 +305,7 @@ export default function CreateLocal() {
                                 value={local.menu}
                                 name="menu"
                                 onChange={handleChange}
-                                className={styles.input}
+                                className={checked ? styles.input : styles.inputDark}
                             />
                         </div>
 
@@ -276,7 +317,7 @@ export default function CreateLocal() {
                                     value={local.capacity}
                                     name="capacity"
                                     onChange={handleChange}
-                                    className={styles.input}
+                                    className={checked ? styles.input : styles.inputDark}
                                 />
                             </div>
 
@@ -287,14 +328,14 @@ export default function CreateLocal() {
                                     value={local.bookPrice}
                                     name="bookPrice"
                                     onChange={handleChange}
-                                    className={styles.input}
+                                    className={checked ? styles.input : styles.inputDark}
                                 />
                             </div>
                         </div>
 
                         <div className={styles.petFriendlyEventos}>
                             <div >
-                                <label className={styles.label}>
+                                <label className={checked ? styles.label : styles.labelDark}>
                                     En tu local se realizan eventos(ej: shows en vivo)
                                     <input
                                         type='checkbox'
@@ -306,7 +347,7 @@ export default function CreateLocal() {
                             </div>
 
                             <div >
-                                <label className={styles.label}>Tu local es pet friendly?
+                                <label className={checked ? styles.label : styles.labelDark}>Tu local es pet friendly?
                                     <input
                                         type='checkbox'
                                         value={local.petFriendly}
@@ -320,8 +361,8 @@ export default function CreateLocal() {
                         <button
                             type="submit"
                             id="localButton"
-                            className={styles.registrarButton}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image}
+                            className={checked ? styles.registrarButton : styles.registrarButtonDark}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>

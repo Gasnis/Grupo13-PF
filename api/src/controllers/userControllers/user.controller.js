@@ -24,8 +24,20 @@ const postUserData = async (userData) => {
      
 }
 
-const getAllUsers = async () => {
-    return User.findAll();
+const getAllUsers = async (name) => {
+    let todos = await User.findAll();
+    if (name) {
+        const byName = todos.filter((local) =>
+          local.name.toLowerCase().includes(name.toLowerCase())
+        );
+        if (byName.length) {
+          return byName
+        }else{
+            throw new Error(`${name} not found :/`);
+        }
+    }
+    return todos;
+    
 }
 
 const getUserDetail = async (id) => {
@@ -64,9 +76,9 @@ const deleteUser = async (id) => {
 
 const updateUser = async (newUserData) =>{
     
-  const {userId,id,name,password,phone,image,birthday,city} = newUserData
+  const {userId,id,name,password,phone,image,birthday,city,ban} = newUserData
 
-  if (userId && name && password && phone && birthday && city && id) {
+  if (userId && name && image && password && phone && birthday && city && id) {
       let user = await User.findByPk(id);
       if (user.id === userId) {
           await user.update( 
@@ -78,6 +90,7 @@ const updateUser = async (newUserData) =>{
                   image,
                   birthday,
                   city,
+                  ban,
               });
           const userUpdated = await User.findOne({
             where: {id: userId},

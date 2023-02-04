@@ -1,0 +1,112 @@
+
+.navbar{
+    display: flex;
+    background-color: #40047C;
+    color: white;
+    padding-inline: 20px; 
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+.titulos{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    
+}
+
+.botones{
+    background-color: #40047C;
+    color: white;
+    margin: 5px;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.botones:hover{
+    color: gray !important;
+    cursor: pointer;
+}
+
+.botones:focus{
+    text-decoration: underline;
+}
+
+.card{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: #40047c7c 1px solid;
+    font-size: 15px;
+    padding-inline:20px;
+}
+
+.carddark{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-top: #40047c7c 1px solid;
+    font-size: 15px;
+    padding-inline:20px;
+    font: white;
+    background-color: black;
+}
+
+
+.cosito{
+    width: 200px;
+    display: inline;
+    text-align: start;
+    color: black;
+}
+
+.botonaccept{
+    background-color: green;
+    border-style: solid;
+    border-radius: 14px;
+    color: white;
+}
+.botonaccept:hover{
+    background-color: rgb(0, 210, 0);
+    color: rgb(6, 6, 6);
+}
+
+.botondenegate{
+    background-color: rgb(163, 0, 0);
+    border-style: solid;
+    border-radius: 100px;
+    color: white;
+}
+
+.botondenegate:hover{
+    background-color: rgb(218, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+.botondisabled{
+    background-color: rgb(230, 150, 0);
+    border-style: solid;
+    border-radius: 100px;
+    color: white;
+}
+.botondisabled:hover{
+    background-color: rgb(254, 180, 42);
+    color: rgb(0, 0, 0);
+}
+
+.botonhabilitar{
+    background-color: rgb(0, 0, 209);
+    color: white;
+    border-style: solid;
+    border-radius: 100px;
+}
+.botonhabilitar:hover{
+    background-color: #0022ff;
+    color: rgb(0, 0, 0);
+}

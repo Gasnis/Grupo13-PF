@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import style from "./navbar.module.css"
-import beer from "../../utils/beer.png"
+// import beer from "../../utils/beer.png"
 import roulette from "../../utils/roulette.png"
 import arrow from "../../utils/Arrow 1.png"
 import { setChecked, sortRating, filterCategory, getPlaces, setInput } from "../../redux/actions";
@@ -13,6 +13,8 @@ import favorito from "../../utils/favorito.png"
 import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
 import about from "../../utils/about.png"
+import wwwhere from "../../utils/wwwhere.png"
+import swal from "sweetalert";
 
 
 export default function Navbar(props) {
@@ -51,8 +53,26 @@ export default function Navbar(props) {
         }
     };
     const handleLogOut = () => {
-        dispatch(logout());
+        // if (window.confirm("Desea cerrar sesión?")) {
+        //     window.alert("Sesión finalizada");
+        //     dispatch(logout());
+        // }
+
+        swal({
+            title: "Estas seguro que deseas cerrar sesion?",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(async (willLogout) => {
+                if (willLogout) {
+                    swal("Sesion finalizada!", {
+                        icon: "success",
+                    });
+                    dispatch(logout());
+                }
+            });
     }
+
     const handleChangeSwitch = () => {
         dispatch(setChecked(darkmode));
     };
@@ -121,17 +141,16 @@ export default function Navbar(props) {
                                                 <option value="bar">Bares</option>
                                             </select>
                                         </div>
-
                                     }
                                 </div>
                                 <div>
-                                    <button className={style.limpiar}  onClick={refresh}>
+                                    <button className={style.limpiar} onClick={refresh}>
                                         <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
                                     </button>
                                 </div>
                                 <br />
                                 <div className={style.about}>
-                                    <img src={about} className={style.aboutimg} alt="sobre wwwere"/>About us
+                                    <Link to="/about-us">  <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us</Link>
                                 </div>
                             </div>
                         ) : null
@@ -139,9 +158,10 @@ export default function Navbar(props) {
                     </div>
 
                     <Link to="/" className={style.link}>
-                        <img className={style.Logo} src={beer} alt="logo" />
+                        <img className={style.Logo} src={wwwhere} alt="logo" />
                     </Link>
                     <div>
+
                         <label className={style.switch}>
 
                             <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />
@@ -170,11 +190,21 @@ export default function Navbar(props) {
                                     open === "login" ? (
                                     <div className={style.dropdown}>
                                         <div>
+                                            {profile.name === "admin" ? <div> <Link className={style.titulos} to="/admin">Dashboard Admin</Link></div> : null}
+                                        </div>
+
+                                        <div>
                                             <Link className={style.titulos} to={`/profile`}>Mi Perfil</Link>
                                         </div>
+
                                         <div>
                                             <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
                                         </div>
+
+                                        <div>
+                                            <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
+                                        </div>
+
                                         <div>
                                             <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
                                         </div>
@@ -187,9 +217,9 @@ export default function Navbar(props) {
                 </div>
                 :
                 <div className={style.Container}>
-                    <Link to="/"  href="/"><img src={arrow} /></Link>
+                    <Link to="/" href="/"><img src={arrow} /></Link>
                     <div>
-                        <img className={style.Logo} src={beer} alt="logo" />
+                        <img className={style.Logo} src={wwwhere} alt="logo" />
                     </div>
                     <label className={style.switch}>
                         <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />
@@ -199,28 +229,6 @@ export default function Navbar(props) {
                 </div>
             }
 
-
-
-
-
-            {/* {isHome ?
-                <div>
-                    <input className={style.searchbar} value={searchInput} onChange={handleSearchBar} type="search" placeholder="Busca tu bar" />
-                </div>
-            : null} */}
-            {/* <div>
-                {isHome ?
-                    <div>
-                        <h5 className={style.random}>Random?</h5>
-                        <Link to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
-                            <img className={style.Img} src={roulette} alt="" />
-
-                        </Link>
-
-
-
-                    </div>
-                    : null} */}
         </>
     )
 }

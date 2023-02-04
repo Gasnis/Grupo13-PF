@@ -1,94 +1,145 @@
 .profileContainer {
   background-image: url(../../utils/Profile2.png);
   background-repeat: no-repeat;
-  height: 80vh;
+  height: 90vh;
   width: 100%;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
 }
+@media (max-width: 704px){
+  .profileContainer{
+    height: 100vh;
+    margin-left: 0px;
+    /* background-position-y; */
+  }
+}
+
 
 .profilePict {
-    width: 15%;
-    height: 15vh;
-    border-radius: 50%;
-    float: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 5px;
+  width: 100%;
+  height: 15vh;
+  border-radius: 50%;
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+}
+@media (max-width: 704px){
+  .profilePict{
+   width: 100%;
   }
+}
 
 .divContainer{
-    display: flex;
-    grid-template-columns: 200px auto auto;
-    width: 50%;
-    height: 200px;
-    margin-left: 5em;
-    margin-right: 10px;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 120px auto;
+  width: 50%;
+  height: 200px;
+  margin-left: 5em;
+  margin-right: 10px;
+  margin-bottom: 40px;
     align-items: end;
     border-radius: 11px;
-}
+  }
 
-.name{
-  font-family: 'Cambay', sans-serif;
-  float: left;
-  font-weight: 900;
-  justify-self: flex-start;
-  color: rgb(0, 0, 0);
-  flex-wrap: nowrap;
-}
+  @media (max-width: 704px){
+    .divContainer{
+      width: 97%;
+      height: 100%;
+      margin-top: 30px;
+      margin-left: 2px;
+      margin-bottom: 5px;
+      align-items: center;
+    }
+  }
+  
+  .name{
+    font-family: 'Cambay', sans-serif;
+    float: left;
+    font-weight: 800;
+    justify-self: flex-start;
+    color: rgb(0, 0, 0);
+    flex-wrap: nowrap;
+    margin-left: 5px;
+    line-height: 1
+  }
+  @media (max-width: 704px){
+    .name{
+      width: 95%;
+      justify-self: start;
+      text-align: start;
+      margin-left: 10px;  
+    }
+  }
 
-.divProfile{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fdfbf2c0;
-  height: 300px;
-  margin-bottom: 40px;
-  margin-left: 15px;
-  border-radius: 11px;
-}
-.divProfile span{
-  color: rgb(58, 58, 58);
-  font-weight: 600;
-  width: 100px;
-}
-.divProfile p{
-  margin: 10px;
-  width: 400px;
-  text-align: left;
-}
-.divProfile span{
-  margin: 10px;
-  width: 300px;
-  text-align: left;
-}
-
-.localsInformation{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fdfbf2c0;
-  height: 300px;
-  margin-left: 20px;
-  width: 500px;
-  border-radius: 11px;
-}
-.booksInformation{
-  box-shadow: 0px 0px 25px rgb(91, 92, 91);
-  border-radius: 10px;
-  margin-left: 20px;
-  width: 500px;
-}
-.imgBar{
-  width: 100px;
+  .nameDark{
+    font-family: 'Cambay', sans-serif;
+    float: left;
+    font-weight: normal;
+    justify-self: flex-start;
+    color: #fdfbf2;
+    flex-wrap: nowrap;
+  }
+  @media (max-width: 704px){
+    .nameDark{
+      width: 95%;
+      justify-self: start;
+      text-align: start;
+      margin-left: 10px;
+    }
+  }
+  
+  .divProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfbf2c0;
+    height: 300px;
+    margin-bottom: 40px;
+    margin-left: 15px;
+    border-radius: 11px;
+  }
+  .divProfile span{
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+    width: 100px;
+  }
+  .divProfile p{
+    margin: 10px;
+    width: 400px;
+    text-align: left;
+  }
+  .divProfile span{
+    margin: 10px;
+    width: 300px;
+    text-align: left;
+  }
+  
+  .localsInformation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfbf2c0;
+    height: 300px;
+    margin-left: 20px;
+    width: 500px;
+    border-radius: 11px;
+  }
+  .booksInformation{
+    box-shadow: 0px 0px 25px rgb(91, 92, 91);
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 500px;
+  }
+  .imgBar{
+    width: 100px;
   height: 110px;
 }
 .divYourBars{
   display: flex;
   flex-direction: row;
   justify-content: center;
- 
+  
 }
 .infoBar{
   border: 2px solid rgb(158, 50, 205) ;
@@ -105,6 +156,21 @@
   justify-content: space-evenly;
 }
 
+@media (max-width: 704px){
+  .infoBarsAndInfoUser{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2px;
+    height: 100%;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 704px){
+  .infoBarsAndInfoUser div{
+   margin-top: 0px;
+  }
+}
+
 .Logo{
   border-style: solid;
   border-width: 7px;
@@ -115,10 +181,27 @@
   height: 80px;
   width: 60px;
   top: 0px;
- 
+  
 }
 
 .buttons {
+  background: #40047ce4;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #E7E7E7;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+@media (max-width: 704px){
+  .buttons{   
+    margin-top: 10px;
+  }
+}
+
+
+.buttons:hover {
+  cursor: pointer;
   background: #fdfbf2c0;
   border-radius: 5px;
   padding:5px;
@@ -127,14 +210,28 @@
   font-family: 'Cambay', sans-serif;
   font-size: 16px;
 }
-
-.buttons:hover {
-  cursor: pointer;
-  background: #40047ce4;
+.buttonsDark {
+  background: #575757;
   border-radius: 5px;
   padding:5px;
   width: 70%;
-  color: #E7E7E7;
+  color: #fdfbf2;
+  font-family: 'Cambay', sans-serif;
+  font-size: 16px;
+}
+@media (max-width: 704px){
+  .buttonsDark{   
+    margin-top: 10px;
+  }
+}
+
+.buttonsDark:hover {
+  cursor: pointer;
+  background: #fdfbf2c0;
+  border-radius: 5px;
+  padding:5px;
+  width: 70%;
+  color: #575757;
   font-family: 'Cambay', sans-serif;
   font-size: 16px;
 }
@@ -158,4 +255,68 @@
   height: 40vh;
 }
 
+.crearButton {
+  padding: 11px;
+  background-color: #fdfbf2c0;
+}
+
+.crearButton:hover {
+  cursor: pointer;
+  padding: 11px;
+  background-color: #fdfbf2d9;
+}
+
+/* -----------------------------------------------------Dark Mode ----------------------------------------------------------------- */
+
+/* .mainContainer {
+  background-color: #2A2A2B;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+} */
+
+.profileContainerDark {
+  background-image: url(../../utils/ProfileDark.png);
+  background-repeat:repeat-y;
+  height: 100vh;
+  width: 100%;
+  /* background-position-y: 184px;
+  padding-bottom: 40px; */
+  
+}
+
+
+
+.divProfileDark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdfbf2c0;
+  height: 300px;
+  margin-bottom: 40px;
+  margin-left: 15px;
+  border-radius: 11px;
+}
+.divProfile span{
+  color: rgb(58, 58, 58);
+  font-weight: 600;
+  width: 100px;
+}
+
+.localsInformationDark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fdfbf2c0;
+  height: 300px;
+  margin-left: 20px;
+  width: 500px;
+  border-radius: 11px;
+}
+.booksInformationDark{
+  box-shadow: 0px 0px 25px rgb(91, 92, 91);
+  border-radius: 10px;
+  margin-left: 20px;
+  width: 500px;
+}
 

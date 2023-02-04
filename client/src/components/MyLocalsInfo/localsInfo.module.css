@@ -1,22 +1,43 @@
+.localsContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+
 .infoContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50vh;
+    width: 40vh;
     background-color: #fdfbf2c0;
     border-radius: 11px;
-    height: 40vh;
 }
-
+@media (max-width: 704px){
+    .infoContainer{
+        width: 100%;
+    }
+  }
 .CardContainer {
     display: flex;
     flex-direction: row;
-    width: 70%;
+    justify-content: center;
+    width: 30vw;
+    height: 40vh;
 }
+@media (max-width: 704px){
+    .CardContainer{
+        width: 100%;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 
 .Card {
-    width: 25vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,18 +45,30 @@
     background-color:#fdfbf2;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     border-radius: 11px;
-    height: 30vh;
+    height: 40vh;
+    
 }
-
+@media (max-width: 704px){
+    .Card{
+        width: 280px;
+    }
+  }
 .CardImage {
-    height: 10vh;
-    width: 100%;
+    height: 20vh;
+    width: 30vw;
     object-fit: cover;
 }
+@media (max-width: 704px){
+    .CardImage{
+        width: 95%;
+     
+      /* grid-template-columns: 200px auto; */
+    }
+  }
 
 .arrows {
-    font-size: 50px;
-    height: 30vh;
+    font-size: 30px;
+    height:30vh;
     background-color: transparent;
 }
 
@@ -96,10 +129,103 @@
 
 .buttonsContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     flex-direction: column;
+    margin: 0px;
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-right: 0px;
     gap: 20px;
+    width: 80px;
+    margin-left:120px ;
+}
+
+/* ---------------------------------------------------------------Dark Mode ------------------------------------------------------ */
+
+.infoContainerDark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vh;
+    background-color: #575757a3;
+    border-radius: 11px;
+    height: 40vh;
+}
+@media (max-width: 704px){
+    .infoContainerDark{
+        width: 100%;
+    }
+  }
+
+.CardDark {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#303031;
+    color: #b7b6b3;
+    box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
+    border-radius: 11px;
+    height: 40vh;
+
+}
+@media (max-width: 704px){
+    .CardDark{
+        width: 280px;
+    }
+  }
+
+.verDetallesDark {
+    background: #894FB8;
+    border-radius: 5px;
+    padding: 5px;
+    width: 50%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.verDetallesDark:hover {
+    cursor:pointer;
+    background-color: rgb(64, 4, 124);
+    border-radius: 5px;
+    color: white;
+}
+
+.editarBarDark {
+    background: #894FB8;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #E7E7E7;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+
+}
+
+.editarBarDark:hover {
+    cursor:pointer;
+    background-color: #894FB8 ;
+    border-radius: 5px;
+    color: white;
+}
+
+.volverDark {
+    background: #E7E7E7;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #40047C;
+    font-family: 'Cambay', sans-serif;
+    font-size: 14px;
+}
+
+.volverDark:hover {
+    cursor:pointer;
+    background-color: #E7E7E7 ;
+    border-radius: 5px;
+    color: 40047C;
 }

@@ -13,6 +13,7 @@ export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const BOOK_PERSIST = "BOOK_PERSIST"
+export const SEARCH_USER = "SEARCH_USER"
 
 
 export const getPlaces = () => {
@@ -29,6 +30,7 @@ export const getPlaceDetail = (id) => {
     return async (dispatch) => {
 
         try {
+            console.log(id)
             const { data } = await axios.get(`/local/${id}`);
             dispatch({
                 type: GET_PLACE_DETAIL,
@@ -79,6 +81,22 @@ export const getUser = () => {
         })
     }
 }
+export const searchUser = (input) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`/user?name=${input}`);
+            dispatch({
+                type: SEARCH_USER,
+                payload: data
+            })
+        } catch (error) {
+            dispatch({
+                type: SEARCH_USER,
+                payload: []
+            })
+        }
+    }
+}
 
 export const getUserByid = (id) => {
     return async (dispatch) => {
@@ -90,17 +108,11 @@ export const getUserByid = (id) => {
     }
 }
 
-export const updateUser = (user) => {
-    return async (dispatch) => {
-        try {
-            const { data } = await axios.put(`/user`, user);
-            return dispatch ({
-                type: GET_USER_BY_ID,
-                payload: data
-            });
-        } catch (error) {
-            return error
-        }
+export const updateUser = (update) => {
+    return async () => {
+            const { data } = await axios.put(`/user`, update);
+            return data;
+        
     }
 }
 
@@ -144,6 +156,13 @@ export const createBook = (book) => {
     }
 }
 
+
+export const deletePlace = (id) => {
+    return async () =>{
+        const { data } = await axios.delete(`/local/${id}`, id);
+        return data
+    }
+}
 
 export const updatePlace = (update) => {
     return async () => {
@@ -243,3 +262,26 @@ export const setFilter = (payload) => {
     }
 
 }
+
+export const getUserId = async (id) => {  
+   
+        try{
+            const data  = await axios.get(`/user/${id}`);
+            return data;
+        }catch(error){
+            return error;
+        }
+    
+        
+        
+    
+}
+
+
+
+
+
+
+//aceptar bar
+//no aceptar bar
+//banear usuario

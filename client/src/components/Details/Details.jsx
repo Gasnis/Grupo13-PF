@@ -10,9 +10,11 @@ import location2 from "../../utils/location2.png";
 import footprint from "../../utils/huella.png";
 import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
+import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
 
 export default function Detail() {
     const { id } = useParams();
+    const checked = useSelector((state) => state.darkmode);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getPlaceDetail(id));
@@ -20,10 +22,10 @@ export default function Detail() {
     }, []);
 
     const placeDetail = useSelector((state) => state.placeDetail);
-    console.log(placeDetail);
-    
+
+
     if (!placeDetail.id) {
-        return(
+        return (
             <div>
                 <Navbar />
                 <div className={style.loadingcontainer}>
@@ -34,99 +36,97 @@ export default function Detail() {
         )
     }
 
-    if(placeDetail.id == 400){
-    return (
-        <div>
-            <img
-                src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
-                alt="" height="100%" width="100%"
-            />
-            
-        </div>
-    );
+    if (placeDetail.id == 400) {
+        return (
+            <div>
+                <img
+                    src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
+                    alt="" height="100%" width="100%"
+                />
+
+            </div>
+        );
     }
     return (
-        <div className={style.body}>
+        <div className={ checked ? style.mainContainer : style.mainContainerDark}>
             <Navbar />
-
-            <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
 
             <div className={style.container}>
                 <div className={style.img}>
                     <img src={placeDetail.image} alt="" />
-
                 </div>
-                <div className={style.head}>
-                    <p className={style.category}> 
-                        {placeDetail.category} 
-                        
-                    </p>
-                    <p className={style.name}>{placeDetail.name}</p>
-                    
-                    <p className={style.horariotitulo}>Horarios</p>
-                    <p className={style.horario}>
-                        {placeDetail.schedule
-                            ?.slice(0, placeDetail.schedule.length - 2)
-                            .map((day) => day[0].toUpperCase() + day.slice(1))
-                            .join(" - ")}
-                    </p>
-                    <p className={style.horariohora}>
-                        {placeDetail.schedule
-                            ?.slice(placeDetail.schedule.length - 2)
-                            .join(" a ")}
-                    </p>
-                    <a className={style.menu} href={placeDetail.menu}>
-                        <h2>Menú</h2>
-                    </a>
-                    {placeDetail.promo ? (
-                        <div className={style.promo}>
-                            <p>Promo:</p>
-                            <h2>{placeDetail.promo}</h2>
-                        </div>
-                    ) : (
-                        <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
-                    )}
-                    <a className={style.direccion}
-                        href={`https://www.google.com/maps/place/${placeDetail.location.replace(
-                            / /g,
-                            "+"
-                        )}`}
-                    >
-                        <h3 className={style.titles}>{placeDetail.location}</h3>
-                    </a>
 
+                <div className={ checked ? style.head : style.headDark}>
+                    <div className={style.ratingShow}>
+                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.containerevent}>
+                            {placeDetail.event ? (
+                                <div className={style.event}>
+                                    <h3>Show{placeDetail.event}</h3>
+                                </div>
+                            ) : null}
+                        </div>
+                    </div>
+                    <div className={style.textup}>
+                        <span className={style.category}>
+                            {placeDetail.category}
+                        </span>
+                        <span className={style.name}>{placeDetail.name}</span>
+                    </div>
+                    <div className={ checked ? style.fondoamarillo : style.fondoVioleta}>
+                        <h3 className={style.horariotitulo}>Horarios</h3>
+                        <span className={style.horario}>
+                            {sortDays(placeDetail.schedule
+                                ?.slice(0, placeDetail.schedule.length - 2))
+                                .map((day) => day[0].toUpperCase() + day.slice(1))
+                                .join(" - ")}
+                        </span>
+                        <span className={style.horariohora}>
+                            {placeDetail.schedule
+                                ?.slice(placeDetail.schedule.length - 2)
+                                .join(" a ")}
+                        </span>
+                        <a className={style.menu} href={placeDetail.menu}>
+                            <h3>Menú</h3>
+                        </a>
+                        {placeDetail.promo ? (
+                            <div className={style.promo}>
+                                <span>Promo:</span>
+                                <h4>{placeDetail.promo}</h4>
+                            </div>
+                        ) : (
+                            <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
+                        )}
+                        <a className={style.direccion}
+                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(
+                                / /g,
+                                "+"
+                            )}`}
+                        >
+                            <span className={style.titles}>{placeDetail.location}</span>
+                        </a>
+                        <span className={style.ciudad}>{placeDetail.city}</span>
+                    </div>
                     <div className={style.sideDiv}>
                         <a
                             href={`https://www.google.com/maps/place/${placeDetail.location}`}
                         >
                             <img className={style.location2} src={location2} alt="" />
                         </a>
-                        {placeDetail.ageRange ? (
-                            <h1 className={style.edad}>{placeDetail.ageRange.join("-")}</h1>
-                        ) : null}
+                        <h1 className={style.edad}>{placeDetail.ageRange}</h1>
                         <div>
                             <img className={style.footprint} src={footprint} alt="" />
                             {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
                         </div>
                     </div>
-                    <Link to="/book">
-                        <button className={style.reservar}>RESERVAR</button>
-                    </Link>
+                    <div className={style.centrar}>
+                        <Link to="/book">
+                            <button className={style.reservar}>Reservar</button>
+                        </Link>
+                    </div>
 
-                    
                 </div>
-                <div className={style.containerevent}>
-                {placeDetail.event ? (
-                        <div className={style.event}>
-                            <h1>Show{placeDetail.event}</h1>
-                        </div>
-                    ) : (
-                        <div className={style.event} >
-                            <h1>No hay eventos</h1>
-                        </div>
-                    )}
-                </div>
-                
+
             </div>
         </div>
     );

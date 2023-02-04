@@ -1,13 +1,24 @@
 const {User, Local, Book} = require("../../db")
 
 const users = [{
+    "id": "admin@admin.admin",
+    "name": "admin",
+    "password": "admin",
+    "phone": "0",
+    "image": "http://cdn.onlinewebfonts.com/svg/img_325788.png",
+    "birthday": "2023-02-02",
+    "city": "Tandil",
+	"ban": false
+},{
     "id": "gioh2020@gmail.com",
     "name": "gioh",
     "password": "gioh2020",
     "phone": "3016444226",
     "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
     "birthday": "2021-01-01",
-    "city": "bogota"
+    "city": "bogota",
+	"ban": false
+	
 },
 {
     "id": "sergio@gmail.com",
@@ -16,7 +27,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://www.jokesforfunny.com/wp-content/uploads/2021/06/0596bdb89b60fe771acd2f5972a9d3e3.jpg",
     "birthday": "1992-11-01",
-    "city": "Tandil"
+    "city": "Tandil",
+	"ban": false
 },
 {
     "id": "sol@gmail.com",
@@ -25,7 +37,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://nextluxury.com/wp-content/uploads/funny-profile-pictures-7.jpg",
     "birthday": "1995-11-01",
-    "city": "Cordoba"
+    "city": "Cordoba",
+	"ban": false
 },
 {
     "id": "ignaluna@gmail.com",
@@ -34,7 +47,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
     "birthday": "1993-11-01",
-    "city": "Punta del Este"
+    "city": "Punta del Este",
+	"ban": false
 },
 {
     "id": "sebas@gmail.com",
@@ -43,7 +57,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://howtoapps.com/wp-content/uploads/2020/01/a657e16c-funny-profile-pic-1-600x333.jpg",
     "birthday": "1993-11-01",
-    "city": "Medellin"
+    "city": "Medellin",
+	"ban": false
 },
 {
     "id": "thomi@gmail.com",
@@ -52,7 +67,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://uploads.dailydot.com/2018/10/olli-the-polite-cat.jpg?auto=compress&fit=scale&fm=pjpg&h=350&w=700",
     "birthday": "1993-11-01",
-    "city": "Santiago"
+    "city": "Santiago",
+	"ban": false
 },
 {
     "id": "gaston@gmail.com",
@@ -61,7 +77,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://i.pinimg.com/564x/6b/95/01/6b9501905d858837e8258c474c1f99c5.jpg",
     "birthday": "1993-11-01",
-    "city": "Benidorm"
+    "city": "Benidorm",
+	"ban": false
 },
 {
     "id": "jose@gmail.com",
@@ -70,7 +87,8 @@ const users = [{
     "phone": "3016444226",
     "image": "https://i.kym-cdn.com/photos/images/original/002/365/140/222.png",
     "birthday": "1993-11-01",
-    "city": "Cosquin"
+    "city": "Cosquin",
+	"ban": true
 }]
 
 
@@ -85,13 +103,15 @@ const places =[
 		"event": false,
 		"capacity": 2000,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -103,13 +123,15 @@ const places =[
 		"event": true,
 		"capacity": 200,
 		"petFriendly": true,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",
 		"available": true,
 		"rating": 4,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -121,13 +143,15 @@ const places =[
 		"event": false,
 		"capacity": 150,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
 		"rating": 1,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 {
 		"userId":"sergio@gmail.com",
@@ -139,13 +163,15 @@ const places =[
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
 		"rating": 5,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 ,
 {
@@ -158,13 +184,15 @@ const places =[
 		"event": true,
 		"capacity": 150,
 		"petFriendly": true,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -176,13 +204,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 4,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -194,13 +224,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 4,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -212,13 +244,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 4,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -230,13 +264,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -248,13 +284,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -266,13 +304,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -284,13 +324,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -302,13 +344,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -320,13 +364,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -338,13 +384,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -356,13 +404,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "aprobado",
+		"city": "anyCity"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -374,13 +424,15 @@ const places =[
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
-		"ageRange": ["+18"],
+		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "400.5",
 		"available": true,
 		"rating": 3,
-		"schedule":["sabado","domingo","17:00","00:00"]
+		"schedule":["sabado","domingo","17:00","00:00"],
+		"status": "solicitud",
+		"city": "anyCity"
 	}
 
 ]
