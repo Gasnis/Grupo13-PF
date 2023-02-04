@@ -10,8 +10,11 @@
 }
 @media (max-width: 550px){
     .places{
-       margin: 15px 12px 0px 12px;
-       height: 350px;
+        display: flex;
+        flex-direction: row;
+       margin: 30px 13px 15px 13px;
+       
+       
        
     }
   }
