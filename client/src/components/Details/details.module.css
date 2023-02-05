@@ -2,11 +2,24 @@
     background-color: #FCF9EB;
     height: 100vh;
 }
+
 .container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding-top: 3em;
+}
+
+@media (max-width: 737px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        gap: 2em;
+    }
+    .head {
+        width: 90%;
+    }
 }
 
 .bodyblack {
@@ -62,13 +75,13 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
-    width: 35vw;
+    width: 35%;
     height: 80vh;
     border-radius: 10px;
     background-color: #FCF9EB;
 }
 
-.textup{
+.textup {
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -202,10 +215,11 @@
     cursor: pointer;
 }
 
-.book{
+.book {
     border: #FCF9EB;
 
 }
+
 .centrar {
     display: flex;
     justify-content: center;

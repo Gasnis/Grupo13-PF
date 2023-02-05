@@ -92,10 +92,11 @@
 }
 
 .infodark{
-  background-image: url("../../utils/homedark.png");
+  background-image: url("../../utils/HomeDark2.png");
   background-size: repeat-y;
   background-color: #2A2A2B;
   height: 100%;
+  width: 100%;
 }
 
 .filtercontainer{

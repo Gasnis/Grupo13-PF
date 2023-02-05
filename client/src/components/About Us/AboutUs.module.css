@@ -24,9 +24,15 @@
   box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
 }
 
-.image {
+.imageContainer {
   height: 40vh;
   width: 100%;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   border-radius: 11px 11px 0px 0px;
 }
 

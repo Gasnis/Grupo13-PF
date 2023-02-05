@@ -10,7 +10,6 @@
     height: 100vh;
 }
 
-
 .containerLogin {
     display: flex;
     flex-direction: column;
@@ -22,11 +21,12 @@
     background-size: cover;
     height: 100vh;
 }
-@media (max-width: 704px){
-    .containerLogin{
+
+@media (max-width: 704px) {
+    .containerLogin {
         height: 93vh;
     }
-  }
+}
 
 .containerDark {
     display: flex;
@@ -46,17 +46,22 @@
     border-radius: 11px;
     box-shadow: 0px 4px 19px 7px rgba(0, 0, 0, 0.25);
     background-color: #FCF9EB;
-    height: 55vh;
+    height: fit-content;
     width: 25%;
 }
-@media (max-width: 820px){
-    .formContainer{
+
+@media (max-width: 820px) {
+    .formContainer {
         width: 78%;
         margin: 15px;
-        height: 55vh;
+        height: fit-content;
         padding: 10px;
     }
-  }
+}
+
+.form {
+    height: fit-content;
+}
 
 .input {
     display: flex;
@@ -88,7 +93,7 @@
 .submitButton {
     background: #40047C;
     border-radius: 5px;
-    padding:5px;
+    padding: 5px;
     width: 40%;
     /* margin-top: 35px; */
     color: #E7E7E7;
@@ -96,21 +101,23 @@
     font-size: 16px;
 }
 
-.submitButton:disabled, .registrarButton:disabled {
+.submitButton:disabled,
+.registrarButton:disabled {
     background: #E7E7E7;
-    color:#660BAD;
+    color: #660BAD;
 }
 
-.submitButton:hover:enabled, .registrarButton:hover:enabled {
+.submitButton:hover:enabled,
+.registrarButton:hover:enabled {
     cursor: pointer;
     background: #660BAD;
-    color:rgba(255, 255, 255, 0.86)
+    color: rgba(255, 255, 255, 0.86)
 }
 
 .volverButton {
     background: #E7E7E7;
     border-radius: 5px;
-    padding:5px;
+    padding: 5px;
     width: 40%;
     color: #40047C;
     font-family: 'Cambay', sans-serif;
@@ -120,7 +127,7 @@
 .volverButton:hover {
     cursor: pointer;
     background: #E7E7E7;
-    color:rgba(255, 255, 255, 0.86)
+    color: rgba(255, 255, 255, 0.86)
 }
 
 .registrarButton {
@@ -128,7 +135,7 @@
     border-radius: 5px;
     /* margin-top: 35px; */
     margin-bottom: 25px;
-    padding:5px;
+    padding: 5px;
     width: 200px;
     color: #E7E7E7;
     font-size: 16px;
@@ -171,14 +178,14 @@
     flex-direction: column;
     justify-content: space-evenly;
     padding: 25px;
-    padding-right:30px;
+    padding-right: 30px;
     align-items: flex-start;
     width: 100px;
     margin-right: 40px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#FCF9EB;
+    background-color: #FCF9EB;
     border-radius: 5px;
 }
 
@@ -193,7 +200,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
-    background-color:#FCF9EB;
+    background-color: #FCF9EB;
     border-radius: 5px;
 }
 
@@ -228,14 +235,14 @@
 }
 
 .petFriendlyEventos {
-    margin:15px;
+    margin: 15px;
     gap: 10px;
 }
 
 .swal-modal {
-    background-color: rgba(63,255,106,0.69);
+    background-color: rgba(63, 255, 106, 0.69);
     border: 3px solid white;
-  }
+}
 
 
 /* --------------------------------------------------Dark Mode ---------------------------------------------------- */
@@ -263,11 +270,12 @@
     background-size: cover;
     height: 100vh;
 }
-@media (max-width: 704px){
-    .containerLoginDark{
+
+@media (max-width: 704px) {
+    .containerLoginDark {
         height: 93vh;
     }
-  }
+}
 
 .formContainerDark {
     display: flex;
@@ -281,14 +289,15 @@
     height: 55vh;
     width: 25%;
 }
-@media (max-width: 820px){
-    .formContainerDark{
+
+@media (max-width: 820px) {
+    .formContainerDark {
         width: 78%;
         margin: 15px;
         height: 55vh;
         padding: 10px;
     }
-  }
+}
 
 .inputDark {
     display: flex;
@@ -328,7 +337,7 @@
     background: #894FB8;
     border-radius: 5px;
     /* margin-top: 35px; */
-    padding:5px;
+    padding: 5px;
     width: 200px;
     color: #E7E7E7;
     font-size: 16px;
