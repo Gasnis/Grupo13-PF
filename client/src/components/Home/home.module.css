@@ -78,24 +78,27 @@
     margin: 0px;
     color: white;
    }
-
+/* 
    .cargandodark h1{
     font-size: 50px;
     margin: 0px;
     color: black;
-   }
+   } */
    
 .info{
   background-image: url(../../utils/Home2.png);
   background-repeat: repeat-y;
   height: 100%;
+  transition: all 0.5s ease;
 }
 
 .infodark{
-  background-image: url("../../utils/homedark.png");
+  background-image: url("../../utils/HomeDark2.png");
   background-size: repeat-y;
   background-color: #2A2A2B;
   height: 100%;
+  width: 100%;
+  transition: all 0.5s ease;
 }
 
 .filtercontainer{
@@ -167,7 +170,7 @@
   border-radius: 1em;
   width: 26em;
   border-style: none;
-  background: #434343;
+  background: #2a2a2b;
   border-style: solid;
   border-width: 1px;
   border-color: #8b8b8b;

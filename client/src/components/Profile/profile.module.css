@@ -3,6 +3,7 @@
   background-repeat: no-repeat;
   height: 90vh;
   width: 100%;
+  transition: all 0.5s ease;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
 }
@@ -280,6 +281,7 @@
   background-repeat:repeat-y;
   height: 100vh;
   width: 100%;
+  transition: all 0.5s ease;
   /* background-position-y: 184px;
   padding-bottom: 40px; */
   

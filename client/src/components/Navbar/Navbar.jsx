@@ -102,6 +102,7 @@ export default function Navbar(props) {
                 <div className={style.Container}>
                     <div>
                         <img src={burguer} className={style.burguer} onClick={() => handleOpen("burguer")} alt=""></img>
+                        
                         {open === "burguer" ? (
                             <div className={style.dropdown2}>
                                 <div className={style.titulos}>
