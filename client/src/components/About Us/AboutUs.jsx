@@ -6,8 +6,9 @@ import Sergio from "../../utils/AboutUs/Sergio.jpg";
 import Seba from "../../utils/AboutUs/Seba.jpg";
 import Gio from "../../utils/AboutUs/Gio.jpg";
 import GitHubLogo from "../../utils/AboutUs/GitHubLogo.png";
-import LinkedinLogo from "../../utils/AboutUs/LinkedinLogo.png"
+import LinkedinLogo from "../../utils/AboutUs/LinkedinLogo.png";
 import styles from "../About Us/AboutUs.module.css";
+
 
 export default function AboutUs() {
 
@@ -72,6 +73,7 @@ export default function AboutUs() {
                         <img src={dev.image} alt="img" className={styles.image} />
                         <div >
                             <h3>{dev.name}</h3>
+                            <h4>FullStack Developer </h4>
                             <a href={dev.github}>
                                 <img src={GitHubLogo} alt="" height="30px" width="30px" />
                             </a>

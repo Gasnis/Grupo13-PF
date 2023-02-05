@@ -1,32 +1,46 @@
 .container {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top:50px;
-    margin-bottom:50px;
-    margin-left: 25px;
-    margin-right: 25px;
-    text-decoration: none;
-    gap: 2em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
+  text-decoration: none;
+  gap: 2em;
 }
 
-
 .each {
-    height: fit-content;
-    width: 25rem;
-    background-color: #fcf9ebaa;
-    background-size: contain;
-    border-radius: 11px;
-    color:black;
-    font-family: 'Cambay', sans-serif;
-    font-style: normal;
-    transition: all 0.5s ease;
-    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+  height: fit-content;
+  width: 25rem;
+  background-color: #fcf9ebaa;
+  background-size: contain;
+  border-radius: 11px;
+  color: black;
+  font-family: 'Cambay', sans-serif;
+  font-style: normal;
+  transition: all 0.5s ease;
+  box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
 }
 
 .image {
   height: 40vh;
   width: 100%;
   border-radius: 11px 11px 0px 0px;
+}
+
+/* -------------------------------------------Dark Mode ----------------------------------------------- */
+
+.eachDark {
+  height: fit-content;
+  width: 25rem;
+  background-color: #4F4F4F;
+  background-size: contain;
+  border-radius: 11px;
+  color: #FCF9EB;
+  font-family: 'Cambay', sans-serif;
+  font-style: normal;
+  transition: all 0.5s ease;
+  box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
 }
