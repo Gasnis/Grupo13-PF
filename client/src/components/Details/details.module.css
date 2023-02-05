@@ -16,18 +16,6 @@
     }
   }
 
-@media (max-width: 737px) {
-    .container {
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        gap: 2em;
-    }
-    .head {
-        width: 90%;
-    }
-}
-
 .bodyblack {
     background-image: url(../../utils/Profile2.png);
     background-repeat: no-repeat;

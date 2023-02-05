@@ -1,3 +1,7 @@
+.mainContainer {
+  background-color: #FCF9EB;
+}
+
 .container {
   display: inline-flex;
   flex-wrap: wrap;
@@ -9,6 +13,31 @@
   margin-right: 25px;
   text-decoration: none;
   gap: 2em;
+}
+
+@media (max-width: 550px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 13px 15px 13px;
+  }
+}
+
+.name {
+  color: #40047C;
+}
+
+.description {
+  margin-left: 7em;
+  margin-right: 7em;
+  text-align: left;
+}
+
+@media (max-width: 550px) {
+  .description {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
 }
 
 .each {
@@ -36,8 +65,44 @@
   border-radius: 11px 11px 0px 0px;
 }
 
-/* -------------------------------------------Dark Mode ----------------------------------------------- */
+.linksContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin: 0.5em;
+}
 
+.gitHub {
+  fill: gray
+}
+
+.gitHub:hover {
+  cursor: pointer;
+  fill: #6e5494;
+
+}
+
+.linkedin {
+  fill: gray;
+}
+
+.linkedin:hover {
+  fill: #0072b1;
+}
+
+/* -------------------------------------------Dark Mode ----------------------------------------------- */
+.mainContainerDark {
+  background-color: #2A2A2B;
+  color:#FCF9EB;
+}
+
+.title {
+  color: #5A268C;
+}
+
+.nameDark {
+  color: #c8aae3;
+}
 .eachDark {
   height: fit-content;
   width: 25rem;
