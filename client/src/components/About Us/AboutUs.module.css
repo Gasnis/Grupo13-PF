@@ -79,7 +79,7 @@
 .gitHub:hover {
   cursor: pointer;
   fill: #6e5494;
-
+  transform: scale(1.1);
 }
 
 .linkedin {
@@ -88,12 +88,14 @@
 
 .linkedin:hover {
   fill: #0072b1;
+  transform: scale(1.1);
 }
 
 /* -------------------------------------------Dark Mode ----------------------------------------------- */
 .mainContainerDark {
   background-color: #2A2A2B;
-  color:#FCF9EB;
+  color: #FCF9EB;
+  transition: all 0.5s ease;
 }
 
 .title {
@@ -103,6 +105,7 @@
 .nameDark {
   color: #c8aae3;
 }
+
 .eachDark {
   height: fit-content;
   width: 25rem;

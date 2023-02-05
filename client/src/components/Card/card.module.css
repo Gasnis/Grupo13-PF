@@ -1,21 +1,22 @@
-.places{
+.places {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top:50px;
-    margin-bottom:50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     margin-left: 25px;
     margin-right: 25px;
     text-decoration: none;
 }
-@media (max-width: 550px){
-    .places{
+
+@media (max-width: 550px) {
+    .places {
         display: flex;
         flex-direction: row;
-       margin: 30px 13px 15px 13px;
+        margin: 30px 13px 15px 13px;
     }
-  }
-  
+}
+
 
 .place {
     height: fit-content;
@@ -23,48 +24,52 @@
     background-color: #fcf9ebaa;
     background-size: contain;
     border-radius: 11px;
-    color:black;
+    color: black;
     font-family: 'Cambay', sans-serif;
     font-style: normal;
     transition: all 0.5s ease;
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
 }
+
 .place:hover {
     transform: scale(1.09) rotate(2deg);
     cursor: pointer;
-  }
+}
 
-  .placedisabled {
+.placedisabled {
     height: 46vh;
     width: 25rem;
     background-color: #70707052;
     background-size: contain;
     border-radius: 11px;
-    color:rgba(255, 255, 255, 0.593);
+    color: rgba(255, 255, 255, 0.593);
     font-family: 'Cambay', sans-serif;
     font-style: normal;
     transition: all 0.5s ease;
     box-shadow: 2px 2px 9px 0px rgba(102, 102, 102, 0.28);
 }
-  
 
-.logo{
+
+.logo {
     border-radius: 11px 11px 0px 0px;
     height: 35vh;
     width: 100%;
     object-fit: cover;
 }
-.logodisabled{
+
+.logodisabled {
     border-radius: 11px 11px 0px 0px;
     height: 35vh;
     width: 100%;
     object-fit: cover;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
-  
+
 }
-.textContainer{
-    display:flex;
+
+.textContainer {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     text-decoration: none;
@@ -77,33 +82,36 @@
     padding-bottom: 10px;
     height: 50px;
 }
-.text h3{
+
+.text h3 {
     margin-bottom: 18px;
 }
 
-.text h4{
+.text h4 {
     margin: 0px;
 }
 
 
-@media (max-width: 550px){
-    .text h3{
+@media (max-width: 550px) {
+    .text h3 {
         margin-bottom: 10px;
     }
-  }
-  
+}
+
 
 .numbersInfo {
     text-align: end;
     padding-right: 10px;
     padding-bottom: 10px;
 }
-.numbersInfo h4{
+
+.numbersInfo h4 {
     margin: 0px;
     margin-top: 18px;
 }
-@media (max-width: 550px){
-    .numbersInfo h4{
-        margin-top: 13px;  
+
+@media (max-width: 550px) {
+    .numbersInfo h4 {
+        margin-top: 13px;
     }
-  }
+}
