@@ -36,7 +36,7 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div className={StyleSheet.principalDiv}>
 
             <Navbar home={true} />
 

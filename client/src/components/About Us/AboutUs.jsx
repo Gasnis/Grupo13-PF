@@ -5,6 +5,7 @@ import Gaston from "../../utils/AboutUs/Gaston.jpg";
 import Sergio from "../../utils/AboutUs/Sergio.jpg";
 import Seba from "../../utils/AboutUs/Seba.jpg";
 import Gio from "../../utils/AboutUs/Gio.jpg";
+import Jose from "../../utils/AboutUs/jose.jpeg";
 import GitHubLogo from "../../utils/AboutUs/GitHubLogo.png";
 import LinkedinLogo from "../../utils/AboutUs/LinkedinLogo.png";
 import styles from "../About Us/AboutUs.module.css";
@@ -38,20 +39,20 @@ export default function AboutUs() {
     },
     {
         name: "Jose Canelo",
-        image: Gaston,
+        image: Jose,
         linkedin: "",
         github: "https://github.com/Josecanelo",
     },
     {
         name: "Thomas Rojas",
         image: Gaston,
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/jose-canelo-suarez-06ba71223/",
         github: "https://github.com/ThomRojas",
     },
     {
         name: "Giovany Vazquez ",
         image: Gio,
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/giovanny-vasquez/",
         github: "https://github.com/gioh2020",
     },
     {
@@ -66,7 +67,7 @@ export default function AboutUs() {
         <div>
             <NavBar />
             <h1>Sobre el equipo</h1>
-            <p>Somos un grupo de alumnos del bootcamp soyHenry, presentando como proyecto final una aplicación web para aquellas personas que buscan conectar con experiencias nocturnas entre amigos.</p>
+            <p>Somos un grupo de alumnos del bootcamp soyHenry, y estamos muy emocionados de presentar nuestro proyecto final: una aplicación web innovadora diseñada para conectar a las personas que buscan vivir experiencias nocturnas inolvidables con sus amigos. Con nuestra plataforma, los usuarios pueden explorar y reservar lugares nocturnos únicos, planificar eventos con sus amigos y hacer que la noche sea más emocionante y memorable. ¡Esperamos que disfruten de nuestra aplicación y vivan noches llenas de diversión!</p>
             <div className={styles.container}>
                 {nosotros.map((dev) =>
                     <div className={styles.each}>

@@ -18,7 +18,7 @@ export default function Detail() {
     const checked = useSelector((state) => state.darkmode);
 
     const [open, setOpen] = useState({
-        userInfo: false,
+        userInfo: true,
         myBook: false,
         myLocal: false,
         myLocalBook: false
