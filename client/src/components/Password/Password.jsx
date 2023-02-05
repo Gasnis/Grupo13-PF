@@ -41,11 +41,12 @@ export default function Password() {
       };
     
       await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+      history.push("/login")
 
     }
     else{
       alert('Este usuario no existe en la base de datos, por favor registrate')
-      history.push(`/login`);
+      history.push(`/sign-up`);
     }
 
   }
