@@ -165,8 +165,7 @@
 @media (max-width: 550px){
   .searchbar{
      width: 95%;
-     margin: 25px 10px 13px 10px;
-     
+     /* margin: 25px 10px 13px 10px; */
   }
 }
 
