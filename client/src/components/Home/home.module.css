@@ -161,6 +161,7 @@
   font-size: 18px;
   border-style: none;
   background-color: transparent;
+  width: 100%;
 }
 @media (max-width: 550px){
   .searchbar{

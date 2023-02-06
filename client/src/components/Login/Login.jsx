@@ -9,6 +9,9 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script"
 import { useEffect } from "react";
 import swal from "sweetalert";
+import { HiOutlineEye } from "react-icons/hi2";
+import { HiOutlineEyeSlash } from "react-icons/hi2";
+
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -18,10 +21,18 @@ export default function Login() {
   const [login, setLogin] = useState({  // 
     id: "",
     password: "",
-
   });
 
-  
+  const [passwordType, setPasswordType] = useState("password");
+
+  const seePassword = (event) => {
+    event.preventDefault();
+    if (passwordType === "password") {
+      setPasswordType("text")
+      return;
+    }
+    setPasswordType("password")
+  }
 
   function handleChange(event) {
     setLogin({
@@ -47,20 +58,20 @@ export default function Login() {
           icon: "error",
           className: styles.swal,
         });
-      }else{
-      if (currentUser[0].password === login.password[0]) {
-        dispatch(getUserByid(login.id));
-        history.push("/");
-        setLogin({
-          id: "",
-          password: "",
-        });
       } else {
-        swal("El usuario o contraseña es incorrecto", {
-          icon: "error",
-          className: styles.swal,
-        });
-      }
+        if (currentUser[0].password === login.password[0]) {
+          dispatch(getUserByid(login.id));
+          history.push("/");
+          setLogin({
+            id: "",
+            password: "",
+          });
+        } else {
+          swal("El usuario o contraseña es incorrecto", {
+            icon: "error",
+            className: styles.swal,
+          });
+        }
       }
     } else {
       swal("El usuario o contraseña es incorrecto", {
@@ -85,27 +96,27 @@ export default function Login() {
     const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
     console.log(currentUser)
     if (currentUser.length) {
-      if (currentUser[0].ban===true){
+      if (currentUser[0].ban === true) {
         logout()
-          setLogin({
-            id: "",
-            password: "",
-          });
-          swal("El usuario ha sido baneado", {
-            icon: "error",
-          });
-        }else{
-          await dispatch(getUserByid(userLoginId))
-          history.push("/");
-        } 
-    }else {
+        setLogin({
+          id: "",
+          password: "",
+        });
+        swal("El usuario ha sido baneado", {
+          icon: "error",
+        });
+      } else {
+        await dispatch(getUserByid(userLoginId))
+        history.push("/");
+      }
+    } else {
       swal("Debes registrarte primero", {
         icon: "error",
       });
-          history.push("/sign-up");
-        
+      history.push("/sign-up");
+
     }
-}
+  }
 
 
 
@@ -127,15 +138,22 @@ export default function Login() {
               />
             </div>
 
-            <div>
+            <div className={checked ? styles.passwordInputCont : styles.passwordInputContDark}>
               <input
-                className={checked ? styles.input : styles.inputDark}
-                type="password"
+                className={styles.passwordInput}
+                type={passwordType}
                 placeholder="Contraseña"
                 value={login.password}
                 name="password"
                 onChange={handleChange}
               />
+              <div>
+                <button onClick={seePassword} className={styles.eyes}>
+                  {passwordType === "password" ?
+                    <HiOutlineEye />
+                    : <HiOutlineEyeSlash />}
+                </button>
+              </div>
             </div>
 
             <div className={styles.linksContainer}>

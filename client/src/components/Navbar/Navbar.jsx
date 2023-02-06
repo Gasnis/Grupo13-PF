@@ -9,6 +9,7 @@ import { logout } from "../../redux/actions";
 import { useLocation, Link } from "react-router-dom";
 import burguer from "../../utils/burguer.png"
 import categorylist from "../../utils/ListaNegra.png"
+import {HiOutlineStar} from "react-icons/hi2";
 import favorito from "../../utils/favorito.png"
 import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
@@ -112,6 +113,7 @@ export default function Navbar(props) {
                                 <div className={style.orderinline}>
                                     <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.orderinline}>
                                         <img className={style.favorite} src={favorito} />
+                                        {/* <HiOutlineStar className={style.favorite}/> */}
                                         Rating
                                         <img src={arrowR} alt="Filtros" className={style.arrows} />
                                     </div>

@@ -13,8 +13,9 @@ code {
     monospace;
 }
 
-input {
-  border: none;
+textarea, input { outline: none; }
+input:-webkit-autofill {
+  background-color: #c7a2ed !important;
 }
 
 button {
