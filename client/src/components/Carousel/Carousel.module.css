@@ -1,0 +1,15 @@
+.carouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 35vh;
+}
+
+.carousel {
+    max-height: 35vh;
+}
+
+.images {
+    max-height: 35vh;
+    width: 100%;
+}

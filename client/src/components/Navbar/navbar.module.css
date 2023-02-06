@@ -18,11 +18,11 @@
     margin-top: 4px;
 }
 
-.Containernight {
-    background-image: linear-gradient(79deg, #4b587b, #3a0662 40%);
+.ContainerDark {
+    background-color: #2A2A2B;
     display: flex;
     justify-content: space-between;
-    height: 70px;
+    height: 8vh;
     align-items: center;
     flex-wrap: nowrap;
     padding-inline:20px;
@@ -107,6 +107,8 @@
     padding-top: 0.8vh;
     padding-left: 2.8vh;
 }
+
+
 .Logo{
     /* border-style: solid; */
     /* border-width: 5px; */
@@ -114,6 +116,7 @@
     /* border-radius: 20px; */
     /* background-color: #FFB800; */
     height: 4em;
+    object-fit: contain;
 }
 .link{
     margin: 0px;
@@ -213,6 +216,7 @@
     width: fit-content;
     text-decoration: none;
     transition: 1s;
+    z-index: 1;
 }
 
 .dropdown2{
@@ -234,6 +238,7 @@
     width: fit-content;
     text-decoration: none;
     transition: 1s;
+    z-index: 1;
 }
 .titulos{
     
@@ -246,8 +251,8 @@
 }
 
 .imagenprofile{
-    height: 40px;
-    width: 40px;
+    height: 2.5em;
+    width: 2.5em;
     margin-inline: 15px;
     border-radius: 10px;
     border-style: 3px solid ;
@@ -345,7 +350,13 @@
   }
 
   .burguer{
-    height: 3vh ;
+    height: 2em ;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+  }
+
+  .burguer:hover {
+    cursor: pointer;
   }
 
   .category{
