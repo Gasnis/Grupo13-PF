@@ -23,8 +23,7 @@ export default function Detail() {
     }, []);
 
     const placeDetail = useSelector((state) => state.placeDetail);
-
-
+    
     if (!placeDetail.id) {
         return (
             <div>
@@ -37,6 +36,7 @@ export default function Detail() {
             </div>
         )
     }
+    console.log(placeDetail)
 
     if (placeDetail.id == 400) {
         return (
@@ -55,7 +55,7 @@ export default function Detail() {
 
             <div className={style.container}>
                 <div className={style.img}>
-                    <img src={placeDetail.image} alt="" />
+                    <img src={placeDetail.image[0]} alt="" />
                 </div>
 
                 <div className={ checked ? style.head : style.headDark}>
@@ -87,10 +87,17 @@ export default function Detail() {
                             {placeDetail.schedule
                                 ?.slice(placeDetail.schedule.length - 2)
                                 .join(" a ")}
-                        </span>
-                        <a className={style.menu} href={placeDetail.menu}>
                             <h3>Menú</h3>
-                        </a>
+                        </span>
+                                { placeDetail.menu?.map(element => {
+                                    return (
+                                        <a className={style.menu} href={element} target="_blank">
+                                         <img className={style.menuImg} src={element}  alt="" />
+                                        </a>
+                                         )
+                                    })
+                                }
+                            
                         {placeDetail.promo ? (
                             <div className={style.promo}>
                                 <span>Promo:</span>

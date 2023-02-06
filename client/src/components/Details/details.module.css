@@ -111,6 +111,13 @@
     font-size: 3em;
 }
 
+.menuImg{
+  width: 40px;
+  height: 40px;
+  margin: 0px;
+  padding: 0px;
+  margin-right: 3px;
+}
 .rating {
     /* position: absolute; */
     top: 121px;
