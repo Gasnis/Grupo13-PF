@@ -30,6 +30,38 @@
     }
 }
 
+.passwordInputCont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #FCF9EB;
+    border-radius: 7px;
+    width: 95%;
+    border: solid 1px #A7A7A7;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+}
+
+.passwordInput {
+    width: 90%;
+    background-color: transparent;
+    border: none;
+}
+
+.eyes {
+    background-color: transparent;
+}
+
+.eyes:hover {
+    cursor: pointer;
+}
+
 .containerDark {
     display: flex;
     flex-direction: column;
@@ -81,6 +113,10 @@
     font-family: 'Cambay', sans-serif;
     font-size: medium;
 }
+
+/* .input:focus, input:active, .inputDark:focus, .inputDark:active {
+    border: solid 2px #40047C ;
+} */
 
 .linksContainer {
     display: flex;
@@ -317,6 +353,24 @@
     border-style: solid;
     border-width: 1px;
     border-color: #A7A7A7;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+}
+
+.passwordInputContDark {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 19px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 10px;
+    background: #4F4F4F;
+    border-radius: 7px;
+    width: 95%;
+    border: solid 1px #A7A7A7;
     font-family: 'Cambay', sans-serif;
     font-size: medium;
 }
