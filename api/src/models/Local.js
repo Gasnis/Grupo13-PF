@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     image: {
-      type: DataTypes.TEXT,// string 255 / text unlimited
+      type: DataTypes.ARRAY(DataTypes.TEXT),// string 255 / text unlimited
       allowNull: true, 
     },
     location: {

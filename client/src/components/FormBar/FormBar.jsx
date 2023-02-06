@@ -27,7 +27,7 @@ export default function CreateLocal() {
     const [local, setLocal] = useState({
         userId: profile.id,
         name: "",
-        image: "",
+        image: [],
         location: "",
         menu: "",
         phone: "",
@@ -161,16 +161,19 @@ export default function CreateLocal() {
     // const [imageUrl, setImageUrl] = useState('');
 
     const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        const formData = new FormData();
+        const files = event.target.files;
+        files.forEach((file) => {
+            const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
         axios.post(CLOUDINARY_URL, formData)
         .then(res => {
-            setLocal({ ...local,  image: res.data.secure_url });
+            setLocal({ ...local,  image: [...local.image , res.data.secure_url] });
             
         })
         .catch(err => console.error(err));
+        })
+        
     }
 
     //********************************** CLOUDINARY */
@@ -218,13 +221,14 @@ export default function CreateLocal() {
                                 onChange={handleChange}
                                 className={checked ? styles.input : styles.inputDark}
                             /> */}
-                            <di>
+                            <div>
                                 <input 
                                 type="file"
+                                multiple
                                 onChange={handleImageUpload}   
                                 className={checked ? styles.input : styles.inputDark}/>
                                 
-                            </di>
+                            </div>
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
                         </div>
 

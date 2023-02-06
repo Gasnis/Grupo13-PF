@@ -30,7 +30,7 @@ export default function Place({ place }) {
       ) : (
         
           <div className={style.placedisabled}>
-            <img src={place.image} className={style.logodisabled} alt="img" />
+            <img src={place.image[0]} className={style.logodisabled} alt="img" />
             <div className={style.textContainer}>
               <div className={style.text}>
                 <h3>{place.name}</h3>
