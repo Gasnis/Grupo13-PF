@@ -282,6 +282,3 @@ export const getUserId = async (id) => {
 
 
 
-//aceptar bar
-//no aceptar bar
-//banear usuario
