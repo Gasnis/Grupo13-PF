@@ -78,8 +78,8 @@ module.exports = (sequelize) => {
       defaultValue: "solicitud",
     },
     rating: {
-        type: DataTypes.INTEGER, //  || integer
-        defaultValue: "5",
+        type: DataTypes.ARRAY(DataTypes.INTEGER), //  || integer
+        defaultValue: [1,1,1,1,1],
       },
     city: {
       type: DataTypes.STRING,
