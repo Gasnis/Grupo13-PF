@@ -22,7 +22,7 @@ export default function Place({ place }) {
                     width="20px"
                   />
                 </h4>
-                <h4>Edad {place.ageRange.map((age) => age).join("-")}</h4>
+                <h4>Edad {place.ageRange}</h4>
               </div>
             </div>
           </Link>
@@ -30,7 +30,7 @@ export default function Place({ place }) {
       ) : (
         
           <div className={style.placedisabled}>
-            <img src={place.image} className={style.logo} alt="img" />
+            <img src={place.image} className={style.logodisabled} alt="img" />
             <div className={style.textContainer}>
               <div className={style.text}>
                 <h3>{place.name}</h3>
@@ -45,7 +45,7 @@ export default function Place({ place }) {
                     width="20px"
                   />
                 </h4>
-                <h4>Edad {place.ageRange.map((age) => age).join("-")}</h4>
+                <h4>Edad {place.ageRange}</h4>
               </div>
             </div>
           </div>

@@ -1,13 +1,21 @@
 .mainContainer {
     background-color: #FCF9EB;
     height: 100vh;
+    transition: all 0.5s ease;
 }
+
 .container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding-top: 3em;
 }
+@media (max-width: 760px){
+    .container{
+       flex-direction: column;
+       align-items: center;
+    }
+  }
 
 .bodyblack {
     background-image: url(../../utils/Profile2.png);
@@ -48,6 +56,13 @@
     width: 35vw;
     border-radius: 10px;
 }
+@media (max-width: 760px){
+    .img{
+        width: 97%;
+        padding: 0px;
+    }
+  }
+
 
 .img img {
     width: 100%;
@@ -62,13 +77,19 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
-    width: 35vw;
+    width: 35%;
     height: 80vh;
     border-radius: 10px;
     background-color: #FCF9EB;
 }
+@media (max-width: 760px){
+    .head{
+        width: 94%;
+        justify-self: center;
+    }
+  }
 
-.textup{
+.textup {
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -197,6 +218,16 @@
     justify-content: center;
 }
 
+.reservar:hover {
+    background: #712dc9;
+    cursor: pointer;
+}
+
+.book {
+    border: #FCF9EB;
+
+}
+
 .centrar {
     display: flex;
     justify-content: center;
@@ -206,11 +237,13 @@
     /* position: relative; */
     top: 7vh;
 }
+@media (max-width: 760px){
+    .centrar a button{
+        width: 97%;
+        
+    }
+  }
 
-.reservar:hover {
-    background: #712dc9;
-    cursor: pointer;
-}
 
 .loadingcontainer {
     display: flex;
@@ -236,12 +269,14 @@
 .fondoVioleta {
     background-image: url(../../utils/fondovioleta.png);
     background-size: cover;
+    background-position-x: -50px;
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: left;
     text-align: left;
     width: 100%;
+    transition: all 0.5s ease;
 }
 
 .fondoVioleta>a {
@@ -252,7 +287,13 @@
 .mainContainerDark {
     background-color: #2A2A2B;
     height: 100vh;
+    transition: all 0.5s ease;
 }
+@media (max-width: 760px){
+    .mainContainerDark{
+        height: 100%;
+    }
+  }
 
 .headDark {
     display: flex;
@@ -265,3 +306,10 @@
     background-color: #323234;
     color: #FCF9EB;
 }
+@media (max-width: 760px){
+    .headDark{
+        width: 94%;
+        justify-self: center;
+        height: 100%;
+    }
+  }

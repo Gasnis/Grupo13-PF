@@ -11,6 +11,7 @@ import footprint from "../../utils/huella.png";
 import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
 import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
+import Loading from "../Loading/Loading";
 
 export default function Detail() {
     const { id } = useParams();
@@ -23,14 +24,16 @@ export default function Detail() {
 
     const placeDetail = useSelector((state) => state.placeDetail);
 
+
     if (!placeDetail.id) {
         return (
             <div>
                 <Navbar />
-                <div className={style.loadingcontainer}>
+                {/* <div className={style.loadingcontainer}>
                     <h1 className={style.loading}>Cargando...</h1>
                     <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />
-                </div>
+                </div> */}
+                <Loading />
             </div>
         )
     }
@@ -112,9 +115,7 @@ export default function Detail() {
                         >
                             <img className={style.location2} src={location2} alt="" />
                         </a>
-                        {placeDetail.ageRange ? (
-                            <h1 className={style.edad}>{placeDetail.ageRange.join("-")}</h1>
-                        ) : null}
+                        <h1 className={style.edad}>{placeDetail.ageRange}</h1>
                         <div>
                             <img className={style.footprint} src={footprint} alt="" />
                             {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}

@@ -2,12 +2,12 @@ const {Book, Local, User} =require("../../db")
 
 
 const postBookData = async (bookData) => {
-    const {localId,userId, name,reservedDate,personQuantity,codeProm} = bookData
-    console.log(bookData)
-    if( localId && userId && name && reservedDate && personQuantity){ 
+    const {localId,userId, name,reservedDate,personQuantity,codeProm, hourDate} = bookData
+    
+    if( localId && userId && name && reservedDate && personQuantity && hourDate){ 
         
     
-        const bookDataCreated = await Book.create({name,reservedDate,personQuantity,codeProm})
+        const bookDataCreated = await Book.create({name,reservedDate,personQuantity,codeProm, hourDate})
     
         const searchLocalById = await Local.findByPk(localId)
        

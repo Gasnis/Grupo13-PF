@@ -1,7 +1,10 @@
+.principalDiv{
+  align-items: center;
+}
+
 .fondo {
   margin: auto 0;
   background: url("https://anonfiles.com/BaN4f3U3y8/Sol_png") no-repeat 50% 18.5%;
-
 }
 
 .cardsContainer {
@@ -10,6 +13,13 @@
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
   /* margin-left: 55px;
   margin-right: 55px; */
+}
+@media (max-width: 550px){
+  .cardsContainer{
+     display: flex;
+     flex-direction: column;
+     
+  }
 }
 
 
@@ -50,9 +60,9 @@
    .botonpaginadodark:hover {
     border-radius: 5px;
     transform: translateY(-10px);
-    box-shadow: 0 7px 0 -2px #f859d8,
-     0 15px 0 -4px #39a2db,
-     0 16px 10px -3px #39a2db;
+    box-shadow: 0 7px 0 -2px #40047C,
+     0 15px 0 -4px #FFB800,
+     0 16px 10px -3px #FFB800;
    }
    
    .botonpaginado:active {
@@ -68,23 +78,27 @@
     margin: 0px;
     color: white;
    }
-
+/* 
    .cargandodark h1{
     font-size: 50px;
     margin: 0px;
     color: black;
-   }
+   } */
    
 .info{
   background-image: url(../../utils/Home2.png);
   background-repeat: repeat-y;
   height: 100%;
+  transition: all 0.5s ease;
 }
 
 .infodark{
-  background-image: url("../../utils/homedark.png");
-  background-size: cover;
+  background-image: url("../../utils/HomeDark2.png");
+  background-size: repeat-y;
   background-color: #2A2A2B;
+  height: 100%;
+  width: 100%;
+  transition: all 0.5s ease;
 }
 
 .filtercontainer{
@@ -124,32 +138,50 @@
     cursor:pointer;
 }
 
+.centrarSearch {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin-top: 1.5em;
+  border: solid 1px #797979;
+  border-radius: 1em;
+  width: 40em;
+  padding: 0.5em;
+}
+
 .searchbar {
   color: #000000;
-  padding: 0.3em 1.3000000000000007em;
-  margin-top: 12px;
   margin-inline: 35px;
   font-size: 18px;
-  border-radius: 1em;
-  width: 26em;
   border-style: none;
-  background: #FDFBF2;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #797979;
+  background-color: transparent;
+  width: 100%;
 }
+@media (max-width: 550px){
+  .searchbar{
+     width: 95%;
+     /* margin: 25px 10px 13px 10px; */
+  }
+}
+
 
 .searchbardark {
   color: #f3f3f3;
-  padding: 0.3em 1.3000000000000007em;
-  margin-top: 12px;
   margin-inline: 35px;
   font-size: 18px;
-  border-radius: 1em;
-  width: 26em;
   border-style: none;
-  background: #434343;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #8b8b8b;
+  background: transparent;
+}
+@media (max-width: 550px){
+  .searchbardark{
+     width: 95%;
+     margin: 25px 10px 13px 10px;
+     
+  }
 }
