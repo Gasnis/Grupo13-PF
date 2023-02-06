@@ -9,6 +9,7 @@ import { logout } from "../../redux/actions";
 import { useLocation, Link } from "react-router-dom";
 import burguer from "../../utils/burguer.png"
 import categorylist from "../../utils/ListaNegra.png"
+import {HiOutlineStar} from "react-icons/hi2";
 import favorito from "../../utils/favorito.png"
 import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
@@ -24,10 +25,8 @@ export default function Navbar(props) {
     const dispatch = useDispatch();
     const location = useLocation();
 
-
     const [open, setOpen] = useState("");
     const [openSub, setOpenSub] = useState("");
-
 
     const orderSelection = document.querySelector("#orderSelection");
     const category = document.querySelector("#category");
@@ -99,9 +98,10 @@ export default function Navbar(props) {
         <>
             {location.pathname === "/" ?
 
-                <div className={style.Container}>
+                <div className={darkmode ? style.Container : style.Container}>
                     <div>
                         <img src={burguer} className={style.burguer} onClick={() => handleOpen("burguer")} alt=""></img>
+
                         {open === "burguer" ? (
                             <div className={style.dropdown2}>
                                 <div className={style.titulos}>
@@ -113,6 +113,7 @@ export default function Navbar(props) {
                                 <div className={style.orderinline}>
                                     <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.orderinline}>
                                         <img className={style.favorite} src={favorito} />
+                                        {/* <HiOutlineStar className={style.favorite}/> */}
                                         Rating
                                         <img src={arrowR} alt="Filtros" className={style.arrows} />
                                     </div>
@@ -156,12 +157,10 @@ export default function Navbar(props) {
                         ) : null
                         }
                     </div>
+                    
+                    <img className={style.Logo} src={wwwhere} alt="logo" />
 
-                    <Link to="/" className={style.link}>
-                        <img className={style.Logo} src={wwwhere} alt="logo" />
-                    </Link>
                     <div>
-
                         <label className={style.switch}>
 
                             <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />

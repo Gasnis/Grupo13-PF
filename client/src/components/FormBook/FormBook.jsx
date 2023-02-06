@@ -182,7 +182,7 @@ export default function SignUp(props) {
 
         }
       };
-      console.log('datos para enviar',data)
+     
       await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
       if (newBooking.id) {
@@ -297,6 +297,7 @@ export default function SignUp(props) {
                                 value={booking.hourDate}
                                 name="hourDate"
                                 onChange={handleChange}>
+                                  <option value="" hidden>Horario</option> 
                                   <option value="18:00">18:00</option>                                    
                                   <option value="19:00">19:00</option>
                                   <option value="20:00">20:00</option>
