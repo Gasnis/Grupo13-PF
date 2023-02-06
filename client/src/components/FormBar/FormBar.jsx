@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { CloudinaryContext, Image } from 'cloudinary-react';
+import { ImageUpload } from 'cloudinary-react';
+import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import { createPlace } from '../../redux/actions';
 import styles from '../FormBar/FormBar.module.css';
@@ -151,6 +154,27 @@ export default function CreateLocal() {
             });
     }
 
+    //********************************** CLOUDINARY */
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "reactapp";
+
+    // const [imageUrl, setImageUrl] = useState('');
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        axios.post(CLOUDINARY_URL, formData)
+        .then(res => {
+            setLocal({ ...local,  image: res.data.secure_url });
+            
+        })
+        .catch(err => console.error(err));
+    }
+
+    //********************************** CLOUDINARY */
+
 
     return (
         <div className={checked ? styles.formBarContainer : styles.formBarContainerDark}>
@@ -186,14 +210,21 @@ export default function CreateLocal() {
                         </div>
 
                         <div >
-                            <input
+                            {/* <input
                                 type='url'
                                 placeholder='Imagen/logo'
                                 value={local.image}
                                 name="image"
                                 onChange={handleChange}
                                 className={checked ? styles.input : styles.inputDark}
-                            />
+                            /> */}
+                            <di>
+                                <input 
+                                type="file"
+                                onChange={handleImageUpload}   
+                                className={checked ? styles.input : styles.inputDark}/>
+                                
+                            </di>
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
                         </div>
 
@@ -362,7 +393,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !local.city}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category  || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>
