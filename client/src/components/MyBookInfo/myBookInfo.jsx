@@ -3,7 +3,6 @@ import { updatePlace, getPlaces } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
-import { useEffect } from "react";
 
 
 export default function MyBookInfo(props) {
@@ -20,7 +19,7 @@ export default function MyBookInfo(props) {
     dispatch(getPlaces())
   },[dispatch])
 
-  const fechahoy = new Date("02/9/2023");
+  const fechahoy = new Date();
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
@@ -62,8 +61,7 @@ export default function MyBookInfo(props) {
     console.log(newArrRating);
     await dispatch(updatePlace({...localcambia, rating: newArrRating}))
     dispatch(getPlaces())
-    await console.log(localcambia);
-    //swal("Muchas Gracias por darnos tu feedback")
+    swal("Muchas Gracias por darnos tu feedback")
   }
 
   return (
