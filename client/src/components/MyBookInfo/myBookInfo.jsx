@@ -12,7 +12,7 @@ export default function MyBookInfo(props) {
   const checked = useSelector((state) => state.darkmode);
   const [index, setIndex] = useState(0);
 
-  const fechahoy = new Date("02/09/2023");
+  const fechahoy = new Date();
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
