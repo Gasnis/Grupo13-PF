@@ -157,7 +157,7 @@ export default function CreateLocal() {
     //********************************** CLOUDINARY */
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
     const CLOUDINARY_UPLOAD_PRESET = "reactapp";
-console.log("local imag",profile.locals.image)
+
     // const [imageUrl, setImageUrl] = useState('');
 
     const handleImageUpload = async (event) => {
