@@ -8,7 +8,18 @@
     padding-inline: 20px;
     transition: all 0.5s ease;
 }
-
+@media (max-width: 1600px) {
+    .Container {
+        background-color: #FCF9EB;
+        display: flex;
+        justify-content: space-between;
+        height: 11vh;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-inline: 20px;
+        transition: all 0.5s ease;
+    }
+}
 .leftContainer {
     display: flex;
     align-items: center;
@@ -22,6 +33,7 @@
     align-items: center;
     justify-content: center;
     width: 40%;
+    
 }
 
 .rightContainer {
@@ -90,6 +102,19 @@
     flex-wrap: nowrap;
     padding-inline: 20px;
     transition: all 0.5s ease;
+
+}
+@media (max-width: 1600px) {
+    .ContainerDark {
+        background-color: #2A2A2B;
+        display: flex;
+        justify-content: space-between;
+        height: 11vh;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-inline: 20px;
+        transition: all 0.5s ease;
+    }
 }
 
 .iconDark {
@@ -422,6 +447,7 @@
     background-color: var(--background);
     transition: .5s;
     border-radius: 30px;
+
 }
 
 .slider:before {

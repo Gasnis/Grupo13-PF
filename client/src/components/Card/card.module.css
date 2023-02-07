@@ -9,6 +9,12 @@
     text-decoration: none;
 }
 
+@media (max-width: 1500px) {
+    .places {
+        margin-trim: 20px;
+    }
+}
+
 @media (max-width: 550px) {
     .places {
         display: flex;
@@ -32,6 +38,23 @@
     z-index: 1;
     
 }
+
+@media (max-width: 1500px) {
+    .place{
+        height: fit-content;
+        width: 18rem;
+        border-radius: 12px;
+        color: black;
+        font-family: 'Cambay', sans-serif;
+        font-style: normal;
+        transition: all 0.5s ease;
+        box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+        z-index: 1;
+    
+    }
+}
+    
+
 
 .place:hover {
     transform: scale(1.09) rotate(2deg);
