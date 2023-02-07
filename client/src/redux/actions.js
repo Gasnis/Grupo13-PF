@@ -12,9 +12,32 @@ export const LOGOUT = "LOGOUT";
 export const SET_INPUT = "SET_INPUT";
 export const SET_CHECKED = "SET_CHECKED";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const BOOK_PERSIST = "BOOK_PERSIST"
-export const SEARCH_USER = "SEARCH_USER"
+export const BOOK_PERSIST = "BOOK_PERSIST";
+export const SEARCH_USER = "SEARCH_USER";
+export const GET_CITIES = "GET_CITIES";
+export const GET_STATES = "GET_STATES";
 
+export const getCities = (stateName) => {
+    return async (dispatch)=>{
+        let {data} = await axios(`/city/${stateName}`)
+        // let cities = data.map(city=>city.name)
+        return dispatch({
+            type:GET_CITIES,
+            payload: data
+        })
+    }
+}
+
+export const getStates = () => {
+    return async (dispatch)=>{
+        const {data} = await axios("/state")
+        // const provincias = data.map(provincia=>provincia.name)
+        return dispatch({
+            type: GET_STATES,
+            payload: data
+        })
+    }
+}
 
 export const getPlaces = () => {
     return async (dispatch) => {
@@ -178,10 +201,10 @@ export const updateBook = (idBook, update) => {
     }
 }
 
-export const deleteBook = (idBook) => {
+export const deleteBook = (id) => {
     return async () => {
-        const { data } = await axios.delete(`/local/${idBook}`);
-        return data;
+        const { data } = await axios.delete(`/book/${id}`, id);
+        return data
     }
 }
 

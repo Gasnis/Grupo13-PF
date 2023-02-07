@@ -13,6 +13,8 @@ import {
     CLEAN_DETAIL,
     BOOK_PERSIST,
     SEARCH_USER,
+    GET_CITIES,
+    GET_STATES,
     DELETE_BOOK,
     
 
@@ -27,7 +29,9 @@ const initialState = {
     users: [],
     allUsers: [],
     darkmode: false,
-    book:{}
+    book:{},
+    cities:[],
+    states:[]
     // >>>>>>> eb7179f0736f99dc09075f7cff394fa55294975d
 }
 
@@ -192,6 +196,16 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 book: action.payload
+            }
+        case GET_CITIES:
+            return {
+                ...state,
+                cities: action.payload
+            }
+        case GET_STATES:
+            return {
+                ...state,
+                states: action.payload
             }
         default:
             return state;
