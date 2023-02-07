@@ -11,5 +11,5 @@
 
 .images {
     max-height: 35vh;
-    width: 100%;
+    object-fit: cover;
 }
