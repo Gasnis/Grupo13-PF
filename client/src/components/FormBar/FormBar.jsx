@@ -29,7 +29,7 @@ export default function CreateLocal() {
         name: "",
         image: [],
         location: "",
-        menu: "",
+        menu: [],
         phone: "",
         capacity: "",
         city: "",
@@ -157,24 +157,49 @@ export default function CreateLocal() {
     //********************************** CLOUDINARY */
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
     const CLOUDINARY_UPLOAD_PRESET = "reactapp";
-
+console.log("local imag",profile.locals.image)
     // const [imageUrl, setImageUrl] = useState('');
 
-    const handleImageUpload = (event) => {
+    const handleImageUpload = async (event) => {
         const files = event.target.files;
-        files.forEach((file) => {
-            const formData = new FormData();
+        for (let file of  files) {    
+        const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-        axios.post(CLOUDINARY_URL, formData)
+        await  axios.post(CLOUDINARY_URL, formData)
         .then(res => {
-            setLocal({ ...local,  image: [...local.image , res.data.secure_url] });
-            
+            setLocal(prevState => ({
+                ...prevState, image: [...prevState.image, res.data.secure_url]
+              }));   
         })
         .catch(err => console.error(err));
-        })
-        
+        }
     }
+
+    const handleMenuUpload = async (event) => {
+        const files = event.target.files;
+        for (let file of  files) {    
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        await  axios.post(CLOUDINARY_URL, formData)
+        .then(res => {
+            setLocal(prevState => ({
+                ...prevState, menu: [...prevState.menu, res.data.secure_url]
+              }));   
+        })
+        .catch(err => console.error(err));
+        }    
+    }
+
+    const handleDelete = (event) => {
+        console.log(event.target.name)
+        const newInputImageArr = local.image.filter(element => element !== event.target.name)
+        setLocal({...local, image: newInputImageArr})
+
+    }
+
+
 
     //********************************** CLOUDINARY */
 
@@ -221,13 +246,31 @@ export default function CreateLocal() {
                                 onChange={handleChange}
                                 className={checked ? styles.input : styles.inputDark}
                             /> */}
-                            <div>
+                            <div  className={checked ? styles.input : styles.inputDark}>
+                                <div className={styles.divInputUpdate}>
+                                <p className={styles.inputText}>Agregar imagen</p>   
                                 <input 
+                                className={styles.inputUpdate}
                                 type="file"
                                 multiple
                                 onChange={handleImageUpload}   
-                                className={checked ? styles.input : styles.inputDark}/>
+                                />
+                                </div>  
+                                <div>
+                                    {local.image?.map(element =>{
+                                        return(
+                                            <img 
+                                            name={element}
+                                            src={element} 
+                                            alt="" 
+                                            className={styles.inputImg} 
+                                            onClick={handleDelete} />
+                                        )
+                                    } )
+                                    }
                                 
+
+                                </div>
                             </div>
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
                         </div>
@@ -333,15 +376,26 @@ export default function CreateLocal() {
                             </div>
                         </div>
 
-                        <div >
+                        {/* <div >
                             <input
                                 type='text'
                                 placeholder='Menu'
                                 value={local.menu}
                                 name="menu"
-                                onChange={handleChange}
+                                onChange={handleMenuUpload}
                                 className={checked ? styles.input : styles.inputDark}
                             />
+                        </div> */}
+                        <div className={checked ? styles.input : styles.inputDark}>
+                            <input 
+                                // value='3'
+                                name='menu'
+                                type="file"
+                                multiple
+                                onChange={handleMenuUpload}   
+                                
+                                />
+                                
                         </div>
 
                         <div className={styles.doubleFields}>
@@ -397,7 +451,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category  || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || !local.city}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category  || !local.location  || !local.name || !local.phone || !local.schedule || !local.city}
                         >Registrar local</button>
                     </form>
                 </div>

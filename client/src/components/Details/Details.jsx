@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -23,8 +22,9 @@ export default function Detail() {
   }, []);
 
   const placeDetail = useSelector((state) => state.placeDetail);
-
   
+  const [state, setState] = useState(0)
+ 
 
   if (!placeDetail.id) {
     return (
@@ -34,11 +34,28 @@ export default function Detail() {
                     <h1 className={style.loading}>Cargando...</h1>
                     <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />
                 </div> */}
-        <Loading />
-      </div>
-    );
-  }
+                <Loading />
+            </div>
+        )
+    }
 
+
+  const handleNextAndBack = (event) =>{
+    if(event.target.name === 'next'){
+        if(state + 1 >= placeDetail.image.length){
+            return
+        }else{
+            setState(state+1)
+        }
+    }
+    if(event.target.name === "back" ){
+        if(state === 0){
+            return
+        }else{
+            setState(state - 1)
+        }
+    }
+  }
   if (placeDetail.id == 400) {
     return (
       <div>
@@ -51,101 +68,105 @@ export default function Detail() {
       </div>
     );
   }
-  let divisor = placeDetail?.rating.reduce(
-    (valorAnterior, valorActual) => valorAnterior + valorActual
-  );
-  let dividendo = placeDetail?.rating.reduce(function (
-    valorAnterior,
-    valorActual,
-    indice
-  ) {
-    return valorAnterior + valorActual * (indice + 1);
-  });
-  let ratin = dividendo / divisor;
+//   let divisor = placeDetail?.rating.reduce(
+//     (valorAnterior, valorActual) => valorAnterior + valorActual
+//   );
+//   let dividendo = placeDetail?.rating.reduce(function (
+//     valorAnterior,
+//     valorActual,
+//     indice
+//   ) {
+//     return valorAnterior + valorActual * (indice + 1);
+//   });
+//   let ratin = dividendo / divisor;
+
+
+
   return (
     <div className={checked ? style.mainContainer : style.mainContainerDark}>
       <Navbar />
 
-      <div className={style.container}>
-        <div className={style.img}>
-          <img src={placeDetail.image} alt="" />
-        </div>
+            <div className={style.container}>
+                <div className={style.img}>
+                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
 
-        <div className={checked ? style.head : style.headDark}>
-          <div className={style.ratingShow}>
-            <div className={style.rating}>
-              {ratin.toFixed(1)}
-              <img className={style.star} src={star} alt="" />
-            </div>
-            <div className={style.containerevent}>
-              {placeDetail.event ? (
-                <div className={style.event}>
-                  <h3>Show{placeDetail.event}</h3>
+                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                  
+                    <img src={placeDetail.image[state]} alt="" />
                 </div>
-              ) : null}
+
+                <div className={ checked ? style.head : style.headDark}>
+                    <div className={style.ratingShow}>
+                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.containerevent}>
+                            {placeDetail.event ? (
+                                <div className={style.event}>
+                                    <h3>Show{placeDetail.event}</h3>
+                                </div>
+                            ) : null}
+                        </div>
+                    </div>
+                    <div className={style.textup}>
+                        <span className={style.category}>
+                            {placeDetail.category}
+                        </span>
+                        <span className={style.name}>{placeDetail.name}</span>
+                    </div>
+                    <div className={ checked ? style.fondoamarillo : style.fondoVioleta}>
+                        <h3 className={style.horariotitulo}>Horarios</h3>
+                        <span className={style.horario}>
+                            {sortDays(placeDetail.schedule
+                                ?.slice(0, placeDetail.schedule.length - 2))
+                                .map((day) => day[0].toUpperCase() + day.slice(1))
+                                .join(" - ")}
+                        </span>
+                        <span className={style.horariohora}>
+                            {placeDetail.schedule
+                                ?.slice(placeDetail.schedule.length - 2)
+                                .join(" a ")}
+                        </span>
+                        <a className={style.menu} href={placeDetail.menu}>
+                            <h3>Menú</h3>
+                        </a>
+                        {placeDetail.promo ? (
+                            <div className={style.promo}>
+                                <span>Promo:</span>
+                                <h4>{placeDetail.promo}</h4>
+                            </div>
+                        ) : (
+                            <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
+                        )}
+                        <a className={style.direccion}
+                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(
+                                / /g,
+                                "+"
+                            )}`}
+                        >
+                            <span className={style.titles}>{placeDetail.location}</span>
+                        </a>
+                        <span className={style.ciudad}>{placeDetail.city}</span>
+                    </div>
+                    <div className={style.sideDiv}>
+                        <a
+                            href={`https://www.google.com/maps/place/${placeDetail.location}`}
+                        >
+                            <img className={style.location2} src={location2} alt="" />
+                        </a>
+                        <h1 className={style.edad}>{placeDetail.ageRange}</h1>
+                        <div>
+                            <img className={style.footprint} src={footprint} alt="" />
+                            {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
+                        </div>
+                    </div>
+                    <div className={style.centrar}>
+                        <Link to="/book">
+                            <button className={style.reservar}>Reservar</button>
+                        </Link>
+                    </div>
+
+                </div>
+
             </div>
-          </div>
-          <div className={style.textup}>
-            <span className={style.category}>{placeDetail.category}</span>
-            <span className={style.name}>{placeDetail.name}</span>
-          </div>
-          <div className={checked ? style.fondoamarillo : style.fondoVioleta}>
-            <h3 className={style.horariotitulo}>Horarios</h3>
-            <span className={style.horario}>
-              {sortDays(
-                placeDetail.schedule?.slice(0, placeDetail.schedule.length - 2)
-              )
-                .map((day) => day[0].toUpperCase() + day.slice(1))
-                .join(" - ")}
-            </span>
-            <span className={style.horariohora}>
-              {placeDetail.schedule
-                ?.slice(placeDetail.schedule.length - 2)
-                .join(" a ")}
-            </span>
-            <a className={style.menu} href={placeDetail.menu}>
-              <h3>Menú</h3>
-            </a>
-            {placeDetail.promo ? (
-              <div className={style.promo}>
-                <span>Promo:</span>
-                <h4>{placeDetail.promo}</h4>
-              </div>
-            ) : (
-              <h2 className={style.promo}>
-                Vuelve mas tarde para ver promociones
-              </h2>
-            )}
-            <a
-              className={style.direccion}
-              href={`https://www.google.com/maps/place/${placeDetail.location.replace(
-                / /g,
-                "+"
-              )}`}
-            >
-              <span className={style.titles}>{placeDetail.location}</span>
-            </a>
-            <span className={style.ciudad}>{placeDetail.city}</span>
-          </div>
-          <div className={style.sideDiv}>
-            <a
-              href={`https://www.google.com/maps/place/${placeDetail.location}`}
-            >
-              <img className={style.location2} src={location2} alt="" />
-            </a>
-            <h1 className={style.edad}>{placeDetail.ageRange}</h1>
-            <div>
-              <img className={style.footprint} src={footprint} alt="" />
-              {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
-            </div>
-          </div>
-          <div className={style.centrar}>
-            <Link to="/book">
-              <button className={style.reservar}>Reservar</button>
-            </Link>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
