@@ -18,17 +18,6 @@
     transition: all 0.5s ease;
 }
 
-/* .Container {
-    background-color: #FCF9EB;
-    display: flex;
-    justify-content: space-between;
-    height: 8vh;
-    align-items: center;
-    flex-wrap: nowrap;
-    padding-inline: 20px;
-    transition: all 0.5s ease;
-} */
-
 .leftContainer {
     display: flex;
     align-items: center;
@@ -62,6 +51,7 @@
 .Logo {
     height: 4em;
     object-fit: contain;
+    z-index: 3;
 }
 
 .about {
@@ -112,7 +102,6 @@
     justify-content: space-around;
 }
 
-
 /* ---------------------------------------------------------------------------DARK MODE ------------------------------------------------------------------------------------ */
 .navBarContainerDark {
     display: flex;
@@ -124,28 +113,16 @@
     transition: all 0.5s ease;
     background-color: #2A2A2B;
 }
-.ContainerDark {
-    background-color: #2A2A2B;
-    display: flex;
-    justify-content: space-between;
-    height: 8vh;
-    align-items: center;
-    flex-wrap: nowrap;
-    padding-inline: 20px;
-    transition: all 0.5s ease;
 
-}
-@media (max-width: 1600px) {
-    .ContainerDark {
-        background-color: #2A2A2B;
-        display: flex;
-        justify-content: space-between;
-        height: 11vh;
-        align-items: center;
-        flex-wrap: nowrap;
-        padding-inline: 20px;
-        transition: all 0.5s ease;
-    }
+.optionsContainerDark {
+    background-color: transparent;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
 }
 
 .iconDark {
@@ -192,10 +169,21 @@
     z-index: 1;
 }
 
+.burgerIconDark {
+    visibility: hidden;
+    transform: scale(1.5);
+    color: #FCF9EB;
+    z-index: 1;
+}
+
 /* ---------------------------------------------------------------------------RESPONSIVE------------------------------------------------------------------------------------- */
 
 @media (max-width: 768px) {
     .navBarContainer {
+        padding-inline: 0;
+    }
+
+    .navBarContainerDark {
         padding-inline: 0;
     }
 
@@ -217,6 +205,27 @@
     }
 
     .optionsContainer.open {
+        transform: translateX(0);
+    }
+
+    .optionsContainerDark {
+        background-color: #2A2A2B;
+        transform: translateX(-100%);
+        transition: all 0.5s ease;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top:3em;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: start;
+        align-items: center;
+        z-index: 3;
+        padding: 1em;
+        gap: 1em;
+    }
+
+    .optionsContainerDark.open {
         transform: translateX(0);
     }
 
@@ -261,6 +270,19 @@
     }
 
     .burgerIcon {
+        visibility: visible;
+        position: absolute;
+        left: 1em;
+        display: flex;
+        transform: scale(1.8);
+        margin-top: 0.5em;
+        fill: #40047C;
+        z-index: 1;
+    }
+
+    .burgerIconDark {
+        color: #FCF9EB;
+        z-index: 1;
         visibility: visible;
         position: absolute;
         left: 1em;
@@ -461,16 +483,6 @@
 }
 
 
-
-
-
-.favorite {
-    bottom: 1vh;
-    position: relative;
-    height: 5vh;
-    left: -1.4vh;
-}
-
 .limpiar {
     position: relative;
     left: 2vh;
@@ -491,12 +503,6 @@
     left: 1.5vh;
 }
 
-.escoba {
-    height: 4vh;
-    position: relative;
-    bottom: 2vh;
-    right: 1.2vh;
-}
 
 .filterCategory {
     position: relative;
