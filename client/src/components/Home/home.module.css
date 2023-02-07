@@ -198,6 +198,7 @@
   font-size: 18px;
   border-style: none;
   background: transparent;
+  width: 100%;
 }
 @media (max-width: 550px){
   .searchbardark{
