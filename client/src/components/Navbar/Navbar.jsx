@@ -260,7 +260,7 @@ export default function Navbar(props) {
 
                 :
                 // NavBar que se renderiza en otras rutas
-                <div className={style.Container}>
+                <div className={darkmode ? style.Container : style.ContainerDark}>
                     <Link to="/" href="/"><img src={arrow} /></Link>
                     <div>
                         <img className={style.Logo} src={wwwhere} alt="logo" />
