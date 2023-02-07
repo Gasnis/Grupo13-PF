@@ -9,7 +9,7 @@ import style from "./BarOwnerPanel.module.css"
 import { getPlaceDetail, cleanDetail } from "../../redux/actions";
 
 function getUniqueSortedDates(books) {
-    const reservedDates = books.map(book => book.reservedDate);
+    const reservedDates = books?.map(book => book.reservedDate);
     const uniqueDates = [...new Set(reservedDates)];
     return uniqueDates.sort((a, b) => a - b);
   }
