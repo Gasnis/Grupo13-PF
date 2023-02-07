@@ -199,10 +199,10 @@ export default function Navbar(props) {
                                         <div>
                                             <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
                                         </div>
-
-                                        <div>
+                                        {profile.locals.length? <div>
                                             <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
-                                        </div>
+                                        </div>:null}
+                                       
 
                                         <div>
                                             <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
