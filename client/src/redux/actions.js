@@ -201,10 +201,10 @@ export const updateBook = (idBook, update) => {
     }
 }
 
-export const deleteBook = (idBook) => {
+export const deleteBook = (id) => {
     return async () => {
-        const { data } = await axios.delete(`/local/${idBook}`);
-        return data;
+        const { data } = await axios.delete(`/book/${id}`, id);
+        return data
     }
 }
 
