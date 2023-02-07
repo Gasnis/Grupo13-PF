@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       allowNull: true, // **
     },
     menu: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,
     },
     event: {
