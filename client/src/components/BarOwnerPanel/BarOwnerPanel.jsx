@@ -8,6 +8,12 @@ import { getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
 import { getPlaceDetail, cleanDetail } from "../../redux/actions";
 
+function getUniqueSortedDates(books) {
+    const reservedDates = books.map(book => book.reservedDate);
+    const uniqueDates = [...new Set(reservedDates)];
+    return uniqueDates.sort((a, b) => a - b);
+  }
+
 export default function BarOwnerPanel() {
     const { profile, darkmode, placeDetail } = useSelector(state => state)
     const history = useHistory();
@@ -19,7 +25,9 @@ export default function BarOwnerPanel() {
         history.push("/newplace")
     }
     const books = placeDetail.books
-    const [fecha, setFecha] = useState("")
+    const [bookDates, setBookDates] = useState(getUniqueSortedDates(books))
+    const [index, setIndex] = useState(0)
+    const [fecha, setFecha] = useState(bookDates[index])
 
     const handleChange = async (event) => {
         dispatch(getPlaceDetail(id));
@@ -34,6 +42,28 @@ export default function BarOwnerPanel() {
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [dispatch, profile.id])
+
+    const handleChangeDate = (e) => {
+        e.preventDefault();
+        switch(e.target.name){
+            case "left":
+                if (index===0){
+                    setIndex(bookDates.length-1)
+                }else{
+                    setIndex(index-1)
+                }
+            setFecha(bookDates[index])
+            break;
+            case "right":
+                if (index===bookDates.length-1){
+                    setIndex(0)
+                }else{
+                    setIndex(index+1)
+                }
+            setFecha(bookDates[index])
+            break;
+        }
+    }
 
     return (
         <div className={darkmode ? style.background : style.backgroundDark}>
@@ -54,15 +84,19 @@ export default function BarOwnerPanel() {
 
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h2>Reservas</h2>
-                    <input className={darkmode ? style.date : style.dateDark}
-                        type='date'
-                        // min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
-                        // max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
-                        placeholder='Mail'
-                        value={fecha}
-                        name="reservedDate"
-                        onChange={handleChange}
-                    />
+                    <div>
+                        <button name="left" onClick={handleChangeDate}>{"<<"}</button>
+                        <input className={darkmode ? style.date : style.dateDark}
+                            type='date'
+                            // min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
+                            // max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
+                            placeholder='Mail'
+                            value={fecha}
+                            name="reservedDate"
+                            onChange={handleChange}
+                        />
+                        <button name="right" onClick={handleChangeDate}>{">>"}</button>
+                    </div>
                     <div className={style.containerBook}>
                         {
                             books?.some((reserva) => reserva.reservedDate === fecha)
