@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchPlace, setInput } from "../../redux/actions"
+import { searchPlace } from "../../redux/actions"
 import Navbar from "../Navbar/Navbar";
 import style from "./home.module.css";
 import Card from ".././Card/Card"

@@ -403,6 +403,11 @@
     opacity: 0;
     width: 0;
     height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    --background: #313131;
 }
 
 /* The slider */
@@ -427,19 +432,19 @@
     border-radius: 50%;
     left: 10%;
     bottom: 15%;
-    box-shadow: inset 8px -4px 0px 0px #fff000;
+    box-shadow: inset 8px -4px 0px 0px #FFB800;
     background: var(--background);
     transition: .5s;
-}
-
-input:checked+.slider {
-    background-color: #522ba7;
-}
-
-input:checked+.slider:before {
+  }
+  
+  input:checked + .slider {
+    background-color: #40047C;
+  }
+  
+  input:checked + .slider:before {
     transform: translateX(100%);
-    box-shadow: inset 15px -4px 0px 15px #fff000;
-}
+    box-shadow: inset 15px -4px 0px 15px #FFB800;
+  }
 
 .burguer {
     height: 2em;

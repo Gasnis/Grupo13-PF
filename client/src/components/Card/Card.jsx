@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import style from "./card.module.css";
 
 export default function Place({ place }) {
+
+let  divisor  = place.rating.reduce((valorAnterior, valorActual) => (valorAnterior + valorActual));
+let dividendo = place.rating.reduce(function(valorAnterior, valorActual, indice){
+  return valorAnterior + valorActual * (indice +1)})
+let ratin = dividendo/divisor 
+
   return (
     <div className={style.places}>
       {place.available ? (
@@ -15,7 +21,7 @@ export default function Place({ place }) {
               </div>
               <div className={style.numbersInfo}>
                 <h4>
-                  {place.rating}
+                  {ratin.toFixed(1)}
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg/200px-Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg.png"
                     height="20px"
@@ -30,7 +36,7 @@ export default function Place({ place }) {
       ) : (
         
           <div className={style.placedisabled}>
-            <img src={place.image} className={style.logodisabled} alt="img" />
+            <img src={place.image[0]} className={style.logodisabled} alt="img" />
             <div className={style.textContainer}>
               <div className={style.text}>
                 <h3>{place.name}</h3>
