@@ -10,7 +10,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['darkmode','profile']
+  whitelist: ['darkmode','profile','placeDetail', 'book']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

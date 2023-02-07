@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { updatePlace } from "../../redux/actions"
+import React, { useState , useEffect} from "react";
+import { updatePlace, getPlaces } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
 
 
 export default function MyBookInfo(props) {
+    useEffect(()=>{
+        dispatch(getPlaces())
+    },[])
   const books = props.books;
   const dispatch = useDispatch()
-  const places = useSelector((state) => state.places);
+  const places = useSelector((state) => state.allPlaces);
   const checked = useSelector((state) => state.darkmode);
   const [index, setIndex] = useState(0);
 
@@ -42,10 +45,6 @@ export default function MyBookInfo(props) {
   };
 
   const handleRating = async(e) => {
-    console.log(e.target.value);
-    const localcambia =  places.find((place) => place.id === books[index].localId)
-    await dispatch(updatePlace({...localcambia, rating:[...localcambia.rating, localcambia.rating[e.target.value]+ 1 ]}))
-    // await dispatch(updateBook())
     swal("Muchas Gracias por darnos tu feedback")
   }
 

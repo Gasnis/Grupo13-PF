@@ -178,9 +178,9 @@ export const updateBook = (idBook, update) => {
     }
 }
 
-export const deleteBook = (idBook, update) => {
+export const deleteBook = (idBook) => {
     return async () => {
-        const { data } = await axios.delete(`/local/${idBook}`, update);
+        const { data } = await axios.delete(`/local/${idBook}`);
         return data;
     }
 }

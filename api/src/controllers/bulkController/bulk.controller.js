@@ -112,7 +112,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [1,0,0,0,0]
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -131,7 +132,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [0,0,0,0,1]
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -150,7 +152,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [0,0,0,1,0]
 	},
 {
 		"userId":"sergio@gmail.com",
@@ -169,7 +172,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [0,1,0,0,0]
 	},
 ,
 {

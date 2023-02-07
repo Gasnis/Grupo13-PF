@@ -1,12 +1,10 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid } from "../../redux/actions";
+import { getUserByid , getPlaces} from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
-import { useState } from "react";
 import MyBookInfo from "../MyBookInfo/myBookInfo";
 // import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 
@@ -26,6 +24,7 @@ export default function Detail() {
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
+        dispatch(getPlaces())
     }, [dispatch, profile.id])
 
     useEffect(() => {
