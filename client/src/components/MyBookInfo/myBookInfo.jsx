@@ -12,7 +12,7 @@ export default function MyBookInfo(props) {
   const checked = useSelector((state) => state.darkmode);
   const [index, setIndex] = useState(0);
 
-  const fechahoy = new Date();
+  const fechahoy = new Date("02/9/2023");
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
@@ -44,8 +44,12 @@ export default function MyBookInfo(props) {
   const handleRating = async(e) => {
     console.log(e.target.value);
     const localcambia =  places.find((place) => place.id === books[index].localId)
-    await dispatch(updatePlace({...localcambia, rating:[...localcambia.rating, localcambia.rating[e.target.value]+ 1 ]}))
+    await dispatch(updatePlace({...localcambia, rating:localcambia.rating.map(function (currentValue, index){
+      console.log('current  value  ',currentValue)
+      console.log('current  index  ',index)
+      if (e.target.value === index){return currentValue = currentValue+1}else{return currentValue}})}))
     // await dispatch(updateBook())
+    await console.log(localcambia.rating)
     swal("Muchas Gracias por darnos tu feedback")
   }
 
