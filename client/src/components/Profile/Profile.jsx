@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid , getPlaces} from "../../redux/actions";
+import { getPlaces, getUserByid } from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
@@ -67,7 +67,7 @@ export default function Detail() {
                 <Navbar />
                 <div>
                     <div className={style.divContainer} >
-                        <img src={profile.image} href={profile.image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
+                        <img src={profile.image} href={profile.image} referrerPolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
                         <h1 className={checked ? style.name : style.nameDark}>{profile.name}</h1>
                     </div>
 

@@ -3,6 +3,7 @@ import { updatePlace, getPlaces } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
+import { useEffect } from "react";
 
 
 export default function MyBookInfo(props) {
@@ -11,11 +12,15 @@ export default function MyBookInfo(props) {
     },[])
   const books = props.books;
   const dispatch = useDispatch()
-  const places = useSelector((state) => state.allPlaces);
+
+  const places = useSelector((state) => state.places);
   const checked = useSelector((state) => state.darkmode);
   const [index, setIndex] = useState(0);
+  useEffect(()=>{
+    dispatch(getPlaces())
+  },[dispatch])
 
-  const fechahoy = new Date();
+  const fechahoy = new Date("02/9/2023");
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
@@ -45,7 +50,20 @@ export default function MyBookInfo(props) {
   };
 
   const handleRating = async(e) => {
-    swal("Muchas Gracias por darnos tu feedback")
+
+    const localcambia =  places.find((place) => place.id === books[index].localId)
+    let newArrRating = localcambia.rating.map((rating, index) => {
+      if (e.target.value == index){
+        return rating + 1
+      }else{
+        return rating
+      }
+    })
+    console.log(newArrRating);
+    await dispatch(updatePlace({...localcambia, rating: newArrRating}))
+    dispatch(getPlaces())
+    await console.log(localcambia);
+    //swal("Muchas Gracias por darnos tu feedback")
   }
 
   return (
