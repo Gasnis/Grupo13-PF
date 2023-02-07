@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -23,8 +22,9 @@ export default function Detail() {
   }, []);
 
   const placeDetail = useSelector((state) => state.placeDetail);
-
-  console.log(placeDetail)
+  
+  const [state, setState] = useState(0)
+ 
 
   if (!placeDetail.id) {
     return (
@@ -39,6 +39,23 @@ export default function Detail() {
         )
     }
 
+
+  const handleNextAndBack = (event) =>{
+    if(event.target.name === 'next'){
+        if(state + 1 >= placeDetail.image.length){
+            return
+        }else{
+            setState(state+1)
+        }
+    }
+    if(event.target.name === "back" ){
+        if(state === 0){
+            return
+        }else{
+            setState(state - 1)
+        }
+    }
+  }
   if (placeDetail.id == 400) {
     return (
       <div>
@@ -62,13 +79,20 @@ export default function Detail() {
 //     return valorAnterior + valorActual * (indice + 1);
 //   });
 //   let ratin = dividendo / divisor;
+
+
+
   return (
     <div className={checked ? style.mainContainer : style.mainContainerDark}>
       <Navbar />
 
             <div className={style.container}>
                 <div className={style.img}>
-                    <img src={placeDetail.image[0]} alt="" />
+                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
+
+                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                  
+                    <img src={placeDetail.image[state]} alt="" />
                 </div>
 
                 <div className={ checked ? style.head : style.headDark}>
