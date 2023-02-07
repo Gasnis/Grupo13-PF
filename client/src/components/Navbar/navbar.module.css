@@ -1,12 +1,3 @@
-.h1{
-    color: rgb(255, 255, 255);
-    margin:8px;
-}
-
-.h1NoHome {
-    color: black
-}
-
 .Container {
     background-color: #FCF9EB;
     display: flex;
@@ -14,10 +5,82 @@
     height: 8vh;
     align-items: center;
     flex-wrap: nowrap;
-    padding-inline:20px;
-    margin-top: 4px;
+    padding-inline: 20px;
+    transition: all 0.5s ease;
 }
 
+.leftContainer {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 3em;
+    width: 30%;
+}
+
+.middleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.Logo {
+    height: 4em;
+    object-fit: contain;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    fill: #40047C;
+    transform: scale(1.5);
+    margin-right: 0.5em ;
+}
+
+.select {
+    border: none;
+    background-color: transparent;
+    color: #40047C;
+    font-size: medium;
+}
+
+.select:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.random {
+    color: black;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #40047C;
+}
+
+.rueda {
+    height: 5vh;
+    transition: all 0.5s ease;
+}
+
+.rueda:hover {
+    animation: spinning82341 1.7s linear infinite;
+}
+
+
+/* ---------------------------------------------------------------------------DARK MODE ------------------------------------------------------------------------------------ */
 .ContainerDark {
     background-color: #2A2A2B;
     display: flex;
@@ -25,8 +88,52 @@
     height: 8vh;
     align-items: center;
     flex-wrap: nowrap;
-    padding-inline:20px;
+    padding-inline: 20px;
+    transition: all 0.5s ease;
 }
+
+.iconDark {
+    fill: #FDFBF2;
+    transform: scale(1.5);
+    margin-right: 0.5em ;
+}
+
+.selectDark {
+    border: none;
+    background-color: transparent;
+    color: #FDFBF2;
+    font-size: medium;
+}
+
+.selectDark:hover {
+    cursor: pointer;
+    color: #FDFBF2;
+    transform: scale(1.05);
+}
+
+.randomDark {
+    color: black;
+    font-family: 'Cambay', sans-serif;
+    font-size: medium;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #FDFBF2;
+}
+
+
+/* ------------------------------------------------------------------------DESPUES VEMOS------------------------------------------------------------------------------------- */
+.h1 {
+    color: rgb(255, 255, 255);
+    margin: 8px;
+}
+
+.h1NoHome {
+    color: black
+}
+
+
 
 
 .ContainerNoHome {
@@ -40,24 +147,27 @@
 
 }
 
-.ContainerNoHome > div {
+.ContainerNoHome>div {
     display: flex;
     margin: 0 20px 0 20px;
     align-items: center;
 }
 
-.link:link{
+.link:link {
     margin-right: 10px;
     text-decoration: none;
     color: #000000;
 }
-.link:visited{text-decoration: none;}
 
-.Container div{
+.link:visited {
+    text-decoration: none;
+}
+
+.Container div {
     display: flex;
 }
 
-.Button{
+.Button {
     height: 35px;
     background-color: transparent;
     border: none;
@@ -65,31 +175,31 @@
     color: white;
 }
 
-.Button:hover{
+.Button:hover {
     cursor: pointer;
     color: black;
 }
 
-.Button:hover>img{
+.Button:hover>img {
     height: 35px;
 }
 
-.ButtonLogin{
+.ButtonLogin {
     color: rgb(255, 255, 255);
     font-size: large;
     background-color: #522ba7;
-    border-radius: 15px;
+    border-radius: 11px;
     height: 30px;
-   
+
 }
 
-.ButtonLogin:hover{
+.ButtonLogin:hover {
     cursor: pointer;
     color: #522ba7;
     background-color: white;
 }
 
-.orderinline{
+.orderinline {
     display: flex;
     position: relative;
     left: 1vh;
@@ -97,62 +207,38 @@
     bottom: 1vh;
 }
 
-.arrows{
+.arrows {
     height: 1.5vh;
     padding-top: 0.8vh;
     padding-left: 5vh;
 }
-.arrows2{
+
+.arrows2 {
     height: 1.5vh;
     padding-top: 0.8vh;
     padding-left: 2.8vh;
 }
 
 
-.Logo{
-    /* border-style: solid; */
-    /* border-width: 5px; */
-    /* border-color: rgb(43, 20, 10); */
-    /* border-radius: 20px; */
-    /* background-color: #FFB800; */
-    height: 4em;
-    object-fit: contain;
-}
-.link{
+
+.link {
     margin: 0px;
     margin-left: 96px;
     padding: 0px;
 }
-.random{
-    color: black;
-    font-family: 'Cambay', sans-serif;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: normal;
-    display:flex;
-    flex-direction: row;
 
-}
 
-.Img{
-    position: relative;
-    height: 7vh;
-    transition: all 0.5s ease;
-    bottom: 2.6vh
-}
 
-.Img:hover{
-    animation: spinning82341 1.7s linear infinite;
-}
 
-.favorite{
+
+.favorite {
     bottom: 1vh;
     position: relative;
     height: 5vh;
     left: -1.4vh;
 }
 
-.limpiar{
+.limpiar {
     position: relative;
     left: 2vh;
     display: flex;
@@ -162,44 +248,49 @@
     cursor: pointer;
 }
 
-.aboutimg{
+.aboutimg {
     padding-right: 1vh;
     height: 4vh;
 }
 
-.about{
+.about {
     position: relative;
     left: 1.5vh;
 }
-.escoba{
+
+.escoba {
     height: 4vh;
     position: relative;
     bottom: 2vh;
-    right: 1.2vh;}
+    right: 1.2vh;
+}
 
-.filterCategory{
+.filterCategory {
     position: relative;
     margin: 1vh;
     bottom: 1.1vh;
-    left: 1vh;}
-.filterRating{
+    left: 1vh;
+}
+
+.filterRating {
     position: relative;
     margin: 1vh;
     bottom: 1.8vh;
     left: 1vh;
 }
 
-.titulorating{
+.titulorating {
     font-size: 2vh;
 }
+
 @keyframes spinning82341 {
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
 
-.dropdown{
+.dropdown {
     position: absolute;
     top: 8vh;
     right: 4vh;
@@ -219,13 +310,13 @@
     z-index: 1;
 }
 
-.dropdown2{
+.dropdown2 {
     position: absolute;
     top: 8vh;
     left: 4vh;
     flex-direction: column;
     flex-wrap: nowrap;
-    background-color:#FDFBF2;
+    background-color: #FDFBF2;
     justify-content: center;
     border-radius: 0px 9px 9px 9px;
     padding: 30px;
@@ -240,25 +331,26 @@
     transition: 1s;
     z-index: 1;
 }
-.titulos{
-    
+
+.titulos {
+
     margin-bottom: 10px;
     color: #000000;
 }
 
-.titulos:hover{
+.titulos:hover {
     text-decoration: underline;
 }
 
-.imagenprofile{
+.imagenprofile {
     height: 2.5em;
     width: 2.5em;
     margin-inline: 15px;
     border-radius: 10px;
-    border-style: 3px solid ;
+    border-style: 3px solid;
 }
 
-.imagenprofile:hover{
+.imagenprofile:hover {
     cursor: pointer;
 }
 
@@ -278,9 +370,9 @@
     font-family: inherit;
     border-radius: 11px;
     margin-top: 10px;
-   }
-   
-   .logout::before {
+}
+
+.logout::before {
     content: "";
     position: absolute;
     left: 0;
@@ -291,23 +383,23 @@
     transform: translateX(-100%);
     transition: all .3s;
     z-index: -1;
-   }
-   
-   .logout:hover::before {
-    transform: translateX(0);
-   }
+}
 
-   /* The switch - the box around the slider */
+.logout:hover::before {
+    transform: translateX(0);
+}
+
+/* The switch - the box around the slider */
 .switch {
     font-size: 17px;
     position: relative;
     display: inline-block;
     width: 3.5em;
     height: 2em;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
+}
+
+/* Hide default HTML checkbox */
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -315,6 +407,11 @@
   
   /* The slider */
   .slider {
+    --background: #313131;
+}
+
+/* The slider */
+.slider {
     --background: #28096b;
     position: absolute;
     cursor: pointer;
@@ -325,9 +422,9 @@
     background-color: var(--background);
     transition: .5s;
     border-radius: 30px;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 1.4em;
@@ -335,32 +432,40 @@
     border-radius: 50%;
     left: 10%;
     bottom: 15%;
-    box-shadow: inset 8px -4px 0px 0px #fff000;
+    box-shadow: inset 8px -4px 0px 0px #FFB800;
     background: var(--background);
     transition: .5s;
   }
   
   input:checked + .slider {
-    background-color: #522ba7;
+    background-color: #40047C;
   }
   
   input:checked + .slider:before {
     transform: translateX(100%);
-    box-shadow: inset 15px -4px 0px 15px #fff000;
+    box-shadow: inset 15px -4px 0px 15px #FFB800;
   }
 
-  .burguer{
-    height: 2em ;
+.burguer {
+    height: 2em;
     aspect-ratio: 3/2;
     object-fit: contain;
-  }
+    display: none;
+}
 
-  .burguer:hover {
+@media (max-width: 768px) {
+    .burguer {
+        display: flex;
+    }
+}
+
+.burguer:hover {
     cursor: pointer;
-  }
+}
 
-  .category{
+.category {
     position: relative;
     height: 5vh;
     bottom: 1.3vh;
-    right: 0.5vh;  }
+    right: 0.5vh;
+}

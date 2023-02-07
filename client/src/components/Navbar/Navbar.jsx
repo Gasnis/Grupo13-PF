@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import style from "./navbar.module.css"
-// import beer from "../../utils/beer.png"
-import roulette from "../../utils/roulette.png"
-import arrow from "../../utils/Arrow 1.png"
+import { useLocation, Link } from "react-router-dom";
 import { setChecked, sortRating, filterCategory, getPlaces, setInput } from "../../redux/actions";
 import { logout } from "../../redux/actions";
-import { useLocation, Link } from "react-router-dom";
+import style from "./navbar.module.css"
+import arrow from "../../utils/Arrow 1.png"
+import swal from "sweetalert";
+import wwwhere from "../../utils/wwwhere.png"
 import burguer from "../../utils/burguer.png"
+import roulette from "../../utils/roulette.png"
+import { GiRoundStar } from "react-icons/gi";
+import { GiBroom } from "react-icons/gi";
+import { IoFilterSharp, IoPeopleSharp } from "react-icons/io5";
+//los del menu hamburguesa
 import categorylist from "../../utils/ListaNegra.png"
-import {HiOutlineStar} from "react-icons/hi2";
 import favorito from "../../utils/favorito.png"
 import arrowR from "../../utils/arrowRight.png"
 import escoba from "../../utils/escoba.png"
 import about from "../../utils/about.png"
-import wwwhere from "../../utils/wwwhere.png"
-import swal from "sweetalert";
 
 
 export default function Navbar(props) {
@@ -96,77 +98,54 @@ export default function Navbar(props) {
 
     return (
         <>
-            {location.pathname === "/" ?
+            {location.pathname === "/"
+                ?
+                <div className={darkmode ? style.Container : style.ContainerDark}>
+                    <div className={style.leftContainer}>
+                        <div className={style.about}>
+                            <IoPeopleSharp className={darkmode ? style.icon : style.iconDark} />
+                            <Link to="/about-us" className={darkmode ? style.select : style.selectDark}>Sobre wwWhere</Link>
+                        </div>
 
-                <div className={darkmode ? style.Container : style.Container}>
-                    <div>
-                        <img src={burguer} className={style.burguer} onClick={() => handleOpen("burguer")} alt=""></img>
-
-                        {open === "burguer" ? (
-                            <div className={style.dropdown2}>
-                                <div className={style.titulos}>
-                                    <Link className={style.random} to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
-                                        <img className={style.Img} src={roulette} alt="" />
-                                        Ruleta de Experiencias
-                                    </Link>
-                                </div>
-                                <div className={style.orderinline}>
-                                    <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.orderinline}>
-                                        <img className={style.favorite} src={favorito} />
-                                        {/* <HiOutlineStar className={style.favorite}/> */}
-                                        Rating
-                                        <img src={arrowR} alt="Filtros" className={style.arrows} />
-                                    </div>
-                                    {openSub === "rating" &&
-                                        <div className={style.filterRating}>
-                                            <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
-                                                <option value="all">Rating</option>
-                                                <option value="best">Mejores</option>
-                                                <option value="worst">Peores</option>
-                                            </select>
-                                        </div>
-
-                                    }
-                                </div>
-                                <div className={style.orderinline}>
-                                    <div onClick={() => handleOpenSub("category")} alt="Donde comer?">
-                                        <img className={style.category} src={categorylist} /> Categorías
-                                        <img src={arrowR} alt="Filtros" className={style.arrows2} />
-                                    </div>
-                                    {openSub === "category" &&
-                                        <div className={style.filterCategory}>
-                                            <select id="category" onChange={(event) => handlerCategory(event)}>
-                                                <option value="all">Categoría</option>
-                                                <option value="pub">Pubs</option>
-                                                <option value="disco">Discotecas</option>
-                                                <option value="bar">Bares</option>
-                                            </select>
-                                        </div>
-                                    }
-                                </div>
-                                <div>
-                                    <button className={style.limpiar} onClick={refresh}>
-                                        <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
-                                    </button>
-                                </div>
-                                <br />
-                                <div className={style.about}>
-                                    <Link to="/about-us">  <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us</Link>
-                                </div>
-                            </div>
-                        ) : null
-                        }
+                        <Link className={style.random} to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
+                            <img className={style.rueda} src={roulette} alt="" /> 
+                            <span className={darkmode ? style.select : style.selectDark}>Ruleta de Experiencias</span>
+                        </Link>
                     </div>
-                    
-                    <img className={style.Logo} src={wwwhere} alt="logo" />
 
-                    <div>
+                    <div className={style.middleContainer}><img className={style.Logo} src={wwwhere} alt="logo" /></div>
+
+                    {/* --------------------------------------Contenedor opciones de la derecha----------------------------------- */}
+                    <div className={style.rightContainer}>
+                        <div onClick={() => handleOpenSub("rating")} alt="Donde comer?">
+                            <GiRoundStar className={darkmode ? style.icon : style.iconDark}/>
+                            <select id="orderSelection" onChange={(event) => handleFilteredOrder(event)} className={darkmode ? style.select : style.selectDark}>
+                                <option value="all">Rating</option>
+                                <option value="best">Mejores</option>
+                                <option value="worst">Peores</option>
+                            </select>
+                        </div>
+
+                        <div onClick={() => handleOpenSub("category")} alt="Donde comer?">
+                            <IoFilterSharp className={darkmode ? style.icon : style.iconDark} />
+                            <select id="category" onChange={(event) => handlerCategory(event)} className={darkmode ? style.select : style.selectDark}>
+                                <option value="all">Categoría</option>
+                                <option value="pub">Pubs</option>
+                                <option value="disco">Discotecas</option>
+                                <option value="bar">Bares</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <GiBroom className={darkmode ? style.icon : style.iconDark} />
+                            <button onClick={refresh} className={darkmode ? style.select : style.selectDark}> Limpiar </button>
+                        </div>
+
                         <label className={style.switch}>
-
                             <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />
-
                             <span className={style.slider} ></span>
                         </label>
+
                         <div>
                             <div>
                                 <img src={profile.id ? profile.image : "https://i.pinimg.com/222x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg"}
@@ -184,6 +163,7 @@ export default function Navbar(props) {
                                 ) : null
                                 }
                             </div>
+
                             <div>
                                 {profile.id &&
                                     open === "login" ? (
@@ -199,10 +179,10 @@ export default function Navbar(props) {
                                         <div>
                                             <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
                                         </div>
-
-                                        <div>
+                                        {profile.locals.length? <div>
                                             <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
-                                        </div>
+                                        </div>:null}
+                                       
 
                                         <div>
                                             <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>
@@ -213,9 +193,74 @@ export default function Navbar(props) {
                             </div>
                         </div>
                     </div>
+                    {/* --------------------------------------FIN Contenedor opciones de la derecha----------------------------------- */}
+
+
+
+                    {/* -------------------------------------------------------MENU HAMBURGUESA--------------------------------------------------------------------- */}
+                    <img src={burguer} className={style.burguer} onClick={() => handleOpen("burguer")} alt=""></img>
+                    {open === "burguer" ? (
+                        <div className={style.dropdown2}>
+                            <div className={style.titulos}>
+                                <Link className={style.random} to={`/detail/${places.map(a => a.id)[Math.floor(Math.random() * places.length)]}`}>
+                                    <img className={style.Img} src={roulette} alt="" />
+                                    Ruleta de Experiencias
+                                </Link>
+                            </div>
+
+                            <div className={style.orderinline}>
+                                <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.orderinline}>
+                                    <img className={style.favorite} src={favorito} />
+                                    {/* <HiOutlineStar className={style.favorite}/> */}
+                                    Rating
+                                    <img src={arrowR} alt="Filtros" className={style.arrows} />
+                                </div>
+                                {openSub === "rating" &&
+                                    <div className={style.filterRating}>
+                                        <select id="orderSelection" className={style.filter} onChange={(event) => handleFilteredOrder(event)}>
+                                            <option value="all">Rating</option>
+                                            <option value="best">Mejores</option>
+                                            <option value="worst">Peores</option>
+                                        </select>
+                                    </div>
+                                }
+                            </div>
+                            <div className={style.orderinline}>
+                                <div onClick={() => handleOpenSub("category")} alt="Donde comer?">
+                                    <img className={style.category} src={categorylist} /> Categorías
+                                    <img src={arrowR} alt="Filtros" className={style.arrows2} />
+                                </div>
+                                {openSub === "category" &&
+                                    <div className={style.filterCategory}>
+                                        <select id="category" onChange={(event) => handlerCategory(event)}>
+                                            <option value="all">Categoría</option>
+                                            <option value="pub">Pubs</option>
+                                            <option value="disco">Discotecas</option>
+                                            <option value="bar">Bares</option>
+                                        </select>
+                                    </div>
+                                }
+                            </div>
+                            <div>
+                                <button className={style.limpiar} onClick={refresh}>
+                                    <img className={style.escoba} src={escoba} alt="lugares para comer" />Limpiar
+                                </button>
+                            </div>
+                            <br />
+                            <div className={style.about}>
+                                <Link to="/about-us">  <img src={about} className={style.aboutimg} alt="sobre wwwere" />About us</Link>
+                            </div>
+                        </div>
+                    ) : null
+                    }
+                    {/* -----------------------------------------------FIN MENU HAMBURGUESA-------------------------------------------------------------- */}
                 </div>
+
+
+
                 :
-                <div className={style.Container}>
+                // NavBar que se renderiza en otras rutas
+                <div className={darkmode ? style.Container : style.ContainerDark}>
                     <Link to="/" href="/"><img src={arrow} /></Link>
                     <div>
                         <img className={style.Logo} src={wwwhere} alt="logo" />
@@ -224,7 +269,6 @@ export default function Navbar(props) {
                         <input type="checkbox" defaultChecked={darkmode} value={darkmode} onChange={handleChangeSwitch} />
                         <span className={style.slider} ></span>
                     </label>
-
                 </div>
             }
 

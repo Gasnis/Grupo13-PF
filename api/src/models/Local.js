@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     image: {
-      type: DataTypes.TEXT,// string 255 / text unlimited
+      type: DataTypes.ARRAY(DataTypes.TEXT),// string 255 / text unlimited
       allowNull: true, 
     },
     location: {
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       allowNull: true, // **
     },
     menu: {
-      type: DataTypes.TEXT,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: true,
     },
     event: {
@@ -78,8 +78,8 @@ module.exports = (sequelize) => {
       defaultValue: "solicitud",
     },
     rating: {
-        type: DataTypes.INTEGER, //  || integer
-        defaultValue: "5",
+        type: DataTypes.ARRAY(DataTypes.INTEGER), //  || integer
+        defaultValue:[1,1,1,1,1],
       },
       state: {
         type: DataTypes.STRING,

@@ -6,6 +6,7 @@ import { useState } from "react";
 import swal from "sweetalert"
 import { useEffect } from "react";
 import { containsName } from "../FormBar/FormBar";
+import axios from "axios";
 
 const validate = (local) => {
     let errors = {};
@@ -28,6 +29,8 @@ export default function EditLocal(props) {
         ...localToEdit,
         userId
     });
+
+    console.log(local)
 
     const [errors, setErrors] = useState({
         name: "",
@@ -256,6 +259,31 @@ export default function EditLocal(props) {
                 }
             });
     }
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "reactapp";
+
+    const handleImageUpload = async (event) => {
+        const files = event.target.files;
+        for (let file of  files) {    
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        await  axios.post(CLOUDINARY_URL, formData)
+        .then(res => {
+            setLocal(prevState => ({
+                ...prevState, image: [...prevState.image, res.data.secure_url]
+              }));   
+        })
+        .catch(err => console.error(err));
+        }
+    }
+
+    const handleDelete = (event) => {
+        console.log(event.target.name)
+        const newInputImageArr = local.image.filter(element => element !== event.target.name)
+        setLocal({...local, image: newInputImageArr})
+
+    }
 
     return (
         // <div>
@@ -274,17 +302,44 @@ export default function EditLocal(props) {
                         />
                     </div>
 
-                    <div className={styles.alinearIzq}>
+                    {/* <div className={styles.alinearIzq}>
                         <label style={errors.image ? { color: "red" } : null} className={styles.label}>URL de la imagen: </label>
                         <input
                             type='url'
                             placeholder='Imagen/logo'
-                            value={local.image}
+                            value={local.image[2]}
                             name="image"
                             onChange={handleChange}
                             className={checked ? styles.input : styles.inputDark}
                         />
-                    </div>
+                    </div> */}
+                      <div  className={checked ? styles.input : styles.inputDark}>
+                                <div className={styles.divInputUpdate}>
+                                <p className={styles.inputText}>Agregar imagen</p>   
+                                <input 
+                                className={styles.inputUpdate}
+                                type="file"
+                                multiple
+                                onChange={handleImageUpload}   
+                                />
+                                </div>  
+                                <div>
+                                    {local.image?.map(element =>{
+                                        return(
+                                            <img 
+                                            name={element}
+                                            src={element} 
+                                            alt="" 
+                                            className={styles.inputImg} 
+                                            onClick={handleDelete} 
+                                            />
+                                        )
+                                    } )
+                                    }
+                                
+
+                                </div>
+                            </div>
 
                     <div className={styles.alinearIzq}>
                         <label style={errors.location ? { color: "red" } : null} className={styles.label}>Dirección</label>

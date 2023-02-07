@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { CloudinaryContext, Image } from 'cloudinary-react';
+import { ImageUpload } from 'cloudinary-react';
+import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import { createPlace, getCities, getStates } from '../../redux/actions';
 import styles from '../FormBar/FormBar.module.css';
@@ -41,9 +44,9 @@ export default function CreateLocal() {
     const [local, setLocal] = useState({
         userId: profile.id,
         name: "",
-        image: "",
+        image: [],
         location: "",
-        menu: "",
+        menu: [],
         phone: "",
         capacity: "",
         city: "",
@@ -226,6 +229,55 @@ export default function CreateLocal() {
             });
     }
 
+    //********************************** CLOUDINARY */
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "reactapp";
+
+    // const [imageUrl, setImageUrl] = useState('');
+
+    const handleImageUpload = async (event) => {
+        const files = event.target.files;
+        for (let file of  files) {    
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        await  axios.post(CLOUDINARY_URL, formData)
+        .then(res => {
+            setLocal(prevState => ({
+                ...prevState, image: [...prevState.image, res.data.secure_url]
+              }));   
+        })
+        .catch(err => console.error(err));
+        }
+    }
+
+    const handleMenuUpload = async (event) => {
+        const files = event.target.files;
+        for (let file of  files) {    
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        await  axios.post(CLOUDINARY_URL, formData)
+        .then(res => {
+            setLocal(prevState => ({
+                ...prevState, menu: [...prevState.menu, res.data.secure_url]
+              }));   
+        })
+        .catch(err => console.error(err));
+        }    
+    }
+
+    const handleDelete = (event) => {
+        console.log(event.target.name)
+        const newInputImageArr = local.image.filter(element => element !== event.target.name)
+        setLocal({...local, image: newInputImageArr})
+
+    }
+
+
+
+    //********************************** CLOUDINARY */
+
 
     return (
         <div className={checked ? styles.formBarContainer : styles.formBarContainerDark}>
@@ -261,14 +313,40 @@ export default function CreateLocal() {
                         </div>
 
                         <div >
-                            <input
+                            {/* <input
                                 type='url'
                                 placeholder='Imagen/logo'
                                 value={local.image}
                                 name="image"
                                 onChange={handleChange}
                                 className={checked ? styles.input : styles.inputDark}
-                            />
+                            /> */}
+                            <div  className={checked ? styles.input : styles.inputDark}>
+                                <div className={styles.divInputUpdate}>
+                                <p className={styles.inputText}>Agregar imagen</p>   
+                                <input 
+                                className={styles.inputUpdate}
+                                type="file"
+                                multiple
+                                onChange={handleImageUpload}   
+                                />
+                                </div>  
+                                <div>
+                                    {local.image?.map(element =>{
+                                        return(
+                                            <img 
+                                            name={element}
+                                            src={element} 
+                                            alt="" 
+                                            className={styles.inputImg} 
+                                            onClick={handleDelete} />
+                                        )
+                                    } )
+                                    }
+                                
+
+                                </div>
+                            </div>
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
                         </div>
 
@@ -398,15 +476,26 @@ export default function CreateLocal() {
                             </div>
                         </div>
 
-                        <div >
+                        {/* <div >
                             <input
                                 type='text'
                                 placeholder='Menu'
                                 value={local.menu}
                                 name="menu"
-                                onChange={handleChange}
+                                onChange={handleMenuUpload}
                                 className={checked ? styles.input : styles.inputDark}
                             />
+                        </div> */}
+                        <div className={checked ? styles.input : styles.inputDark}>
+                            <input 
+                                // value='3'
+                                name='menu'
+                                type="file"
+                                multiple
+                                onChange={handleMenuUpload}   
+                                
+                                />
+                                
                         </div>
 
                         <div className={styles.doubleFields}>
@@ -462,7 +551,7 @@ export default function CreateLocal() {
                             type="submit"
                             id="localButton"
                             className={checked ? styles.registrarButton : styles.registrarButtonDark}
-                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category || !local.image || !local.location || !local.menu || !local.name || !local.phone || !local.schedule || errors.image || !containsName(cities,local.city)}
+                            disabled={!local.bookPrice || !local.ageRange || !local.capacity || !local.category  || !local.location  || !local.name || !local.phone || !local.schedule || !containsName(cities,local.city)}
                         >Registrar local</button>
                     </form>
                 </div>
