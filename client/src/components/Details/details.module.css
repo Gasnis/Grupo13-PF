@@ -58,6 +58,17 @@
     border-radius: 10px;
     position: relative;
 }
+
+.img:hover .nextBotton {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
+  .img:hover .backBotton {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
 @media (max-width: 760px){
     .img{
         width: 93%;
@@ -275,6 +286,7 @@
 }
 
 .nextBotton{
+    display: none;
     background-color: transparent;
     backdrop-filter: blur(70px); 
     position: absolute;
@@ -285,9 +297,12 @@
     top: 50%;
     cursor: pointer;
     box-shadow: 2px 2px 15px 0px rgb(255, 253, 253);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   
 }
 .backBotton{
+    display: none;
     background-color: transparent;
     backdrop-filter: blur(70px); 
     position: absolute;
