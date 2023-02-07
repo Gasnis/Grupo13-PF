@@ -157,7 +157,7 @@ export default function CreateLocal() {
     //********************************** CLOUDINARY */
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
     const CLOUDINARY_UPLOAD_PRESET = "reactapp";
-console.log("local imag",local.menu.length)
+console.log("local imag",profile.locals.image)
     // const [imageUrl, setImageUrl] = useState('');
 
     const handleImageUpload = async (event) => {
@@ -189,11 +189,17 @@ console.log("local imag",local.menu.length)
               }));   
         })
         .catch(err => console.error(err));
-        }
-        
-  
-        
+        }    
     }
+
+    const handleDelete = (event) => {
+        console.log(event.target.name)
+        const newInputImageArr = local.image.filter(element => element !== event.target.name)
+        setLocal({...local, image: newInputImageArr})
+
+    }
+
+
 
     //********************************** CLOUDINARY */
 
@@ -240,13 +246,31 @@ console.log("local imag",local.menu.length)
                                 onChange={handleChange}
                                 className={checked ? styles.input : styles.inputDark}
                             /> */}
-                            <div>
+                            <div  className={checked ? styles.input : styles.inputDark}>
+                                <div className={styles.divInputUpdate}>
+                                <p className={styles.inputText}>Agregar imagen</p>   
                                 <input 
+                                className={styles.inputUpdate}
                                 type="file"
                                 multiple
                                 onChange={handleImageUpload}   
-                                className={checked ? styles.input : styles.inputDark}/>
+                                />
+                                </div>  
+                                <div>
+                                    {local.image?.map(element =>{
+                                        return(
+                                            <img 
+                                            name={element}
+                                            src={element} 
+                                            alt="" 
+                                            className={styles.inputImg} 
+                                            onClick={handleDelete} />
+                                        )
+                                    } )
+                                    }
                                 
+
+                                </div>
                             </div>
                             {errors.image && <p className={styles.errors}>{errors.image}</p>}
                         </div>
@@ -362,15 +386,17 @@ console.log("local imag",local.menu.length)
                                 className={checked ? styles.input : styles.inputDark}
                             />
                         </div> */}
-                        <div>
-                                <input 
+                        <div className={checked ? styles.input : styles.inputDark}>
+                            <input 
+                                // value='3'
                                 name='menu'
                                 type="file"
                                 multiple
                                 onChange={handleMenuUpload}   
-                                className={checked ? styles.input : styles.inputDark}/>
                                 
-                            </div>
+                                />
+                                
+                        </div>
 
                         <div className={styles.doubleFields}>
                             <div >

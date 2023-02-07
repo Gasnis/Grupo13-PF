@@ -24,7 +24,7 @@ export default function Detail() {
 
   const placeDetail = useSelector((state) => state.placeDetail);
 
-  
+  console.log(placeDetail)
 
   if (!placeDetail.id) {
     return (
@@ -51,24 +51,24 @@ export default function Detail() {
       </div>
     );
   }
-  let divisor = placeDetail?.rating.reduce(
-    (valorAnterior, valorActual) => valorAnterior + valorActual
-  );
-  let dividendo = placeDetail?.rating.reduce(function (
-    valorAnterior,
-    valorActual,
-    indice
-  ) {
-    return valorAnterior + valorActual * (indice + 1);
-  });
-  let ratin = dividendo / divisor;
+//   let divisor = placeDetail?.rating.reduce(
+//     (valorAnterior, valorActual) => valorAnterior + valorActual
+//   );
+//   let dividendo = placeDetail?.rating.reduce(function (
+//     valorAnterior,
+//     valorActual,
+//     indice
+//   ) {
+//     return valorAnterior + valorActual * (indice + 1);
+//   });
+//   let ratin = dividendo / divisor;
   return (
     <div className={checked ? style.mainContainer : style.mainContainerDark}>
       <Navbar />
 
             <div className={style.container}>
                 <div className={style.img}>
-                    <img src={placeDetail.image} alt="" />
+                    <img src={placeDetail.image[0]} alt="" />
                 </div>
 
                 <div className={ checked ? style.head : style.headDark}>
