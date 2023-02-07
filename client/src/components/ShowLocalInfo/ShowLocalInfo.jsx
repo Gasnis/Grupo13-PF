@@ -16,6 +16,7 @@ export default function ShowLocalInfo (props) {
             {/* <img className={styles.Image} src={local.image} alt="" /> */}
             <h3 className={styles.Data}>Nombre: {local.name}</h3>
             <h3 className={styles.Data}>Teléfono: {local.phone}</h3>
+            <h3 className={styles.Data}>Estado: {local.state}</h3>
             <h3 className={styles.Data}>Ciudad: {local.city}</h3>
             {/* <h3 className={styles.Data}>Dirección: {local.location}</h3> */}
             <h3 className={styles.Data}>Categoría: {local.category}</h3>
