@@ -13,6 +13,8 @@ import {
     CLEAN_DETAIL,
     BOOK_PERSIST,
     SEARCH_USER,
+    DELETE_BOOK,
+    
 
 } from "./actions"
 
@@ -71,10 +73,34 @@ export default function reducer(state = initialState, action) {
 
             if (action.payload === "best") {
                 order = order.sort(function (place1, place2) {
-                    if (place1.rating > place2.rating) {
+                    let divisor1 = place1.rating.reduce(
+                        (valorAnterior, valorActual) => valorAnterior + valorActual
+                        );
+                      let dividendo1 = place1.rating.reduce(function (
+                        valorAnterior,
+                        valorActual,
+                        indice
+                      ) {
+                        return valorAnterior + valorActual * (indice + 1);
+                      });
+                      let ratin1 = dividendo1 / divisor1;
+                      let divisor2 = place2.rating.reduce(
+                        (valorAnterior, valorActual) => valorAnterior + valorActual
+                        );
+
+                      let dividendo2 = place2.rating.reduce(function (
+                        valorAnterior,
+                        valorActual,
+                        indice
+                      ) {
+                        return valorAnterior + valorActual * (indice + 1);
+                      });
+                      let ratin2 = dividendo2 / divisor2;
+
+                    if (ratin1 > ratin2) {
                         return -1;
                     }
-                    if (place2.rating > place1.rating) {
+                    if (ratin2 > ratin1) {
                         return 1;
                     }
                     return 0
@@ -84,11 +110,34 @@ export default function reducer(state = initialState, action) {
             }
             if (action.payload === "worst") {
                 order = order.sort(function (place1, place2) {
-                    if (place1.rating > place2.rating) {
-                        return 1;
+                    let divisor1 = place1.rating.reduce(
+                        (valorAnterior, valorActual) => valorAnterior + valorActual
+                        );
+                      let dividendo1 = place1.rating.reduce(function (
+                        valorAnterior,
+                        valorActual,
+                        indice
+                      ) {
+                        return valorAnterior + valorActual * (indice + 1);
+                      });
+                      let ratin1 = dividendo1 / divisor1;
+                      let divisor2 = place2.rating.reduce(
+                        (valorAnterior, valorActual) => valorAnterior + valorActual
+                        );
 
+                      let dividendo2 = place2.rating.reduce(function (
+                        valorAnterior,
+                        valorActual,
+                        indice
+                      ) {
+                        return valorAnterior + valorActual * (indice + 1);
+                      });
+                      let ratin2 = dividendo2 / divisor2;
+
+                    if (ratin1 > ratin2) {
+                        return 1;
                     }
-                    if (place2.rating > place1.rating) {
+                    if (ratin2 > ratin1) {
                         return -1;
                     }
                     return 0
