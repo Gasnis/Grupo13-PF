@@ -28,18 +28,18 @@ export default function BarOwnerPanel() {
     }
 
     const reservado = books?.filter((reserva) => reserva.reservedDate === fecha)
-    .map((resfecha) => resfecha.personQuantity)
-    .reduce((prev, curr) => prev + curr, 0);
+        .map((resfecha) => resfecha.personQuantity)
+        .reduce((prev, curr) => prev + curr, 0);
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [dispatch, profile.id])
 
     return (
-        <>
+        <div className={darkmode ? style.background : style.backgroundDark}>
             <Navbar />
             {/* <button onClick={handleVolver}>Volver al perfil</button> */}
-            <div className={style.mainContainer}>
+            <div className={darkmode ? style.mainContainer : style.mainContainerDark}>
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h1>Locales</h1>
                     {profile.locals?.length
@@ -69,23 +69,23 @@ export default function BarOwnerPanel() {
                                 ?
                                 books?.map((reserva) => {
                                     if (reserva.reservedDate === fecha) {
-                                        return (<div className={style.book}>Nombre: {reserva.name} Personas: {reserva.personQuantity}  </div>)
+                                        return (<div className={style.book}>
+                                            <span>Nombre: {reserva.name}</span>
+                                            <span>Personas: {reserva.personQuantity}</span>
+                                            <span>Horario: {reserva.hourDate}</span>
+                                        </div>)
                                     }
                                 }
                                 )
                                 :
-                                <h1>No tienes reservas todavia</h1>
-
-
+                                <h3>No tienes reservas para la fecha seleccionada</h3>
                         }
-
                     </div>
 
                     <div className={style.datos}>
-                        <h2>Capacidad: {placeDetail.capacity}</h2>
-                        <h2>Resevas para esta fecha: {reservado}</h2>
-                        <h2>Lugares disponibles: {placeDetail.capacity - reservado}</h2>
-
+                        <h3>Capacidad: {placeDetail.capacity}</h3>
+                        <h3>Lugares reservados: {reservado}</h3>
+                        <h3>Lugares disponibles: {placeDetail.capacity - reservado}</h3>
                     </div>
 
                     <div>
@@ -93,10 +93,8 @@ export default function BarOwnerPanel() {
                             <button className={style.reservar}>Reservar</button>
                         </Link>
                     </div>
-
-
                 </div>
             </div>
-        </>
+        </div>
     )
 }
