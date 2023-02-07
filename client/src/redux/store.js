@@ -10,7 +10,8 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['darkmode','profile']
+  //whitelist:["profile","allPlaces"],
+  blacklist: ["places" , "users"]
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -19,6 +20,3 @@ let store = createStore(persistedReducer, composeEnhancer(applyMiddleware(thunk)
 let persistor = persistStore(store)
 
 export {store,persistor}
-
-
-  
