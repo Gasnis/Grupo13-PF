@@ -6,7 +6,6 @@ import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
 import { getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
-import { getPlaceDetail, cleanDetail } from "../../redux/actions";
 
 function getUniqueSortedDates(books) {
     const reservedDates = books?.map(book => book.reservedDate);
@@ -15,24 +14,27 @@ function getUniqueSortedDates(books) {
   }
 
 export default function BarOwnerPanel() {
-    const { profile, darkmode, placeDetail } = useSelector(state => state)
+    const { profile, darkmode} = useSelector(state => state)
     const history = useHistory();
     const date = new Date();
     const dispatch = useDispatch();
-    const [id, setId] = useState("")
+    const [localShown, setLocalShown] = useState("")
 
     const handleCreate = () => {
         history.push("/newplace")
     }
-    const books = placeDetail.books
+    const books = localShown.books
     const [bookDates, setBookDates] = useState(getUniqueSortedDates(books))
     const [index, setIndex] = useState(0)
     const [fecha, setFecha] = useState(bookDates[index])
 
-    const handleChange = async (event) => {
-        dispatch(getPlaceDetail(id));
-        setFecha(event.target.value)
+    useEffect(()=>{
+       setBookDates(getUniqueSortedDates(books))
+       setIndex(0)
+    },[localShown])
 
+    const handleChange = async (event) => {
+        setFecha(event.target.value)
     }
 
     const reservado = books?.filter((reserva) => reserva.reservedDate === fecha)
@@ -74,7 +76,7 @@ export default function BarOwnerPanel() {
                     <h1>Locales</h1>
                     {profile.locals?.length
                         ?
-                        <LocalsInfo profileId={profile.id} locals={profile.locals} set={setId} />
+                        <LocalsInfo profileId={profile.id} locals={profile.locals} set={setLocalShown}/>
                         :
                         <div>
                             <h3>Actualmente no tienes ningún local</h3>
@@ -84,6 +86,8 @@ export default function BarOwnerPanel() {
 
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h2>Reservas</h2>
+                    {!!books?.length
+                    &&
                     <div>
                         <button name="left" onClick={handleChangeDate}>{"<<"}</button>
                         <input className={darkmode ? style.date : style.dateDark}
@@ -96,14 +100,14 @@ export default function BarOwnerPanel() {
                             onChange={handleChange}
                         />
                         <button name="right" onClick={handleChangeDate}>{">>"}</button>
-                    </div>
+                    </div>}
                     <div className={style.containerBook}>
                         {
                             books?.some((reserva) => reserva.reservedDate === fecha)
                                 ?
                                 books?.map((reserva) => {
                                     if (reserva.reservedDate === fecha) {
-                                        return (<div className={style.book}>
+                                        return (<div key={reserva.id} className={style.book}>
                                             <span>Nombre: {reserva.name}</span>
                                             <span>Personas: {reserva.personQuantity}</span>
                                             <span>Horario: {reserva.hourDate}</span>
@@ -112,14 +116,20 @@ export default function BarOwnerPanel() {
                                 }
                                 )
                                 :
+                                (
+                                books?.length
+                                ?
                                 <h3>No tienes reservas para la fecha seleccionada</h3>
+                                :
+                                <h3>Este local no tiene reservas</h3>
+                                )
                         }
                     </div>
 
                     <div className={style.datos}>
-                        <h3>Capacidad: {placeDetail.capacity}</h3>
+                        <h3>Capacidad: {localShown.capacity}</h3>
                         <h3>Lugares reservados: {reservado}</h3>
-                        <h3>Lugares disponibles: {placeDetail.capacity - reservado}</h3>
+                        <h3>Lugares disponibles: {localShown.capacity - reservado}</h3>
                     </div>
 
                     <div>

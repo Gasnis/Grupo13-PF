@@ -38,7 +38,11 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-  let localInfo = await Local.findAll();
+  let localInfo = await Local.findAll({
+    include:{
+        model: Book,
+    }
+  });
   if (name) {
     localInfo = localInfo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
