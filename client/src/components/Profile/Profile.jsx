@@ -19,8 +19,8 @@ export default function Detail() {
     
 
     const checked = useSelector((state) => state.darkmode);
-    
-    const [image, setImage] = useState("");
+
+    console.log(profile)
     
 
     const [open, setOpen] = useState({
@@ -83,6 +83,7 @@ export default function Detail() {
             let newImage = res.data.secure_url;
             dispatch(updateUser({...profile, image: newImage }))
             dispatch(getUserByid(profile.id))
+            window.location.reload();
             //setImage(res.data.secure_url);
           })
           .catch(err => console.error(err));
