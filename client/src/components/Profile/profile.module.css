@@ -321,4 +321,9 @@
   margin-left: 20px;
   width: 500px;
 }
-
+.label {
+  position: relative;
+  bottom: 20px;
+  left: 40px;
+  z-index: 10;
+}
