@@ -111,7 +111,7 @@ export default function SignUp(props) {
     priceTotal: book.priceTotal,
     hourDate: book.hourDate,
   });
-  
+ 
   const [errors, setErrors] = useState({
     name: "",
     personQuantity: "",
@@ -309,7 +309,7 @@ export default function SignUp(props) {
                             {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                         </div>
 
-                        <div>
+                        {/* <div>
                             <input className={checked ? styles.input : styles.inputDark}
                                 type='text'
                                 placeholder='discountCode'
@@ -317,6 +317,9 @@ export default function SignUp(props) {
                                 name="discountCode"
                                 onChange={handleChange}
                             />
+                        </div> */}
+                        <div>         
+                        {<h2> <span>TOTAL:</span> {`${Math.floor(price)* booking.personQuantity} ARS`}</h2> }
                         </div>
 
                         <div className={styles.linksContainer}>
