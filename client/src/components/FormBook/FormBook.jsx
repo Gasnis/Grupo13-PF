@@ -70,7 +70,6 @@ function calculateAge(birthday) {
 function validate(input,local,myLocal) {
   let bookingsByDate = local.books.filter(book=>book.reservedDate===input.reservedDate)
   let totalPeopleByDate = bookingsByDate.reduce((total,book)=>total+book.personQuantity,0)
-  console.log("🚀 ~ file: FormBook.jsx:73 ~ validate ~ totalPeopleByDate", totalPeopleByDate)
   let errors = {};
   if (!input.reservedDate) errors.reservedDate = "Selecciona una fecha"
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
@@ -98,9 +97,7 @@ export default function SignUp(props) {
   const localId = useSelector((state) => state.placeDetail.id);
   const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
   const local = useSelector((state) => state.placeDetail);
-  console.log("🚀 ~ file: FormBook.jsx:97 ~ SignUp ~ local", local)
   const { profile, book } = useSelector((state) => state);
-  console.log("🚀 ~ file: FormBook.jsx:103 ~ SignUp ~ profile", profile)
   const dispatch = useDispatch();
   const history = useHistory();
   const [myLocal, setMyLocal] = useState(profile.id === local.userId)
