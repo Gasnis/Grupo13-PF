@@ -35,6 +35,7 @@ const getLocalDetail = async (id) => {
     return valorAnterior + valorActual * (indice +1)})
     let ratin = (dividendo/divisor).toFixed(1) 
     
+    console.log(local)
     
     local = {
             id: local.id,
@@ -54,7 +55,10 @@ const getLocalDetail = async (id) => {
             available:local.available,
             status: local.status,
             city:local.city,
+            state:local.state,
             rating: ratin,
+            books:local.books,
+            userId:local.userId,
     }
 
     if (!local) {
@@ -94,6 +98,8 @@ const getLocalName = async (name) => {
         status: local.status,
         city:local.city,
         rating: ratin,
+        state:local.state,
+        userId:local.userId,
       }
     return newInfo
     
@@ -148,6 +154,14 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
             });
     return updated
     }
+  
+  const getRating = async (id) => {
+
+  }
+
+  const updateRating = async (id,rating)=>{
+
+  }
 
 
 
