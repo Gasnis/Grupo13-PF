@@ -300,7 +300,7 @@ export default function CreateLocal() {
                                 />
                             </div>
 
-                            <div >
+                            <div className={styles.divCategory}>
                                 <input
                                     type='text'
                                     placeholder='Direccion'
@@ -323,7 +323,7 @@ export default function CreateLocal() {
                             /> */}
                             <div  className={checked ? styles.input : styles.inputDark}>
                                 <div className={styles.divInputUpdate}>
-                                <p className={styles.inputText}>Agregar imagen</p>   
+                                <p className={styles.inputText}>Local Imagenes</p>   
                                 <input 
                                 className={styles.inputUpdate}
                                 type="file"

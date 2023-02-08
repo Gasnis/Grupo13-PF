@@ -31,8 +31,6 @@
 @media (max-width: 704px){
     .CardContainer{
         width: 100%;
-     
-      /* grid-template-columns: 200px auto; */
     }
   }
 
