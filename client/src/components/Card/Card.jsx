@@ -4,9 +4,7 @@ import style from "./card.module.css";
 
 
 export default function Place({ place }) {
-  console.log(place.image)
   const [state, setState] = useState(0)
-  console.log(state)
 let  divisor  = place.rating.reduce((valorAnterior, valorActual) => (valorAnterior + valorActual));
 let dividendo = place.rating.reduce(function(valorAnterior, valorActual, indice){
   return valorAnterior + valorActual * (indice +1)})
@@ -14,7 +12,6 @@ let ratin = dividendo/divisor
 
 const handleNextAndBack = (event) =>{
   event.preventDefault()
-  console.log("click")
   if(event.target.name === 'next'){
       if(state + 1 >= place.image.length){
           return
