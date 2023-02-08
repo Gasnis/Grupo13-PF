@@ -53,9 +53,8 @@ export const getPlaceDetail = (id) => {
     return async (dispatch) => {
 
         try {
-            console.log(id)
             const { data } = await axios.get(`/local/${id}`);
-            dispatch({
+            return dispatch({
                 type: GET_PLACE_DETAIL,
                 payload: data
             })
