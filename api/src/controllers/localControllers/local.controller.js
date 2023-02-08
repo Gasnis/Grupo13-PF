@@ -98,6 +98,8 @@ const getLocalName = async (name) => {
         status: local.status,
         city:local.city,
         rating: ratin,
+        state:local.state,
+        userId:local.userId,
       }
     return newInfo
     
@@ -154,7 +156,7 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
     }
   
   const getRating = async (id) => {
-    
+
   }
 
   const updateRating = async (id,rating)=>{
