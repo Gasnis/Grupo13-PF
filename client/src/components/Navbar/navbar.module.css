@@ -1,5 +1,4 @@
-.Container {
-    background-color: #FCF9EB;
+.navBarContainer {
     display: flex;
     justify-content: space-between;
     height: 8vh;
@@ -9,10 +8,31 @@
     transition: all 0.5s ease;
 }
 
+.optionsContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+/* .Container {
+    background-color: #FCF9EB;
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-inline: 20px;
+    transition: all 0.5s ease;
+} */
+
 .leftContainer {
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: space-around;
     gap: 3em;
     width: 30%;
 }
@@ -31,6 +51,13 @@
     width: 30%;
 }
 
+.profileYswitchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 30%;
+}
+
 .Logo {
     height: 4em;
     object-fit: contain;
@@ -44,7 +71,7 @@
 .icon {
     fill: #40047C;
     transform: scale(1.5);
-    margin-right: 0.5em ;
+    margin-right: 0.5em;
 }
 
 .select {
@@ -79,8 +106,23 @@
     animation: spinning82341 1.7s linear infinite;
 }
 
+.filter {
+    display: flex;
+    justify-content: space-around;
+}
+
 
 /* ---------------------------------------------------------------------------DARK MODE ------------------------------------------------------------------------------------ */
+.navBarContainerDark {
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-inline: 20px;
+    transition: all 0.5s ease;
+    background-color: #2A2A2B;
+}
 .ContainerDark {
     background-color: #2A2A2B;
     display: flex;
@@ -95,7 +137,7 @@
 .iconDark {
     fill: #FDFBF2;
     transform: scale(1.5);
-    margin-right: 0.5em ;
+    margin-right: 0.5em;
 }
 
 .selectDark {
@@ -122,6 +164,183 @@
     color: #FDFBF2;
 }
 
+.burgerIconContainer {
+    display: flex;
+    margin: 1em;
+    width: 30%;
+    justify-content: left;
+}
+
+.burgerIcon {
+    visibility: hidden;
+    transform: scale(1.5);
+    color: #40047C;
+    z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------RESPONSIVE------------------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .navBarContainer {
+        padding-inline: 0;
+    }
+
+    .optionsContainer{
+        transform: translateX(-100%);
+        transition: all 0.5s ease;
+        height: 100%;
+        width: 100%;
+        background-color: #FDFBF2;
+        position: absolute;
+        top:3em;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: start;
+        align-items: center;
+        z-index: 3;
+        padding: 1em;
+        gap: 1em;
+    }
+
+    .optionsContainer.open {
+        transform: translateX(0);
+    }
+
+    .leftContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        gap: 1em;
+        width: 100%;
+    }
+
+    .middleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40%;
+    }
+
+    .rightContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        padding-right: 0.5em;
+        gap: 1em;
+        width: 100%;
+    }
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        width: 2em;
+    }
+
+    .burgerIconContainer {
+        background-color: transparent;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        height: 2em;
+    }
+
+    .burgerIcon {
+        visibility: visible;
+        position: absolute;
+        left: 1em;
+        display: flex;
+        transform: scale(1.8);
+        margin-top: 0.5em;
+        fill: #40047C;
+        z-index: 1;
+    }
+
+    .Logo {
+        height: 2em;
+        object-fit: contain;
+    }
+
+    .profileYswitch {
+        display: flex;
+    }
+
+    .imagenprofile {
+        transform: scale(0.8);
+    }
+
+    /* ----------darkmode------------ */
+    .switch {
+        font-size: 17px;
+        position: relative;
+        display: inline-block;
+        width: 3.5em;
+        height: 2em;
+        transform: scale(0.8);
+    }
+    
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+                transform: scale(0.8);
+    }
+    
+    /* The slider */
+    .slider {
+        --background: #313131;
+                transform: scale(0.8);
+    }
+    
+    /* The slider */
+    .slider {
+        --background: #28096b;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--background);
+        transition: .5s;
+        border-radius: 30px;
+        width: 3.4em;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 1.4em;
+        width: 1.4em;
+        border-radius: 50%;
+        left: 10%;
+        bottom: 15%;
+        box-shadow: inset 8px -4px 0px 0px #FFB800;
+        background: var(--background);
+        transition: .5s;
+                transform: scale(0.8);
+    }
+    
+    input:checked+.slider {
+        background-color: #40047C;
+                transform: scale(0.8);
+    }
+    
+    input:checked+.slider:before {
+        transform: translateX(100%);
+        box-shadow: inset 15px -4px 0px 15px #FFB800;
+                transform: scale(0.8);
+    }
+
+    .random, .about, .select, .filter {
+        display: flex;
+        width: 90%;
+        justify-content: left;
+    }
+
+}
 
 /* ------------------------------------------------------------------------DESPUES VEMOS------------------------------------------------------------------------------------- */
 .h1 {
@@ -403,10 +622,10 @@
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+/* The slider */
+.slider {
     --background: #313131;
 }
 
@@ -435,16 +654,16 @@
     box-shadow: inset 8px -4px 0px 0px #FFB800;
     background: var(--background);
     transition: .5s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #40047C;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #FFB800;
-  }
+}
 
 .burguer {
     height: 2em;
@@ -453,11 +672,6 @@
     display: none;
 }
 
-@media (max-width: 768px) {
-    .burguer {
-        display: flex;
-    }
-}
 
 .burguer:hover {
     cursor: pointer;
