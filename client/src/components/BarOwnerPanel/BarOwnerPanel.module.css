@@ -1,3 +1,15 @@
+
+.arrows {
+    font-size: 30px;
+    height:auto;
+    background-color: transparent;
+}
+
+.arrows:hover {
+    cursor: pointer;
+}
+
+
 .mainContainer {
     display: flex;
     flex-direction: row;
@@ -57,10 +69,14 @@ margin: 2px;
 .containerBook{
     display: flex;
     flex-direction: column;
-    /* overflow: scroll; */
-    /* height: 50vh; */
+    overflow-y: scroll;
     align-items: center;
     justify-content: space-around;
+    height: 70%;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    background-color: rgba(90, 90, 90, 0.136);
+    border-radius: 11px;
 }
 
 .reservar {
@@ -112,6 +128,39 @@ margin: 2px;
         height: 60vh;
     }
   }
+
+.bookingsContainer {
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    background-color: #FCF9EB;
+    width: 45%;
+    height: 80vh;
+    border-radius: 1rem;
+    margin: 2em;
+}
+
+@media (max-width: 704px){
+    .bookingsContainer{
+        width: 95%;
+        height: fit-content;
+    }
+  }
+
+.bookingsContainerDark {
+    box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.28);
+    background-color: #2D2D2D;
+    width: 45%;
+    height: 80vh;
+    border-radius: 1rem;
+    margin: 2em;
+}
+
+@media (max-width: 704px){
+    .bookingsContainerDark{
+        width: 95%;
+        height: fit-content;
+    }
+  }
+
 .crearButton {
     background-color: #40047C;
     color: #FCF9EB;
@@ -128,6 +177,7 @@ margin: 2px;
     padding: 1em;
     width: 10em;
 }
+
 
 /* ----------------------------------------------Dark Mode ----------------------------------------- */
 .backgroundDark {

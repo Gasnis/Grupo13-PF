@@ -49,6 +49,7 @@
 }
 
 .passwordInput {
+    height: 100%;
     width: 90%;
     background-color: transparent;
     border: none;

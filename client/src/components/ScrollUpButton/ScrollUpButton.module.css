@@ -7,6 +7,7 @@
     border-radius: 11px;
     background-color: #40047C;
     color: #FDFBF2;
+    z-index: 3;
 }
 
 .scrollButton:hover, .scrollButtonDark:hover {
@@ -22,7 +23,8 @@
     .scrollButton{
         position: fixed;
         bottom: 5em;
-        right: 5em;
+        right: 1em;
+        z-index: 3;
     }
   }
 
@@ -41,6 +43,7 @@
     .scrollButtonDark{
         position: fixed;
         bottom: 5em;
-        right: 5em;
+        right: 1em;
+        z-index: 3;
     }
   }
