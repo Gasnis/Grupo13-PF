@@ -75,7 +75,6 @@ router.get("/:id", async (req, res) => {
       router.post("/redirect", (req, res) => {
         const collectionId = req.query.collection_id;
         const collectionStatus = req.query.collection_status;
-        console.log(collectionId,collectionStatus)
       })
 
 

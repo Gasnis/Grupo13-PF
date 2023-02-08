@@ -94,7 +94,7 @@ export default function Login() {
     const userLoginId = respuesta.profileObj.email
     const usuarios = await dispatch(getUser());
     const currentUser = usuarios.payload.filter((user) => user.id === userLoginId)
-    console.log(currentUser)
+
     if (currentUser.length) {
       if (currentUser[0].ban === true) {
         logout()

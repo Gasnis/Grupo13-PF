@@ -194,3 +194,15 @@
     opacity: 1;
     display: block;
   }
+
+  .img:active .nextBotton {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    display: block;
+   
+  }
+  .img:active .backBotton {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    display: block;
+  }
