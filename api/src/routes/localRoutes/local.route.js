@@ -64,9 +64,9 @@ router.get("/:id", async (req, res) => {
 
   router.put("/", async (req, res) => {
     try {
-      const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city} = req.body
-      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && rating && city ) {
-        const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city)
+      const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state} = req.body
+      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && rating && city && state ) {
+        const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state)
 
         
          res.status(200).send(updated);

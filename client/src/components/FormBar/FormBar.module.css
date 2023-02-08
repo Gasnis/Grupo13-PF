@@ -1,3 +1,28 @@
+.suggestionButton {
+    width: 100%;
+    text-align: left;
+    background-color: #FCF9EB;
+}
+
+.suggestionButton:hover {
+    background-color: #c8aae3
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-style: none solid solid solid;
+    border-width: 1px;
+    border-color: #A7A7A7;
+    border-radius: 7px;
+    width: 97%;
+    overflow-y: scroll;
+    max-height: 80px;
+}
+
+
 .formBarContainer {
     background-image: url(../../utils/FormBar2.png);
     background-repeat: no-repeat;
@@ -241,6 +266,17 @@
     border-radius: 2px;
 }
 /* ------------------------------------------------------Dark Mode ------------------------------------------------------------------ */
+
+.suggestionButtonDark {
+    width: 100%;
+    text-align: left;
+    background-color: #4c4c4c;
+    color: #FCF9EB;
+}
+
+.suggestionButtonDark:hover {
+    background-color: #8346ba
+}
 
 .formBarContainerDark {
     background-image: url(../../utils/formBarDark.png);

@@ -1,23 +1,28 @@
-import React, { useState } from "react";
-import { updatePlace } from "../../redux/actions"
+import React, { useState , useEffect} from "react";
+import { updatePlace, getPlaces, deleteBook, bookPersist } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
-
+import {useHistory} from 'react-router-dom'
 
 export default function MyBookInfo(props) {
+    useEffect(()=>{
+        dispatch(getPlaces())
+    },[])
   const books = props.books;
   const dispatch = useDispatch()
+  const history = useHistory()
   const places = useSelector((state) => state.places);
   const checked = useSelector((state) => state.darkmode);
   const [index, setIndex] = useState(0);
+  useEffect(()=>{
+    dispatch(getPlaces())
+  },[dispatch])
 
   const fechahoy = new Date();
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
-  console.log(fechahoy);
-  console.log(fechareserva);
 
   const handlePage = (e) => {
     e.preventDefault();
@@ -42,11 +47,23 @@ export default function MyBookInfo(props) {
   };
 
   const handleRating = async(e) => {
-    console.log(e.target.value);
+
     const localcambia =  places.find((place) => place.id === books[index].localId)
-    await dispatch(updatePlace({...localcambia, rating:[...localcambia.rating, localcambia.rating[e.target.value]+ 1 ]}))
-    // await dispatch(updateBook())
+    let newArrRating = localcambia.rating.map((rating, index) => {
+      if (e.target.value == index){
+        return rating + 1
+      }else{
+        return rating
+      }
+    })
+    console.log(newArrRating);
+    await dispatch(updatePlace({...localcambia, rating: newArrRating}))
     swal("Muchas Gracias por darnos tu feedback")
+    dispatch(getPlaces())
+    dispatch(bookPersist({}))
+    await dispatch(deleteBook(books[index].id))
+    console.log(books[index].id);
+    history.push('/')
   }
 
   return (

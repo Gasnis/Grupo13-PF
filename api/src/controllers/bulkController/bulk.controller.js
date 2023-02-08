@@ -99,9 +99,10 @@ const places =[
 		"category": "disco",
 		"image": ["https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004154233-01-world-best-bars-2022-full-169.jpg?quality=100&strip=info",
 		"https://cnnespanol.cnn.com/wp-content/uploads/2021/12/zuma-dubai.jpg",
-		""],
+		],
 		"location": "Gral. Guemes 200 Avellaneda",
-		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
+		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
+	"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg"],
 		"event": false,
 		"capacity": 2000,
 		"petFriendly": false,
@@ -112,7 +113,9 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [1,0,0,0,0],
+		"state": "anyState"
 	},
 {
 		"userId":"gioh2020@gmail.com",
@@ -131,13 +134,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState",
+		"rating": [0,0,0,0,1]
 	},
 {
 		"userId":"gioh2020@gmail.com",
 		"name": "Chiquito el Barcito",
 		"category": "pub",
-		"image": ["https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg"],
+		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg","https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg",
+		"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg"],
 		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": false,
@@ -150,13 +156,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState",
+		"rating": [0,0,0,1,0]
 	},
 {
 		"userId":"sergio@gmail.com",
 		"name": "EL Pub de Sergio",
 		"category": "pub",
-		"image": ["https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg"],
+		"image": ["https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg",
+	    "https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004165912-04-world-best-bars-2022.jpg"],
 		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
@@ -169,14 +178,17 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"rating": [0,1,0,0,0],
+		"state": "anyState"
 	},
 ,
 {
 		"userId":"thomi@gmail.com",
 		"name": "El Thomisaurodromo",
 		"category": "bar",
-		"image": ["https://assets.simpleviewcms.com/simpleview/image/fetch/c_limit,f_jpg,q_64,w_587/https://images.citybreak.com/image.aspx%3FImageId%3D7124625"],
+		"image": [
+		"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004165912-04-world-best-bars-2022.jpg"],
 		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
@@ -189,7 +201,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -208,7 +221,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -227,7 +241,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -246,7 +261,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -265,7 +281,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -284,7 +301,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -303,7 +321,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -322,7 +341,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -341,7 +361,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -360,13 +381,14 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
 		"name": "Golden Bar",
 		"category": "bar",
-		"image": ["https://scontent.faep9-3.fna.fbcdn.net/v/t39.30808-6/277765994_400976718694159_3169832383781875844_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=GJSChYq1O0AAX_yIKN9&_nc_ht=scontent.faep9-3.fna&oh=00_AfB1Nt17kTboOf0krQDxzvQbSWQu9kR8LhNdjisRcfAoyQ&oe=63D45D89"],
+		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg"],
 		"location": "Gral. Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
@@ -379,7 +401,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -398,7 +421,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -417,7 +441,8 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "solicitud",
-		"city": "anyCity"
+		"city": "anyCity",
+		"state": "anyState"
 	}
 
 ]

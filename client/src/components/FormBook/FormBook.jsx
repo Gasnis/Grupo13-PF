@@ -94,10 +94,10 @@ export default function SignUp(props) {
   const localId = useSelector((state) => state.placeDetail.id);
   const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
   const local = useSelector((state) => state.placeDetail);
+  const { profile, book } = useSelector((state) => state);
 
   const dispatch = useDispatch();
   const history = useHistory();
-  const { profile, book } = useSelector((state) => state);
   
   const date = new Date();
   

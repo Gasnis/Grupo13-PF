@@ -55,6 +55,8 @@ const deleteBook = async (id) => {
         const book = await Book.findByPk(id);
         if(book){
             book.destroy();  
+         }else{
+            return ("Ese"+ id + "no se encontro")
         }
 }
 module.exports = {postBookData,getBookDetail,deleteBook,updateBook,getAllBooks}

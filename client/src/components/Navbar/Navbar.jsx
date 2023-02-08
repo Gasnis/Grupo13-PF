@@ -169,13 +169,13 @@ export default function Navbar(props) {
                                         <Link className={style.titulos} to={`/profile`}>Mi Perfil</Link>
                                     </div>
 
-                                    <div>
-                                        <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
-                                    </div>
-
-                                    <div>
-                                        <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
-                                    </div>
+                                        <div>
+                                            <Link className={style.titulos} to="/newplace">Suma tu sitio</Link>
+                                        </div>
+                                        {profile.locals.length? <div>
+                                            <Link className={style.titulos} to="/bar-owner">Mis Locales</Link>
+                                        </div>:null}
+                                       
 
                                     <div>
                                         <button className={style.logout} onClick={handleLogOut}>Cerrar Sesión</button>

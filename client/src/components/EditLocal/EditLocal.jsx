@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./editLocal.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserByid, updatePlace } from "../../redux/actions";
+import { getUserByid, updatePlace, getCities, getStates } from "../../redux/actions";
 import { useState } from "react";
 import swal from "sweetalert"
+import { useEffect } from "react";
+import { containsName } from "../FormBar/FormBar";
 import axios from "axios";
 
 const validate = (local) => {
     let errors = {};
     if (!local.name.length) errors.name = "Debes escribir un nombre.";
-    if (!local.city.length) errors.city = "Debes escribir una ciudad.";
     if (!local.location.length) errors.location = "Debes escribir una dirección.";
     if (local.phone < 0 || !local.phone) errors.phone = "Debes escribir un número de teléfono.";
     if (local.bookPrice < 0 || !local.bookPrice) errors.bookPrice = "Escribe el valor de la reserva en tu local.";
@@ -39,6 +40,7 @@ export default function EditLocal(props) {
         capacity: "",
         bookPrice: "",
         city: "",
+        state: "",
     });
     const [checkboxState, setCheckboxState] = useState({
         lunes: localToEdit.schedule?.includes("lunes"),
@@ -59,8 +61,7 @@ export default function EditLocal(props) {
     }
     )
 
-    const disabled = errors.name || errors.phone || errors.capacity || errors.image || errors.bookPrice || errors.location || !scheduleArray.days.length || errors.city
-
+    
     const weekDays = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
     const horaApertura = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00']
     const horaCierre = ['00:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'];
@@ -80,6 +81,77 @@ export default function EditLocal(props) {
         category.selectedIndex = indexCategory + 1;
         ageRange.selectedIndex = indexAgeRange + 1;
     }, 1);
+    const cities = useSelector(state=>state.cities)
+    const [citiesToShow, setCitiesToShow] = useState([]);
+    const states = useSelector(state=>state.states)
+    const [statesToShow, setStatesToShow] = useState([])
+    const [showCityInput, setShowCityInput] = useState(true)
+
+    useEffect(()=>{
+        dispatch(getStates());
+        dispatch(getStates());
+        dispatch(getCities(local.state))
+    },[])
+    
+    const disabled = errors.name || errors.phone || errors.capacity || errors.image || errors.bookPrice || errors.location || !scheduleArray.days.length || errors.city || !containsName(cities, local.city) || !containsName(states, local.state)
+    
+    const handleState = (event) => {
+        setShowCityInput(false)
+        setCitiesToShow([])
+        setLocal({
+            ...local,
+            state: event.target.value,
+            city: ""
+        })
+        if (event.target.value){
+            let filteredStates = states.filter(state=>state.name.toLowerCase().includes(event.target.value.toLowerCase()))
+            setStatesToShow(filteredStates)
+        }else{
+            setStatesToShow([])
+        }
+        if (containsName(states,event.target.value)){
+            setStatesToShow([])
+            setShowCityInput(true)
+            dispatch(getCities(event.target.value))
+        }
+    }
+
+    const handleChooseState = (event) => {
+        event.preventDefault();
+        setShowCityInput(true)
+        setLocal({
+            ...local,
+            state:event.target.name
+        })
+        setStatesToShow([])
+        dispatch(getCities(event.target.name))
+    }
+
+    const handleCity = (event) => {
+        setLocal({
+            ...local,
+            city:event.target.value
+        })
+        if (event.target.value){
+            let filteredCities = cities.filter(city=>city.name.toLowerCase().includes(event.target.value.toLowerCase()))
+            setCitiesToShow(filteredCities)
+        }else{
+            setCitiesToShow([])
+        }
+        if (containsName(cities,event.target.value)){
+            setCitiesToShow([])
+        }
+    }
+
+    const handleChooseCity = (event) => {
+        event.preventDefault();
+        setLocal({
+            ...local,
+            city:event.target.name
+        })
+        setCitiesToShow([])
+    }
+
 
     const handleChange = (e) => {
         setErrors(validate({
@@ -281,17 +353,43 @@ export default function EditLocal(props) {
                         />
                     </div>
 
-                    <div >
-                        <label style={errors.city ? { color: "red" } : null}>Ciudad</label>
+                    <div className={styles.alinearIzq}>
+                        <label style={!containsName(states,local.state) ? { color: "red" } : null} className={styles.label}>Estado: </label>
+                        <input
+                            type='text'
+                            placeholder='Estado'
+                            value={local.state}
+                            name="state"
+                            onChange={handleState}
+                            className={checked ? styles.input : styles.inputDark}
+                        />
+                        { !!statesToShow.length && 
+                        <div className={styles.buttonContainer}>
+                            {statesToShow.map(state=>(
+                                <button className={checked ? styles.suggestionButton : styles.suggestionButtonDark} key={state.id} name={state.name} onClick={handleChooseState}>{state.name}</button>
+                            ))}
+                        </div>
+                        }
+                    </div>  
+
+                    {showCityInput && 
+                    <div className={styles.alinearIzq}>
+                    <label style={!containsName(cities,local.city) ? { color: "red" } : null} className={styles.label}>Ciudad: </label>
                         <input
                             type='text'
                             placeholder='Ciudad'
                             value={local.city}
                             name="city"
-                            onChange={handleChange}
+                            onChange={handleCity}
                             className={checked ? styles.input : styles.inputDark}
                         />
-                    </div>
+                        {!!citiesToShow.length && 
+                        <div className={styles.buttonContainer}>
+                            {citiesToShow.map(city=>(
+                                <button className={checked ? styles.suggestionButton : styles.suggestionButtonDark} key={city.id} name={city.name} onClick={handleChooseCity}>{city.name}</button>
+                            ))}
+                        </div>}
+                    </div>}
 
                     <div className={styles.alinearIzq}>
                         <label className={styles.label}>Menú</label>
