@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState , useEffect} from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import { getUserByid, updateUser } from "../../redux/actions";
+
+
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
-import { useState } from "react";
 import MyBookInfo from "../MyBookInfo/myBookInfo";
 // import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 
@@ -32,6 +32,7 @@ export default function Detail() {
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
+        dispatch(getPlaces())
     }, [dispatch, profile.id])
 
     useEffect(() => {
@@ -80,8 +81,6 @@ export default function Detail() {
         axios.post(CLOUDINARY_URL, formData)
           .then(res => {
             let newImage = res.data.secure_url;
-            console.log(res.data.secure_url,"res.data.secure_url")
-            console.log("this is profile",profile)
             dispatch(updateUser({...profile, image: newImage }))
             dispatch(getUserByid(profile.id))
             //setImage(res.data.secure_url);
@@ -108,7 +107,9 @@ export default function Detail() {
                 <Navbar />
                 <div>
                     <div className={style.divContainer} >
-                        <img src={image} href={image} referrerpolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
+
+                        <img src={profile.image} href={profile.image} referrerPolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
+
                         <h1 className={checked ? style.name : style.nameDark}>{profile.name}</h1>
                     </div>
                     {/* <div>

@@ -47,6 +47,9 @@ const getUserDetail = async (id) => {
             where: {id: id},
             include:[{
                 model: Local,
+                include:{
+                    model:Book
+                }
               },
               {
                 model: Book

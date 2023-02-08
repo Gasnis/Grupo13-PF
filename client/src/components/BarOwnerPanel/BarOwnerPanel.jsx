@@ -6,45 +6,77 @@ import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
 import { getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
-import { getPlaceDetail, cleanDetail } from "../../redux/actions";
+
+function getUniqueSortedDates(books) {
+    const reservedDates = books?.map(book => book.reservedDate);
+    const uniqueDates = [...new Set(reservedDates)];
+    return uniqueDates.sort((a, b) => a - b);
+  }
 
 export default function BarOwnerPanel() {
-    const { profile, darkmode, placeDetail } = useSelector(state => state)
+    const { profile, darkmode} = useSelector(state => state)
     const history = useHistory();
     const date = new Date();
     const dispatch = useDispatch();
-    const [id, setId] = useState("")
+    const [localShown, setLocalShown] = useState("")
 
     const handleCreate = () => {
         history.push("/newplace")
     }
-    const books = placeDetail.books
-    const [fecha, setFecha] = useState("")
+    const books = localShown.books
+    const [bookDates, setBookDates] = useState(getUniqueSortedDates(books))
+    const [index, setIndex] = useState(0)
+    const [fecha, setFecha] = useState(bookDates[index])
+
+    useEffect(()=>{
+       setBookDates(getUniqueSortedDates(books))
+       setIndex(0)
+    },[localShown])
 
     const handleChange = async (event) => {
-        dispatch(getPlaceDetail(id));
         setFecha(event.target.value)
-
     }
 
     const reservado = books?.filter((reserva) => reserva.reservedDate === fecha)
-    .map((resfecha) => resfecha.personQuantity)
-    .reduce((prev, curr) => prev + curr, 0);
+        .map((resfecha) => resfecha.personQuantity)
+        .reduce((prev, curr) => prev + curr, 0);
 
     useEffect(() => {
         dispatch(getUserByid(profile.id));
     }, [dispatch, profile.id])
 
+    const handleChangeDate = (e) => {
+        e.preventDefault();
+        switch(e.target.name){
+            case "left":
+                if (index===0){
+                    setIndex(bookDates.length-1)
+                }else{
+                    setIndex(index-1)
+                }
+            setFecha(bookDates[index])
+            break;
+            case "right":
+                if (index===bookDates.length-1){
+                    setIndex(0)
+                }else{
+                    setIndex(index+1)
+                }
+            setFecha(bookDates[index])
+            break;
+        }
+    }
+
     return (
-        <>
+        <div className={darkmode ? style.background : style.backgroundDark}>
             <Navbar />
             {/* <button onClick={handleVolver}>Volver al perfil</button> */}
-            <div className={style.mainContainer}>
+            <div className={darkmode ? style.mainContainer : style.mainContainerDark}>
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h1>Locales</h1>
                     {profile.locals?.length
                         ?
-                        <LocalsInfo profileId={profile.id} locals={profile.locals} set={setId} />
+                        <LocalsInfo profileId={profile.id} locals={profile.locals} set={setLocalShown}/>
                         :
                         <div>
                             <h3>Actualmente no tienes ningún local</h3>
@@ -54,38 +86,50 @@ export default function BarOwnerPanel() {
 
                 <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
                     <h2>Reservas</h2>
-                    <input className={darkmode ? style.date : style.dateDark}
-                        type='date'
-                        // min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
-                        // max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
-                        placeholder='Mail'
-                        value={fecha}
-                        name="reservedDate"
-                        onChange={handleChange}
-                    />
+                    {!!books?.length
+                    &&
+                    <div>
+                        <button name="left" onClick={handleChangeDate}>{"<<"}</button>
+                        <input className={darkmode ? style.date : style.dateDark}
+                            type='date'
+                            // min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
+                            // max={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`} //mientras implementamos reservas posteriores
+                            placeholder='Mail'
+                            value={fecha}
+                            name="reservedDate"
+                            onChange={handleChange}
+                        />
+                        <button name="right" onClick={handleChangeDate}>{">>"}</button>
+                    </div>}
                     <div className={style.containerBook}>
                         {
                             books?.some((reserva) => reserva.reservedDate === fecha)
                                 ?
                                 books?.map((reserva) => {
                                     if (reserva.reservedDate === fecha) {
-                                        return (<div className={style.book}>Nombre: {reserva.name} Personas: {reserva.personQuantity}  </div>)
+                                        return (<div key={reserva.id} className={style.book}>
+                                            <span>Nombre: {reserva.name}</span>
+                                            <span>Personas: {reserva.personQuantity}</span>
+                                            <span>Horario: {reserva.hourDate}</span>
+                                        </div>)
                                     }
                                 }
                                 )
                                 :
-                                <h1>No tienes reservas todavia</h1>
-
-
+                                (
+                                books?.length
+                                ?
+                                <h3>No tienes reservas para la fecha seleccionada</h3>
+                                :
+                                <h3>Este local no tiene reservas</h3>
+                                )
                         }
-
                     </div>
 
                     <div className={style.datos}>
-                        <h2>Capacidad: {placeDetail.capacity}</h2>
-                        <h2>Resevas para esta fecha: {reservado}</h2>
-                        <h2>Lugares disponibles: {placeDetail.capacity - reservado}</h2>
-
+                        <h3>Capacidad: {localShown.capacity}</h3>
+                        <h3>Lugares reservados: {reservado}</h3>
+                        <h3>Lugares disponibles: {localShown.capacity - reservado}</h3>
                     </div>
 
                     <div>
@@ -93,10 +137,8 @@ export default function BarOwnerPanel() {
                             <button className={style.reservar}>Reservar</button>
                         </Link>
                     </div>
-
-
                 </div>
             </div>
-        </>
+        </div>
     )
 }

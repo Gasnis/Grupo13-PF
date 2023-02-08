@@ -56,12 +56,15 @@ router.get("/:id", async (req, res) => {
       res.status(400).send(error.message);
     }
   });
-    router.delete("/", async (req, res) => {
+    router.delete("/:id", async (req, res) => {
         try {
-            const { id } = req.body;
-            deleteBook(id)
-            res.status(200).send(`${id} was deleted succesfully`);
-          
+            const { id } = req.params;
+            if (id) {
+              deleteBook(id)
+              res.status(200).send(`${id} was deleted succesfully`);
+          } else {
+            res.status(404).send("ID not found");
+          }
         } catch (error) {
           res.status(400).send(error.message);
         }
@@ -72,7 +75,6 @@ router.get("/:id", async (req, res) => {
       router.post("/redirect", (req, res) => {
         const collectionId = req.query.collection_id;
         const collectionStatus = req.query.collection_status;
-        console.log(collectionId,collectionStatus)
       })
 
 

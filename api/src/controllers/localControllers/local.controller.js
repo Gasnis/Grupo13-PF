@@ -1,7 +1,7 @@
 const {Local,User, Book} = require("../../db")
 
 const postLocalData = async (localData) => {
-    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,city  }  = localData
+    const {userId,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,city,state}  = localData
     const searchLocal = await Local.findOne({
         where:{name: name}
     })
@@ -11,7 +11,7 @@ const postLocalData = async (localData) => {
         
         const searchUserById = await User.findByPk(userId) 
         if(searchUserById){
-                const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,city})
+                const local = await Local.create({name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,city,state})
                 await local.setUser(searchUserById);
                 return local
             }else{
@@ -38,7 +38,11 @@ const getLocalDetail = async (id) => {
 
 
 const getLocalName = async (name) => {
-  let localInfo = await Local.findAll();
+  let localInfo = await Local.findAll({
+    include:{
+        model: Book,
+    }
+  });
   if (name) {
     localInfo = localInfo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
@@ -61,8 +65,7 @@ const deleteLocal = async (id) => {
 }
 
 
-const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city) =>{
-  
+const updateLocal = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state) =>{
     let local = await Local.findByPk(id);
 
     const updated = await local.update( 
@@ -83,7 +86,8 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
                 available,
                 rating,
                 status,
-                city
+                city,
+                state
             });
     return updated
     }

@@ -1,0 +1,46 @@
+.scrollButton {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    height: 4em;
+    width: 4em;
+    border-radius: 11px;
+    background-color: #40047C;
+    color: #FDFBF2;
+}
+
+.scrollButton:hover, .scrollButtonDark:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.icon {
+    transform: scale(1.5);
+}
+
+@media (max-width: 550px){
+    .scrollButton{
+        position: fixed;
+        bottom: 5em;
+        right: 5em;
+    }
+  }
+
+.scrollButtonDark {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    height: 4em;
+    width: 4em;
+    border-radius: 11px;
+    background-color: #FDFBF2;
+    color: #40047C;
+}
+
+@media (max-width: 550px){
+    .scrollButtonDark{
+        position: fixed;
+        bottom: 5em;
+        right: 5em;
+    }
+  }
