@@ -2,7 +2,7 @@ import React, { useState , useEffect} from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid, updateUser } from "../../redux/actions";
+import { getUserByid, updateUser, getPlaces } from "../../redux/actions";
 
 
 import style from "./profile.module.css";
