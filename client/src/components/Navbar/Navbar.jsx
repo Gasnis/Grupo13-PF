@@ -92,10 +92,10 @@ export default function Navbar(props) {
                 ?
                 <div className={darkmode ? style.navBarContainer : style.navBarContainerDark}>
 
-                    <div className={style.burgerIconContainer}><IoMenu className={style.burgerIcon} onClick={() => setOpenBurger(!openBurger)} /> </div>
+                    <div className={style.burgerIconContainer}><IoMenu className={ darkmode ? style.burgerIcon : style.burgerIconDark} onClick={() => setOpenBurger(!openBurger)} /> </div>
                     <div className={style.middleContainer}><img className={style.Logo} src={wwwhere} alt="logo" /></div>
 
-                    <div className={openBurger ? `${style.optionsContainer} ${style.open}` : style.optionsContainer}>
+                    <div className={darkmode ? openBurger ?`${style.optionsContainer} ${style.open}` : style.optionsContainer : openBurger ?`${style.optionsContainerDark} ${style.open}` : style.optionsContainerDark}>
 
                         <div className={style.leftContainer} >
                             <div className={style.about}>
