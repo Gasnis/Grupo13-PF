@@ -74,6 +74,21 @@
     box-shadow: 2px 2px 9px 0px rgba(102, 102, 102, 0.28);
 }
 
+@media (max-width: 1500px) {
+    .placedisabled{
+        height: fit-content;
+        width: 18rem;
+        border-radius: 12px;
+        color: rgba(255, 255, 255, 0.593);
+        background-color: #70707052;
+        font-family: 'Cambay', sans-serif;
+        font-style: normal;
+        transition: all 0.5s ease;
+        box-shadow: 2px 2px 9px 0px rgba(102, 102, 102, 0.28);
+        z-index: 1;
+    }
+}
+
 
 .logo {
     border-radius: 11px 11px 0px 0px;
