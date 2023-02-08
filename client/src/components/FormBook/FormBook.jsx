@@ -68,7 +68,7 @@ function calculateAge(birthday) {
 
 
 function validate(input,local) {
-  let bookingsByDate = local.books.filter(book=>book.reservedDate===input.reservedDate)
+  let bookingsByDate = local.books?.filter(book=>book.reservedDate===input.reservedDate)
   let errors = {};
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
   if (!input.personQuantity?.length)
