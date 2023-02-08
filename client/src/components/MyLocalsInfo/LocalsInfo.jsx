@@ -77,7 +77,7 @@ export default function LocalsInfo(props) {
                 (
                     !editing
                         ?
-                        <div>
+                        <div className={styles.allInfo}>
                             <ShowLocalInfo local={locals?.filter(local => local.id === localToEdit)[0]} />
                             <div className={styles.buttonsContainer}>
                                 <button onClick={handleEdit} className={checked ? styles.editarBar : styles.editarBarDark}>Editar</button>

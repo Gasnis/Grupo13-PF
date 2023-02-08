@@ -268,7 +268,7 @@ const places =[
 		"userId":"gioh2020@gmail.com",
 		"name": "Cheverry",
 		"category": "bar",
-		"image": ["https://www.beerway.com.ar/archivos/imagenes/3201241885c4082f7d3838-2019-01-17-10-28-23.jpg"],
+		"image": ["https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg"],
 		"location": "Gral. Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,

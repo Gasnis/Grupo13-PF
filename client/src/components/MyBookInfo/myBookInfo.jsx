@@ -56,13 +56,12 @@ export default function MyBookInfo(props) {
         return rating
       }
     })
-    console.log(newArrRating);
+
     await dispatch(updatePlace({...localcambia, rating: newArrRating}))
     swal("Muchas Gracias por darnos tu feedback")
     dispatch(getPlaces())
     dispatch(bookPersist({}))
     await dispatch(deleteBook(books[index].id))
-    console.log(books[index].id);
     history.push('/')
   }
 

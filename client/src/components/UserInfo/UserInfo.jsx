@@ -47,7 +47,6 @@ export default function ProfileInfo(props) {
         //         alert(infoUpdated.response.data)
         //     }
         // }
-        console.log ("id del profile", props.profile.id)
         swal({
             title: "Desea guardar estos cambios?",
             text: "Se actualizara la informacion de tu perfil",
