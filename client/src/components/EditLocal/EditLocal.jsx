@@ -30,7 +30,7 @@ export default function EditLocal(props) {
         userId
     });
 
-    console.log(local)
+
 
     const [errors, setErrors] = useState({
         name: "",
@@ -279,7 +279,6 @@ export default function EditLocal(props) {
     }
 
     const handleDelete = (event) => {
-        console.log(event.target.name)
         const newInputImageArr = local.image.filter(element => element !== event.target.name)
         setLocal({...local, image: newInputImageArr})
 

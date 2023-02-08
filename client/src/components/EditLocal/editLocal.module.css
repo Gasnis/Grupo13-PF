@@ -70,7 +70,7 @@
     margin-top: 35px;
     margin-bottom: 25px;
     padding:5px;
-    width: 100%;
+    width: 98%;
     color: #E7E7E7;
     font-size: 16px;
 }
@@ -80,7 +80,7 @@
     border-radius: 5px;
     margin-bottom: 1em;
     padding:5px;
-    width: 100%;
+    width: 98%;
     color: #40047C;
     font-size: 16px;
 }
@@ -467,6 +467,11 @@ form{
     border-radius: 10px;
     color: #FCF9EB;
 }
+@media (max-width: 704px){
+    .selectDark{
+       width: 96%;
+    }
+  }
 
 .selectHoursDark {
     display: flex;

@@ -1,13 +1,15 @@
 .localInfoContainer {
+    display: flex;
+    flex-direction: column;
     background-color: #FCF9EB;
     border-radius: 11px;
     width: 300px;
-    height: 70vh;
+    /* height: 70vh; */
     /* box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%); */
 }
-@media (max-width: 704px){
+@media (max-width: 780px){
     .localInfoContainer{
-        height: 81vh;
+        height: 100%;
     }
   }
 
@@ -27,12 +29,12 @@
     background-color: #303031;
     color:#fdfbf2;
     border-radius: 11px;
-    width: 50vh;
+    width: 300px;
     height: auto;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
 }
 @media (max-width: 704px){
     .localInfoContainerDark{
-        height: 81vh;
+        height: 100%;
     }
   }
