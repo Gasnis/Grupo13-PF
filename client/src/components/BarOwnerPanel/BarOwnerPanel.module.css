@@ -144,3 +144,9 @@ margin: 2px;
     color: #FDFBF2;
     transition: all 0.5s ease;
 }
+@media (max-width: 704px){
+    .mainContainerDark{
+        flex-direction: column;
+        margin: 5px;
+    }
+  }

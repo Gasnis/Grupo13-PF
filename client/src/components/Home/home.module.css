@@ -154,6 +154,7 @@
   border-radius: 1em;
   width: 40em;
   padding: 0.5em;
+  height: 25px;
 }
 
 .searchBarContainerDark {
@@ -166,6 +167,7 @@
   border-radius: 1em;
   width: 40em;
   padding: 0.5em;
+  height: 25px;
 }
 
 .searchbar {
