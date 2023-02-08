@@ -24,12 +24,39 @@ const postLocalData = async (localData) => {
 }
 
 const getLocalDetail = async (id) => {
-    const local = await Local.findByPk(id,{
+    let local = await Local.findByPk(id,{
         where: {id: id},
         include:{
             model: Book,
           }
     });
+    let  divisor  = local.rating.reduce((valorAnterior, valorActual) => (valorAnterior + valorActual));
+    let dividendo = local.rating.reduce(function(valorAnterior, valorActual, indice){
+    return valorAnterior + valorActual * (indice +1)})
+    let ratin = (dividendo/divisor).toFixed(1) 
+    
+    
+    local = {
+            id: local.id,
+            name: local.name,
+            category: local.category,
+            image: local.image,
+            location: local.location,
+            schedule: local.schedule,
+            menu: local.menu,
+            event: local.event,
+            capacity: local.capacity,
+            petFriendly: local.petFriendly,
+            ageRange:local.ageRange,
+            phone:local.phone,
+            promo:local.promo,
+            bookPrice:local.book,
+            available:local.available,
+            status: local.status,
+            city:local.city,
+            rating: ratin,
+    }
+
     if (!local) {
         throw new Error("Local not found");
     }
@@ -43,15 +70,45 @@ const getLocalName = async (name) => {
         model: Book,
     }
   });
+  let mapeo = localInfo.map(local => {
+    let  divisor  = local.rating.reduce((valorAnterior, valorActual) => (valorAnterior + valorActual));
+    let dividendo = local.rating.reduce(function(valorAnterior, valorActual, indice){
+    return valorAnterior + valorActual * (indice +1)})
+    let ratin = (dividendo/divisor).toFixed(1) 
+    let newInfo = {
+        id: local.id,
+        name: local.name,
+        category: local.category,
+        image: local.image,
+        location: local.location,
+        schedule: local.schedule,
+        menu: local.menu,
+        event: local.event,
+        capacity: local.capacity,
+        petFriendly: local.petFriendly,
+        ageRange:local.ageRange,
+        phone:local.phone,
+        promo:local.promo,
+        bookPrice:local.book,
+        available:local.available,
+        status: local.status,
+        city:local.city,
+        rating: ratin,
+      }
+    return newInfo
+    
+  })
+
+  
   if (name) {
-    localInfo = localInfo.filter((local) =>
+    mapeo = mapeo.filter((local) =>
       local.name.toLowerCase().includes(name.toLowerCase())
     );
-    if (localInfo.length) {
-      return localInfo
+    if (mapeo.length) {
+      return mapeo
     }
   }
-  return localInfo;
+  return mapeo;
 };
 
 

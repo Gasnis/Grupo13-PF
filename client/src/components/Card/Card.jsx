@@ -5,10 +5,6 @@ import style from "./card.module.css";
 
 export default function Place({ place }) {
   const [state, setState] = useState(0)
-let  divisor  = place.rating.reduce((valorAnterior, valorActual) => (valorAnterior + valorActual));
-let dividendo = place.rating.reduce(function(valorAnterior, valorActual, indice){
-  return valorAnterior + valorActual * (indice +1)})
-let ratin = dividendo/divisor 
 
 const handleNextAndBack = (event) =>{
   event.preventDefault()
@@ -73,7 +69,7 @@ const handleTouchEnd = event => {
               </div>
               <div className={style.numbersInfo}>
                 <h4>
-                  {ratin.toFixed(1)}
+                  {place.rating}
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg/200px-Ic%C3%B4ne_%C3%A9toile_d%27or_%C3%A0_cinq_branches.svg.png"
                     height="20px"
