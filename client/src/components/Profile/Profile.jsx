@@ -1,7 +1,10 @@
 import React, { useState , useEffect} from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getPlaces, getUserByid } from "../../redux/actions";
+import { getUserByid, updateUser } from "../../redux/actions";
+
+
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
@@ -13,7 +16,12 @@ export default function Detail() {
     const dispatch = useDispatch();
     const history = useHistory();
     const { profile } = useSelector(state => state)
+    
+
     const checked = useSelector((state) => state.darkmode);
+    
+    const [image, setImage] = useState("");
+    
 
     const [open, setOpen] = useState({
         userInfo: true,
@@ -60,6 +68,38 @@ export default function Detail() {
             </div>
         )
     }
+
+    //++++++++++++++++++++++++++++++++++Cloudinary+++++++++++++++++++++++++++++++++++++++++++
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/thomrojas/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "reactapp";
+
+    const handleImageUpload = (event) => {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        axios.post(CLOUDINARY_URL, formData)
+          .then(res => {
+            let newImage = res.data.secure_url;
+            dispatch(updateUser({...profile, image: newImage }))
+            dispatch(getUserByid(profile.id))
+            //setImage(res.data.secure_url);
+          })
+          .catch(err => console.error(err));
+          
+      };
+
+      
+
+      const handleFileInput = () => {
+        fileInput.current.click();
+      };
+      
+      const fileInput = React.createRef();
+
+    
+     //++++++++++++++++++++++++++++++++++Cloudinary+++++++++++++++++++++++++++++++++++++++++++
+
     return (
         <div className={style.mainContainer}>
 
@@ -67,8 +107,30 @@ export default function Detail() {
                 <Navbar />
                 <div>
                     <div className={style.divContainer} >
+
                         <img src={profile.image} href={profile.image} referrerPolicy="no-referrer" alt="perfil photo" className={style.profilePict} />
+
                         <h1 className={checked ? style.name : style.nameDark}>{profile.name}</h1>
+                    </div>
+                    {/* <div>
+                    <input type="file" onChange={handleImageUpload} />
+                        {uploading && <p>Uploading...</p>}
+                        {image && (
+                            <Image cloudName="thomrojas" publicId={image}>
+                            <Transformation width="200" height="200" crop="fill" />
+                            </Image>
+                        )}
+                    </div> */}
+
+                    <div>
+                        <button onClick={handleFileInput}>Edit Image</button>
+                        <input
+                        type="file"
+                        ref={fileInput}
+                        style={{ display: 'none' }}
+                        onChange={handleImageUpload}
+                        />
+                        
                     </div>
 
 
