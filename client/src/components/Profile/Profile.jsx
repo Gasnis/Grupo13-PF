@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid, getUserId, updateUser } from "../../redux/actions";
+import { getUserByid, updateUser } from "../../redux/actions";
 import style from "./profile.module.css";
 import { useHistory } from 'react-router-dom';
 import ProfileInfo from "../UserInfo/UserInfo";
@@ -83,7 +83,7 @@ export default function Detail() {
             console.log(res.data.secure_url,"res.data.secure_url")
             console.log("this is profile",profile)
             dispatch(updateUser({...profile, image: newImage }))
-            dispatch(getUserId(profile.id))
+            dispatch(getUserByid(profile.id))
             //setImage(res.data.secure_url);
           })
           .catch(err => console.error(err));
