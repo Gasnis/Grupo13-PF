@@ -10,7 +10,6 @@ export default function Loading () {
         const timer = setTimeout(() => {
             swal({
                 title: "No se encontro el lugar buscado",
-                buttons: true,
                 dangerMode: true,
             })
         }, 2000);
