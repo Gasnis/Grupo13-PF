@@ -15,7 +15,7 @@ const users = [{
     "password": "gioh2020",
     "phone": "3016444226",
     "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
-    "birthday": "1991-01-01",
+    "birthday": "2005-01-01",
     "city": "bogota",
 	"ban": false
 	
@@ -104,7 +104,7 @@ const places =[
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
 	"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg"],
 		"event": false,
-		"capacity": 2000,
+		"capacity": 3,
 		"petFriendly": false,
 		"ageRange": "+18",
 		"phone": "3017777777",
@@ -127,7 +127,7 @@ const places =[
 		"event": true,
 		"capacity": 200,
 		"petFriendly": true,
-		"ageRange": "+18",
+		"ageRange": "+21",
 		"phone": "3017777777",
 		"promo":"2x1",
 		"bookPrice": "200.5",

@@ -67,9 +67,12 @@ function calculateAge(birthday) {
 }
 
 
-function validate(input,local) {
+function validate(input,local,myLocal) {
   let bookingsByDate = local.books.filter(book=>book.reservedDate===input.reservedDate)
+  let totalPeopleByDate = bookingsByDate.reduce((total,book)=>total+book.personQuantity,0)
+  console.log("🚀 ~ file: FormBook.jsx:73 ~ validate ~ totalPeopleByDate", totalPeopleByDate)
   let errors = {};
+  if (!input.reservedDate) errors.reservedDate = "Selecciona una fecha"
   if (!input.name?.length) errors.name = "Debes escribir un nombre"; //puede que el signo ? rompa la validacion
   if (!input.personQuantity?.length)
     errors.personQuantity = "Debes escribir la cantidad de personas"; //puede que el signo ? rompa la validacion
@@ -79,8 +82,9 @@ function validate(input,local) {
     errors.personQuantity = "Debes ingresar un número mayor a 1";
   if (!input.userId)
     errors.userId = "Debes loguearte para realizar una reserva";
-  if (!(local.capacity-bookingsByDate.length))
-    errors.availability = "El local no tiene disponibilidad para esta fecha"
+  if (!myLocal && ((local.capacity-totalPeopleByDate)<=0))
+    errors.availability = "El local no tiene disponibilidad para esta fecha";
+  if (!input.hourDate) errors.hourDate = "Selecciona la hora de tu reserva";
   return errors;
 }
 
@@ -94,10 +98,12 @@ export default function SignUp(props) {
   const localId = useSelector((state) => state.placeDetail.id);
   const price = useSelector((state) => state.placeDetail.bookPrice); // 200.5`
   const local = useSelector((state) => state.placeDetail);
+  console.log("🚀 ~ file: FormBook.jsx:97 ~ SignUp ~ local", local)
   const { profile, book } = useSelector((state) => state);
-
+  console.log("🚀 ~ file: FormBook.jsx:103 ~ SignUp ~ profile", profile)
   const dispatch = useDispatch();
   const history = useHistory();
+  const [myLocal, setMyLocal] = useState(profile.id === local.userId)
   
   const date = new Date();
   
@@ -129,7 +135,7 @@ export default function SignUp(props) {
   //valor que se pasa a la propiedad "disabled" del button
   //solo es "false" cuando no existen errores ni campos vacíos (date)
   const disabled =
-    errors.name || errors.personQuantity || !booking.reservedDate || !profile || errors.age || ageRestriction>age;
+    errors.name || errors.personQuantity || !booking.reservedDate || !profile || errors.availability || !myLocal && ageRestriction>age;
 
   useEffect(() => {
     if (!profile.id) {
@@ -147,7 +153,7 @@ export default function SignUp(props) {
       validate({
         ...booking,
         [event.target.name]: event.target.value,
-      },local)
+      },local,myLocal)
     );
     setBooking({
       ...booking,
@@ -245,8 +251,8 @@ export default function SignUp(props) {
     // const paylink = await dispatch(getPaylink())
   };
 
-  const goToDetails = (e) => {
-    history.push(`/detail/${localId}`);
+  const goBack = (e) => {
+    history.goBack();
   };
 
     return (
@@ -264,7 +270,7 @@ export default function SignUp(props) {
                                 name="name"
                                 onChange={handleChange}
                             />
-                            {errors.name ? <span>{errors.name}</span> : null}
+                            {!errors.availability && errors.name ? <span>{errors.name}</span> : null}
                         </div>
 
                         <div>
@@ -277,6 +283,7 @@ export default function SignUp(props) {
                                 name="reservedDate"
                                 onChange={handleChange}
                             />
+                            {!errors.availability && errors.reservedDate ? <span>{errors.reservedDate}</span> : null}
                         </div>
 
                         <div>
@@ -289,7 +296,7 @@ export default function SignUp(props) {
                                 name="personQuantity"
                                 onChange={handleChange}
                             />
-                            {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
+                            {!errors.availability && errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
                         </div>
 
                         <div>
@@ -306,7 +313,7 @@ export default function SignUp(props) {
                                   <option value="23:00">23:00</option>
 
                             </select>
-                            {errors.personQuantity ? <span>{errors.personQuantity}</span> : null}
+                            {!errors.availability && errors.hourDate ? <span>{errors.hourDate}</span> : null}
                         </div>
 
                         <div>
@@ -321,10 +328,10 @@ export default function SignUp(props) {
 
                         <div className={styles.linksContainer}>
                             <button disabled={disabled} type="submit" id="signUpButton" className={checked ? styles.submitButton : styles.submitButtonDark}>Reservar</button>
-                            {localId ? <button className={styles.volverButton} onClick={goToDetails}>Volver</button> : null}
+                            {localId ? <button className={styles.volverButton} onClick={goBack}>Volver</button> : null}
                         </div>
                     </form>
-                    {ageRestriction>age ? <span>No tienes la edad mínima para reservar en este local</span> : null}
+                    {!myLocal && ageRestriction>age ? <span>No tienes la edad mínima para reservar en este local</span> : null}
                     {errors.availability ? <span>{errors.availability}</span> : null}
 
           {/* {reserved ? <h3 className={styles.title}>Successful booking</h3> : null} */}
