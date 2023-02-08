@@ -2,7 +2,7 @@ import React, { useState , useEffect} from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid, updateUser } from "../../redux/actions";
+import { getUserByid, updateUser, getPlaces } from "../../redux/actions";
 
 
 import style from "./profile.module.css";
@@ -19,8 +19,8 @@ export default function Detail() {
     
 
     const checked = useSelector((state) => state.darkmode);
-    
-    const [image, setImage] = useState("");
+
+    console.log(profile)
     
 
     const [open, setOpen] = useState({
@@ -83,6 +83,7 @@ export default function Detail() {
             let newImage = res.data.secure_url;
             dispatch(updateUser({...profile, image: newImage }))
             dispatch(getUserByid(profile.id))
+            window.location.reload();
             //setImage(res.data.secure_url);
           })
           .catch(err => console.error(err));
