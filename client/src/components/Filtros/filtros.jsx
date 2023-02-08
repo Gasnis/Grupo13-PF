@@ -8,8 +8,6 @@ export default function Filter() {
     const dispatch = useDispatch();
 
     const [order, setOrder] = useState("");
-    console.log(order)
-
     
     const handlerCategory = (event) => {
         event.preventDefault()

@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-around;
     margin: 2em;
+    background-color: #FCF9EB;
 }
 @media (max-width: 704px){
     .mainContainer{
@@ -12,9 +13,13 @@
     }
   }
 
+.background {
+    background-color: #FDFBF2;
+}
 .book{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     color: #000000;
     /* padding: 0.3em 1.3000000000000007em; */
     margin-top: 12px;
@@ -40,7 +45,7 @@
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
-width: 95%;
+width: 100%;
 margin: 2px;
 }
 @media (max-width: 704px){
@@ -52,10 +57,10 @@ margin: 2px;
 .containerBook{
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    /* overflow: scroll; */
     /* height: 50vh; */
     align-items: center;
-    
+    justify-content: space-around;
 }
 
 .reservar {
@@ -64,7 +69,7 @@ margin: 2px;
     justify-self: center;
     text-decoration: none;
     height: 5vh;
-    width: 80%;
+    width: 90%;
     background: #40047C;
     color: white;
     border-radius: 11px;
@@ -125,4 +130,23 @@ margin: 2px;
 }
 
 /* ----------------------------------------------Dark Mode ----------------------------------------- */
-
+.backgroundDark {
+    background-color: #2a2a2b;
+    transition: all 0.5s ease;
+}
+.mainContainerDark {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2em;
+    background-color: #2a2a2b;
+    color: #FDFBF2;
+    transition: all 0.5s ease;
+}
+@media (max-width: 704px){
+    .mainContainerDark{
+        flex-direction: column;
+        margin: 5px;
+    }
+  }

@@ -47,6 +47,9 @@ const getUserDetail = async (id) => {
             where: {id: id},
             include:[{
                 model: Local,
+                include:{
+                    model:Book
+                }
               },
               {
                 model: Book
@@ -76,11 +79,11 @@ const deleteUser = async (id) => {
 
 const updateUser = async (newUserData) =>{
     
-  const {userId,id,name,password,phone,image,birthday,city,ban} = newUserData
+  const {id,name,password,phone,image,birthday,city,ban} = newUserData
 
-  if (userId && name && image && password && phone && birthday && city && id) {
+  if (name && image && password && phone && birthday && city && id) {
       let user = await User.findByPk(id);
-      if (user.id === userId) {
+      if (user.id === id) {
           await user.update( 
                   {
                   id,
@@ -93,7 +96,7 @@ const updateUser = async (newUserData) =>{
                   ban,
               });
           const userUpdated = await User.findOne({
-            where: {id: userId},
+            where: {id: id},
             include:[{
                 model: Local,
               },

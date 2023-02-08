@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -14,22 +13,24 @@ import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
 import Loading from "../Loading/Loading";
 
 export default function Detail() {
-    const { id } = useParams();
-    const checked = useSelector((state) => state.darkmode);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getPlaceDetail(id));
-        return dispatch(cleanDetail());
-    }, []);
+  const { id } = useParams();
+  const checked = useSelector((state) => state.darkmode);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPlaceDetail(id));
+    return dispatch(cleanDetail());
+  }, []);
 
-    const placeDetail = useSelector((state) => state.placeDetail);
+  const placeDetail = useSelector((state) => state.placeDetail);
+  
+  const [state, setState] = useState(0)
+ 
 
-
-    if (!placeDetail.id) {
-        return (
-            <div>
-                <Navbar />
-                {/* <div className={style.loadingcontainer}>
+  if (!placeDetail.id) {
+    return (
+      <div>
+        <Navbar />
+        {/* <div className={style.loadingcontainer}>
                     <h1 className={style.loading}>Cargando...</h1>
                     <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="" />
                 </div> */}
@@ -38,29 +39,65 @@ export default function Detail() {
         )
     }
 
-    if (placeDetail.id == 400) {
-        return (
-            <div>
-                <img
-                    src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
-                    alt="" height="100%" width="100%"
-                />
 
-            </div>
-        );
+  const handleNextAndBack = (event) =>{
+    if(event.target.name === 'next'){
+        if(state + 1 >= placeDetail.image.length){
+            return
+        }else{
+            setState(state+1)
+        }
     }
+    if(event.target.name === "back" ){
+        if(state === 0){
+            return
+        }else{
+            setState(state - 1)
+        }
+    }
+  }
+  if (placeDetail.id == 400) {
     return (
-        <div className={ checked ? style.mainContainer : style.mainContainerDark}>
-            <Navbar />
+      <div>
+        <img
+          src="https://dinahosting.com/blog/cont/uploads/2021/03/error-404.jpg"
+          alt=""
+          height="100%"
+          width="100%"
+        />
+      </div>
+    );
+  }
+  let divisor = placeDetail?.rating.reduce(
+    (valorAnterior, valorActual) => valorAnterior + valorActual
+  );
+  let dividendo = placeDetail?.rating.reduce(function (
+    valorAnterior,
+    valorActual,
+    indice
+  ) {
+    return valorAnterior + valorActual * (indice + 1);
+  });
+  let ratin = dividendo / divisor;
+
+
+
+  return (
+    <div className={checked ? style.mainContainer : style.mainContainerDark}>
+      <Navbar />
 
             <div className={style.container}>
                 <div className={style.img}>
-                    <img src={placeDetail.image} alt="" />
+                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
+
+                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                  
+                    <img src={placeDetail.image[state]} alt="" />
                 </div>
 
                 <div className={ checked ? style.head : style.headDark}>
                     <div className={style.ratingShow}>
-                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.rating}>{ratin.toFixed(1)}<img className={style.star} src={star} alt="" /></div>
                         <div className={style.containerevent}>
                             {placeDetail.event ? (
                                 <div className={style.event}>
@@ -107,7 +144,7 @@ export default function Detail() {
                         >
                             <span className={style.titles}>{placeDetail.location}</span>
                         </a>
-                        <span className={style.ciudad}>{placeDetail.city}</span>
+                        <span className={style.ciudad}>{`${placeDetail.city}, ${placeDetail.state}`}</span>
                     </div>
                     <div className={style.sideDiv}>
                         <a

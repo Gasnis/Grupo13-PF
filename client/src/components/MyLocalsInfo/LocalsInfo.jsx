@@ -14,7 +14,7 @@ export default function LocalsInfo(props) {
     const localsPerPage = 1;
     const localsToShow = locals.slice(localsPerPage * index, (index + 1) * localsPerPage)
 
-    props.set(localsToShow[0].id)
+    props.set(localsToShow[0])
     
     const handlePage = (e) => {
         e.preventDefault();
@@ -77,7 +77,7 @@ export default function LocalsInfo(props) {
                 (
                     !editing
                         ?
-                        <div>
+                        <div className={styles.allInfo}>
                             <ShowLocalInfo local={locals?.filter(local => local.id === localToEdit)[0]} />
                             <div className={styles.buttonsContainer}>
                                 <button onClick={handleEdit} className={checked ? styles.editarBar : styles.editarBarDark}>Editar</button>
