@@ -84,7 +84,7 @@ export default function BarOwnerPanel() {
                         </div>}
                 </div>
 
-                <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
+                <div className={darkmode ? style.bookingsContainer : style.bookingsContainerDark}>
                     <h2>Reservas</h2>
                     {!!books?.length
                     &&

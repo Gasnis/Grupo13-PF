@@ -16,13 +16,14 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.5s ease;
+    gap: 2em;
 }
 
 .leftContainer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 3em;
+    gap: 2em;
     width: 30%;
 }
 
@@ -39,6 +40,7 @@
     align-items: center;
     justify-content: space-around;
     width: 30%;
+    gap:2em;
 }
 
 .profileYswitchContainer {
@@ -201,7 +203,7 @@
         align-items: center;
         z-index: 3;
         padding: 1em;
-        gap: 1em;
+        gap: 2em;
     }
 
     .optionsContainer.open {
@@ -222,7 +224,7 @@
         align-items: center;
         z-index: 3;
         padding: 1em;
-        gap: 1em;
+        gap: 2em;
     }
 
     .optionsContainerDark.open {
@@ -234,8 +236,9 @@
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
-        gap: 1em;
+        gap: 2em;
         width: 100%;
+        padding-right: 3em;
     }
 
     .middleContainer {
@@ -250,8 +253,8 @@
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
-        padding-right: 0.5em;
-        gap: 1em;
+        padding-right: 2.4em;
+        gap: 2em;
         width: 100%;
     }
 
