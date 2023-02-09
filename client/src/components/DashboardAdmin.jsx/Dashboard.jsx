@@ -30,7 +30,7 @@ const Dashboard = () => {
   const allPlaces = useSelector((state) => state.places)
   const allUsers = useSelector((state) => state.users)
   const darkmode = useSelector((state) => state.darkmode)
-  console.log(allUsers);
+  console.log(allPlaces);
 
   const [statusDashboard, setStatusDashboard] = useState("Welcome")
 

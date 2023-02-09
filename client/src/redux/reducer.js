@@ -16,6 +16,7 @@ import {
     GET_CITIES,
     GET_STATES,
     DELETE_BOOK,
+    GET_PLACES_RATING,
     
 
 } from "./actions"
@@ -23,6 +24,7 @@ import {
 
 const initialState = {
     places: [],
+    placesRating:[],
     allPlaces: [],
     placeDetail: {},
     profile: {},
@@ -48,6 +50,13 @@ export default function reducer(state = initialState, action) {
                 places: action.payload,
                 allPlaces: action.payload,
             }
+        case GET_PLACES_RATING:
+            return {
+                ...state,
+                placesRating: action.payload,
+                   
+                }    
+
         case SEARCH_PLACE:
             return {
                 ...state,

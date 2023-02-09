@@ -1,29 +1,34 @@
 import React, { useState , useEffect} from "react";
-import { updatePlace, getPlaces, deleteBook, bookPersist } from "../../redux/actions"
+import { updatePlace, getPlaces, deleteBook, bookPersist, getlocalsRating,updatePlaceRating } from "../../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
 import {useHistory} from 'react-router-dom'
 
 export default function MyBookInfo(props) {
-    useEffect(()=>{
-        dispatch(getPlaces())
-    },[])
+  useEffect(()=>{
+    dispatch(getlocalsRating())
+  },[])
+  
   const books = props.books;
   const dispatch = useDispatch()
   const history = useHistory()
   const places = useSelector((state) => state.places);
   const checked = useSelector((state) => state.darkmode);
+  const localsRating = useSelector((state) => state.placesRating);
   const [index, setIndex] = useState(0);
   useEffect(()=>{
     dispatch(getPlaces())
   },[dispatch])
-
+  
   const fechahoy = new Date();
   const fechareserva = new Date(books[index].reservedDate);
   const expiro = fechahoy.getDate() > fechareserva.getDate();
 
-
+  
+  
+  
+  
   const handlePage = (e) => {
     e.preventDefault();
     switch (e.target.name) {
@@ -34,22 +39,23 @@ export default function MyBookInfo(props) {
           setIndex(0);
         }
         break;
-      case "left":
-        if (index > 0) {
-          setIndex(index - 1);
-        } else {
-          setIndex(books.length - 1);
-        }
-        break;
-      default:
-        break;
-    }
-  };
+        case "left":
+          if (index > 0) {
+            setIndex(index - 1);
+          } else {
+            setIndex(books.length - 1);
+          }
+          break;
+          default:
+            break;
+          }
+        };
+        
+        const handleRating = async(e) => {
+    
+    const localcambia =  localsRating.find((place) => place.id === books[index].localId)
 
-  const handleRating = async(e) => {
-
-    const localcambia =  places.find((place) => place.id === books[index].localId)
-    let newArrRating = localcambia.rating.map((rating, index) => {
+    let newArrRating = localcambia.rating?.map((rating, index) => {
       if (e.target.value == index){
         return rating + 1
       }else{
@@ -57,7 +63,7 @@ export default function MyBookInfo(props) {
       }
     })
 
-    await dispatch(updatePlace({...localcambia, rating: newArrRating}))
+    await dispatch(updatePlaceRating({...localcambia, rating: newArrRating}))
     swal("Muchas Gracias por darnos tu feedback")
     dispatch(getPlaces())
     dispatch(bookPersist({}))

@@ -1,7 +1,7 @@
 const {Router} = require("express")
 const { Local, User, Book } = require("../../db");
 
-const {postLocalData, getLocalName, getLocalDetail, deleteLocal, updateLocal} = require("../../controllers/localControllers/local.controller")
+const {postLocalData, getLocalName, getLocalDetail, deleteLocal, updateLocal, getLocalsRating, updateLocalRating} = require("../../controllers/localControllers/local.controller")
 
 
 
@@ -17,6 +17,17 @@ router.get("/", async (req, res) => {
     }else{
       res.status(200).json(await getLocalName());
     }
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+router.get("/rating", async (req, res) => {
+  try {
+
+    const localName = await getLocalsRating();
+    res.status(200).json(localName);
+    
   } catch (error) {
     res.status(404).send(error.message);
   }
@@ -63,9 +74,10 @@ router.get("/:id", async (req, res) => {
 
 
   router.put("/", async (req, res) => {
+    console.log(req.body)
     try {
       const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state} = req.body
-      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && rating && city && state ) {
+      if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && city && state ) {
         const updated = await updateLocal(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state)
 
         
@@ -76,6 +88,23 @@ router.get("/:id", async (req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
+});
+
+router.put("/rating", async (req, res) => {
+  console.log(req.body)
+  try {
+    const {id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state} = req.body
+    if (id && name && category && image && location && schedule && menu && capacity && ageRange && phone && bookPrice && city && state ) {
+      const updated = await updateLocalRating(id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state)
+
+      
+       res.status(200).send(updated);
+  } else {
+    res.status(404).send("Not all parameters arrived successfully");
+  }
+} catch (error) {
+  res.status(400).send(error.message);
+}
 });
 
 
