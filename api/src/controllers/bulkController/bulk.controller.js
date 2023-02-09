@@ -326,11 +326,11 @@ const places =[
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Glow",
+		"name": "La Barra Boliche",
 		"category": "disco",
 		"image": ["https://10619-2.s.cdn12.com/rests/original/107_500173515.jpg"],
-		"location": "Gral. Guemes 200 Avellaneda",
-		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
+		"location": "Lima 150 la barra boliche",
+		"menu": ["https://pbs.twimg.com/profile_images/788784431658131456/IrHMDqDl_400x400.jpg","https://pbs.twimg.com/media/DuECnRLXQAAWUn7.jpg:large","http://quedigital.com.ar/web/wp-content/uploads/2014/10/barra.jpg","https://i.pinimg.com/550x/75/49/95/754995901c17b59e9750b55230151111.jpg"],
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
@@ -341,15 +341,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba",
+		"rating":[1,4,2,6,8]
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Brothers",
+		"name": "Vidon-Bar",
 		"category": "bar",
-		"image": ["https://lh3.googleusercontent.com/p/AF1QipO8iMJ1JblVz5qZRY87yScty9_uFI4DmwVPSa1R=s680-w680-h510"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://www.gaf-franquicias.com/images/notas/logos/1479306304_isologotipo%20posavaso%202014.fw.png","https://media-cdn.tripadvisor.com/media/photo-s/16/08/5f/34/horario-de-2x1-de-18.jpg","https://www.circuitogastronomico.com/wp-content/uploads/2018/10/vidon1.jpg","https://media-cdn.tripadvisor.com/media/photo-s/05/e4/66/e5/patio.jpg"],
+		"location": "Dr. Tristan Achaval Rodriguez 152, X5000BKD vidon bar",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -361,15 +362,15 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "713 Bar Arcade",
+		"name": "Patagonia",
 		"category": "bar",
-		"image": ["https://scontent.faep9-1.fna.fbcdn.net/v/t1.6435-9/82436858_2912633052122593_5704060037622661120_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9267fe&_nc_ohc=rg-KyoYTtkcAX8mFkqH&_nc_ht=scontent.faep9-1.fna&oh=00_AfD95uOt2Vlf2cruoGZ5ksA3AwdPwNgN5qRkGyxPT5WeAg&oe=63F60405"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://mir-s3-cdn-cf.behance.net/projects/404/6c3d1f99595749.Y3JvcCw1NjEsNDM4LDEyMyw5Nw.jpg","https://www.lavoz.com.ar/resizer/y5uxOiiaSIPR1Xn7O9S5X0SBFr8=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/QU3MDRWN5NDRBLCAYYWZBSS3Z4.jpg","https://media-cdn.tripadvisor.com/media/photo-s/15/5c/43/18/cerveza-patagonia-bar.jpg"],
+		"location": "Calle Belgrano 899-799, X5000JQQ, X5000JQQ patagonia bar",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -381,15 +382,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba",
+		"rating":[1,4,2,6,8]
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Golden Bar",
+		"name": "El Club de la milanesa",
 		"category": "bar",
-		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://www.revistahigh.com.ar/files/image/1/1111/5e6fa7d78b2c2_905_510!.jpg?s=89e78aba1299469f83f5b8f9756a0120&d=1641571457","https://www.elclubdelamilanesa.com/images/content/sucursales/palermo-caba/1490207332.jpg","https://www.elclubdelamilanesa.com/images/content/sucursales/puerto-norte-rosario/1.jpg","https://economiasustentable.com/wp-content/uploads/2022/04/Milanesa.jpeg"],
+		"location": "Chacabuco 895, X5000III el club de la milanesa",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -401,15 +403,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"rating":[1,4,2,6,8],
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Molly Malone",
+		"name": "SantaCalma",
 		"category": "bar",
-		"image": ["https://lh5.googleusercontent.com/p/AF1QipPHvXtTHq42fjZqrhZoekIy_rCM6iGAYL6EPnxY=w480-h300-k-n"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://media-cdn.tripadvisor.com/media/photo-s/1c/c4/73/e2/nuestro-jardin.jpg","https://media-cdn.tripadvisor.com/media/photo-s/0d/8a/8c/bf/iel-jardin-mas-lindo.jpg"],
+		"location": "Parque Sarmiento, República de Chile, X5000 SantaCalma",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -420,9 +423,10 @@ const places =[
 		"bookPrice": "400.5",
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
+		"rating":[8,4,2,6,20],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -440,9 +444,10 @@ const places =[
 		"bookPrice": "400.5",
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
+		"rating":[8,4,5,6,8],
 		"status": "solicitud",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	}
 
 ]
