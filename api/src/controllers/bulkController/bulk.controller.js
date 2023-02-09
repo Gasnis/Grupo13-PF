@@ -185,11 +185,11 @@ const places =[
 ,
 {
 		"userId":"thomi@gmail.com",
-		"name": "El Thomisaurodromo",
+		"name": "Juguetes perdidos",
 		"category": "bar",
 		"image": [
-		"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004165912-04-world-best-bars-2022.jpg"],
-		"location": "Gral.Guemes 200 Avellaneda",
+		"https://www.alafresca.com.ar/wp-content/uploads/2018/06/DSC_0016-1024x683.jpg"],
+		"location": "Bolivia 3342, B1678EIP Caseros, Provincia de Buenos Aires, Argentina",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 150,
@@ -197,12 +197,13 @@ const places =[
 		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
-		"bookPrice": "200",
+		"bookPrice": "800",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["martes","miercoles","jueves","viernes","sabado","domingo","17:00","02:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Buenos Aires",
+		"rating": [1,0,1,0,1],
+		"state": "Tandil"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
