@@ -147,7 +147,7 @@ export default function Navbar(props) {
                             {!profile.id &&
                                 open === "login" ? (
                                 <div className={style.dropdown}>
-                                    <div>
+                                    <div className={style.loginOption}>
                                         <Link className={style.titulos} to="/login">Login</Link>
                                     </div>
                                     <div>
