@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios"
 import { useDispatch, useSelector } from 'react-redux';
 import style from "./Dashboard.module.css"
 import { useHistory } from 'react-router-dom';
@@ -29,6 +30,7 @@ const Dashboard = () => {
   const allPlaces = useSelector((state) => state.places)
   const allUsers = useSelector((state) => state.users)
   const darkmode = useSelector((state) => state.darkmode)
+  console.log(allUsers);
 
   const [statusDashboard, setStatusDashboard] = useState("Welcome")
 
@@ -40,7 +42,10 @@ const Dashboard = () => {
     await dispatch(searchPlace(e.target.value))
     await dispatch(searchUser(e.target.value))
   }
+
   const handleApprove = async (e) => {
+    const placeFound = allPlaces.find (place => place.id === e.target.value)
+    const userFound = allUsers.find(user =>  user.id === placeFound.userId)
     swal({
       title: "¿Estás seguro?",
       text: "Una vez APROBADO este local aparecerá en la aplicacion",
@@ -48,16 +53,27 @@ const Dashboard = () => {
       buttons: true,
       dangerMode: true,
     })
-      .then(async (willDelete) => {
-        if (willDelete) {
-          swal("El local fue APROBADO con éxito", {
-            icon: "success",
-          });
-          const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
-          await dispatch(updatePlace({ ...local, status: 'aprobado' }))
-          await dispatch(getPlaces())
-        }
-      });
+    .then(async (willDelete) => {
+      if (willDelete) {
+        swal("El local fue APROBADO con exito", {
+          icon: "success",
+        });
+          var data = {
+            service_id: 'service_s2t7zem',
+            template_id: 'template_u70msk8',
+            user_id: 't-BpvYMMRrn-a91xr',
+            template_params: {
+              'owner': userFound.name,
+              "ownerEmail": userFound.id,
+              'message': "Your local got accepted!",
+            }
+          }
+          await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
+        const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
+        await dispatch(updatePlace({ ...local, status: 'aprobado' }))
+        await dispatch(getPlaces())
+      }
+    });
   }
 
   const handleDenegate = async (e) => {

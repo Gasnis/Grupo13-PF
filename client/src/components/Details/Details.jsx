@@ -68,18 +68,6 @@ export default function Detail() {
       </div>
     );
   }
-  let divisor = placeDetail?.rating.reduce(
-    (valorAnterior, valorActual) => valorAnterior + valorActual
-  );
-  let dividendo = placeDetail?.rating.reduce(function (
-    valorAnterior,
-    valorActual,
-    indice
-  ) {
-    return valorAnterior + valorActual * (indice + 1);
-  });
-  let ratin = dividendo / divisor;
-
 
 
   return (
@@ -97,7 +85,7 @@ export default function Detail() {
 
                 <div className={ checked ? style.head : style.headDark}>
                     <div className={style.ratingShow}>
-                        <div className={style.rating}>{ratin.toFixed(1)}<img className={style.star} src={star} alt="" /></div>
+                        <div className={style.rating}>{placeDetail.rating}<img className={style.star} src={star} alt="" /></div>
                         <div className={style.containerevent}>
                             {placeDetail.event ? (
                                 <div className={style.event}>
