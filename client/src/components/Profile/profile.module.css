@@ -57,12 +57,11 @@
   .name{
     font-family: 'Cambay', sans-serif;
     float: left;
-    font-weight: 800;
+    font-weight: normal;
     justify-self: flex-start;
-    color: rgb(0, 0, 0);
+    color: #000000;
     flex-wrap: nowrap;
-    margin-left: 5px;
-    line-height: 1
+    margin-left: 15px;
   }
   @media (max-width: 704px){
     .name{
@@ -80,6 +79,7 @@
     justify-self: flex-start;
     color: #fdfbf2;
     flex-wrap: nowrap;
+    margin-left: 15px;
   }
   @media (max-width: 704px){
     .nameDark{
