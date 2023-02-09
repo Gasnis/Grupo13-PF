@@ -35,7 +35,8 @@ const Dashboard = () => {
   const [statusDashboard, setStatusDashboard] = useState("Welcome")
 
   const handleState = (e) => {
-    setStatusDashboard(e.target.value)
+    // setStatusDashboard(e.target.value)
+   setStatusDashboard(e.currentTarget.value )
   }
 
   const handleSearchBar = async (e) => {
@@ -53,11 +54,11 @@ const Dashboard = () => {
       buttons: true,
       dangerMode: true,
     })
-    .then(async (willDelete) => {
-      if (willDelete) {
-        swal("El local fue APROBADO con exito", {
-          icon: "success",
-        });
+      .then(async (willDelete) => {
+        if (willDelete) {
+          swal("El local fue APROBADO con exito", {
+            icon: "success",
+          });
           var data = {
             service_id: 'service_s2t7zem',
             template_id: 'template_u70msk8',
@@ -69,11 +70,11 @@ const Dashboard = () => {
             }
           }
           await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
-        const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
-        await dispatch(updatePlace({ ...local, status: 'aprobado' }))
-        await dispatch(getPlaces())
-      }
-    });
+          const local = allPlaces?.filter(p => p.status === "solicitud").find(local => local.id === e.target.value)
+          await dispatch(updatePlace({ ...local, status: 'aprobado' }))
+          await dispatch(getPlaces())
+        }
+      });
   }
 
   const handleDenegate = async (e) => {
@@ -194,23 +195,23 @@ const Dashboard = () => {
       <div className={style.navbar}>
         <div className={style.titulos}>
           <div className={style.optionContainers}>
-            {<IoNotifications />}
-            <button className={statusDashboard === "Solicitudes" || "Welcome" ? style.current : style.botones} value="Solicitudes" onClick={handleState}>Solicitudes</button>
+            <button className={style.iconButtons} value="Solicitudes" onClick={handleState}><IoNotifications className={style.iconBut}/></button>
+            <button className={statusDashboard === "Solicitudes" ? style.current : style.botones} value="Solicitudes" onClick={handleState}>Solicitudes</button>
           </div>
           <div className={style.optionContainers}>
-            {<BsShop />}
+            <button className={style.iconButtons} value="Locales" onClick={handleState}><BsShop className={style.iconBut}/></button>
             <button className={statusDashboard === "Locales" ? style.current : style.botones} value="Locales" onClick={handleState}>Locales</button>
           </div>
           <div className={style.optionContainers}>
-            <BsFillExclamationCircleFill />
+            <button className={style.iconButtons} value="LocalesDisabled" onClick={handleState}><BsFillExclamationCircleFill  className={style.iconBut}/></button>
             <button className={statusDashboard === "LocalesDisabled" ? style.current : style.botones} value="LocalesDisabled" onClick={handleState}>Locales Deshabilitados</button>
           </div>
           <div className={style.optionContainers}>
-            <IoPerson />
+            <button className={style.iconButtons} value="Usuarios" onClick={handleState}><IoPerson className={style.iconBut} /></button>
             <button className={statusDashboard === "Usuarios" ? style.current : style.botones} value="Usuarios" onClick={handleState}>Usuarios</button>
           </div>
           <div className={style.optionContainers}>
-            <IoBan />
+            <button className={style.iconButtons} value="UsuariosBaneados" onClick={handleState}><IoBan className={style.iconBut} /></button>
             <button className={statusDashboard === "UsuariosBaneados" ? style.current : style.botones} value="UsuariosBaneados" onClick={handleState}>Usuarios Baneados</button>
           </div>
         </div>
