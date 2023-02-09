@@ -134,7 +134,7 @@ export default function Detail() {
                     </div>
                     <div className={style.sideDiv}>
                         <a  target="_blank"
-                            href={`https://www.google.com/maps/place/leroy%20merlin%20finestrat`}
+                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(/ /g,"+")} ${placeDetail.city} ${placeDetail.state}`}
                         >
                             <img className={style.location2} src={location2} alt="" />
                         </a>
