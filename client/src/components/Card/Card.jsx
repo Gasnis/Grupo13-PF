@@ -88,7 +88,7 @@ const handleTouchEnd = event => {
             <img src={place.image[0]} className={style.logodisabled} alt="img" />
             <div className={style.textContainer}>
               <div className={style.text}>
-                <h3>{place.name}</h3>
+                <h3>{place.name} (No disponible)</h3>
                 <h4>{place.category}</h4>
               </div>
               <div className={style.numbersInfo}>

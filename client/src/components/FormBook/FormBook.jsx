@@ -115,7 +115,7 @@ export default function SignUp(props) {
     hourDate: book.hourDate,
   });
 
-  console.log(booking)
+
  
   const [errors, setErrors] = useState({
     name: "",
@@ -134,7 +134,7 @@ export default function SignUp(props) {
   //valor que se pasa a la propiedad "disabled" del button
   //solo es "false" cuando no existen errores ni campos vacíos (date)
   const disabled =
-    errors.name || errors.personQuantity || !booking.reservedDate || !profile || errors.availability || !myLocal && ageRestriction>age;
+    errors.name || errors.personQuantity || !booking.reservedDate || !profile || errors.availability || !myLocal && ageRestriction>age || !booking.hourDate;
 
   useEffect(() => {
     if (!profile.id) {
@@ -204,7 +204,7 @@ export default function SignUp(props) {
   
           }
         };
-        console.log('aqui',data)
+        
         
        
         await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
@@ -327,9 +327,12 @@ export default function SignUp(props) {
                                 onChange={handleChange}
                             />
                         </div> */}
-                        <div>         
-                        {<h2> <span>TOTAL:</span> {`${Math.floor(price)* booking.personQuantity} ARS`}</h2> }
-                        </div>
+                        {
+                          disabled? null:(<div>         
+                            {<h2 > <span>TOTAL:</span> {`${Math.floor(price)* booking.personQuantity} ARS`}</h2> }
+                            </div>) 
+                        }
+                        
 
                         <div className={styles.linksContainer}>
                             <button disabled={disabled} type="submit" id="signUpButton" className={checked ? styles.submitButton : styles.submitButtonDark}>Reservar</button>
