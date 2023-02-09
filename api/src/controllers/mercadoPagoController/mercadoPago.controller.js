@@ -43,7 +43,7 @@ const generateLink = async (req, res) => {
       console.log(error);
     });
 
-    console.log(response1);
+  
     
 
 

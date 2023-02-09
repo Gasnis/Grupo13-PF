@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 import Navbar from "../Navbar/Navbar";
-import { getUserByid } from "../../redux/actions";
+import { getPlaceDetail, getUserByid } from "../../redux/actions";
 import style from "./BarOwnerPanel.module.css"
 
 function getUniqueSortedDates(books) {
@@ -67,6 +67,12 @@ export default function BarOwnerPanel() {
         }
     }
 
+    const handleToBook = (event) => {
+        event.preventDefault();
+        dispatch(getPlaceDetail(localShown.id))
+        history.push("/book")
+    }
+
     return (
         <div className={darkmode ? style.background : style.backgroundDark}>
             <Navbar />
@@ -78,18 +84,18 @@ export default function BarOwnerPanel() {
                         ?
                         <LocalsInfo profileId={profile.id} locals={profile.locals} set={setLocalShown}/>
                         :
-                        <div>
+                        <div className={style.containerNoTenesLocal}>
                             <h3>Actualmente no tienes ningún local</h3>
                             <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
                         </div>}
                 </div>
 
-                <div className={darkmode ? style.localsContainer : style.localsContainerDark}>
+                <div className={darkmode ? style.bookingsContainer : style.bookingsContainerDark}>
                     <h2>Reservas</h2>
                     {!!books?.length
                     &&
                     <div>
-                        <button name="left" onClick={handleChangeDate}>{"<<"}</button>
+                        <button className={style.arrows} name="left" onClick={handleChangeDate}>«</button>
                         <input className={darkmode ? style.date : style.dateDark}
                             type='date'
                             // min={`${date.getFullYear()}-${getNum(date, "Month")}-${getNum(date, "Day")}`}
@@ -99,7 +105,7 @@ export default function BarOwnerPanel() {
                             name="reservedDate"
                             onChange={handleChange}
                         />
-                        <button name="right" onClick={handleChangeDate}>{">>"}</button>
+                        <button className={style.arrows} name="right" onClick={handleChangeDate}>»</button>
                     </div>}
                     <div className={style.containerBook}>
                         {
@@ -129,13 +135,11 @@ export default function BarOwnerPanel() {
                     <div className={style.datos}>
                         <h3>Capacidad: {localShown.capacity}</h3>
                         <h3>Lugares reservados: {reservado}</h3>
-                        <h3>Lugares disponibles: {localShown.capacity - reservado}</h3>
+                        <h3 style={localShown.capacity - reservado <= 0 ? {color:"red"} : null}>Lugares disponibles: {localShown.capacity - reservado <= 0 ? 0 : localShown.capacity - reservado }</h3>
                     </div>
 
                     <div>
-                        <Link to="/book">
-                            <button className={style.reservar}>Reservar</button>
-                        </Link>
+                        <button onClick={handleToBook} className={style.reservar}>Reservar</button>
                     </div>
                 </div>
             </div>

@@ -50,11 +50,14 @@ const getLocalDetail = async (id) => {
             ageRange:local.ageRange,
             phone:local.phone,
             promo:local.promo,
-            bookPrice:local.book,
+            bookPrice:local.bookPrice,
             available:local.available,
             status: local.status,
             city:local.city,
+            state:local.state,
             rating: ratin,
+            books:local.books,
+            userId:local.userId,
     }
 
     if (!local) {
@@ -89,11 +92,13 @@ const getLocalName = async (name) => {
         ageRange:local.ageRange,
         phone:local.phone,
         promo:local.promo,
-        bookPrice:local.book,
+        bookPrice:local.bookPrice,
         available:local.available,
         status: local.status,
         city:local.city,
         rating: ratin,
+        state:local.state,
+        userId:local.userId,
       }
     return newInfo
     
@@ -111,6 +116,20 @@ const getLocalName = async (name) => {
   return mapeo;
 };
 
+const getLocalsRating = async (name) => {
+  let localInfo = await Local.findAll({
+    include:{
+        model: Book,
+    }
+  });
+  if(localInfo.length === 0){
+     throw new Error("Local not found");
+  }else{
+    return localInfo
+  }
+
+
+}
 
 const deleteLocal = async (id) => {
     const local = await Local.findByPk(id);
@@ -141,15 +160,42 @@ const updateLocal = async (id,name,category,image,location,schedule,menu,event,c
                 promo,
                 bookPrice,
                 available,
-                rating,
                 status,
                 city,
                 state
             });
     return updated
     }
+  
+    const updateLocalRating = async (id,name,category,image,location,schedule,menu,event,capacity,petFriendly,ageRange,phone,promo,bookPrice,available,rating,status,city,state) =>{
+      let local = await Local.findByPk(id);
+  
+      const updated = await local.update( 
+              {
+                  name,
+                  category,
+                  image,
+                  location,
+                  schedule,
+                  menu,
+                  event,
+                  capacity,
+                  petFriendly,
+                  ageRange,
+                  phone,
+                  promo,
+                  bookPrice,
+                  available,
+                  status,
+                  city,
+                  state,
+                  rating
+              });
+      return updated
+      }
+  
 
 
 
-module.exports = {postLocalData, getLocalName, getLocalDetail,deleteLocal,updateLocal};
+module.exports = {postLocalData, getLocalName, getLocalDetail,deleteLocal,updateLocal, updateLocalRating, getLocalsRating};
 

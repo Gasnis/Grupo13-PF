@@ -3,7 +3,7 @@
     justify-content: center;
     width: 100%;
     justify-content: center;
-    
+
 }
 
 
@@ -16,11 +16,13 @@
     background-color: #fdfbf2c0;
     border-radius: 11px;
 }
-@media (max-width: 704px){
-    .infoContainer{
+
+@media (max-width: 704px) {
+    .infoContainer {
         width: 100%;
     }
-  }
+}
+
 .CardContainer {
     display: flex;
     flex-direction: row;
@@ -28,46 +30,57 @@
     width: 30vw;
     height: 40vh;
 }
-@media (max-width: 704px){
-    .CardContainer{
+
+@media (max-width: 704px) {
+    .CardContainer {
         width: 100%;
     }
-  }
+}
 
 .Card {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color:#fdfbf2;
+    background-color: #fdfbf2;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     border-radius: 11px;
-    height: 40vh;
-    
+    height: 66vh;
 }
-@media (max-width: 704px){
-    .Card{
+
+@media (max-width: 704px) {
+    .Card {
         width: 280px;
+        height: 40vh;
     }
-  }
+}
+
 .CardImage {
-    height: 20vh;
+    height: 46vh;
     width: 30vw;
     object-fit: cover;
 }
-@media (max-width: 704px){
-    .CardImage{
+
+@media (max-width: 704px) {
+    .CardImage {
         width: 95%;
-     
-      /* grid-template-columns: 200px auto; */
+        height: 20vh;
+        /* grid-template-columns: 200px auto; */
     }
-  }
+}
 
 .arrows {
     font-size: 30px;
-    height:30vh;
+    height: 66vh;
     background-color: transparent;
+    color: #40047C;
+}
+
+@media (max-width: 704px) {
+    .arrows {
+        height: 40vh;
+    }
 }
 
 .arrows:hover {
@@ -85,8 +98,8 @@
 }
 
 .verDetalles:hover {
-    cursor:pointer;
-    background-color: #40047ce4 ;
+    cursor: pointer;
+    background-color: #40047ce4;
     border-radius: 5px;
     color: white;
 }
@@ -102,8 +115,8 @@
 }
 
 .editarBar:hover {
-    cursor:pointer;
-    background-color: #40047ce4 ;
+    cursor: pointer;
+    background-color: #40047ce4;
     border-radius: 5px;
     color: white;
 }
@@ -119,8 +132,8 @@
 }
 
 .volver:hover {
-    cursor:pointer;
-    background-color: #E7E7E7 ;
+    cursor: pointer;
+    background-color: #E7E7E7;
     border-radius: 5px;
     color: 40047C;
 }
@@ -136,7 +149,7 @@
     margin-right: 0px;
     gap: 20px;
     width: 80px;
-    margin-left:120px ;
+    margin-left: 120px;
 }
 .allInfo{
     display: flex;
@@ -154,30 +167,32 @@
     border-radius: 11px;
     height: 40vh;
 }
-@media (max-width: 704px){
-    .infoContainerDark{
+
+@media (max-width: 704px) {
+    .infoContainerDark {
         width: 100%;
     }
-  }
+}
 
 .CardDark {
+    background-color: #303031;
+    color: #b7b6b3;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    background-color:#303031;
-    color: #b7b6b3;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
     border-radius: 11px;
-    height: 40vh;
-
+    height: 66vh;
 }
-@media (max-width: 704px){
-    .CardDark{
+
+@media (max-width: 704px) {
+    .CardDark {
         width: 280px;
+        height: 40vh;
     }
-  }
+}
 
 .verDetallesDark {
     background: #894FB8;
@@ -190,7 +205,7 @@
 }
 
 .verDetallesDark:hover {
-    cursor:pointer;
+    cursor: pointer;
     background-color: rgb(64, 4, 124);
     border-radius: 5px;
     color: white;
@@ -208,8 +223,8 @@
 }
 
 .editarBarDark:hover {
-    cursor:pointer;
-    background-color: #894FB8 ;
+    cursor: pointer;
+    background-color: #894FB8;
     border-radius: 5px;
     color: white;
 }
@@ -225,8 +240,8 @@
 }
 
 .volverDark:hover {
-    cursor:pointer;
-    background-color: #E7E7E7 ;
+    cursor: pointer;
+    background-color: #E7E7E7;
     border-radius: 5px;
     color: 40047C;
 }

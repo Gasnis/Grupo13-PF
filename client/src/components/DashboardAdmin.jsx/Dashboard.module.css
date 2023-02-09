@@ -1,112 +1,335 @@
+.iconButtons {
+    background-color: transparent;
+    transform: scale(1.2);
+    color: #FDFBF2;
+}
 
-.navbar{
+.iconButtons:hover {
+    cursor: pointer;
+}
+
+.iconBut {
+    transform: scale(1.2);
+}
+
+.dashboardContainer {
+    background-color: #FDFBF2;
+    height: 100vh;
+    transition: all 0.5s ease;
+}
+
+.navbar {
     display: flex;
     background-color: #40047C;
     color: white;
-    padding-inline: 20px; 
+    padding-inline: 20px;
     justify-content: space-between;
     padding: 10px;
-    
 }
-.titulos{
+
+.searchContainer {
+    width: 30%;
+}
+
+.search {
+    padding-left: 1em;
+    border-radius: 5px;
+    height: 2em;
+    width: 100%;
+    background-color: transparent;
+    color: black;
+}
+
+.search:focus {
+    background-color: #FDFBF2;
+}
+
+.optionContainers {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+}
+
+.titulos {
     display: flex;
     justify-content: space-around;
     width: 50%;
-    
 }
 
-.botones{
+.botones {
     background-color: #40047C;
-    color: white;
+    color: #FDFBF2;
     margin: 5px;
     font-size: medium;
-    font-weight: 500;
+    font-weight: lighter;
 }
 
-.botones:hover{
+.botones:hover {
     color: gray !important;
     cursor: pointer;
 }
 
-.botones:focus{
-    text-decoration: underline;
+.current {
+    background-color: #40047C;
+    color: #FDFBF2;
+    margin: 5px;
+    font-size: medium;
+    font-weight: bold;
 }
 
-.card{
+.cardsContainer {
+    overflow-x: hidden;
+}
+
+.card {
     display: grid;
     grid-template-columns: auto auto auto auto;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    border-top: #40047c7c 1px solid;
+    border-bottom: #40047c7c 1px solid;
     font-size: 15px;
-    padding-inline:20px;
+    padding-inline: 20px;
+    padding: 0.7em;
 }
 
-.carddark{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    border-top: #40047c7c 1px solid;
-    font-size: 15px;
-    padding-inline:20px;
-    font: white;
-    background-color: black;
-}
-
-
-.cosito{
+.cosito {
     width: 200px;
-    display: inline;
+    display: flex;
     text-align: start;
+    align-items: center;
     color: black;
+    gap: 1em;
 }
 
-.botonaccept{
-    background-color: green;
-    border-style: solid;
-    border-radius: 14px;
+.image {
+    border-radius: 5px;
+}
+
+.botonaccept {
+    background-color: rgb(17, 169, 17);
+    padding: 0.5em;
+    border-radius: 5px;
     color: white;
-}
-.botonaccept:hover{
-    background-color: rgb(0, 210, 0);
-    color: rgb(6, 6, 6);
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
-.botondenegate{
+.botonaccept:hover {
+    cursor: pointer;
+    background-color: rgba(47, 211, 47, 0.762);
+}
+
+.botondenegate {
+    height: 2em;
+    width: fit-content;
     background-color: rgb(163, 0, 0);
-    border-style: solid;
-    border-radius: 100px;
+    padding: 0.5em;
+    border-radius: 5px;
     color: white;
+    margin-left: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
-.botondenegate:hover{
+.botondenegate:hover {
+    cursor: pointer;
     background-color: rgb(218, 0, 0);
-    color: rgb(0, 0, 0);
 }
 
-.botondisabled{
-    background-color: rgb(230, 150, 0);
-    border-style: solid;
-    border-radius: 100px;
+.botondisabled {
+    background-color: #F5C32E;
+    padding: 0.5em;
+    border-radius: 5px;
     color: white;
-}
-.botondisabled:hover{
-    background-color: rgb(254, 180, 42);
-    color: rgb(0, 0, 0);
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
-.botonhabilitar{
-    background-color: rgb(0, 0, 209);
-    color: white;
-    border-style: solid;
-    border-radius: 100px;
+.botondisabled:hover {
+    background-color: #ffb70097;
+    cursor: pointer;
 }
-.botonhabilitar:hover{
-    background-color: #0022ff;
-    color: rgb(0, 0, 0);
+
+.botonhabilitar {
+    background-color: #40047C;
+    padding: 0.5em;
+    border-radius: 5px;
+    color: white;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.botonhabilitar:hover {
+    cursor: pointer;
+    background-color: #40047cc6;
+}
+
+.icon {
+    color: #40047C;
+}
+
+.botonesIcon {
+    background-color: #40047C;
+    color: white;
+}
+
+.botonesIcon:hover {
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------DARK MODE ------------------------------------------------------------ */
+.dashboardContainerDark {
+    background-color: #2a2a2b;
+    height: 150vh;
+    transition: all 0.5s ease;
+}
+
+.cardDark {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 15px;
+    padding-inline: 20px;
+    color: white;
+    border-bottom: gray 1px solid;
+    padding: 0.7em;
+}
+
+.cositoDark {
+    width: 200px;
+    display: flex;
+    text-align: start;
+    align-items: center;
+    color: #FDFBF2;
+    gap: 1em;
+}
+
+.iconDark {
+    color: #FDFBF2;
+}
+
+.navBarResponsive {
+    display: flex;
+}
+
+/* --------------------------------------------------------------RESPONSIVE------------------------------------------------------------- */
+@media (max-width: 1314px) {
+
+    .dashboardContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cardsContainer {
+        width: 100%;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px black;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
+    .cardDark {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px gray;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
+    .navbar {
+        display: flex;
+        background-color: #40047C;
+        color: #FDFBF2;
+        flex-direction: row;
+        height: fit-content;
+        width: 100%;
+        justify-content: space-between;
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+
+    .optionContainers {
+        display: flex;
+        height: fit-content;
+
+    }
+
+    .titulos {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        width: 100%;
+        gap: 2em;
+        padding: 0.5em;
+        flex-wrap: wrap;
+    }
+
+    .botones {
+        display: none;
+    }
+
+    .iconButtons {
+        transform: scale(1.2);
+    }
+
+    .iconBut {
+        transform: scale(1.4);
+    }
+
+    .current {
+        display: none;
+    }
+
+    .searchContainer {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px black;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
+    .cardDark {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px gray;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
+    .titulos {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        gap: 2em;
+        padding: 0.5em;
+        flex-wrap: wrap;
+    }
 }

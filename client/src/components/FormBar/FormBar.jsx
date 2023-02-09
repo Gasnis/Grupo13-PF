@@ -352,7 +352,7 @@ export default function CreateLocal() {
                         <div >
                             <input
                                 type='text'
-                                placeholder='Estado'
+                                placeholder='Provincia'
                                 value={local.state}
                                 name="state"
                                 onChange={handleState}
@@ -486,13 +486,14 @@ export default function CreateLocal() {
                             />
                         </div> */}
                         <div className={checked ? styles.input : styles.inputDark}>
+                            <span className={styles.falsoPlaceholder}>Menu</span>
                             <input 
                                 // value='3'
                                 name='menu'
                                 type="file"
                                 multiple
                                 onChange={handleMenuUpload}   
-                                
+                                className={styles.divInputUpdate}
                                 />
                                 
                         </div>

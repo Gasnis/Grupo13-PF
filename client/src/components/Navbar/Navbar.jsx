@@ -10,7 +10,7 @@ import wwwhere from "../../utils/wwwhere.png"
 import roulette from "../../utils/roulette.png"
 import { GiRoundStar } from "react-icons/gi";
 import { GiBroom } from "react-icons/gi";
-import { IoFilterSharp, IoPeopleSharp, IoMenu } from "react-icons/io5";
+import { IoFilterSharp, IoPeopleSharp, IoMenu, IoArrowBackCircleSharp } from "react-icons/io5";
 
 
 export default function Navbar(props) {
@@ -113,16 +113,16 @@ export default function Navbar(props) {
                             <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.filter}>
                                 <GiRoundStar className={darkmode ? style.icon : style.iconDark} />
                                 <select id="orderSelection" onChange={(event) => handleFilteredOrder(event)} className={darkmode ? style.select : style.selectDark}>
-                                    <option value="all">Rating</option>
-                                    <option value="best">Mejores</option>
-                                    <option value="worst">Peores</option>
+                                    <option hidden value="all">Rating</option>
+                                    <option value="best">Mayor</option>
+                                    <option value="worst">Menor</option>
                                 </select>
                             </div>
 
                             <div onClick={() => handleOpenSub("category")} alt="Donde comer?" className={style.filter}>
                                 <IoFilterSharp className={darkmode ? style.icon : style.iconDark} />
                                 <select id="category" onChange={(event) => handlerCategory(event)} className={darkmode ? style.select : style.selectDark}>
-                                    <option value="all">Categoría</option>
+                                    <option hidden value="all">Categoría</option>
                                     <option value="pub">Pubs</option>
                                     <option value="disco">Discotecas</option>
                                     <option value="bar">Bares</option>
@@ -147,7 +147,7 @@ export default function Navbar(props) {
                             {!profile.id &&
                                 open === "login" ? (
                                 <div className={style.dropdown}>
-                                    <div>
+                                    <div className={style.loginOption}>
                                         <Link className={style.titulos} to="/login">Login</Link>
                                     </div>
                                     <div>
@@ -189,7 +189,9 @@ export default function Navbar(props) {
                 :
                 // NavBar que se renderiza en otras rutas
                 <div className={darkmode ? style.navBarContainer : style.navBarContainerDark}>
-                    <Link to="/" href="/"><img src={arrow} /></Link>
+                    {/* <Link to="/" href="/"><img src={arrow} /></Link> */}
+                    <Link to="/" href="/"><IoArrowBackCircleSharp className={ darkmode ? style.arrowHome : style.arrowHomeDark} /></Link>
+                    
                     <div>
                         <img className={style.Logo} src={wwwhere} alt="logo" />
                     </div>

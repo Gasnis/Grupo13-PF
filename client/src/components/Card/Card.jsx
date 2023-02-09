@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import style from "./card.module.css";
+import {IoCaretBackSharp, IoCaretForwardSharp} from "react-icons/io5";
 
 
 export default function Place({ place }) {
@@ -8,14 +9,14 @@ export default function Place({ place }) {
 
 const handleNextAndBack = (event) =>{
   event.preventDefault()
-  if(event.target.name === 'next'){
+  if(event.currentTarget.name === 'next'){
       if(state + 1 >= place.image.length){
           return
       }else{
           setState(state+1)
       }
   }
-  if(event.target.name === "back" ){
+  if(event.currentTarget.name === "back" ){
       if(state === 0){
           return
       }else{
@@ -54,9 +55,9 @@ const handleTouchEnd = event => {
           <Link className={style.place} to={`/detail/${place.id}`} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
             {/* <img src={place.image[0]} className={style.logo} alt="img" /> */}
             <div className={style.img}>
-                    {state === 0?null:  <button name="back"  onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
+                    {state === 0?null:  <button name="back"  onClick={handleNextAndBack} className={style.backBotton}><IoCaretBackSharp/></button>}
 
-                    {state + 1 >= place.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                    {state + 1 >= place.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}><IoCaretForwardSharp/></button> }
                   <div>
 
                     <img className={style.img} src={place.image[state]} alt="" />
@@ -87,7 +88,7 @@ const handleTouchEnd = event => {
             <img src={place.image[0]} className={style.logodisabled} alt="img" />
             <div className={style.textContainer}>
               <div className={style.text}>
-                <h3>{place.name}</h3>
+                <h3>{place.name} (No disponible)</h3>
                 <h4>{place.category}</h4>
               </div>
               <div className={style.numbersInfo}>

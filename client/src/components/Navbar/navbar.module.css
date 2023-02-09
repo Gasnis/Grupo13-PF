@@ -16,13 +16,14 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.5s ease;
+    gap: 2em;
 }
 
 .leftContainer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 3em;
+    gap: 2em;
     width: 30%;
 }
 
@@ -39,6 +40,7 @@
     align-items: center;
     justify-content: space-around;
     width: 30%;
+    gap:2em;
 }
 
 .profileYswitchContainer {
@@ -176,6 +178,20 @@
     z-index: 1;
 }
 
+.loginOption {
+    width: 100%;
+
+}
+
+.arrowHome {
+    transform: scale(3.0);
+    color:#40047C;
+}
+
+.arrowHomeDark {
+    transform: scale(3.0);
+    color:#FCF9EB;
+}
 /* ---------------------------------------------------------------------------RESPONSIVE------------------------------------------------------------------------------------- */
 
 @media (max-width: 768px) {
@@ -201,7 +217,7 @@
         align-items: center;
         z-index: 3;
         padding: 1em;
-        gap: 1em;
+        gap: 2em;
     }
 
     .optionsContainer.open {
@@ -222,7 +238,7 @@
         align-items: center;
         z-index: 3;
         padding: 1em;
-        gap: 1em;
+        gap: 2em;
     }
 
     .optionsContainerDark.open {
@@ -234,8 +250,9 @@
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
-        gap: 1em;
+        gap: 2em;
         width: 100%;
+        padding-right: 3em;
     }
 
     .middleContainer {
@@ -250,8 +267,8 @@
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
-        padding-right: 0.5em;
-        gap: 1em;
+        padding-right: 2.4em;
+        gap: 2em;
         width: 100%;
     }
 
@@ -376,6 +393,15 @@
         justify-content: left;
     }
 
+    .arrowHome {
+        transform: scale(1.8);
+        color:#40047C;
+    }
+    
+    .arrowHomeDark {
+        transform: scale(1.8);
+        color:#FCF9EB;
+    }
 }
 
 /* ------------------------------------------------------------------------DESPUES VEMOS------------------------------------------------------------------------------------- */
@@ -533,10 +559,11 @@
     position: absolute;
     top: 8vh;
     right: 4vh;
+    display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     background-color: #FDFBF2;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: 9px 0px 9px 9px;
     padding: 30px;
     box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
@@ -547,28 +574,7 @@
     text-decoration: none;
     transition: 1s;
     z-index: 1;
-}
-
-.dropdown2 {
-    position: absolute;
-    top: 8vh;
-    left: 4vh;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    background-color: #FDFBF2;
-    justify-content: center;
-    border-radius: 0px 9px 9px 9px;
-    padding: 30px;
-    box-shadow: 0px 4px 19px 7px rgb(0 0 0 / 25%);
-    color: black;
-    font-size: 20px;
-    height: -moz-fit-content;
-    height: fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    text-decoration: none;
-    transition: 1s;
-    z-index: 1;
+    gap:1.5em;
 }
 
 .titulos {

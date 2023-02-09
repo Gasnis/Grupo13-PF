@@ -16,6 +16,7 @@ import {
     GET_CITIES,
     GET_STATES,
     DELETE_BOOK,
+    GET_PLACES_RATING,
     
 
 } from "./actions"
@@ -23,6 +24,7 @@ import {
 
 const initialState = {
     places: [],
+    placesRating:[],
     allPlaces: [],
     placeDetail: {},
     profile: {},
@@ -48,6 +50,13 @@ export default function reducer(state = initialState, action) {
                 places: action.payload,
                 allPlaces: action.payload,
             }
+        case GET_PLACES_RATING:
+            return {
+                ...state,
+                placesRating: action.payload,
+                   
+                }    
+
         case SEARCH_PLACE:
             return {
                 ...state,
@@ -77,34 +86,11 @@ export default function reducer(state = initialState, action) {
 
             if (action.payload === "best") {
                 order = order.sort(function (place1, place2) {
-                    let divisor1 = place1.rating.reduce(
-                        (valorAnterior, valorActual) => valorAnterior + valorActual
-                        );
-                      let dividendo1 = place1.rating.reduce(function (
-                        valorAnterior,
-                        valorActual,
-                        indice
-                      ) {
-                        return valorAnterior + valorActual * (indice + 1);
-                      });
-                      let ratin1 = dividendo1 / divisor1;
-                      let divisor2 = place2.rating.reduce(
-                        (valorAnterior, valorActual) => valorAnterior + valorActual
-                        );
 
-                      let dividendo2 = place2.rating.reduce(function (
-                        valorAnterior,
-                        valorActual,
-                        indice
-                      ) {
-                        return valorAnterior + valorActual * (indice + 1);
-                      });
-                      let ratin2 = dividendo2 / divisor2;
-
-                    if (ratin1 > ratin2) {
+                    if (place1.rating > place2.rating) {
                         return -1;
                     }
-                    if (ratin2 > ratin1) {
+                    if (place2.rating > place1.rating) {
                         return 1;
                     }
                     return 0
@@ -114,34 +100,11 @@ export default function reducer(state = initialState, action) {
             }
             if (action.payload === "worst") {
                 order = order.sort(function (place1, place2) {
-                    let divisor1 = place1.rating.reduce(
-                        (valorAnterior, valorActual) => valorAnterior + valorActual
-                        );
-                      let dividendo1 = place1.rating.reduce(function (
-                        valorAnterior,
-                        valorActual,
-                        indice
-                      ) {
-                        return valorAnterior + valorActual * (indice + 1);
-                      });
-                      let ratin1 = dividendo1 / divisor1;
-                      let divisor2 = place2.rating.reduce(
-                        (valorAnterior, valorActual) => valorAnterior + valorActual
-                        );
-
-                      let dividendo2 = place2.rating.reduce(function (
-                        valorAnterior,
-                        valorActual,
-                        indice
-                      ) {
-                        return valorAnterior + valorActual * (indice + 1);
-                      });
-                      let ratin2 = dividendo2 / divisor2;
-
-                    if (ratin1 > ratin2) {
+                   
+                    if (place1.rating > place2.rating) {
                         return 1;
                     }
-                    if (ratin2 > ratin1) {
+                    if (place2.rating > place1.rating) {
                         return -1;
                     }
                     return 0

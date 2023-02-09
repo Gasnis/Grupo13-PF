@@ -11,6 +11,7 @@ import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
 import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
 import Loading from "../Loading/Loading";
+import {IoCaretBackSharp, IoCaretForwardSharp} from "react-icons/io5";
 
 export default function Detail() {
   const { id } = useParams();
@@ -41,14 +42,14 @@ export default function Detail() {
 
 
   const handleNextAndBack = (event) =>{
-    if(event.target.name === 'next'){
+    if(event.currentTarget.name === 'next'){
         if(state + 1 >= placeDetail.image.length){
             return
         }else{
             setState(state+1)
         }
     }
-    if(event.target.name === "back" ){
+    if(event.currentTarget.name === "back" ){
         if(state === 0){
             return
         }else{
@@ -76,9 +77,9 @@ export default function Detail() {
 
             <div className={style.container}>
                 <div className={style.img}>
-                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
+                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}><IoCaretBackSharp/></button>}
 
-                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}><IoCaretForwardSharp/></button> }
                   
                     <img src={placeDetail.image[state]} alt="" />
                 </div>
@@ -124,26 +125,23 @@ export default function Detail() {
                         ) : (
                             <h2 className={style.promo}>Vuelve mas tarde para ver promociones</h2>
                         )}
-                        <a className={style.direccion}
-                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(
-                                / /g,
-                                "+"
-                            )}`}
+                        <a className={style.direccion} target="_blank"
+                            href={`https://www.google.com/maps/place/${placeDetail.location.replace(/ /g,"+")} ${placeDetail.city} ${placeDetail.state}`}
                         >
                             <span className={style.titles}>{placeDetail.location}</span>
                         </a>
                         <span className={style.ciudad}>{`${placeDetail.city}, ${placeDetail.state}`}</span>
                     </div>
                     <div className={style.sideDiv}>
-                        <a
-                            href={`https://www.google.com/maps/place/${placeDetail.location}`}
+                        <a  target="_blank"
+                            href={`https://www.google.com/maps/place/leroy%20merlin%20finestrat`}
                         >
                             <img className={style.location2} src={location2} alt="" />
                         </a>
                         <h1 className={style.edad}>{placeDetail.ageRange}</h1>
                         <div>
                             <img className={style.footprint} src={footprint} alt="" />
-                            {placeDetail.petFriendly ? null : <img src={rejected} alt="" />}
+                            {placeDetail.petFriendly ? null : <img className={style.x} src={rejected} alt="" />}
                         </div>
                     </div>
                     <div className={style.centrar}>
