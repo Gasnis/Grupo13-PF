@@ -92,7 +92,9 @@ export default function Detail() {
                                 <div className={style.event}>
                                     <h3>Show{placeDetail.event}</h3>
                                 </div>
-                            ) : null}
+                            ) : <div className={style.event}>
+                            <h3>No hay Show{placeDetail.event}</h3>
+                        </div>}
                         </div>
                     </div>
                     <div className={style.textup}>
