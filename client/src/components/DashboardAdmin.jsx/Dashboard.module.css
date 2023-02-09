@@ -1,3 +1,17 @@
+.iconButtons {
+    background-color: transparent;
+    transform: scale(1.2);
+    color: #FDFBF2;
+}
+
+.iconButtons:hover {
+    cursor: pointer;
+}
+
+.iconBut {
+    transform: scale(1.2);
+}
+
 .dashboardContainer {
     background-color: #FDFBF2;
     height: 100vh;
@@ -34,7 +48,7 @@
     display: flex;
     align-items: center;
     height: fit-content;
-  }
+}
 
 .titulos {
     display: flex;
@@ -156,6 +170,15 @@
     color: #40047C;
 }
 
+.botonesIcon {
+    background-color: #40047C;
+    color: white;
+}
+
+.botonesIcon:hover {
+    cursor: pointer;
+}
+
 /* ------------------------------------------------------------------DARK MODE ------------------------------------------------------------ */
 .dashboardContainerDark {
     background-color: #2a2a2b;
@@ -242,24 +265,33 @@
     .optionContainers {
         display: flex;
         height: fit-content;
-        
+
     }
+
     .titulos {
         display: flex;
         justify-content: center;
         flex-direction: row;
         width: 100%;
-        gap: 1em;
+        gap: 2em;
+        padding: 0.5em;
         flex-wrap: wrap;
     }
 
     .botones {
-        background-color: #40047C;
-        color: #FDFBF2;
-        font-size: medium;
-        font-weight: lighter;
-        display: flex;
-        justify-content: left;
+        display: none;
+    }
+
+    .iconButtons {
+        transform: scale(1.2);
+    }
+
+    .iconBut {
+        transform: scale(1.4);
+    }
+
+    .current {
+        display: none;
     }
 
     .searchContainer {
