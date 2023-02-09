@@ -11,6 +11,7 @@ import rejected from "../../utils/rechazado.png";
 import style from "./details.module.css";
 import { sortDays } from "../ShowLocalInfo/ShowLocalInfo";
 import Loading from "../Loading/Loading";
+import {IoCaretBackSharp, IoCaretForwardSharp} from "react-icons/io5";
 
 export default function Detail() {
   const { id } = useParams();
@@ -41,14 +42,14 @@ export default function Detail() {
 
 
   const handleNextAndBack = (event) =>{
-    if(event.target.name === 'next'){
+    if(event.currentTarget.name === 'next'){
         if(state + 1 >= placeDetail.image.length){
             return
         }else{
             setState(state+1)
         }
     }
-    if(event.target.name === "back" ){
+    if(event.currentTarget.name === "back" ){
         if(state === 0){
             return
         }else{
@@ -76,9 +77,9 @@ export default function Detail() {
 
             <div className={style.container}>
                 <div className={style.img}>
-                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}>{'<'}</button>}
+                    {state === 0?null:  <button name="back" onClick={handleNextAndBack} className={style.backBotton}><IoCaretBackSharp/></button>}
 
-                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}>{'>'}</button> }
+                    {state + 1 >= placeDetail.image.length? null: <button name="next" onClick={handleNextAndBack}   className={style.nextBotton}><IoCaretForwardSharp/></button> }
                   
                     <img src={placeDetail.image[state]} alt="" />
                 </div>

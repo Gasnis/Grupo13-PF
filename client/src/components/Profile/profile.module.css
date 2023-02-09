@@ -323,7 +323,17 @@
 }
 .label {
   position: relative;
-  bottom: 20px;
-  left: 40px;
+  bottom: 49px;
+  left: 61px;
   z-index: 10;
+}
+
+.icon {
+  cursor: pointer;
+  transform: scale(2.5);
+  color: #40047C;
+}
+
+.icon:hover {
+  color: #6725a8;
 }

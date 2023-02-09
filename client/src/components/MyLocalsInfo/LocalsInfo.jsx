@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import EditLocal from "../EditLocal/EditLocal";
 import ShowLocalInfo from "../ShowLocalInfo/ShowLocalInfo";
 import styles from "./localsInfo.module.css";
+import {IoCaretBackSharp, IoCaretForwardSharp} from "react-icons/io5";
 
 export default function LocalsInfo(props) {
     const locals = props.locals
@@ -18,7 +19,7 @@ export default function LocalsInfo(props) {
     
     const handlePage = (e) => {
         e.preventDefault();
-        switch (e.target.name) {
+        switch (e.currentTarget.name) {
             case "right":
                 if (index < Math.floor((locals.length - 1) / localsPerPage)) {
                     setIndex(index + 1);
@@ -59,7 +60,7 @@ export default function LocalsInfo(props) {
                 <div className={checked ? styles.infoContainer : styles.infoContainerDark}>
                     {/* <h3>Tienes {locals.length} locales!</h3> */}
                     <div className={styles.CardContainer}>
-                        <button className={styles.arrows} name="left" onClick={handlePage}>«</button>
+                        <button className={styles.arrows} name="left" onClick={handlePage}><IoCaretBackSharp/></button>
                         <div className={styles.ContainCard}>
                             {localsToShow?.map(local => (
                                 <div key={local.id} className={checked ? styles.Card : styles.CardDark}>
@@ -70,7 +71,7 @@ export default function LocalsInfo(props) {
                                 </div>
                             ))}
                         </div>
-                        <button className={styles.arrows} name="right" onClick={handlePage}>»</button>
+                        <button className={styles.arrows} name="right" onClick={handlePage}><IoCaretForwardSharp/></button>
                     </div>
                 </div>
                 :

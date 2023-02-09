@@ -313,6 +313,16 @@
         padding-left: 0.1em;
     }
 
+    .cardDark {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px gray;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
     .titulos {
         display: flex;
         justify-content: center;

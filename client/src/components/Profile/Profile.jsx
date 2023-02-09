@@ -8,6 +8,8 @@ import style from "./profile.module.css";
 import { useHistory } from "react-router-dom";
 import ProfileInfo from "../UserInfo/UserInfo";
 import MyBookInfo from "../MyBookInfo/myBookInfo";
+import {IoAddCircleSharp} from "react-icons/io5";
+
 // import LocalsInfo from "../MyLocalsInfo/LocalsInfo";
 
 export default function Detail() {
@@ -113,7 +115,7 @@ export default function Detail() {
               />
 
               <label htmlFor="fileInput" className={style.label}>
-                <svg
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="icon icon-tabler icon-tabler-upload"
                   width="24"
@@ -129,7 +131,8 @@ export default function Detail() {
                   <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                   <path d="M7 9l5 -5l5 5"></path>
                   <path d="M12 4l0 12"></path>
-                </svg>
+                </svg> */}
+                <IoAddCircleSharp className={style.icon}/>
               </label>
               <input
                 type="file"

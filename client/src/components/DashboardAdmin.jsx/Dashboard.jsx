@@ -217,7 +217,7 @@ const Dashboard = () => {
         </div>
 
         <div className={style.searchContainer}>
-          <input onChange={handleSearchBar} type="search" placeholder="Buscar local..." className={style.search} />
+          <input onChange={handleSearchBar} type="search" placeholder="Buscar..." className={style.search} />
         </div>
       </div>
 
@@ -284,7 +284,7 @@ const Dashboard = () => {
       {statusDashboard === "LocalesDisabled" ? <div className={style.cardsContainer}>
 
         {allPlaces?.filter(p => p.available === false)?.map((p) => {
-          return <div className={style.card} >
+          return <div className={ darkmode ? style.card : style.cardDark} >
             <div className={darkmode ? style.cosito : style.cositoDark}>
               <img src={p.image} alt="" height="30px" width="30px" className={style.image} />
               {p.name}

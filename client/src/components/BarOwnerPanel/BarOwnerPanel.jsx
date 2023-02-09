@@ -84,7 +84,7 @@ export default function BarOwnerPanel() {
                         ?
                         <LocalsInfo profileId={profile.id} locals={profile.locals} set={setLocalShown}/>
                         :
-                        <div>
+                        <div className={style.containerNoTenesLocal}>
                             <h3>Actualmente no tienes ningún local</h3>
                             <button onClick={handleCreate} className={style.crearButton}>Crear local</button>
                         </div>}
