@@ -224,6 +224,7 @@ const Dashboard = () => {
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes" ? <div className={style.cardsContainer}>
         {allPlaces?.filter(p => p.status === "solicitud" && p.available)?.map((p) => {
+          console.log(p.image)
           return <div className={darkmode ? style.card : style.cardDark} key={p.id}>
             <div className={darkmode ? style.cosito : style.cositoDark}>
               <img src={p.image} alt="" height="30px" width="30px" className={style.image} />
