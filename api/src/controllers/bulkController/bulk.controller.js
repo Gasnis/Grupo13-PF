@@ -15,7 +15,7 @@ const users = [{
     "password": "gioh2020",
     "phone": "3016444226",
     "image": "https://whatsappify.files.wordpress.com/2015/04/d176b-acid_picdump_78.jpg",
-    "birthday": "2005-01-01",
+    "birthday": "2000-01-01",
     "city": "bogota",
 	"ban": false
 	

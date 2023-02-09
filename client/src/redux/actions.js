@@ -16,6 +16,8 @@ export const BOOK_PERSIST = "BOOK_PERSIST";
 export const SEARCH_USER = "SEARCH_USER";
 export const GET_CITIES = "GET_CITIES";
 export const GET_STATES = "GET_STATES";
+export const GET_PLACES_RATING = "GET_PLACES_RATING";
+
 
 export const getCities = (stateName) => {
     return async (dispatch)=>{
@@ -192,6 +194,12 @@ export const updatePlace = (update) => {
         return data;
     }
 }
+export const updatePlaceRating = (update) => {
+    return async () => {
+        const { data } = await axios.put(`/local/rating`, update);
+        return data;
+    }
+}
 
 export const updateBook = (idBook, update) => {
     return async () => {
@@ -292,11 +300,19 @@ export const getUserId = async (id) => {
             return data;
         }catch(error){
             return error;
-        }
-    
-        
-        
-    
+        }        
+}
+
+     
+
+export const getlocalsRating = () => {
+    return async (dispatch) => {
+        const {data } = await axios.get(`/local/rating`);
+        return dispatch({
+            type: GET_PLACES_RATING,
+            payload: data
+        })
+    }
 }
 
 

@@ -114,6 +114,8 @@ export default function SignUp(props) {
     priceTotal: book.priceTotal,
     hourDate: book.hourDate,
   });
+
+  console.log(booking)
  
   const [errors, setErrors] = useState({
     name: "",
@@ -171,22 +173,7 @@ export default function SignUp(props) {
           localId,
         })
       );
-      var data = {
-        service_id: 'service_z67u7pr',
-        template_id: 'template_l49usqb',
-        user_id: 'ZuL0aq8mApf9t1Ax8',
-        template_params: {
-            name: booking.name,
-            reservedDate: booking.reservedDate,
-            personQuantity: booking.personQuantity,
-            localName: local.name,
-            email: booking.userId,
-            hourDate: booking.hourDate,
-
-        }
-      };
      
-      await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
 
       if (newBooking.id) {
         setBooking({
@@ -199,10 +186,28 @@ export default function SignUp(props) {
         });
         // setReserved(true);
         // setTimeout(() => {
-        //     history.push('/')
-        // }, 2000);
-        dispatch(bookPersist({}));
-        history.push(`/profile`);
+          //     history.push('/')
+          // }, 2000);
+          await dispatch(bookPersist({}));
+          history.push(`/profile`);
+        var data = {
+          service_id: 'service_z67u7pr',
+          template_id: 'template_l49usqb',
+          user_id: 'ZuL0aq8mApf9t1Ax8',
+          template_params: {
+              name: booking.name,
+              reservedDate: booking.reservedDate,
+              personQuantity: booking.personQuantity,
+              localName: local.name,
+              email: booking.userId,
+              hourDate: booking.hourDate,
+  
+          }
+        };
+        console.log('aqui',data)
+        
+       
+        await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)
       } else {
         // alert(newBooking.response.data)
       }
