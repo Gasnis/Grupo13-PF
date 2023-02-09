@@ -63,6 +63,17 @@
     width: 100%;
     object-fit: cover;
 }
+.boton{
+    background-color: transparent;
+}
+.star{
+    color: #f5c32ea8;
+    
+}
+.star:hover{
+    cursor:pointer;
+    color: #F5C32E;
+}
 
 /* -------------------------------------------------------------Dark Mode ----------------------------------------------------------------------- */
 
