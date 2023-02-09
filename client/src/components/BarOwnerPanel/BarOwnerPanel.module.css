@@ -166,7 +166,7 @@ margin: 2px;
     color: #FCF9EB;
     border-radius: 1em;
     padding: 1em;
-    width: 10em;
+    width: 90%;
 }
 
 .crearButton:hover {
@@ -176,6 +176,14 @@ margin: 2px;
     border-radius: 1em;
     padding: 1em;
     width: 10em;
+}
+
+.containerNoTenesLocal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
 }
 
 

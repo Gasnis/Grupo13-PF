@@ -10,7 +10,7 @@ import wwwhere from "../../utils/wwwhere.png"
 import roulette from "../../utils/roulette.png"
 import { GiRoundStar } from "react-icons/gi";
 import { GiBroom } from "react-icons/gi";
-import { IoFilterSharp, IoPeopleSharp, IoMenu } from "react-icons/io5";
+import { IoFilterSharp, IoPeopleSharp, IoMenu, IoArrowBackCircleSharp } from "react-icons/io5";
 
 
 export default function Navbar(props) {
@@ -189,7 +189,9 @@ export default function Navbar(props) {
                 :
                 // NavBar que se renderiza en otras rutas
                 <div className={darkmode ? style.navBarContainer : style.navBarContainerDark}>
-                    <Link to="/" href="/"><img src={arrow} /></Link>
+                    {/* <Link to="/" href="/"><img src={arrow} /></Link> */}
+                    <Link to="/" href="/"><IoArrowBackCircleSharp className={ darkmode ? style.arrowHome : style.arrowHomeDark} /></Link>
+                    
                     <div>
                         <img className={style.Logo} src={wwwhere} alt="logo" />
                     </div>

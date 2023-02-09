@@ -176,8 +176,11 @@
 }
 @media (max-width: 704px){
     .hoursContainer{
-        width: 55%;
+        width: 85%;
         align-items: center;  
+    }
+    .weekdaysContainer {
+        width: 78%;
     }
   }
 
@@ -194,6 +197,7 @@
 @media (max-width: 704px){
     .select{  
         margin-top: 2px;
+        width: 100%;
     }
   }
 
@@ -243,6 +247,7 @@
     font-family: 'Cambay', sans-serif;
     font-size: medium;
     align-items: center;
+    gap: 1em;
 }
 @media (max-width: 700px) {
     .input {
@@ -274,8 +279,8 @@
 .divInputUpdate{
     height: 20px;
     padding: 1px;
-    background: rgba(102, 11, 173, 0.86);
-    width: 150px;
+    background: #9c68d1;
+    width: fit-content;
     position: relative;
     cursor: pointer;
     border-radius: 5px;
@@ -309,6 +314,10 @@
 }
 form{
     width: 99%;
+}
+
+.falsoPlaceholder {
+    color: gray;
 }
 /* ------------------------------------------------------Dark Mode ------------------------------------------------------------------ */
 
@@ -470,7 +479,7 @@ form{
 }
 @media (max-width: 704px){
     .hoursContainerDark{
-        width: 55%;
+        width: 85%;
         align-items: center;  
     }
   }
@@ -489,6 +498,7 @@ form{
 @media (max-width: 704px){
     .selectDark{  
         margin-top: 2px;
+        width: 100%;
     }
   }
 

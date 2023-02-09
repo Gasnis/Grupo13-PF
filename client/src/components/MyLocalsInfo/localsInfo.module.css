@@ -74,6 +74,7 @@
     font-size: 30px;
     height: 66vh;
     background-color: transparent;
+    color: #40047C;
 }
 
 @media (max-width: 704px) {

@@ -157,33 +157,37 @@
 }
 .nextBotton{
     display: none;
+    color: white;
+    height: 5vh;
     background-color: transparent;
     backdrop-filter: blur(70px); 
     position: absolute;
     right: 0.5%;
-    border-radius: 12px ;
-    font-weight: 500;
-    font-size: 22px;
+    border-radius: 5px ;
     top: 50%;
     /* cursor: pointer; */
-    box-shadow: 2px 2px 15px 0px rgb(255, 253, 253);
+    /* box-shadow: 2px 2px 15px 0px rgb(255, 253, 253); */
     opacity: 10;
     transition: opacity 0.5s ease-in-out;
     z-index: 2;
 }
 
+.nextBotton:hover, .backBotton:hover {
+    cursor: pointer;
+}
+
 .backBotton{
     display: none;
+    color: white;
+    height: 5vh;
     background-color: transparent;
     backdrop-filter: blur(70px); 
     position: absolute;
     left: 0.5%;
-    border-radius: 12px ;
-    font-weight: 500;
-    font-size: 22px;
+    border-radius: 5px ;
     top: 50%;
     /* cursor: pointer; */
-    box-shadow: 2px 2px 15px 0px rgb(255, 253, 253);
+    /* box-shadow: 2px 2px 15px 0px rgb(255, 253, 253); */
     opacity: 10;
     transition: opacity 0.5s ease-in-out;
     z-index: 2;
