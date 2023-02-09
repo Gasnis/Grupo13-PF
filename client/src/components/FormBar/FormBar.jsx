@@ -352,7 +352,7 @@ export default function CreateLocal() {
                         <div >
                             <input
                                 type='text'
-                                placeholder='Estado'
+                                placeholder='Provincia'
                                 value={local.state}
                                 name="state"
                                 onChange={handleState}
