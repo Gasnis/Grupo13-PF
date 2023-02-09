@@ -95,34 +95,40 @@ const users = [{
 const places =[
     {
 		"userId":"gioh2020@gmail.com",
-		"name": "Barcito",
-		"category": "disco",
-		"image": ["https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004154233-01-world-best-bars-2022-full-169.jpg?quality=100&strip=info",
-		"https://cnnespanol.cnn.com/wp-content/uploads/2021/12/zuma-dubai.jpg",
+		"name": "Mamba",
+		"category": "pub",
+		"image": [
+			"https://www.oslo.studio/wp-content/uploads/2019/01/mamba1.jpg",
+			"http://mambabuenosaires.com/wp-content/uploads/2020/10/Mamba-Buenos-Aires-Argentina-Hitzig-Militello-Arquitectos-MFC-arquitectos-1-2048x1365.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-s/1a/30/c0/31/mamba-buenos-aires.jpg",
 		],
-		"location": "Gral. Guemes 200 Avellaneda",
-		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
-	"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg"],
+		"location": "Soler 5130, Buenos Aires 1425 Argentina",
+		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": false,
-		"capacity": 3,
+		"capacity": 100,
 		"petFriendly": false,
 		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
-		"bookPrice": "200.5",
+		"bookPrice": "1400",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["martes","miercoles","jueves","viernes","sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"rating": [1,0,0,0,0],
-		"state": "anyState"
+		"city": "Buenos Aires",
+		"rating": [1,0,1,0,1],
+		"state": "Tandil"
 	},
 {
 		"userId":"gioh2020@gmail.com",
-		"name": "El Bar de GioH",
+		"name": "Parque Bar",
 		"category": "bar",
-		"image": ["https://conteudo.imguol.com.br/c/entretenimento/d3/2022/10/18/agito-do-bar-paradiso-de-barcelona-1666096825973_v2_4x3.jpg"],
-		"location": "Gral.Guemes 200 Avellaneda",
+		"image": [
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/45835137_555629454858323_3670765834717888512_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=fa5YVkwQDNkAX98FASX&_nc_oc=AQmCWxtOFyjImcdrMu4WDzJqTTz2rZA-Lmx10NTA7r2lM6c06jwlPFoAHOTEegvZcrBMv84SpMvMELQaiIyXTOtW&_nc_ht=scontent.fbog10-1.fna&oh=00_AfBWsmZ6aM2-tmLbvCtDlY8PF6zxZXRqGHwD6QUt6PTHTg&oe=640C97F3",
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/315039098_1538115283276397_5762965264732163002_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=DDtY00y2tpcAX_eEqMB&tn=AF64vsbzypjGFcyn&_nc_ht=scontent.fbog10-1.fna&oh=00_AfCuAHqwmyTOh0avHZTmcypRQqVAi0COwhj97j77k0WQbQ&oe=63E9B0B4",
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/278088038_1386212465133347_7696428069481994379_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=LKQSgGtjfCwAX8oK8im&_nc_ht=scontent.fbog10-1.fna&oh=00_AfAhMBIehd_xk46XUWxX1dY79oO2_yDytUNchuQcFrGOrg&oe=63EACDA0"
+
+		],
+		"location": "Thames 1472, Buenos Aires C1414DDD Argentina",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 200,
@@ -134,16 +140,20 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState",
-		"rating": [0,0,0,0,1]
+		"city": "Buenos Aires",
+		"state": "Palermo",
+		"rating": [0,0,1,0,1]
 	},
 {
 		"userId":"gioh2020@gmail.com",
-		"name": "Chiquito el Barcito",
+		"name": "Sullivans Pub",
 		"category": "pub",
-		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg","https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg",
-		"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg"],
+		"image": [
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/285637320_5594836110529101_8593079526314817319_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=g4M8CSVjK40AX9XaAg3&_nc_ht=scontent.fbog10-1.fna&oh=00_AfBPDAE1xSqN9sr7q6xcewFQgew3GsbgbAKrahZGSFyxGg&oe=63E96A7E",
+			"https://scontent.fbog11-1.fna.fbcdn.net/v/t31.18172-8/28514859_1901940913151991_2917341724228755365_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=1jU5SMx4JLQAX-m_shG&_nc_ht=scontent.fbog11-1.fna&oh=00_AfBYB8wsGgLIpRdTq_6pR1abn0VdLCdtexELMAKVzTn37Q&oe=640CB76C",
+			"https://scontent.fbog11-1.fna.fbcdn.net/v/t31.18172-8/20017687_1925903997422349_1857645992983889451_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=fOZoc_o3NYsAX8DSZ-o&_nc_ht=scontent.fbog11-1.fna&oh=00_AfAKYPo2OxaCvq6GTWjWahUY4pWtkcBwEBr9I1nV6_27CA&oe=640CB8EB",
+			""
+		],
 		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": false,
@@ -154,11 +164,11 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["jueves","viernes","sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState",
-		"rating": [0,0,0,1,0]
+		"city": "Buenos Aires",
+		"state": "Palermo",
+		"rating": [0,0,1,1,0]
 	},
 {
 		"userId":"sergio@gmail.com",
@@ -185,11 +195,11 @@ const places =[
 ,
 {
 		"userId":"thomi@gmail.com",
-		"name": "El Thomisaurodromo",
+		"name": "Juguetes perdidos",
 		"category": "bar",
 		"image": [
-		"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004165912-04-world-best-bars-2022.jpg"],
-		"location": "Gral.Guemes 200 Avellaneda",
+		"https://www.alafresca.com.ar/wp-content/uploads/2018/06/DSC_0016-1024x683.jpg"],
+		"location": "Bolivia 3342, B1678EIP Caseros, Provincia de Buenos Aires, Argentina",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 150,
@@ -197,12 +207,13 @@ const places =[
 		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
-		"bookPrice": "200",
+		"bookPrice": "800",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["martes","miercoles","jueves","viernes","sabado","domingo","17:00","02:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Buenos Aires",
+		"rating": [1,0,1,0,1],
+		"state": "Tandil"
 	},
 	{
 		"userId":"gioh2020@gmail.com",
@@ -326,11 +337,11 @@ const places =[
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Glow",
+		"name": "La Barra Boliche",
 		"category": "disco",
 		"image": ["https://10619-2.s.cdn12.com/rests/original/107_500173515.jpg"],
-		"location": "Gral. Guemes 200 Avellaneda",
-		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
+		"location": "Lima 150 la barra boliche",
+		"menu": ["https://pbs.twimg.com/profile_images/788784431658131456/IrHMDqDl_400x400.jpg","https://pbs.twimg.com/media/DuECnRLXQAAWUn7.jpg:large","http://quedigital.com.ar/web/wp-content/uploads/2014/10/barra.jpg","https://i.pinimg.com/550x/75/49/95/754995901c17b59e9750b55230151111.jpg"],
 		"event": true,
 		"capacity": 300,
 		"petFriendly": false,
@@ -341,15 +352,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba",
+		"rating":[1,4,2,6,8]
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Brothers",
+		"name": "Vidon-Bar",
 		"category": "bar",
-		"image": ["https://lh3.googleusercontent.com/p/AF1QipO8iMJ1JblVz5qZRY87yScty9_uFI4DmwVPSa1R=s680-w680-h510"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://www.gaf-franquicias.com/images/notas/logos/1479306304_isologotipo%20posavaso%202014.fw.png","https://media-cdn.tripadvisor.com/media/photo-s/16/08/5f/34/horario-de-2x1-de-18.jpg","https://www.circuitogastronomico.com/wp-content/uploads/2018/10/vidon1.jpg","https://media-cdn.tripadvisor.com/media/photo-s/05/e4/66/e5/patio.jpg"],
+		"location": "Dr. Tristan Achaval Rodriguez 152, X5000BKD vidon bar",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -361,15 +373,15 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "713 Bar Arcade",
+		"name": "Patagonia",
 		"category": "bar",
-		"image": ["https://scontent.faep9-1.fna.fbcdn.net/v/t1.6435-9/82436858_2912633052122593_5704060037622661120_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9267fe&_nc_ohc=rg-KyoYTtkcAX8mFkqH&_nc_ht=scontent.faep9-1.fna&oh=00_AfD95uOt2Vlf2cruoGZ5ksA3AwdPwNgN5qRkGyxPT5WeAg&oe=63F60405"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://mir-s3-cdn-cf.behance.net/projects/404/6c3d1f99595749.Y3JvcCw1NjEsNDM4LDEyMyw5Nw.jpg","https://www.lavoz.com.ar/resizer/y5uxOiiaSIPR1Xn7O9S5X0SBFr8=/980x640/smart/filters:quality(75):format(webp)/cloudfront-us-east-1.images.arcpublishing.com/grupoclarin/QU3MDRWN5NDRBLCAYYWZBSS3Z4.jpg","https://media-cdn.tripadvisor.com/media/photo-s/15/5c/43/18/cerveza-patagonia-bar.jpg"],
+		"location": "Calle Belgrano 899-799, X5000JQQ, X5000JQQ patagonia bar",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -381,15 +393,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba",
+		"rating":[1,4,2,6,8]
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Golden Bar",
+		"name": "El Club de la milanesa",
 		"category": "bar",
-		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://www.revistahigh.com.ar/files/image/1/1111/5e6fa7d78b2c2_905_510!.jpg?s=89e78aba1299469f83f5b8f9756a0120&d=1641571457","https://www.elclubdelamilanesa.com/images/content/sucursales/palermo-caba/1490207332.jpg","https://www.elclubdelamilanesa.com/images/content/sucursales/puerto-norte-rosario/1.jpg","https://economiasustentable.com/wp-content/uploads/2022/04/Milanesa.jpeg"],
+		"location": "Chacabuco 895, X5000III el club de la milanesa",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -401,15 +414,16 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"rating":[1,4,2,6,8],
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
-		"name": "Molly Malone",
+		"name": "SantaCalma",
 		"category": "bar",
-		"image": ["https://lh5.googleusercontent.com/p/AF1QipPHvXtTHq42fjZqrhZoekIy_rCM6iGAYL6EPnxY=w480-h300-k-n"],
-		"location": "Gral. Guemes 200 Avellaneda",
+		"image": ["https://media-cdn.tripadvisor.com/media/photo-s/1c/c4/73/e2/nuestro-jardin.jpg","https://media-cdn.tripadvisor.com/media/photo-s/0d/8a/8c/bf/iel-jardin-mas-lindo.jpg"],
+		"location": "Parque Sarmiento, República de Chile, X5000 SantaCalma",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 300,
@@ -420,9 +434,10 @@ const places =[
 		"bookPrice": "400.5",
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
+		"rating":[8,4,2,6,20],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	},
 	{
 		"userId":"gaston@gmail.com",
@@ -440,9 +455,10 @@ const places =[
 		"bookPrice": "400.5",
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
+		"rating":[8,4,5,6,8],
 		"status": "solicitud",
-		"city": "anyCity",
-		"state": "anyState"
+		"city": "Córdoba",
+		"state": "Córdoba"
 	}
 
 ]
