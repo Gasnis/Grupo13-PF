@@ -218,8 +218,7 @@
 }
 
 /* --------------------------------------------------------------RESPONSIVE------------------------------------------------------------- */
-
-@media (max-width: 550px) {
+@media (max-width: 1314px) {
 
     .dashboardContainer {
         display: flex;
@@ -232,7 +231,7 @@
 
     .card {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         justify-content: center;
         border-bottom: solid 1px black;
@@ -270,7 +269,7 @@
 
     .titulos {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         flex-direction: row;
         width: 100%;
         gap: 2em;
@@ -300,5 +299,27 @@
 
     .search {
         display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        border-bottom: solid 1px black;
+        gap: 0.5em;
+        padding-left: 0.1em;
+    }
+
+    .titulos {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        width: 100%;
+        gap: 2em;
+        padding: 0.5em;
+        flex-wrap: wrap;
     }
 }
