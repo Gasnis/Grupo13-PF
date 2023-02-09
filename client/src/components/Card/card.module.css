@@ -42,7 +42,7 @@
 @media (max-width: 1500px) {
     .place{
         height: fit-content;
-        width: 18rem;
+        width: 20rem;
         border-radius: 12px;
         color: black;
         font-family: 'Cambay', sans-serif;
