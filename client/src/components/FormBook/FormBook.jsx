@@ -115,7 +115,7 @@ export default function SignUp(props) {
     hourDate: book.hourDate,
   });
 
-  console.log(booking)
+
  
   const [errors, setErrors] = useState({
     name: "",
@@ -204,7 +204,7 @@ export default function SignUp(props) {
   
           }
         };
-        console.log('aqui',data)
+        
         
        
         await axios.post('https://api.emailjs.com/api/v1.0/email/send', data)

@@ -13,7 +13,6 @@ router.post('/', async (req, res) => {
       const result = await uploadImage(path);
       
       const imageUrl = result.secure_url;
-      console.log("img" ,imageUrl)
   
       // Buscar el bar específico y actualizar la URL de la imagen
       const local = await Local.findByPk(id);

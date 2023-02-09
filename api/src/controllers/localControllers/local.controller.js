@@ -35,7 +35,6 @@ const getLocalDetail = async (id) => {
     return valorAnterior + valorActual * (indice +1)})
     let ratin = (dividendo/divisor).toFixed(1) 
     
-    console.log(local)
     
     local = {
             id: local.id,
