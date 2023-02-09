@@ -353,10 +353,10 @@ export default function EditLocal(props) {
                     </div>
 
                     <div className={styles.alinearIzq}>
-                        <label style={!containsName(states,local.state) ? { color: "red" } : null} className={styles.label}>Estado: </label>
+                        <label style={!containsName(states,local.state) ? { color: "red" } : null} className={styles.label}>Provincia: </label>
                         <input
                             type='text'
-                            placeholder='Estado'
+                            placeholder='Provincia'
                             value={local.state}
                             name="state"
                             onChange={handleState}
