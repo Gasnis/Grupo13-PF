@@ -22,8 +22,8 @@ export default function MyBookInfo(props) {
   },[dispatch])
   
   const fechahoy = new Date();
-  const fechareserva = new Date(books[index].reservedDate);
-  const expiro = fechahoy.getDate() > fechareserva.getDate();
+  const fechareserva = new Date([books[index].reservedDate.split("-")[1],books[index].reservedDate.split("-")[2],books[index].reservedDate.split("-")[0]].join("-"));
+  const expiro = (fechahoy.getDate() > fechareserva.getDate());
 
   
   
