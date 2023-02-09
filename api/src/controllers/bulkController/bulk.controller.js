@@ -95,34 +95,40 @@ const users = [{
 const places =[
     {
 		"userId":"gioh2020@gmail.com",
-		"name": "Barcito",
-		"category": "disco",
-		"image": ["https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004154233-01-world-best-bars-2022-full-169.jpg?quality=100&strip=info",
-		"https://cnnespanol.cnn.com/wp-content/uploads/2021/12/zuma-dubai.jpg",
+		"name": "Mamba",
+		"category": "pub",
+		"image": [
+			"https://www.oslo.studio/wp-content/uploads/2019/01/mamba1.jpg",
+			"http://mambabuenosaires.com/wp-content/uploads/2020/10/Mamba-Buenos-Aires-Argentina-Hitzig-Militello-Arquitectos-MFC-arquitectos-1-2048x1365.jpg",
+			"https://media-cdn.tripadvisor.com/media/photo-s/1a/30/c0/31/mamba-buenos-aires.jpg",
 		],
-		"location": "Gral. Guemes 200 Avellaneda",
-		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg",
-	"https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg"],
+		"location": "Soler 5130, Buenos Aires 1425 Argentina",
+		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": false,
-		"capacity": 3,
+		"capacity": 100,
 		"petFriendly": false,
 		"ageRange": "+18",
 		"phone": "3017777777",
 		"promo":"2x1",
-		"bookPrice": "200.5",
+		"bookPrice": "1400",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["martes","miercoles","jueves","viernes","sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"rating": [1,0,0,0,0],
-		"state": "anyState"
+		"city": "Buenos Aires",
+		"rating": [1,0,1,0,1],
+		"state": "Tandil"
 	},
 {
 		"userId":"gioh2020@gmail.com",
-		"name": "El Bar de GioH",
+		"name": "Parque Bar",
 		"category": "bar",
-		"image": ["https://conteudo.imguol.com.br/c/entretenimento/d3/2022/10/18/agito-do-bar-paradiso-de-barcelona-1666096825973_v2_4x3.jpg"],
-		"location": "Gral.Guemes 200 Avellaneda",
+		"image": [
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t1.6435-9/45835137_555629454858323_3670765834717888512_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=fa5YVkwQDNkAX98FASX&_nc_oc=AQmCWxtOFyjImcdrMu4WDzJqTTz2rZA-Lmx10NTA7r2lM6c06jwlPFoAHOTEegvZcrBMv84SpMvMELQaiIyXTOtW&_nc_ht=scontent.fbog10-1.fna&oh=00_AfBWsmZ6aM2-tmLbvCtDlY8PF6zxZXRqGHwD6QUt6PTHTg&oe=640C97F3",
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/315039098_1538115283276397_5762965264732163002_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=DDtY00y2tpcAX_eEqMB&tn=AF64vsbzypjGFcyn&_nc_ht=scontent.fbog10-1.fna&oh=00_AfCuAHqwmyTOh0avHZTmcypRQqVAi0COwhj97j77k0WQbQ&oe=63E9B0B4",
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/278088038_1386212465133347_7696428069481994379_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=LKQSgGtjfCwAX8oK8im&_nc_ht=scontent.fbog10-1.fna&oh=00_AfAhMBIehd_xk46XUWxX1dY79oO2_yDytUNchuQcFrGOrg&oe=63EACDA0"
+
+		],
+		"location": "Thames 1472, Buenos Aires C1414DDD Argentina",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": true,
 		"capacity": 200,
@@ -134,16 +140,20 @@ const places =[
 		"available": true,
 		"schedule":["sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState",
-		"rating": [0,0,0,0,1]
+		"city": "Buenos Aires",
+		"state": "Palermo",
+		"rating": [0,0,1,0,1]
 	},
 {
 		"userId":"gioh2020@gmail.com",
-		"name": "Chiquito el Barcito",
+		"name": "Sullivans Pub",
 		"category": "pub",
-		"image": ["https://www.baenegocios.com/__export/1669136555466/sites/cronica/img/2022/11/22/cerveza_artesanal_antares_1.jpg_792575817.jpg","https://cnnespanol.cnn.com/wp-content/uploads/2022/10/221004171011-09-world-best-bars-2022.jpg",
-		"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg/640px-The_Queens_Arms_pub_-_Charlotte_Street_-_Birmingham_-_2005-10-14.jpg"],
+		"image": [
+			"https://scontent.fbog10-1.fna.fbcdn.net/v/t39.30808-6/285637320_5594836110529101_8593079526314817319_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=g4M8CSVjK40AX9XaAg3&_nc_ht=scontent.fbog10-1.fna&oh=00_AfBPDAE1xSqN9sr7q6xcewFQgew3GsbgbAKrahZGSFyxGg&oe=63E96A7E",
+			"https://scontent.fbog11-1.fna.fbcdn.net/v/t31.18172-8/28514859_1901940913151991_2917341724228755365_o.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_ohc=1jU5SMx4JLQAX-m_shG&_nc_ht=scontent.fbog11-1.fna&oh=00_AfBYB8wsGgLIpRdTq_6pR1abn0VdLCdtexELMAKVzTn37Q&oe=640CB76C",
+			"https://scontent.fbog11-1.fna.fbcdn.net/v/t31.18172-8/20017687_1925903997422349_1857645992983889451_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=fOZoc_o3NYsAX8DSZ-o&_nc_ht=scontent.fbog11-1.fna&oh=00_AfAKYPo2OxaCvq6GTWjWahUY4pWtkcBwEBr9I1nV6_27CA&oe=640CB8EB",
+			""
+		],
 		"location": "Gral.Guemes 200 Avellaneda",
 		"menu": ["https://marketplace.canva.com/EAE-YGWeP9A/3/0/1236w/canva-men%C3%BA-impreso-restaurant-hamburguesa-comida-verde-cafe-ECjSz22z47Y.jpg"],
 		"event": false,
@@ -154,11 +164,11 @@ const places =[
 		"promo":"2x1",
 		"bookPrice": "300",
 		"available": true,
-		"schedule":["sabado","domingo","17:00","00:00"],
+		"schedule":["jueves","viernes","sabado","domingo","17:00","00:00"],
 		"status": "aprobado",
-		"city": "anyCity",
-		"state": "anyState",
-		"rating": [0,0,0,1,0]
+		"city": "Buenos Aires",
+		"state": "Palermo",
+		"rating": [0,0,1,1,0]
 	},
 {
 		"userId":"sergio@gmail.com",

@@ -30,7 +30,6 @@ const Dashboard = () => {
   const allPlaces = useSelector((state) => state.places)
   const allUsers = useSelector((state) => state.users)
   const darkmode = useSelector((state) => state.darkmode)
-  console.log(allPlaces);
 
   const [statusDashboard, setStatusDashboard] = useState("Welcome")
 
@@ -225,6 +224,7 @@ const Dashboard = () => {
       {/* ------------------------------solicitudes---------------------------------------------------------------- */}
       {statusDashboard === "Solicitudes" || "Welcome" ? <div className={style.cardsContainer}>
         {allPlaces?.filter(p => p.status === "solicitud" && p.available)?.map((p) => {
+          console.log(p.image)
           return <div className={darkmode ? style.card : style.cardDark} key={p.id}>
             <div className={darkmode ? style.cosito : style.cositoDark}>
               <img src={p.image} alt="" height="30px" width="30px" className={style.image} />
