@@ -113,16 +113,16 @@ export default function Navbar(props) {
                             <div onClick={() => handleOpenSub("rating")} alt="Donde comer?" className={style.filter}>
                                 <GiRoundStar className={darkmode ? style.icon : style.iconDark} />
                                 <select id="orderSelection" onChange={(event) => handleFilteredOrder(event)} className={darkmode ? style.select : style.selectDark}>
-                                    <option value="all">Rating</option>
-                                    <option value="best">Mejores</option>
-                                    <option value="worst">Peores</option>
+                                    <option hidden value="all">Rating</option>
+                                    <option value="best">Mayor</option>
+                                    <option value="worst">Menor</option>
                                 </select>
                             </div>
 
                             <div onClick={() => handleOpenSub("category")} alt="Donde comer?" className={style.filter}>
                                 <IoFilterSharp className={darkmode ? style.icon : style.iconDark} />
                                 <select id="category" onChange={(event) => handlerCategory(event)} className={darkmode ? style.select : style.selectDark}>
-                                    <option value="all">Categoría</option>
+                                    <option hidden value="all">Categoría</option>
                                     <option value="pub">Pubs</option>
                                     <option value="disco">Discotecas</option>
                                     <option value="bar">Bares</option>

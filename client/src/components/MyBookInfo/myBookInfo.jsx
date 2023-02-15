@@ -3,6 +3,7 @@ import { updatePlace, getPlaces, deleteBook, bookPersist, getlocalsRating,update
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./myBookInfo.module.css";
 import swal from "sweetalert"
+import { GiRoundStar } from "react-icons/gi";
 import {useHistory} from 'react-router-dom'
 
 export default function MyBookInfo(props) {
@@ -22,8 +23,9 @@ export default function MyBookInfo(props) {
   },[dispatch])
   
   const fechahoy = new Date();
-  const fechareserva = new Date(books[index].reservedDate);
-  const expiro = fechahoy.getDate() > fechareserva.getDate();
+  const fechareserva = new Date([books[index].reservedDate.split("-")[1],books[index].reservedDate.split("-")[2],books[index].reservedDate.split("-")[0]].join("-"));
+  const expiro = (fechahoy.getDate() > fechareserva.getDate());
+
 
   
   
@@ -98,11 +100,11 @@ export default function MyBookInfo(props) {
             <div>
               <p>Como fue tu experiencia?</p>
               <div className={styles.estrellas}>
-                <button value="0" onClick={handleRating}>1</button>
-                <button value="1" onClick={handleRating}>2</button>
-                <button value="2" onClick={handleRating}>3</button>
-                <button value="3" onClick={handleRating}>4</button>
-                <button value="4" onClick={handleRating}>5</button>
+                <button className={styles.boton} value="0" onClick={handleRating}><GiRoundStar className={styles.star}/></button>
+                <button className={styles.boton} value="1" onClick={handleRating}><GiRoundStar className={styles.star}/></button>
+                <button className={styles.boton} value="2" onClick={handleRating}><GiRoundStar className={styles.star}/></button>
+                <button className={styles.boton} value="3" onClick={handleRating}><GiRoundStar className={styles.star}/></button>
+                <button className={styles.boton} value="4" onClick={handleRating}><GiRoundStar className={styles.star}/></button>
               </div>
             </div>
           ) : (
