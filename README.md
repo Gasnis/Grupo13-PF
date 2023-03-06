@@ -165,13 +165,3 @@ __Ruta about
 __Ruta favoritos
 __Ruta inicio de sesion
 
-PANEL DE ADMIN BARES
--Posibilidad de actualizar datos del bar
-
-PANEL DE ADMIN DE LA APP?
--Posibilidad de borrar bares?
-
-PREGUNTAS PARA HACER
--Se puede linkear un boton para dos rutas distintas dependiendo del tipo de usuario que seas?
--como hacer una experiencia individual para cada usuario? como cada usuario va a alterar el estado "rating"
--hacer manejo de reserva por calendario renderizando las actividades de todo el mes? como hacer con el estado general?
