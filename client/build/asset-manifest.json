@@ -1,16 +1,37 @@
 {
   "files": {
-    "main.css": "/static/css/main.43de836c.css",
-    "main.js": "/static/js/main.ad2a8eee.js",
+    "main.css": "/static/css/main.cb08ccbd.css",
+    "main.js": "/static/js/main.fa698bb9.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/Vector.png": "/static/media/Vector.150fc0d0e629919b30ad.png",
+    "static/media/Home2.png": "/static/media/Home2.27dff44286e25d2d0b3b.png",
+    "static/media/HomeDark2.png": "/static/media/HomeDark2.728b131c39722a5f94d9.png",
+    "static/media/formBarDark.png": "/static/media/formBarDark.81fc7264f000ba297b13.png",
+    "static/media/FormBar2.png": "/static/media/FormBar2.d15a0136c0aa865914b6.png",
+    "static/media/Profile2.png": "/static/media/Profile2.72f86d2bba0212621a01.png",
+    "static/media/fondovioleta.png": "/static/media/fondovioleta.268915f559cf2456124c.png",
+    "static/media/ProfileDark.png": "/static/media/ProfileDark.87090dc128ef12f06caf.png",
+    "static/media/Banner.jpg": "/static/media/Banner.3774348bdb181cd83458.jpg",
+    "static/media/fondoamarillo.png": "/static/media/fondoamarillo.ba49defc55bab09634db.png",
+    "static/media/SignUpDark.png": "/static/media/SignUpDark.980311e9bef163bf3ec9.png",
+    "static/media/LoginDark.png": "/static/media/LoginDark.c8e0aee5403de36e82c3.png",
+    "static/media/Login.png": "/static/media/Login.837076b773c414e2edca.png",
+    "static/media/SignUp.png": "/static/media/SignUp.adfe404a962c497e5578.png",
+    "static/media/Thomas.png": "/static/media/Thomas.7af33eadef3be6e4aa08.png",
+    "static/media/wwwhere.png": "/static/media/wwwhere.6e6ae3302f1d27b47799.png",
+    "static/media/Seba.jpg": "/static/media/Seba.991690a246b39982433e.jpg",
+    "static/media/Gaston.jpg": "/static/media/Gaston.a059e188a939f39a9707.jpg",
+    "static/media/Igna.jpg": "/static/media/Igna.17c0222168be79036c7c.jpg",
+    "static/media/Sol.jpg": "/static/media/Sol.a1dc25287a344fd8f23e.jpg",
+    "static/media/Sergio.jpg": "/static/media/Sergio.e8b4be812baa6be92f6f.jpg",
+    "static/media/Gio.jpg": "/static/media/Gio.512f5209ccd49835e2bd.jpg",
+    "static/media/jose.jpeg": "/static/media/jose.70f52c4cf99377b77eff.jpeg",
     "index.html": "/index.html",
-    "main.43de836c.css.map": "/static/css/main.43de836c.css.map",
-    "main.ad2a8eee.js.map": "/static/js/main.ad2a8eee.js.map",
+    "main.cb08ccbd.css.map": "/static/css/main.cb08ccbd.css.map",
+    "main.fa698bb9.js.map": "/static/js/main.fa698bb9.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.43de836c.css",
-    "static/js/main.ad2a8eee.js"
+    "static/css/main.cb08ccbd.css",
+    "static/js/main.fa698bb9.js"
   ]
 }
