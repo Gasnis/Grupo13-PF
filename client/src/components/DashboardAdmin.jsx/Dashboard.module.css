@@ -95,7 +95,7 @@
 }
 
 .cosito {
-    width: 200px;
+    width: 350px;
     display: flex;
     text-align: start;
     align-items: center;
@@ -201,7 +201,7 @@
 }
 
 .cositoDark {
-    width: 200px;
+    width: 350px;
     display: flex;
     text-align: start;
     align-items: center;
@@ -223,6 +223,12 @@
     .dashboardContainer {
         display: flex;
         flex-direction: column;
+    }
+
+    .dashboardContainerDark {
+        background-color: #2a2a2b;
+        height: 300vh;
+        transition: all 0.5s ease;
     }
 
     .cardsContainer {

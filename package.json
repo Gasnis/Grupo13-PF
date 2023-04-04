@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@emailjs/browser": "^3.10.0",
-    "react-google-login": "^5.2.2",
-    "redux-persist": "^6.0.0",
-    "redux-toolkit": "^1.1.2",
-    "sweetalert": "^2.1.2"
-  }
-}
