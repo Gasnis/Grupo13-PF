@@ -14,7 +14,6 @@ import Password from './components/Password/Password';
 import AboutUs from './components/About Us/AboutUs';
 
 axios.defaults.baseURL = "https://grupo13-pf-production.up.railway.app/";
-// axios.defaults.baseURL = "http://localhost:3001/"
 
 
 function App() {
