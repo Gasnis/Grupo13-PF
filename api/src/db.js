@@ -6,10 +6,24 @@ const {
   PGUSER, PGPASSWORD, PGHOST,PGDATABASE, PGPORT
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+const { DATABASE_URL } = process.env;
+
+const sequelize = new Sequelize(DATABASE_URL, {
+  dialect: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Importante para Railway
+    },
+  },
 });
+
+// 🔹 Verificar conexión
+sequelize.authenticate()
+  .then(() => console.log("✅ Conectado a PostgreSQL en Railway"))
+  .catch(err => console.error("❌ Error de conexión:", err));
+  
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
